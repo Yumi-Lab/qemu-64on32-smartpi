@@ -1,0 +1,481 @@
+From c055f30baf92c6a18479966f5bd543e33970aac0 Mon Sep 17 00:00:00 2001
+From: Yumi-Lab <nicolas@yumi-lab.com>
+Date: Mon, 20 Jul 2026 17:42:27 +0200
+Subject: [PATCH 10/16] tcg: add an execution-weighted TB profile
+ (QEMU_TB_EXEC_PROFILE)
+
+Complement the static opcode histogram with a profile weighted by real
+execution.  Each translated TB gets a record (guest pc, insn count, the
+op list after optimization) and a 64-bit execution counter that a short
+host stub emitted by tcg_out_tb_start bumps on every entry, so chained
+goto_tb entries, goto_ptr lookups and main-loop entries are all counted.
+Cheap counters on the dispatch paths (lookup helper calls, jump cache
+hit/miss, main-loop lookups) complete the picture.  On exit the dump
+reports the entry-path split, the execution-weighted opcode mix and the
+hottest TBs.
+
+The persistent translation cache is disabled while profiling: profiled
+code embeds the absolute address of its counter, which is only valid in
+the run that emitted it.
+
+Overhead measured on the pad: about 17 percent on the torn64 benchmark,
+zero when the profile is not enabled.
+---
+ accel/tcg/cpu-exec.c     |  22 ++++
+ accel/tcg/tb-persist.c   |  12 +++
+ accel/tcg/translator.c   |   4 +
+ include/tcg/startup.h    |  36 +++++++
+ linux-user/exit.c        |   1 +
+ tcg/arm/tcg-target.c.inc |  18 +++-
+ tcg/tcg.c                | 217 +++++++++++++++++++++++++++++++++++++++
+ 7 files changed, 309 insertions(+), 1 deletion(-)
+
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index 8163295..f999949 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -26,6 +26,7 @@
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
+ #include "tcg/tcg.h"
++#include "tcg/startup.h"
+ #include "qemu/atomic.h"
+ #include "qemu/rcu.h"
+ #include "exec/log.h"
+@@ -266,6 +267,9 @@ static inline TranslationBlock *tb_lookup(CPUState *cpu, vaddr pc,
+                tb->cs_base == cs_base &&
+                tb->flags == flags &&
+                tb_cflags(tb) == cflags)) {
++        if (unlikely(tcg_tb_prof_on > 0)) {
++            tcg_tb_prof_ctr[TCG_TBPROF_CTR_JC_HIT]++;
++        }
+         goto hit;
+     }
+ 
+@@ -273,6 +277,9 @@ static inline TranslationBlock *tb_lookup(CPUState *cpu, vaddr pc,
+     if (tb == NULL) {
+         return NULL;
+     }
++    if (unlikely(tcg_tb_prof_on > 0)) {
++        tcg_tb_prof_ctr[TCG_TBPROF_CTR_JC_MISS]++;
++    }
+ 
+     jc->array[hash].pc = pc;
+     qatomic_set(&jc->array[hash].tb, tb);
+@@ -421,8 +428,15 @@ const void *HELPER(lookup_tb_ptr)(CPUArchState *env)
+         cpu_loop_exit(cpu);
+     }
+ 
++    if (unlikely(tcg_tb_prof_on > 0)) {
++        tcg_tb_prof_ctr[TCG_TBPROF_CTR_HELPER_CALLS]++;
++    }
++
+     tb = tb_lookup(cpu, pc, cs_base, flags, cflags);
+     if (tb == NULL) {
++        if (unlikely(tcg_tb_prof_on > 0)) {
++            tcg_tb_prof_ctr[TCG_TBPROF_CTR_HELPER_NULL]++;
++        }
+         return tcg_code_gen_epilogue;
+     }
+ 
+@@ -984,11 +998,19 @@ cpu_exec_loop(CPUState *cpu, SyncClocks *sc)
+                 break;
+             }
+ 
++            if (unlikely(tcg_tb_prof_on > 0)) {
++                tcg_tb_prof_ctr[TCG_TBPROF_CTR_MAINLOOP]++;
++            }
++
+             tb = tb_lookup(cpu, pc, cs_base, flags, cflags);
+             if (tb == NULL) {
+                 CPUJumpCache *jc;
+                 uint32_t h;
+ 
++                if (unlikely(tcg_tb_prof_on > 0)) {
++                    tcg_tb_prof_ctr[TCG_TBPROF_CTR_MAINLOOP_NEWTB]++;
++                }
++
+                 mmap_lock();
+                 tb = tb_gen_code(cpu, pc, cs_base, flags, cflags);
+                 mmap_unlock();
+diff --git a/accel/tcg/tb-persist.c b/accel/tcg/tb-persist.c
+index cd2713b..5c49e3c 100644
+--- a/accel/tcg/tb-persist.c
++++ b/accel/tcg/tb-persist.c
+@@ -29,6 +29,7 @@
+ #include "exec/translation-block.h"
+ #include "exec/tb-persist.h"
+ #include "tcg/tcg.h"
++#include "tcg/startup.h"
+ #include "hw/core/cpu.h"
+ #include "internal-common.h"
+ #include "internal-target.h"
+@@ -165,6 +166,17 @@ void tb_persist_load(CPUState *cpu)
+     if (!persist_path) {
+         return;
+     }
++    if (tcg_tb_prof_active()) {
++        /*
++         * Profiled TBs embed the absolute address of their execution
++         * counter, which is only valid within the run that emitted it.
++         * Reloading or saving such code would execute stale pointers.
++         */
++        fprintf(stderr, "[tcg] tb cache: disabled while QEMU_TB_EXEC_PROFILE "
++                "is set\n");
++        persist_path = NULL;
++        return;
++    }
+ 
+     base = (uintptr_t)tcg_ctx->code_gen_buffer;
+     prologue_size = (uintptr_t)tcg_ctx->code_gen_ptr - base;
+diff --git a/accel/tcg/translator.c b/accel/tcg/translator.c
+index cbad00a..81eb684 100644
+--- a/accel/tcg/translator.c
++++ b/accel/tcg/translator.c
+@@ -16,6 +16,7 @@
+ #include "exec/plugin-gen.h"
+ #include "exec/cpu_ldst.h"
+ #include "tcg/tcg-op-common.h"
++#include "tcg/startup.h"
+ #include "internal-target.h"
+ #include "disas/disas.h"
+ 
+@@ -217,6 +218,9 @@ void translator_loop(CPUState *cpu, TranslationBlock *tb, int *max_insns,
+     tb->size = db->pc_next - db->pc_first;
+     tb->icount = db->num_insns;
+ 
++    /* Allocate the record consumed by tcg_gen_code and tcg_out_tb_start. */
++    tcg_tb_prof_new_rec(db->pc_first, db->num_insns);
++
+     if (plugin_enabled) {
+         plugin_gen_tb_end(cpu, db->num_insns);
+     }
+diff --git a/include/tcg/startup.h b/include/tcg/startup.h
+index 93382de..7fa4b84 100644
+--- a/include/tcg/startup.h
++++ b/include/tcg/startup.h
+@@ -61,4 +61,40 @@ void tcg_prologue_init(void);
+  */
+ void tcg_op_histogram_dump(void);
+ 
++/*
++ * Execution-weighted TB profile, enabled with QEMU_TB_EXEC_PROFILE.
++ * Each translated TB gets a record (guest pc, insn count, TCG op list)
++ * and an execution counter bumped by a short host-code stub emitted at
++ * the start of the TB, so every entry path (goto_tb chain, goto_ptr
++ * lookup, main loop) is counted.  Dispatch-path counters in cpu-exec.c
++ * complete the picture.  Dumped on process exit.
++ */
++enum {
++    TCG_TBPROF_CTR_HELPER_CALLS,   /* helper_lookup_tb_ptr invocations */
++    TCG_TBPROF_CTR_HELPER_NULL,    /* ... that found no TB (to epilogue) */
++    TCG_TBPROF_CTR_JC_HIT,         /* tb_lookup: jump cache hit */
++    TCG_TBPROF_CTR_JC_MISS,        /* tb_lookup: fell back to htable, found */
++    TCG_TBPROF_CTR_MAINLOOP,       /* main-loop tb_lookup calls */
++    TCG_TBPROF_CTR_MAINLOOP_NEWTB, /* ... that translated a new TB */
++    TCG_TBPROF_CTR_NB
++};
++extern int tcg_tb_prof_on;
++extern uint64_t tcg_tb_prof_ctr[TCG_TBPROF_CTR_NB];
++
++void tcg_tb_prof_resolve(void);
++
++static inline bool tcg_tb_prof_active(void)
++{
++    if (unlikely(tcg_tb_prof_on < 0)) {
++        tcg_tb_prof_resolve();
++    }
++    return tcg_tb_prof_on > 0;
++}
++
++void tcg_tb_prof_new_rec(uint64_t pc, uint32_t n_insns);
++void tcg_tb_prof_begin_code(void);
++void tcg_tb_prof_record_op(unsigned opc);
++uint64_t *tcg_tb_prof_cur_counter(void);
++void tcg_tb_prof_dump(void);
++
+ #endif
+diff --git a/linux-user/exit.c b/linux-user/exit.c
+index faf08c8..c8ec23f 100644
+--- a/linux-user/exit.c
++++ b/linux-user/exit.c
+@@ -39,4 +39,5 @@ void preexit_cleanup(CPUArchState *env, int code)
+         perf_exit();
+         tb_persist_save();
+         tcg_op_histogram_dump();
++        tcg_tb_prof_dump();
+ }
+diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
+index 2acaf82..ca2ee92 100644
+--- a/tcg/arm/tcg-target.c.inc
++++ b/tcg/arm/tcg-target.c.inc
+@@ -3061,7 +3061,23 @@ static void tcg_out_epilogue(TCGContext *s)
+ 
+ static void tcg_out_tb_start(TCGContext *s)
+ {
+-    /* nothing to do */
++    /*
++     * Execution-weighted TB profile: bump the 64-bit execution counter
++     * of this TB's record.  Every entry path (prologue, goto_tb chain,
++     * goto_ptr) lands on tc.ptr, so this counts all executions.  At TB
++     * entry no host register except the reserved ones carries live TCG
++     * state and host flags are dead, so r0/r1/r2 are free scratch.
++     */
++    uint64_t *ctr = tcg_tb_prof_cur_counter();
++
++    if (unlikely(ctr != NULL)) {
++        tcg_out_movi32(s, COND_AL, TCG_REG_R2, (uint32_t)(uintptr_t)ctr);
++        tcg_out_ldrd_8(s, COND_AL, TCG_REG_R0, TCG_REG_R2, 0);
++        tcg_out_dat_imm(s, COND_AL, ARITH_ADD | TO_CPSR,
++                        TCG_REG_R0, TCG_REG_R0, 1);
++        tcg_out_dat_imm(s, COND_AL, ARITH_ADC, TCG_REG_R1, TCG_REG_R1, 0);
++        tcg_out_strd_8(s, COND_AL, TCG_REG_R0, TCG_REG_R2, 0);
++    }
+ }
+ 
+ typedef struct {
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index f6ce363..91b1069 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -280,6 +280,219 @@ void tcg_op_histogram_dump(void)
+     }
+ }
+ 
++/*
++ * Execution-weighted TB profile, enabled by QEMU_TB_EXEC_PROFILE.
++ * One record per translated TB: guest pc, guest insn count, the TCG op
++ * list after optimization, and an execution counter that a stub emitted
++ * by tcg_out_tb_start bumps on every entry into the TB.  Counters are
++ * plain (non-atomic) loads/stores: concurrent execution of the same TB
++ * by several guest threads can lose a few counts, which is acceptable
++ * for profiling.  The dump multiplies each record's op list by its
++ * execution count, giving the true execution-weighted opcode mix.
++ */
++#define TCG_TBPROF_MAX_RECS (512 * 1024)
++#define TCG_TBPROF_MAX_OPS  46
++
++typedef struct TCGTBProfRec {
++    uint64_t exec_count;               /* first field: 8-aligned, stub target */
++    uint64_t pc;
++    uint32_t n_insns;
++    uint8_t n_ops;
++    uint8_t truncated;
++    uint8_t ops[TCG_TBPROF_MAX_OPS];
++} TCGTBProfRec;
++QEMU_BUILD_BUG_ON(sizeof(TCGTBProfRec) % 8 != 0);
++
++int tcg_tb_prof_on = -1;
++uint64_t tcg_tb_prof_ctr[TCG_TBPROF_CTR_NB];
++static TCGTBProfRec *tcg_tb_prof_arena;
++static unsigned tcg_tb_prof_next;
++static uint64_t tcg_tb_prof_dropped;
++static __thread TCGTBProfRec *tcg_tb_prof_cur;
++
++void tcg_tb_prof_resolve(void)
++{
++    if (tcg_tb_prof_on >= 0) {
++        return;
++    }
++    if (getenv("QEMU_TB_EXEC_PROFILE") == NULL) {
++        tcg_tb_prof_on = 0;
++        return;
++    }
++    tcg_tb_prof_arena = mmap(NULL, sizeof(TCGTBProfRec) * TCG_TBPROF_MAX_RECS,
++                             PROT_READ | PROT_WRITE,
++                             MAP_PRIVATE | MAP_ANONYMOUS | MAP_NORESERVE,
++                             -1, 0);
++    if (tcg_tb_prof_arena == MAP_FAILED) {
++        tcg_tb_prof_arena = NULL;
++        tcg_tb_prof_on = 0;
++        fprintf(stderr, "[tcg] tb exec profile: arena mmap failed, disabled\n");
++        return;
++    }
++    tcg_tb_prof_on = 1;
++}
++
++void tcg_tb_prof_new_rec(uint64_t pc, uint32_t n_insns)
++{
++    unsigned idx;
++
++    if (!tcg_tb_prof_active()) {
++        return;
++    }
++    idx = qatomic_fetch_inc(&tcg_tb_prof_next);
++    if (idx >= TCG_TBPROF_MAX_RECS) {
++        tcg_tb_prof_dropped++;
++        tcg_tb_prof_cur = NULL;
++        return;
++    }
++    tcg_tb_prof_cur = &tcg_tb_prof_arena[idx];
++    tcg_tb_prof_cur->pc = pc;
++    tcg_tb_prof_cur->n_insns = n_insns;
++}
++
++void tcg_tb_prof_begin_code(void)
++{
++    if (tcg_tb_prof_cur) {
++        tcg_tb_prof_cur->n_ops = 0;
++        tcg_tb_prof_cur->truncated = 0;
++    }
++}
++
++void tcg_tb_prof_record_op(unsigned opc)
++{
++    TCGTBProfRec *rec = tcg_tb_prof_cur;
++
++    if (rec) {
++        if (rec->n_ops < TCG_TBPROF_MAX_OPS) {
++            rec->ops[rec->n_ops++] = opc;
++        } else {
++            rec->truncated = 1;
++        }
++    }
++}
++
++uint64_t *tcg_tb_prof_cur_counter(void)
++{
++    return tcg_tb_prof_cur ? &tcg_tb_prof_cur->exec_count : NULL;
++}
++
++void tcg_tb_prof_dump(void)
++{
++    static const char *ctr_names[TCG_TBPROF_CTR_NB] = {
++        "goto_ptr helper calls", "  ... no TB (epilogue)",
++        "  jmp cache hits", "  jmp cache miss, htable hit",
++        "main loop lookups", "  ... new translation",
++    };
++    uint64_t whist[NB_OPS] = { 0 };
++    uint64_t total_exec = 0, total_insns = 0, total_wops = 0, trunc_exec = 0;
++    unsigned n_recs, live = 0, i, j, k;
++    unsigned top[20];
++    unsigned n_top = 0;
++
++    if (tcg_tb_prof_on <= 0) {
++        return;
++    }
++    n_recs = MIN(tcg_tb_prof_next, TCG_TBPROF_MAX_RECS);
++
++    for (i = 0; i < n_recs; i++) {
++        TCGTBProfRec *rec = &tcg_tb_prof_arena[i];
++        uint64_t ec = rec->exec_count;
++
++        if (ec == 0) {
++            continue;
++        }
++        live++;
++        total_exec += ec;
++        total_insns += ec * rec->n_insns;
++        if (rec->truncated) {
++            trunc_exec += ec;
++        }
++        for (j = 0; j < rec->n_ops; j++) {
++            whist[rec->ops[j]] += ec;
++            total_wops += ec;
++        }
++        /* keep the top-20 records by execution count */
++        for (j = 0; j < n_top; j++) {
++            if (ec > tcg_tb_prof_arena[top[j]].exec_count) {
++                break;
++            }
++        }
++        if (j < ARRAY_SIZE(top)) {
++            for (k = MIN(n_top, ARRAY_SIZE(top) - 1); k > j; k--) {
++                top[k] = top[k - 1];
++            }
++            top[j] = i;
++            if (n_top < ARRAY_SIZE(top)) {
++                n_top++;
++            }
++        }
++    }
++
++    fprintf(stderr, "[tcg] tb exec profile: %u records (%u executed, %"
++            PRIu64 " dropped)\n", n_recs, live, tcg_tb_prof_dropped);
++    fprintf(stderr, "[tcg] tb executions: %" PRIu64 ", guest insns: %" PRIu64
++            ", avg insns/exec'd TB: %.2f\n", total_exec, total_insns,
++            total_exec ? (double)total_insns / total_exec : 0.0);
++    fprintf(stderr, "[tcg] dispatch paths (approximate under MT):\n");
++    for (i = 0; i < TCG_TBPROF_CTR_NB; i++) {
++        fprintf(stderr, "[tcg]   %-28s %12" PRIu64 "\n",
++                ctr_names[i], tcg_tb_prof_ctr[i]);
++    }
++    if (total_exec) {
++        uint64_t helper = tcg_tb_prof_ctr[TCG_TBPROF_CTR_HELPER_CALLS];
++        uint64_t helper_null = tcg_tb_prof_ctr[TCG_TBPROF_CTR_HELPER_NULL];
++        uint64_t mainloop = tcg_tb_prof_ctr[TCG_TBPROF_CTR_MAINLOOP];
++        uint64_t via_lookup = helper - helper_null;
++        int64_t chained = (int64_t)(total_exec - via_lookup - mainloop);
++
++        fprintf(stderr, "[tcg] entries: %5.1f%% chained (goto_tb), %5.1f%% "
++                "goto_ptr lookup, %5.1f%% main loop\n",
++                100.0 * chained / total_exec,
++                100.0 * via_lookup / total_exec,
++                100.0 * mainloop / total_exec);
++    }
++    if (trunc_exec && total_exec) {
++        fprintf(stderr, "[tcg] warning: %.1f%% of executions hit op-list "
++                "truncation (>%d ops/TB)\n",
++                100.0 * trunc_exec / total_exec, TCG_TBPROF_MAX_OPS);
++    }
++
++    fprintf(stderr, "[tcg] op histogram (execution weighted), %" PRIu64
++            " weighted ops:\n", total_wops);
++    if (total_wops) {
++        unsigned order[NB_OPS];
++        unsigned n = 0;
++
++        for (i = 0; i < NB_OPS; i++) {
++            if (whist[i]) {
++                order[n++] = i;
++            }
++        }
++        for (i = 1; i < n; i++) {
++            unsigned key = order[i];
++            for (j = i; j > 0 && whist[order[j - 1]] < whist[key]; j--) {
++                order[j] = order[j - 1];
++            }
++            order[j] = key;
++        }
++        for (i = 0; i < n; i++) {
++            unsigned opc = order[i];
++            fprintf(stderr, "[tcg]   %-24s %14" PRIu64 "  %5.1f%%\n",
++                    tcg_op_defs[opc].name, whist[opc],
++                    100.0 * whist[opc] / total_wops);
++        }
++    }
++
++    fprintf(stderr, "[tcg] hottest TBs by execution count:\n");
++    for (i = 0; i < n_top; i++) {
++        TCGTBProfRec *rec = &tcg_tb_prof_arena[top[i]];
++        fprintf(stderr, "[tcg]   pc=0x%012" PRIx64 " execs=%12" PRIu64
++                "  insns=%2u ops=%2u  %5.1f%%\n", rec->pc, rec->exec_count,
++                rec->n_insns, rec->n_ops,
++                total_exec ? 100.0 * rec->exec_count / total_exec : 0.0);
++    }
++}
++
+ TCGContext **tcg_ctxs;
+ unsigned int tcg_cur_ctxs;
+ unsigned int tcg_max_ctxs;
+@@ -6232,6 +6445,7 @@ int tcg_gen_code(TCGContext *s, TranslationBlock *tb, uint64_t pc_start)
+     s->gen_insn_data =
+         tcg_malloc(sizeof(uint64_t) * s->gen_tb->icount * start_words);
+ 
++    tcg_tb_prof_begin_code();
+     tcg_out_tb_start(s);
+ 
+     num_insns = -1;
+@@ -6246,6 +6460,9 @@ int tcg_gen_code(TCGContext *s, TranslationBlock *tb, uint64_t pc_start)
+                 tcg_op_hist[opc]++;
+             }
+         }
++        if (unlikely(tcg_tb_prof_on > 0)) {
++            tcg_tb_prof_record_op(opc);
++        }
+ 
+         switch (opc) {
+         case INDEX_op_mov_i32:
+-- 
+2.39.5 (Apple Git-154)
+

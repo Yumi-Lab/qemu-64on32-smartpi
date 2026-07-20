@@ -1,0 +1,39 @@
+V1, REFERENCE : meme tour agent grok sous le qemu SYSTEME (7.2), pour ATTRIBUER
+================================================================================
+
+But : verifier que l'invocation headless est CORRECTE et que grok atteint bien
+son backend, en la lancant sous le qemu qu'utilise le pad au quotidien
+(/opt/grok/qemu-aarch64-static, la base grok-bin), et NON sous notre fork.
+GOAL : ce qemu systeme sert de REFERENCE, on ne valide jamais le fork a travers
+le wrapper.
+
+Commande exacte sur le pad (taskset -c 0,1, timeout 420) :
+  taskset -c 0,1 timeout 420 /opt/grok/qemu-aarch64-static /opt/grok/grok-aarch64 \
+      --always-approve --output-format streaming-json \
+      -p 'Reply with just the word READY and nothing else.'
+
+Resultat (sortie reelle en ~60 s, exit 1) :
+
+  stdout (streaming-json) :
+  {"type":"error","message":"Internal error: {\n  \"message\": \"API error (status 402 Payment Required): Grok Build usage balance exhausted\\n\\nRequest URL: https://cli-chat-proxy.grok.com/v1/responses\",\n  \"http_status\": 402\n}"}
+
+  stderr :
+  Error: Internal error: {
+    "message": "API error (status 402 Payment Required): Grok Build usage balance exhausted\n\nRequest URL: https://cli-chat-proxy.grok.com/v1/responses",
+    "http_status": 402
+  }
+  SYS_EXIT=1
+
+Deux enseignements :
+1. L'invocation headless streaming-json -p est CORRECTE : sous un qemu qui
+   marche, grok boote, atteint https://cli-chat-proxy.grok.com et rend une
+   sortie structuree en ~60 s. Le pad a bien une route reseau vers xAI
+   (verifie : `curl https://api.x.ai/` -> HTTP 421, TLS ~0.2 s).
+2. Le compte Grok Build est A SEC : HTTP 402 "usage balance exhausted". Aucune
+   INFERENCE reelle n'est possible tant que le solde n'est pas recharge, sous
+   AUCUN qemu. C'est une limite EXTERNE (facturation), pas un defaut du fork.
+   -> gate humain (recharger le solde) pour la validation finale de V1.
+
+A comparer : sous notre FORK, le meme tour ne rend RIEN en 10+ min (STALLED)
+et parfois AVORTE (cf. v1-grok-fork-crash-tcg-movi-assert.log). Le fork est a
+la fois pathologiquement lent sur ce bootstrap ET porteur du bug SIMD V1-SIMD.

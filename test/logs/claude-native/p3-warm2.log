@@ -1,0 +1,47 @@
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (35658ce8d7f1be53d0334d46ff57d6d37b4c78ccc7dd04a6466e6d2756dbb393)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 41C
+[run-claude-pad] Lancement: claude --version (mode=version, timeout=2400s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=42C rss=50MB out=0
+[claudepad] t=15s temp=43C rss=82MB out=0
+[claudepad] t=30s temp=42C rss=84MB out=0
+[claudepad] t=45s temp=42C rss=87MB out=0
+[claudepad] t=60s temp=45C rss=87MB out=0
+[claudepad] t=75s temp=43C rss=90MB out=0
+[claudepad] t=90s temp=42C rss=91MB out=0
+[claudepad] t=106s temp=42C rss=98MB out=0
+[claudepad] t=121s temp=42C rss=99MB out=0
+[claudepad] t=136s temp=43C rss=100MB out=0
+[claudepad] t=151s temp=47C rss=111MB out=0
+[claudepad] t=166s temp=43C rss=129MB out=0
+[claudepad] t=181s temp=45C rss=147MB out=0
+[claudepad] t=196s temp=48C rss=167MB out=0
+[claudepad] t=211s temp=48C rss=129MB out=0
+[claudepad] t=226s temp=47C rss=78MB out=0
+[claudepad] t=241s temp=48C rss=100MB out=0
+[claudepad] t=256s temp=49C rss=71MB out=0
+[claudepad] t=272s temp=49C rss=83MB out=0
+[claudepad] t=287s temp=44C rss=66MB out=0
+[claudepad] t=302s temp=44C rss=69MB out=0
+[claudepad] t=317s temp=44C rss=69MB out=0
+[claudepad] t=332s temp=43C rss=71MB out=0
+[claudepad] t=347s temp=43C rss=74MB out=0
+[claudepad] t=362s temp=42C rss=75MB out=0
+[claudepad] t=377s temp=43C rss=75MB out=0
+[claudepad] t=392s temp=42C rss=76MB out=0
+[claudepad] t=407s temp=44C rss=76MB out=0
+[claudepad] t=422s temp=46C rss=77MB out=0
+[claudepad] t=437s temp=43C rss=77MB out=0
+[claudepad] t=453s temp=47C rss=77MB out=0
+[claudepad] t=468s temp=43C rss=76MB out=0
+[claudepad] t=483s temp=48C rss=77MB out=0
+[claudepad] t=498s temp=47C rss=77MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=513 out_bytes=22 peak_temp_c=49 min_temp_c=42 temp_before_c=41
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+2.1.214 (Claude Code)
+[run-claude-pad] --- claude stderr (tail) ---
+[tcg] tb cache: reloaded 83031/83031 TBs, 39293 KiB of translated code
+[tcg] tb cache: saved 85258 TBs, 40397 KiB of translated code
+[run-claude-pad] logs pad: /home/pi/qemu-fork-test/claude-version-20260719-233404.out / /home/pi/qemu-fork-test/claude-version-20260719-233404.err

@@ -1,0 +1,58 @@
+[grokpad] === moniteur pad v2 (headless) demarre dur=1200s int=25s abort=92C timeout=1320s ===
+[grokpad] qemu=/home/pi/qemu-fork-test/qemu-aarch64 grok=/opt/grok/grok-aarch64 mode=--output-format streaming-json -p
+[grokpad] preflight: grok --version sous le fork (contenu reel, sans reseau)
+[grokpad] preflight GROK_VERSION='grok 0.2.103 (89c3d36fb6)' rc=0
+[grokpad] lancement du tour agent headless (streaming-json)...
+[grokpad] grok agent lance, pid=22309
+[grokpad] t=0s rss=14MB temp=75C out=121 tot=212
+[grokpad] t=25s rss=40MB temp=76C out=121 tot=212
+[grokpad] t=50s rss=50MB temp=77C out=121 tot=212
+[grokpad] t=76s rss=63MB temp=79C out=121 tot=212
+[grokpad] t=101s rss=64MB temp=79C out=121 tot=212
+[grokpad] t=126s rss=66MB temp=81C out=121 tot=212
+[grokpad] t=151s rss=69MB temp=78C out=121 tot=212
+[grokpad] t=176s rss=70MB temp=83C out=121 tot=212
+[grokpad] t=201s rss=72MB temp=79C out=121 tot=212
+[grokpad] t=226s rss=71MB temp=84C out=121 tot=212
+[grokpad] t=251s rss=71MB temp=82C out=121 tot=212
+[grokpad] t=277s rss=71MB temp=84C out=121 tot=212
+[grokpad] t=302s rss=72MB temp=85C out=121 tot=212
+[grokpad] t=327s rss=72MB temp=86C out=121 tot=212
+[grokpad] t=352s rss=72MB temp=86C out=121 tot=212
+[grokpad] t=377s rss=73MB temp=85C out=121 tot=212
+[grokpad] t=402s rss=74MB temp=88C out=121 tot=212
+[grokpad] t=427s rss=74MB temp=88C out=121 tot=212
+[grokpad] t=453s rss=74MB temp=87C out=121 tot=212
+[grokpad] t=478s rss=69MB temp=88C out=121 tot=212
+[grokpad] t=503s rss=69MB temp=89C out=121 tot=212
+[grokpad] t=528s rss=60MB temp=88C out=121 tot=212
+[grokpad] t=553s rss=54MB temp=89C out=121 tot=212
+[grokpad] t=578s rss=55MB temp=88C out=121 tot=212
+[grokpad] t=603s rss=58MB temp=86C out=121 tot=212
+[grokpad] t=629s rss=57MB temp=88C out=121 tot=212
+[grokpad] t=654s rss=58MB temp=88C out=121 tot=212
+[grokpad] t=679s rss=57MB temp=89C out=121 tot=212
+[grokpad] t=704s rss=59MB temp=88C out=121 tot=212
+[grokpad] t=729s rss=60MB temp=88C out=121 tot=212
+[grokpad] t=754s rss=61MB temp=88C out=121 tot=212
+[grokpad] t=779s rss=61MB temp=90C out=121 tot=212 WARN>=90C
+[grokpad] t=805s rss=61MB temp=89C out=121 tot=212
+[grokpad] t=830s rss=62MB temp=88C out=121 tot=212
+[grokpad] t=855s rss=63MB temp=88C out=121 tot=212
+[grokpad] t=880s rss=63MB temp=89C out=121 tot=212
+[grokpad] t=905s rss=63MB temp=89C out=121 tot=212
+[grokpad] t=930s rss=63MB temp=89C out=121 tot=212
+[grokpad] t=955s rss=62MB temp=89C out=121 tot=212
+[grokpad] t=981s rss=62MB temp=88C out=121 tot=212
+[grokpad] t=1006s rss=62MB temp=89C out=121 tot=212
+[grokpad] t=1031s rss=62MB temp=89C out=121 tot=212
+[grokpad] t=1056s rss=62MB temp=88C out=121 tot=212
+[grokpad] t=1081s rss=62MB temp=88C out=121 tot=212
+[grokpad] t=1106s rss=62MB temp=88C out=121 tot=212
+[grokpad] t=1132s rss=62MB temp=89C out=121 tot=212
+[grokpad] t=1157s rss=62MB temp=90C out=121 tot=212 WARN>=90C
+[grokpad] t=1182s rss=62MB temp=86C out=121 tot=212
+[grokpad] Temperature apres: 85C
+GROK_EXIT_RC=143
+[grokpad] === bilan result=STALLED survie=1207s exit_rc=143 preflight_ok=yes agent_content=no agent_first_content_t=-1s ticks=48 pic_rss=74MB temp_min=74C temp_max=91C ===
+RESULT=STALLED elapsed=1207 exit_rc=143 preflight_ok=yes agent_content=no agent_first_content_t=-1s peak_rss_mb=74 peak_temp_c=91 min_temp_c=74 ticks=48

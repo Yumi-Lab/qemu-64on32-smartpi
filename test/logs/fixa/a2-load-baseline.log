@@ -1,0 +1,13 @@
+[run-pad.sh] Deploying qemu-aarch64 and torn64-load to pad...
+[run-pad.sh] Checking temperature before run...
+Temperature before: 67C
+[run-pad.sh] Checking if qemu is already running...
+[run-pad.sh] Running test: torn64-load 3 30 (sous qemu-aarch64 -cpu cortex-a53)
+[sudo] password for pi: Running as unit: run-p2688-i2689.scope; invocation ID: 19c6562f4c6e4f87a664eafabe19d525
+torn64-load test: 1 writer (STLR), 3 readers (LDR ordinaire), duration 30 sec
+ERROR: Torn read detected in reader 2: 0x2222222211111111
+ERROR: Torn read detected in reader 0: 0x1111111122222222
+Final reads: 28633
+ABORTED: Torn read detected after 28633 reads
+[run-pad.sh] Checking temperature after run...
+Temperature after: 67C

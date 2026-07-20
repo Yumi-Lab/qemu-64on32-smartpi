@@ -1,0 +1,14 @@
+[grokpad] === moniteur pad v2 (headless) demarre dur=1800s int=25s abort=92C timeout=1920s ===
+[grokpad] qemu=/home/pi/qemu-fork-test/qemu-aarch64 grok=/opt/grok/grok-aarch64 mode=--output-format streaming-json -p
+[grokpad] preflight: grok --version sous le fork (contenu reel, sans reseau)
+[grokpad] preflight GROK_VERSION='grok 0.2.103 (89c3d36fb6)' rc=0
+[grokpad] lancement du tour agent headless (streaming-json)...
+[grokpad] grok agent lance, pid=30400
+[grokpad] t=0s rss=31MB temp=39C out=121 tot=211
+[grokpad] t=25s rss=94MB temp=43C out=121 tot=211
+[grokpad] t=50s rss=103MB temp=42C out=121 tot=211
+GROK_EXIT_RC=1
+[grokpad] t=75s : grok a quitte sans aucune sortie du tour agent (rc=1)
+[grokpad] Temperature apres: 37C
+[grokpad] === bilan result=STALLED survie=75s exit_rc=1 preflight_ok=yes agent_content=no agent_first_content_t=-1s ticks=3 pic_rss=103MB temp_min=37C temp_max=44C ===
+RESULT=STALLED elapsed=75 exit_rc=1 preflight_ok=yes agent_content=no agent_first_content_t=-1s peak_rss_mb=103 peak_temp_c=44 min_temp_c=37 ticks=3

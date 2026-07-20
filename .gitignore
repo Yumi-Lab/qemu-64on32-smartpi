@@ -1,0 +1,11 @@
+.monitor/
+.loop/
+.done
+.done-*
+.gate-handoff
+.env
+qemu/
+build-out/
+test/pad.env
+test/logs/grok-tui/.last-run
+.nested/

@@ -1,0 +1,13 @@
+[run-pad.sh] Deploying qemu-aarch64 and torn64 to pad...
+[run-pad.sh] Checking temperature before run...
+Temperature before: 76C
+[run-pad.sh] Checking if qemu is already running...
+[run-pad.sh] Running test: torn64 4 30 (sous qemu-aarch64)
+[sudo] password for pi: Running as unit: run-p20570-i20571.scope; invocation ID: 7bfdbbec48044fdfa85564e2ce00f0f6
+torn64 test: 4 threads, duration 30 sec, target 0 iterations
+ERROR: Torn read detected in thread 1: 0x1111111122222222
+ERROR: Torn read detected in thread 3: 0x1111111122222222
+Final iterations: 114037
+ABORTED: Torn read detected after 114037 iterations
+[run-pad.sh] Checking temperature after run...
+Temperature after: 77C

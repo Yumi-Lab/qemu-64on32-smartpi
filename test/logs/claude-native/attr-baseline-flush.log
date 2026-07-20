@@ -1,0 +1,52 @@
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (35658ce8d7f1be53d0334d46ff57d6d37b4c78ccc7dd04a6466e6d2756dbb393)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 49C
+[run-claude-pad] Lancement: claude --version (mode=version, timeout=600s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=49C rss=9MB out=0
+[claudepad] t=15s temp=48C rss=29MB out=0
+[claudepad] t=30s temp=49C rss=38MB out=0
+[claudepad] t=45s temp=49C rss=38MB out=0
+[claudepad] t=60s temp=49C rss=38MB out=0
+[claudepad] t=75s temp=49C rss=34MB out=0
+[claudepad] t=90s temp=50C rss=34MB out=0
+[claudepad] t=105s temp=48C rss=33MB out=0
+[claudepad] t=120s temp=49C rss=33MB out=0
+[claudepad] t=135s temp=48C rss=41MB out=0
+[claudepad] t=151s temp=48C rss=58MB out=0
+[claudepad] t=166s temp=50C rss=82MB out=0
+[claudepad] t=181s temp=49C rss=84MB out=0
+[claudepad] t=196s temp=44C rss=86MB out=0
+[claudepad] t=211s temp=45C rss=87MB out=0
+[claudepad] t=226s temp=43C rss=88MB out=0
+[claudepad] t=241s temp=43C rss=90MB out=0
+[claudepad] t=256s temp=43C rss=96MB out=0
+[claudepad] t=271s temp=42C rss=97MB out=0
+[claudepad] t=286s temp=43C rss=99MB out=0
+[claudepad] t=301s temp=43C rss=112MB out=0
+[claudepad] t=316s temp=43C rss=130MB out=0
+[claudepad] t=332s temp=43C rss=151MB out=0
+[claudepad] t=347s temp=43C rss=171MB out=0
+[claudepad] t=362s temp=43C rss=186MB out=0
+[claudepad] t=377s temp=42C rss=201MB out=0
+[claudepad] t=392s temp=42C rss=222MB out=0
+[claudepad] t=407s temp=43C rss=232MB out=0
+[claudepad] t=422s temp=42C rss=234MB out=0
+[claudepad] t=437s temp=43C rss=236MB out=0
+[claudepad] t=452s temp=42C rss=237MB out=0
+[claudepad] t=467s temp=42C rss=238MB out=0
+[claudepad] t=482s temp=42C rss=239MB out=0
+[claudepad] t=497s temp=43C rss=239MB out=0
+[claudepad] t=512s temp=43C rss=239MB out=0
+[claudepad] t=527s temp=42C rss=240MB out=0
+[claudepad] t=543s temp=43C rss=240MB out=0
+[claudepad] t=558s temp=43C rss=240MB out=0
+[claudepad] t=573s temp=43C rss=240MB out=0
+[claudepad] t=588s temp=42C rss=240MB out=0
+RESULT=TIMEOUT exit_rc=124 elapsed=603 out_bytes=0 peak_temp_c=50 min_temp_c=42 temp_before_c=49
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+[run-claude-pad] --- claude stderr (tail) ---
+[tcg] tb_flush #1
+[tcg] tb_flush #2
+[run-claude-pad] logs pad: /home/pi/qemu-fork-test/claude-version-20260719-234435.out / /home/pi/qemu-fork-test/claude-version-20260719-234435.err

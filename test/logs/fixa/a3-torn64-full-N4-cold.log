@@ -1,0 +1,26 @@
+[run-pad.sh] Deploying qemu-aarch64 and torn64 to pad...
+[run-pad.sh] Checking temperature before run...
+Temperature before: 76C
+[run-pad.sh] Checking if qemu is already running...
+[run-pad.sh] Running test: torn64 4 180 (sous qemu-aarch64 )
+[sudo] password for pi: Running as unit: run-p6945-i6946.scope; invocation ID: f168b64ea3ca4e3fb317d8519f10ac21
+torn64 test: 4 threads, duration 180 sec, target 0 iterations
+Iterations: 2000000
+Iterations: 3000000
+Iterations: 5000000
+Iterations: 11000000
+Iterations: 14000000
+Iterations: 18000000
+Iterations: 25000000
+Iterations: 26000000
+Iterations: 28000000
+Iterations: 30000000
+Iterations: 31000000
+Iterations: 33000000
+Iterations: 34000000
+Iterations: 38000000
+Iterations: 40000000
+Final iterations: 53297215
+SUCCESS: No torn reads detected after 53297215 iterations
+[run-pad.sh] Checking temperature after run...
+Temperature after: 84C

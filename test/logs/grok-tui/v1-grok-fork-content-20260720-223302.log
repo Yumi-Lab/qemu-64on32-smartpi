@@ -1,0 +1,5 @@
+===== preflight: grok --version (fork) =====
+grok 0.2.103 (89c3d36fb6)
+
+===== tour agent headless : grok -p (fork) =====
+{"type":"error","message":"Internal error: {\n  \"message\": \"API error (status 402 Payment Required): Grok Build usage balance exhausted\\n\\nRequest URL: https://cli-chat-proxy.grok.com/v1/responses\",\n  \"http_status\": 402\n}"}

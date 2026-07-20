@@ -1,0 +1,75 @@
+From 7b3cc6c09c3e6d4d801a5d09e13db6456ff89fba Mon Sep 17 00:00:00 2001
+From: Yumi-Lab <nicolas@yumi-lab.com>
+Date: Mon, 20 Jul 2026 10:57:58 +0200
+Subject: [PATCH 08/16] linux-user: bound and lock the strace buffer print
+ against concurrent unmap
+
+print_buf reads guest memory directly (lock_user returns a direct pointer
+without CONFIG_DEBUG_REMAP) up to MAX_PRINT_BUF bytes, but it validated and
+could read the full syscall length.  On a multi-threaded guest another thread
+can unmap or repurpose the buffer page between the access check and the read
+(both munmap and mprotect take mmap_lock), which faulted the emulator while
+tracing a large send.  Validate and read only the bytes actually printed, and
+hold mmap_lock across the read to close the race window.
+---
+ linux-user/strace.c | 26 +++++++++++++++++++++++---
+ 1 file changed, 23 insertions(+), 3 deletions(-)
+
+diff --git a/linux-user/strace.c b/linux-user/strace.c
+index be68ac5..3469f46 100644
+--- a/linux-user/strace.c
++++ b/linux-user/strace.c
+@@ -1691,12 +1691,30 @@ static void
+ print_buf(abi_long addr, abi_long len, int last)
+ {
+     uint8_t *s;
++    abi_long plen;
+     int i;
+ 
+-    s = lock_user(VERIFY_READ, addr, len, 1);
++    /*
++     * We only ever print MAX_PRINT_BUF bytes, so only validate and read
++     * that many.  Locking the full buffer for a large syscall (a multi
++     * kilobyte send, for instance) is wasteful, and validating a range
++     * that reaches into an unmapped tail page can fault.
++     */
++    plen = len < MAX_PRINT_BUF ? len : MAX_PRINT_BUF;
++
++    /*
++     * lock_user hands back a direct pointer into guest memory.  On a
++     * multi-threaded guest another thread can unmap or repurpose the
++     * page between the access_ok check and the read below (both munmap
++     * and mprotect take mmap_lock), so hold it across the read to close
++     * that window.  The syscall itself has not run yet for the "call"
++     * printer, so no nested mmap_lock is taken.
++     */
++    mmap_lock();
++    s = lock_user(VERIFY_READ, addr, plen, 1);
+     if (s) {
+         qemu_log("\"");
+-        for (i = 0; i < MAX_PRINT_BUF && i < len; i++) {
++        for (i = 0; i < plen; i++) {
+             if (isprint(s[i])) {
+                 qemu_log("%c", s[i]);
+             } else {
+@@ -1704,14 +1722,16 @@ print_buf(abi_long addr, abi_long len, int last)
+             }
+         }
+         qemu_log("\"");
+-        if (i != len) {
++        if (plen != len) {
+             qemu_log("...");
+         }
+         if (!last) {
+             qemu_log(",");
+         }
+         unlock_user(s, addr, 0);
++        mmap_unlock();
+     } else {
++        mmap_unlock();
+         print_pointer(addr, last);
+     }
+ }
+-- 
+2.39.5 (Apple Git-154)
+

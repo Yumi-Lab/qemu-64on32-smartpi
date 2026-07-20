@@ -1,0 +1,101 @@
+From 882961f0f8ae7207915aa5ef43709eaebd2db503 Mon Sep 17 00:00:00 2001
+From: Yumi-Lab <nicolas@yumi-lab.com>
+Date: Sat, 18 Jul 2026 10:47:45 +0200
+Subject: [PATCH 04/16] tcg/arm: lower dup2_vec from core registers to fix
+ one-half-constant case
+
+INDEX_op_dup2_vec assembles a 64-bit vector element from two 32-bit
+halves on a 32-bit host. tcg_reg_alloc_dup2 handles only two fast paths
+(both halves constant, and two halves adjacent in memory); any other
+combination, in particular one constant half and one variable half as
+commonly emitted by JIT guests, falls through to the generic path.
+
+That path used the constraint C_O1_I2(w, w, w), forcing both halves into
+vector registers. Materialising an integer constant into a Q register
+hits tcg_out_movi(TCG_TYPE_I32, Qreg) and aborts on ret < TCG_REG_Q0;
+the opposite operand order faults instead. Even without the abort the
+generic tcg_out_dup2_vec treats its inputs as whole 64-bit doublewords,
+not as the two 32-bit halves of one value, so it would miscompile.
+
+Constrain the two inputs to core registers (C_O1_I2(w, r, r)) and
+assemble the element with VMOV Dd, Rlo, Rhi, then broadcast into the
+high doubleword for V128. The fast paths in tcg_reg_alloc_dup2 are
+unchanged.
+---
+ tcg/arm/tcg-target-con-set.h |  1 +
+ tcg/arm/tcg-target.c.inc     | 26 +++++++++++++++++++++++++-
+ 2 files changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/tcg/arm/tcg-target-con-set.h b/tcg/arm/tcg-target-con-set.h
+index 229ae25..1c125d2 100644
+--- a/tcg/arm/tcg-target-con-set.h
++++ b/tcg/arm/tcg-target-con-set.h
+@@ -31,6 +31,7 @@ C_O1_I2(r, r, rIK)
+ C_O1_I2(r, r, rIN)
+ C_O1_I2(r, r, ri)
+ C_O1_I2(r, rZ, rZ)
++C_O1_I2(w, r, r)
+ C_O1_I2(w, 0, w)
+ C_O1_I2(w, w, w)
+ C_O1_I2(w, w, wO)
+diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
+index 83b397d..2acaf82 100644
+--- a/tcg/arm/tcg-target.c.inc
++++ b/tcg/arm/tcg-target.c.inc
+@@ -228,6 +228,7 @@ typedef enum {
+ 
+     INSN_VDUP_G    = 0xee800b10,  /* VDUP (ARM core register) */
+     INSN_VDUP_S    = 0xf3b00c00,  /* VDUP (scalar) */
++    INSN_VMOV_D_R2 = 0xec400b10,  /* VMOV Dm, Rt, Rt2 (core regs to doubleword) */
+     INSN_VLDR_D    = 0xed100b00,  /* VLDR.64 */
+     INSN_VLD1      = 0xf4200000,  /* VLD1 (multiple single elements) */
+     INSN_VLD1R     = 0xf4a00c00,  /* VLD1 (single element to all lanes) */
+@@ -2258,6 +2259,8 @@ static TCGConstraintSetIndex tcg_target_op_def(TCGOpcode op)
+     case INDEX_op_sari_vec:
+         return C_O1_I1(w, w);
+     case INDEX_op_dup2_vec:
++        /* Two 32-bit halves in core registers, assembled into a vector. */
++        return C_O1_I2(w, r, r);
+     case INDEX_op_add_vec:
+     case INDEX_op_mul_vec:
+     case INDEX_op_smax_vec:
+@@ -2473,6 +2476,27 @@ static void tcg_out_dup2_vec(TCGContext *s, TCGReg rd, TCGReg rl, TCGReg rh)
+     tcg_out_mov(s, TCG_TYPE_V64, rd, rl);
+ }
+ 
++/*
++ * INDEX_op_dup2_vec lowering: rl and rh are the low and high 32-bit halves
++ * of a 64-bit value held in core registers (constraint C_O1_I2(w, r, r)).
++ * Assemble them into the low doubleword of rd, then broadcast so that every
++ * 64-bit element of the vector holds (rh << 32) | rl. This handles the case
++ * (typically one half constant, one half variable, emitted by JIT guests)
++ * that tcg_reg_alloc_dup2 leaves to the generic path: loading a 32-bit half
++ * into a vector register was both incorrect and, for an integer constant,
++ * fatal (tcg_out_movi into a Q register).
++ */
++static void tcg_out_dup2_vec_r(TCGContext *s, TCGType type,
++                               TCGReg rd, TCGReg rl, TCGReg rh)
++{
++    /* VMOV Dd, rl, rh : rl -> Dd[31:0], rh -> Dd[63:32]. */
++    tcg_out32(s, INSN_VMOV_D_R2 | (rh << 16) | (rl << 12) | encode_vm(rd));
++    if (type == TCG_TYPE_V128) {
++        /* Duplicate the low doubleword into the high doubleword. */
++        tcg_out_dup2_vec(s, rd, rd, rd);
++    }
++}
++
+ static bool tcg_out_dup_vec(TCGContext *s, TCGType type, unsigned vece,
+                             TCGReg rd, TCGReg rs)
+ {
+@@ -2658,7 +2682,7 @@ static void tcg_out_vec_op(TCGContext *s, TCGOpcode opc,
+         tcg_out_dupm_vec(s, type, vece, a0, a1, a2);
+         return;
+     case INDEX_op_dup2_vec:
+-        tcg_out_dup2_vec(s, a0, a1, a2);
++        tcg_out_dup2_vec_r(s, type, a0, a1, a2);
+         return;
+     case INDEX_op_abs_vec:
+         tcg_out_vreg2(s, INSN_VABS, q, vece, a0, a1);
+-- 
+2.39.5 (Apple Git-154)
+

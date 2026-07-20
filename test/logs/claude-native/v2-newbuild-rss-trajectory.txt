@@ -1,0 +1,15 @@
+t~96s rss=41MB out=0 temp=42C
+t~120s rss=41MB out=0 temp=41C
+t~144s rss=56MB out=0 temp=41C
+t~168s rss=77MB out=0 temp=43C
+t~192s rss=77MB out=0 temp=42C
+t~219s rss=76MB out=0 temp=42C
+t~243s rss=75MB out=0 temp=43C
+t~266s rss=71MB out=0 temp=43C
+t~291s rss=74MB out=0 temp=42C
+t~315s rss=90MB out=0 temp=43C
+t~339s rss=123MB out=0 temp=42C
+t~362s rss=146MB out=0 temp=43C
+t~386s rss=178MB out=0 temp=42C
+t~409s rss=189MB out=0 temp=43C
+FINI

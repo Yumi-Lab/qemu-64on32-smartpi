@@ -1,0 +1,54 @@
+From 1ba623bccdb29c441becf76f6320e9fff5502877 Mon Sep 17 00:00:00 2001
+From: Yumi-Lab <nicolas@yumi-lab.com>
+Date: Sat, 18 Jul 2026 03:45:18 +0200
+Subject: [PATCH 02/16] tcg/arm: emit STRD for single-copy-atomic 64-bit guest
+ stores
+
+On a 32-bit ARM host (TCG_TARGET_REG_BITS == 32) an ordinary 64-bit guest
+store was lowered to two host st32, which is not single-copy atomic: a
+concurrent host thread can observe the memory torn between the two halves.
+This is the store-side counterpart of the LDRD fix and corrupts heavily
+threaded aarch64 guests (JSC/V8/Bun) whose ordinary aligned 64-bit accesses
+are architecturally atomic.
+
+The Cortex-A7 (LPAE) makes STRD to an 8-byte aligned address single-copy
+atomic, and the backend already allocates the data register pair, but it
+only emitted STRD when the memop carried an explicit alignment
+(memop_alignment_bits(opc) >= MO_64). Ordinary accesses do not request
+MO_ALIGN, so they fell through to the torn pair of st32.
+
+Gate the inline STRD on the required atomicity (h.aa.atom) instead, exactly
+as the load side now does. prepare_host_addr already raises the alignment
+requirement to 8 bytes whenever 64-bit atomicity is required, so an
+unaligned address is diverted to the slow-path helper (atomic, no tearing)
+and only aligned addresses reach STRD.
+---
+ tcg/arm/tcg-target.c.inc | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
+index 6145c5e..83b397d 100644
+--- a/tcg/arm/tcg-target.c.inc
++++ b/tcg/arm/tcg-target.c.inc
+@@ -1714,8 +1714,16 @@ static void tcg_out_qemu_st_direct(TCGContext *s, MemOp opc, TCGReg datalo,
+         /* We used pair allocation for datalo, so already should be aligned. */
+         tcg_debug_assert((datalo & 1) == 0);
+         tcg_debug_assert(datahi == datalo + 1);
+-        /* STRD requires alignment; double-check that. */
+-        if (memop_alignment_bits(opc) >= MO_64) {
++        /*
++         * STRD is single-copy atomic for an 8-byte aligned address.  Emit it
++         * whenever 64-bit atomicity is required (h.aa.atom), not only when the
++         * memop carries an explicit alignment: prepare_host_addr has already
++         * forced the alignment for atomic accesses and routed any unaligned
++         * address to the slow-path helper, so reaching here with atom >= MO_64
++         * guarantees an aligned address.  The memop_alignment_bits() case is
++         * kept for explicitly aligned accesses (e.g. exclusives).
++         */
++        if (h.aa.atom >= MO_64 || memop_alignment_bits(opc) >= MO_64) {
+             if (h.index < 0) {
+                 tcg_out_strd_8(s, h.cond, datalo, h.base, 0);
+             } else {
+-- 
+2.39.5 (Apple Git-154)
+

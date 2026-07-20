@@ -1,0 +1,12 @@
+=== V1 TUI NATIVE GROK SOUS LE FORK, 2026-07-20 nuit, build 79207965 (16 patches) ===
+Preflight: grok 0.2.103 (89c3d36fb6) rc=0 sous le fork
+Agent headless: boot -> reseau -> API -> 402 solde epuise (erreur PROPRE, rc=1, pas un crash)
+TUI native (impossible sous qemu 7.2, crash TCGETS2/atomics en 2-5 min):
+  rendu complet a t=40s (logo, menu, raccourcis), navigation flechee OK
+t=306s tick1: ALIVE temp=38499 pane_lines=21
+t=611s tick2: ALIVE temp=37651 pane_lines=21
+t=920s tick3: ALIVE temp=37288 pane_lines=21
+t=1225s tick4: ALIVE temp=38015 pane_lines=21
+t=1534s tick5: ALIVE temp=37046 pane_lines=21
+t=1839s tick6: ALIVE temp=37409 pane_lines=21
+RESULT=SURVIVED_30MIN

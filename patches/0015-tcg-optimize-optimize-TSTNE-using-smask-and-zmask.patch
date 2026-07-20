@@ -1,0 +1,69 @@
+From ab826a28b81e11b667eb5ceaa70e47b0b675286c Mon Sep 17 00:00:00 2001
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Mon, 22 Jan 2024 10:48:11 +0100
+Subject: [PATCH 15/16] tcg/optimize: optimize TSTNE using smask and zmask
+
+Generalize the existing optimization of "TSTNE x,sign" and "TSTNE x,-1".
+This can be useful for example in the i386 frontend, which will generate
+tests of zero-extended registers against 0xffffffff.
+
+Ironically, on x86 hosts this is a very slight pessimization in the very
+case it's meant to optimize because
+
+ brcond_i64 cc_dst,$0xffffffff,tsteq,$L1
+
+(test %ebx, %ebx) is 1 byte smaller than
+
+ brcond_i64 cc_dst,$0x0,eq,$L1
+
+(test %rbx, %rbx).  However, in general it is an improvement, especially
+if it avoids placing a large immediate in the constant pool.
+
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 35020629914b)
+---
+ tcg/optimize.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/tcg/optimize.c b/tcg/optimize.c
+index e9ef16b..1ce3f9d 100644
+--- a/tcg/optimize.c
++++ b/tcg/optimize.c
+@@ -793,6 +793,7 @@ static int do_constant_folding_cond1(OptContext *ctx, TCGOp *op, TCGArg dest,
+                                      TCGArg *p1, TCGArg *p2, TCGArg *pcond)
+ {
+     TCGCond cond;
++    TempOptInfo *i1;
+     bool swap;
+     int r;
+ 
+@@ -810,19 +811,21 @@ static int do_constant_folding_cond1(OptContext *ctx, TCGOp *op, TCGArg dest,
+         return -1;
+     }
+ 
++    i1 = arg_info(*p1);
++
+     /*
+      * TSTNE x,x -> NE x,0
+-     * TSTNE x,-1 -> NE x,0
++     * TSTNE x,i -> NE x,0 if i includes all nonzero bits of x
+      */
+-    if (args_are_copies(*p1, *p2) || arg_is_const_val(*p2, -1)) {
++    if (args_are_copies(*p1, *p2) ||
++        (arg_is_const(*p2) && (i1->z_mask & ~arg_info(*p2)->val) == 0)) {
+         *p2 = arg_new_constant(ctx, 0);
+         *pcond = tcg_tst_eqne_cond(cond);
+         return -1;
+     }
+ 
+-    /* TSTNE x,sign -> LT x,0 */
+-    if (arg_is_const_val(*p2, (ctx->type == TCG_TYPE_I32
+-                               ? INT32_MIN : INT64_MIN))) {
++    /* TSTNE x,i -> LT x,0 if i only includes sign bit copies */
++    if (arg_is_const(*p2) && (arg_info(*p2)->val & ~i1->s_mask) == 0) {
+         *p2 = arg_new_constant(ctx, 0);
+         *pcond = tcg_tst_ltge_cond(cond);
+         return -1;
+-- 
+2.39.5 (Apple Git-154)
+

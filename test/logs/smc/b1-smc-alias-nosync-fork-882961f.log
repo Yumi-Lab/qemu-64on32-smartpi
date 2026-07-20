@@ -1,0 +1,16 @@
+===== B1 smc-alias mode=nosync sous le fork (882961f) =====
+qemu-aarch64 sha256 = 8373bb580a6a49b9d201643038eadb45067f04cfbcfdd6f3b844df26c056a767
+[run-pad.sh] Deploying qemu-aarch64 and smc-alias to pad...
+[run-pad.sh] Checking temperature before run...
+Temperature before: 73C
+[run-pad.sh] Checking if qemu is already running...
+[run-pad.sh] Running test: smc-alias nosync (sous qemu-aarch64 )
+[sudo] password for pi: Running as unit: run-p28406-i158131.scope; invocation ID: 12859a1e56ad48c5a8e12e3a5e574cc2
+mode=nosync (IC IVAU OMIS) | memfd dual-map W^X : w_alias=0xb3df7000 (RW) x_alias=0xb3df6000 (RX), page=4096
+round 0 : want=0x1111 got=0x1111 OK
+round 1 : want=0x2222 got=0x1111 MISMATCH
+STALE au round 1 : code perime execute (got=0x1111 = code du tour precedent, attendu 0x2222) [mode=nosync]
+l'ecriture via l'alias W n'a pas invalide le TB de l'alias X, et sans IC IVAU qemu ne le detecte pas
+[run-pad.sh] Checking temperature after run...
+Temperature after: 74C
+SMC_NOSYNC_EXIT=3

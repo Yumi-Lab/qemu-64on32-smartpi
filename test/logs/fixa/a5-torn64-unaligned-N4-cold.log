@@ -1,0 +1,16 @@
+[run-pad.sh] Deploying qemu-aarch64 and torn64-unaligned to pad...
+[run-pad.sh] Checking temperature before run...
+Temperature before: 80C
+WARNING: Temperature too high, waiting for cooldown...
+Waiting... (1/10)
+Temperature: 73C
+[run-pad.sh] Checking if qemu is already running...
+[run-pad.sh] Running test: torn64-unaligned 4 300 (sous qemu-aarch64 )
+[sudo] password for pi: Running as unit: run-p10349-i42789.scope; invocation ID: 1cadd01b551c4a968cfe69343572821f
+torn64-unaligned test: 4 threads, duration 300 sec, target 0 iterations
+target offset in buffer: 4, addr & 7 = 4 (attendu != 0, non aligne)
+Final iterations: 842096, torn reads: 0
+SUCCESS: no crash after 842096 iterations (0 torn reads tolerated, unaligned)
+[run-pad.sh] Checking temperature after run...
+Temperature after: 83C
+RUN_EXIT=0

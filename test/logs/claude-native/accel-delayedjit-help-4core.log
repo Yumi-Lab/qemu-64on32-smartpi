@@ -1,0 +1,280 @@
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (e784b90779ebe0e3f2618ee2bef699a671c8c189d89525265d9823be9cbfe129)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 42C
+[run-claude-pad] Lancement: claude --help (mode=help, timeout=3600s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=43C rss=9MB out=0
+[claudepad] t=15s temp=42C rss=30MB out=0
+[claudepad] t=30s temp=42C rss=39MB out=0
+[claudepad] t=45s temp=42C rss=39MB out=0
+[claudepad] t=60s temp=41C rss=40MB out=0
+[claudepad] t=75s temp=41C rss=42MB out=0
+[claudepad] t=90s temp=41C rss=42MB out=0
+[claudepad] t=105s temp=41C rss=43MB out=0
+[claudepad] t=121s temp=41C rss=44MB out=0
+[claudepad] t=136s temp=41C rss=59MB out=0
+[claudepad] t=151s temp=41C rss=96MB out=0
+[claudepad] t=166s temp=41C rss=99MB out=0
+[claudepad] t=181s temp=42C rss=101MB out=0
+[claudepad] t=196s temp=41C rss=102MB out=0
+[claudepad] t=211s temp=41C rss=104MB out=0
+[claudepad] t=226s temp=42C rss=106MB out=0
+[claudepad] t=241s temp=43C rss=111MB out=0
+[claudepad] t=256s temp=41C rss=113MB out=0
+[claudepad] t=271s temp=41C rss=113MB out=0
+[claudepad] t=286s temp=42C rss=124MB out=0
+[claudepad] t=301s temp=42C rss=141MB out=0
+[claudepad] t=316s temp=43C rss=160MB out=0
+[claudepad] t=332s temp=42C rss=184MB out=0
+[claudepad] t=347s temp=42C rss=199MB out=0
+[claudepad] t=362s temp=42C rss=213MB out=0
+[claudepad] t=377s temp=41C rss=233MB out=0
+[claudepad] t=392s temp=41C rss=250MB out=0
+[claudepad] t=407s temp=41C rss=251MB out=0
+[claudepad] t=422s temp=41C rss=254MB out=0
+[claudepad] t=437s temp=42C rss=255MB out=0
+[claudepad] t=452s temp=41C rss=255MB out=0
+[claudepad] t=467s temp=41C rss=256MB out=0
+[claudepad] t=482s temp=41C rss=257MB out=0
+[claudepad] t=497s temp=41C rss=259MB out=0
+[claudepad] t=512s temp=41C rss=259MB out=0
+[claudepad] t=528s temp=41C rss=260MB out=0
+[claudepad] t=543s temp=41C rss=260MB out=0
+[claudepad] t=558s temp=41C rss=261MB out=0
+[claudepad] t=573s temp=41C rss=261MB out=0
+[claudepad] t=588s temp=41C rss=262MB out=0
+[claudepad] t=603s temp=41C rss=262MB out=0
+[claudepad] t=618s temp=45C rss=263MB out=0
+[claudepad] t=633s temp=45C rss=264MB out=0
+[claudepad] t=648s temp=43C rss=265MB out=0
+[claudepad] t=663s temp=43C rss=265MB out=0
+[claudepad] t=678s temp=41C rss=266MB out=0
+[claudepad] t=693s temp=41C rss=274MB out=0
+[claudepad] t=708s temp=42C rss=282MB out=0
+[claudepad] t=723s temp=41C rss=284MB out=0
+[claudepad] t=739s temp=40C rss=287MB out=0
+[claudepad] t=754s temp=41C rss=288MB out=0
+[claudepad] t=769s temp=41C rss=289MB out=0
+[claudepad] t=784s temp=41C rss=289MB out=0
+[claudepad] t=799s temp=40C rss=295MB out=0
+[claudepad] t=814s temp=42C rss=295MB out=0
+[claudepad] t=829s temp=41C rss=296MB out=0
+[claudepad] t=844s temp=42C rss=296MB out=0
+[claudepad] t=859s temp=42C rss=299MB out=0
+[claudepad] t=874s temp=42C rss=300MB out=0
+[claudepad] t=889s temp=42C rss=301MB out=0
+[claudepad] t=904s temp=43C rss=306MB out=0
+[claudepad] t=919s temp=42C rss=307MB out=0
+[claudepad] t=935s temp=42C rss=308MB out=0
+[claudepad] t=950s temp=42C rss=308MB out=0
+[claudepad] t=965s temp=42C rss=309MB out=0
+[claudepad] t=980s temp=42C rss=311MB out=0
+[claudepad] t=995s temp=41C rss=312MB out=0
+[claudepad] t=1010s temp=40C rss=313MB out=0
+[claudepad] t=1025s temp=42C rss=314MB out=0
+[claudepad] t=1040s temp=42C rss=315MB out=0
+[claudepad] t=1055s temp=42C rss=316MB out=0
+[claudepad] t=1070s temp=41C rss=317MB out=0
+[claudepad] t=1085s temp=41C rss=318MB out=0
+[claudepad] t=1100s temp=41C rss=318MB out=0
+[claudepad] t=1115s temp=41C rss=320MB out=0
+[claudepad] t=1131s temp=42C rss=321MB out=0
+[claudepad] t=1146s temp=41C rss=322MB out=0
+[claudepad] t=1161s temp=41C rss=323MB out=0
+[claudepad] t=1176s temp=41C rss=324MB out=0
+[claudepad] t=1191s temp=42C rss=325MB out=0
+[claudepad] t=1206s temp=42C rss=325MB out=0
+[claudepad] t=1221s temp=42C rss=325MB out=0
+[claudepad] t=1236s temp=41C rss=326MB out=0
+[claudepad] t=1251s temp=41C rss=327MB out=0
+[claudepad] t=1266s temp=42C rss=327MB out=0
+[claudepad] t=1281s temp=42C rss=328MB out=0
+[claudepad] t=1296s temp=42C rss=328MB out=0
+[claudepad] t=1311s temp=41C rss=331MB out=0
+[claudepad] t=1326s temp=42C rss=332MB out=0
+[claudepad] t=1342s temp=42C rss=332MB out=0
+[claudepad] t=1357s temp=42C rss=332MB out=0
+[claudepad] t=1372s temp=42C rss=333MB out=0
+[claudepad] t=1387s temp=42C rss=333MB out=0
+[claudepad] t=1402s temp=42C rss=333MB out=0
+[claudepad] t=1417s temp=42C rss=334MB out=0
+[claudepad] t=1432s temp=41C rss=337MB out=0
+[claudepad] t=1447s temp=42C rss=338MB out=0
+[claudepad] t=1462s temp=42C rss=338MB out=0
+[claudepad] t=1477s temp=42C rss=339MB out=0
+[claudepad] t=1492s temp=43C rss=339MB out=0
+[claudepad] t=1507s temp=42C rss=339MB out=0
+[claudepad] t=1522s temp=41C rss=340MB out=0
+[claudepad] t=1538s temp=41C rss=340MB out=0
+[claudepad] t=1553s temp=42C rss=340MB out=0
+[claudepad] t=1568s temp=41C rss=340MB out=0
+[claudepad] t=1583s temp=41C rss=341MB out=0
+[claudepad] t=1598s temp=44C rss=342MB out=0
+[claudepad] t=1613s temp=42C rss=343MB out=0
+[claudepad] t=1628s temp=43C rss=343MB out=0
+[claudepad] t=1643s temp=42C rss=344MB out=0
+[claudepad] t=1658s temp=42C rss=344MB out=0
+[claudepad] t=1673s temp=42C rss=344MB out=0
+[claudepad] t=1688s temp=41C rss=344MB out=0
+[claudepad] t=1703s temp=41C rss=344MB out=0
+[claudepad] t=1718s temp=42C rss=345MB out=0
+[claudepad] t=1734s temp=42C rss=345MB out=0
+[claudepad] t=1749s temp=41C rss=345MB out=0
+[claudepad] t=1764s temp=42C rss=345MB out=0
+[claudepad] t=1779s temp=44C rss=346MB out=0
+[claudepad] t=1794s temp=45C rss=346MB out=0
+[claudepad] t=1809s temp=45C rss=347MB out=0
+[claudepad] t=1824s temp=45C rss=347MB out=0
+[claudepad] t=1839s temp=45C rss=347MB out=0
+[claudepad] t=1854s temp=46C rss=347MB out=0
+[claudepad] t=1869s temp=46C rss=347MB out=0
+[claudepad] t=1884s temp=45C rss=347MB out=0
+[claudepad] t=1899s temp=47C rss=348MB out=0
+[claudepad] t=1914s temp=46C rss=348MB out=0
+[claudepad] t=1929s temp=46C rss=348MB out=0
+[claudepad] t=1945s temp=45C rss=348MB out=0
+[claudepad] t=1960s temp=45C rss=348MB out=0
+[claudepad] t=1975s temp=45C rss=348MB out=0
+[claudepad] t=1990s temp=46C rss=348MB out=0
+[claudepad] t=2005s temp=45C rss=348MB out=0
+[claudepad] t=2020s temp=46C rss=348MB out=0
+[claudepad] t=2035s temp=46C rss=348MB out=0
+[claudepad] t=2050s temp=46C rss=349MB out=0
+[claudepad] t=2065s temp=41C rss=349MB out=0
+[claudepad] t=2080s temp=41C rss=349MB out=0
+[claudepad] t=2095s temp=42C rss=350MB out=0
+[claudepad] t=2110s temp=41C rss=350MB out=0
+[claudepad] t=2125s temp=42C rss=350MB out=0
+[claudepad] t=2141s temp=42C rss=350MB out=0
+[claudepad] t=2156s temp=42C rss=351MB out=0
+[claudepad] t=2171s temp=42C rss=351MB out=0
+[claudepad] t=2186s temp=42C rss=351MB out=0
+[claudepad] t=2201s temp=42C rss=351MB out=0
+[claudepad] t=2216s temp=42C rss=352MB out=0
+[claudepad] t=2231s temp=42C rss=352MB out=0
+[claudepad] t=2246s temp=41C rss=352MB out=0
+[claudepad] t=2261s temp=42C rss=353MB out=0
+[claudepad] t=2276s temp=42C rss=353MB out=0
+[claudepad] t=2291s temp=42C rss=354MB out=0
+[claudepad] t=2306s temp=41C rss=355MB out=0
+[claudepad] t=2321s temp=41C rss=356MB out=0
+[claudepad] t=2337s temp=40C rss=356MB out=0
+[claudepad] t=2352s temp=43C rss=355MB out=0
+[claudepad] t=2367s temp=41C rss=356MB out=0
+[claudepad] t=2382s temp=41C rss=356MB out=0
+[claudepad] t=2397s temp=41C rss=356MB out=0
+[claudepad] t=2412s temp=41C rss=356MB out=0
+[claudepad] t=2427s temp=41C rss=356MB out=0
+[claudepad] t=2442s temp=42C rss=356MB out=0
+[claudepad] t=2457s temp=41C rss=356MB out=0
+[claudepad] t=2472s temp=41C rss=356MB out=0
+[claudepad] t=2487s temp=41C rss=356MB out=0
+[claudepad] t=2502s temp=42C rss=356MB out=0
+[claudepad] t=2517s temp=43C rss=356MB out=0
+[claudepad] t=2532s temp=42C rss=356MB out=0
+[claudepad] t=2548s temp=42C rss=356MB out=0
+[claudepad] t=2563s temp=43C rss=356MB out=0
+[claudepad] t=2578s temp=42C rss=356MB out=0
+[claudepad] t=2593s temp=43C rss=356MB out=0
+[claudepad] t=2608s temp=43C rss=356MB out=0
+[claudepad] t=2623s temp=41C rss=356MB out=0
+[claudepad] t=2638s temp=41C rss=356MB out=0
+[claudepad] t=2653s temp=42C rss=356MB out=0
+[claudepad] t=2668s temp=41C rss=356MB out=0
+[claudepad] t=2683s temp=41C rss=356MB out=0
+[claudepad] t=2698s temp=42C rss=356MB out=0
+[claudepad] t=2713s temp=42C rss=356MB out=0
+[claudepad] t=2728s temp=42C rss=356MB out=0
+[claudepad] t=2744s temp=43C rss=356MB out=0
+[claudepad] t=2759s temp=41C rss=356MB out=0
+[claudepad] t=2774s temp=42C rss=356MB out=0
+[claudepad] t=2789s temp=42C rss=356MB out=0
+[claudepad] t=2804s temp=42C rss=357MB out=0
+[claudepad] t=2819s temp=41C rss=357MB out=0
+[claudepad] t=2834s temp=42C rss=358MB out=0
+[claudepad] t=2849s temp=41C rss=358MB out=0
+[claudepad] t=2864s temp=42C rss=358MB out=0
+[claudepad] t=2879s temp=42C rss=359MB out=0
+[claudepad] t=2894s temp=42C rss=360MB out=0
+[claudepad] t=2909s temp=42C rss=361MB out=0
+[claudepad] t=2924s temp=42C rss=361MB out=0
+[claudepad] t=2939s temp=42C rss=362MB out=0
+[claudepad] t=2955s temp=43C rss=362MB out=0
+[claudepad] t=2970s temp=42C rss=363MB out=0
+[claudepad] t=2985s temp=42C rss=363MB out=0
+[claudepad] t=3000s temp=42C rss=363MB out=0
+[claudepad] t=3015s temp=41C rss=364MB out=0
+[claudepad] t=3030s temp=41C rss=364MB out=0
+[claudepad] t=3045s temp=42C rss=365MB out=0
+[claudepad] t=3060s temp=42C rss=365MB out=0
+[claudepad] t=3075s temp=42C rss=366MB out=0
+[claudepad] t=3090s temp=41C rss=366MB out=0
+[claudepad] t=3105s temp=44C rss=366MB out=0
+[claudepad] t=3120s temp=45C rss=367MB out=0
+[claudepad] t=3135s temp=45C rss=367MB out=0
+[claudepad] t=3151s temp=45C rss=367MB out=0
+[claudepad] t=3166s temp=44C rss=368MB out=0
+[claudepad] t=3181s temp=42C rss=368MB out=0
+[claudepad] t=3196s temp=43C rss=369MB out=0
+[claudepad] t=3211s temp=43C rss=369MB out=0
+[claudepad] t=3226s temp=41C rss=370MB out=0
+[claudepad] t=3241s temp=42C rss=370MB out=0
+[claudepad] t=3256s temp=40C rss=371MB out=0
+[claudepad] t=3271s temp=41C rss=371MB out=0
+[claudepad] t=3286s temp=42C rss=372MB out=0
+[claudepad] t=3301s temp=42C rss=372MB out=0
+[claudepad] t=3316s temp=41C rss=373MB out=0
+[claudepad] t=3331s temp=41C rss=373MB out=0
+[claudepad] t=3346s temp=41C rss=374MB out=0
+[claudepad] t=3362s temp=41C rss=375MB out=0
+[claudepad] t=3377s temp=42C rss=375MB out=0
+[claudepad] t=3392s temp=42C rss=376MB out=0
+[claudepad] t=3407s temp=42C rss=378MB out=0
+[claudepad] t=3422s temp=43C rss=378MB out=0
+[claudepad] t=3437s temp=42C rss=379MB out=0
+[claudepad] t=3452s temp=42C rss=379MB out=0
+[claudepad] t=3467s temp=41C rss=380MB out=0
+[claudepad] t=3482s temp=46C rss=381MB out=0
+[claudepad] t=3497s temp=45C rss=381MB out=0
+[claudepad] t=3512s temp=45C rss=381MB out=0
+[claudepad] t=3527s temp=45C rss=381MB out=0
+[claudepad] t=3542s temp=41C rss=382MB out=0
+[claudepad] t=3558s temp=42C rss=382MB out=0
+[claudepad] t=3573s temp=42C rss=383MB out=0
+[claudepad] t=3588s temp=42C rss=385MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=3603 out_bytes=16036 peak_temp_c=47 min_temp_c=40 temp_before_c=42
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+  -v, --version                         Output the version number
+  -w, --worktree [name]                 Create a new git worktree for this
+                                        session (optionally specify a name)
+
+Commands:
+  agents [options]                      Manage background agents
+  auth                                  Manage authentication
+  auto-mode                             Inspect or reset auto mode classifier
+                                        configuration
+  doctor                                Check the health of your Claude Code
+                                        installation. Reads settings files in
+                                        the current directory without a trust
+                                        prompt. For a full checkup that can also
+                                        fix issues, run /doctor in a session.
+  gateway [options]                     Run the enterprise auth/telemetry
+                                        gateway
+  install [options] [target]            Install Claude Code native build. Use
+                                        [target] to specify version (stable,
+                                        latest, or specific version)
+  mcp                                   Configure and manage MCP servers
+  plugin|plugins                        Manage Claude Code plugins
+  project                               Manage Claude Code project state
+  setup-token                           Set up a long-lived authentication token
+                                        (requires Claude subscription)
+  ultrareview [options] [target]        Run a cloud-hosted multi-agent code
+                                        review of the current branch (or a PR
+                                        number / base branch) and print the
+                                        findings
+  update|upgrade                        Check for updates and install if
+                                        available
+[run-claude-pad] --- claude stderr (tail) ---
+[tcg] tb_flush #1
+[run-claude-pad] logs pad: /home/pi/qemu-fork-test/claude-help-20260719-135151.out / /home/pi/qemu-fork-test/claude-help-20260719-135151.err

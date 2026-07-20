@@ -1,0 +1,241 @@
+From d79870233ac0b90c63e172cfa196ac822e2107d6 Mon Sep 17 00:00:00 2001
+From: Yumi-Lab <nicolas@yumi-lab.com>
+Date: Mon, 20 Jul 2026 19:51:17 +0200
+Subject: [PATCH 12/16] tcg/arm: inline jump-cache probe for guest indirect
+ branches (user-mode)
+
+At a DISAS_JUMP exit the cpu tuple (cs_base, flags, cflags) equals the
+tuple the current TB was translated with, since any instruction that
+changes the hflags ends its TB through another exit kind.  Emit an
+inline probe of the per-cpu jump cache that validates the cached entry
+entirely against translation-time constants: guest pc against cpu_pc,
+and the cached TB's cs_base/flags/cflags against the current TB's own
+tuple (the cflags compare also catches CF_INVALID).  On a hit, jump
+straight to the cached TB's code; on any mismatch fall back to the
+lookup helper, which stays the only writer of the cache.  BTYPE is the
+one tuple bit that can change on the branch itself, so the probe is
+only emitted when the translator knows BTYPE stays zero, and the
+comparison constants have BTYPE cleared.
+
+A first attempt that gated cache fills on a per-cpu canonical tuple and
+flushed on change was abandoned after measurement: the guest alternates
+tuples between code communities (815 k changes per boot), which turned
+the flush policy into a cache-thrash storm.  This version keeps the
+upstream fill semantics untouched.
+
+Measured on the reference board: torn64 throughput +48 percent, guest
+runtime boot 13 s to 10 s cold and 8 s to 6 s with the persistent
+translation cache, batteries green.  The saved work per dispatch is the
+helper call itself: state recompute, hash and compares, some 40 host
+instructions replaced by about 20 inline ones on the hit path.
+---
+ accel/tcg/cpu-exec.c           |   1 +
+ include/hw/core/cpu.h          |   6 ++
+ include/tcg/tcg-op-common.h    |   9 +++
+ target/arm/tcg/translate-a64.c | 106 +++++++++++++++++++++++++++++++++
+ tcg/tcg-op.c                   |  11 ++++
+ 5 files changed, 133 insertions(+)
+
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index f999949..2acc4d8 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -1105,6 +1105,7 @@ bool tcg_exec_realizefn(CPUState *cpu, Error **errp)
+     }
+ 
+     cpu->tb_jmp_cache = g_new0(CPUJumpCache, 1);
++    cpu->neg.jc_probe = cpu->tb_jmp_cache;
+     tlb_init(cpu);
+ #ifndef CONFIG_USER_ONLY
+     tcg_iommu_init_notifier_list(cpu);
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 0e4d6f1..bd0f03d 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -365,6 +365,12 @@ typedef struct CPUNegativeOffsetState {
+     uint64_t plugin_mem_value_low;
+     uint64_t plugin_mem_value_high;
+ #endif
++    /*
++     * Direct pointer to tb_jmp_cache, read by the inline jump-cache probe
++     * emitted for guest indirect branches (user-mode).  Stable after
++     * tcg_exec_realizefn: tcg_flush_jmp_cache clears entries in place.
++     */
++    struct CPUJumpCache *jc_probe;
+     IcountDecr icount_decr;
+     bool can_do_io;
+ } CPUNegativeOffsetState;
+diff --git a/include/tcg/tcg-op-common.h b/include/tcg/tcg-op-common.h
+index 009e277..109111e 100644
+--- a/include/tcg/tcg-op-common.h
++++ b/include/tcg/tcg-op-common.h
+@@ -74,6 +74,15 @@ void tcg_gen_goto_tb(unsigned idx);
+  */
+ void tcg_gen_lookup_and_goto_ptr(void);
+ 
++/**
++ * tcg_gen_goto_ptr() - jump to a host address known to be a valid TB entry
++ * @ptr: host code address of the target TB
++ *
++ * The caller guarantees @ptr is the entry point of a TB valid for the
++ * current cpu state (e.g. validated by an inline jump-cache probe).
++ */
++void tcg_gen_goto_ptr(TCGv_ptr ptr);
++
+ void tcg_gen_plugin_cb(unsigned from);
+ void tcg_gen_plugin_mem_cb(TCGv_i64 addr, unsigned meminfo);
+ 
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 422445a..c5a61e3 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -25,6 +25,9 @@
+ #include "arm_ldst.h"
+ #include "semihosting/semihost.h"
+ #include "cpregs.h"
++#ifdef CONFIG_USER_ONLY
++#include "accel/tcg/tb-jmp-cache.h"
++#endif
+ 
+ static TCGv_i64 cpu_X[32];
+ static TCGv_i64 cpu_pc;
+@@ -11882,6 +11885,105 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+     }
+ }
+ 
++
++#ifdef CONFIG_USER_ONLY
++/*
++ * Inline jump-cache probe for guest indirect branches.  At a DISAS_JUMP
++ * exit the cpu tuple (cs_base, flags, cflags) equals the tuple this TB
++ * was translated with: any instruction that changes the hflags ends its
++ * TB through another exit kind.  The probe can therefore validate a
++ * jump-cache entry entirely against translation-time constants: pc from
++ * cpu_pc, and the cached TB's cs_base/flags/cflags against this TB's
++ * own tuple.  A cflags mismatch also catches CF_INVALID.  On any
++ * mismatch fall back to the lookup helper, which remains the only
++ * writer of the cache.  The one dynamic bit is BTYPE (in flags2, i.e.
++ * cs_base): only emit the probe when the branch leaves BTYPE at zero,
++ * and compare with BTYPE cleared from this TB's tuple.
++ */
++static void gen_lookup_and_goto_ptr_probe(DisasContext *s)
++{
++    const TranslationBlock *tb = s->base.tb;
++    CPUARMTBFlags tuple;
++    TCGLabel *slow;
++    TCGv_i32 pcl, pch, hash, tbi, t;
++    TCGv_ptr ent, tbp, tcp;
++
++    if (tb_cflags(tb) & (CF_NO_GOTO_PTR | CF_PCREL)) {
++        tcg_gen_lookup_and_goto_ptr();
++        return;
++    }
++    /* The probe hardcodes a 32-bit little-endian host entry layout. */
++    if (sizeof(void *) != 4 || HOST_BIG_ENDIAN) {
++        tcg_gen_lookup_and_goto_ptr();
++        return;
++    }
++    /* BTYPE unknown or nonzero after this branch: target flags differ. */
++    if (s->btype != 0) {
++        tcg_gen_lookup_and_goto_ptr();
++        return;
++    }
++
++    QEMU_BUILD_BUG_ON((sizeof(((CPUJumpCache *)0)->array[0]) &
++                       (sizeof(((CPUJumpCache *)0)->array[0]) - 1)) != 0);
++
++    tuple = arm_tbflags_from_tb(tb);
++    DP_TBFLAG_A64(tuple, BTYPE, 0);
++
++    slow = gen_new_label();
++    pcl = tcg_temp_new_i32();
++    pch = tcg_temp_new_i32();
++    hash = tcg_temp_new_i32();
++    tbi = tcg_temp_new_i32();
++    t = tcg_temp_new_i32();
++    ent = tcg_temp_new_ptr();
++    tbp = tcg_temp_new_ptr();
++    tcp = tcg_temp_new_ptr();
++
++    tcg_gen_extrl_i64_i32(pcl, cpu_pc);
++    tcg_gen_extrh_i64_i32(pch, cpu_pc);
++
++    /*
++     * tb_jmp_cache_hash_func: (pc ^ (pc >> TB_JMP_CACHE_BITS)) & mask.
++     * With TB_JMP_CACHE_BITS >= 12 the high pc word cannot reach the
++     * masked bits, so the low word alone computes the same hash.
++     */
++    tcg_gen_shri_i32(hash, pcl, TB_JMP_CACHE_BITS);
++    tcg_gen_xor_i32(hash, hash, pcl);
++    tcg_gen_andi_i32(hash, hash, TB_JMP_CACHE_SIZE - 1);
++    tcg_gen_shli_i32(hash, hash, ctz32(sizeof(((CPUJumpCache *)0)->array[0])));
++
++    tcg_gen_ld_ptr(ent, tcg_env,
++                   offsetof(ArchCPU, parent_obj.neg.jc_probe) -
++                   offsetof(ArchCPU, env));
++    tcg_gen_ext_i32_ptr(tbp, hash);
++    tcg_gen_add_ptr(ent, ent, tbp);
++
++    tcg_gen_ld_i32(tbi, ent, offsetof(CPUJumpCache, array[0].tb));
++    tcg_gen_brcondi_i32(TCG_COND_EQ, tbi, 0, slow);
++    tcg_gen_ld_i32(t, ent, offsetof(CPUJumpCache, array[0].pc));
++    tcg_gen_brcond_i32(TCG_COND_NE, t, pcl, slow);
++    tcg_gen_ld_i32(t, ent, offsetof(CPUJumpCache, array[0].pc) + 4);
++    tcg_gen_brcond_i32(TCG_COND_NE, t, pch, slow);
++
++    /* Validate the cached TB's tuple against this TB's constants. */
++    tcg_gen_ext_i32_ptr(tbp, tbi);
++    tcg_gen_ld_i32(t, tbp, offsetof(TranslationBlock, flags));
++    tcg_gen_brcondi_i32(TCG_COND_NE, t, tuple.flags, slow);
++    tcg_gen_ld_i32(t, tbp, offsetof(TranslationBlock, cs_base));
++    tcg_gen_brcondi_i32(TCG_COND_NE, t, (uint32_t)tuple.flags2, slow);
++    tcg_gen_ld_i32(t, tbp, offsetof(TranslationBlock, cs_base) + 4);
++    tcg_gen_brcondi_i32(TCG_COND_NE, t, (uint32_t)(tuple.flags2 >> 32), slow);
++    tcg_gen_ld_i32(t, tbp, offsetof(TranslationBlock, cflags));
++    tcg_gen_brcondi_i32(TCG_COND_NE, t, tb_cflags(tb), slow);
++
++    tcg_gen_ld_ptr(tcp, tbp, offsetof(TranslationBlock, tc.ptr));
++    tcg_gen_goto_ptr(tcp);
++
++    gen_set_label(slow);
++    tcg_gen_lookup_and_goto_ptr();
++}
++#endif /* CONFIG_USER_ONLY */
++
+ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+ {
+     DisasContext *dc = container_of(dcbase, DisasContext, base);
+@@ -11920,7 +12022,11 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             gen_a64_update_pc(dc, 4);
+             /* fall through */
+         case DISAS_JUMP:
++#ifdef CONFIG_USER_ONLY
++            gen_lookup_and_goto_ptr_probe(dc);
++#else
+             tcg_gen_lookup_and_goto_ptr();
++#endif
+             break;
+         case DISAS_NORETURN:
+         case DISAS_SWI:
+diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
+index 4a7e705..0e73b00 100644
+--- a/tcg/tcg-op.c
++++ b/tcg/tcg-op.c
+@@ -3353,3 +3353,14 @@ void tcg_gen_lookup_and_goto_ptr(void)
+     tcg_gen_op1i(INDEX_op_goto_ptr, tcgv_ptr_arg(ptr));
+     tcg_temp_free_ptr(ptr);
+ }
++
++/*
++ * Jump to a host code address already known to be the entry point of a
++ * valid TB for the current cpu state, e.g. from an inline jump-cache
++ * probe.  The caller is responsible for the validity argument.
++ */
++void tcg_gen_goto_ptr(TCGv_ptr ptr)
++{
++    plugin_gen_disable_mem_helpers();
++    tcg_gen_op1i(INDEX_op_goto_ptr, tcgv_ptr_arg(ptr));
++}
+-- 
+2.39.5 (Apple Git-154)
+

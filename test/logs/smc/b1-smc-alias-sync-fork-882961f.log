@@ -1,0 +1,21 @@
+===== B1 smc-alias mode=sync sous le fork (882961f) =====
+qemu-aarch64 sha256 = 8373bb580a6a49b9d201643038eadb45067f04cfbcfdd6f3b844df26c056a767
+[run-pad.sh] Deploying qemu-aarch64 and smc-alias to pad...
+[run-pad.sh] Checking temperature before run...
+Temperature before: 74C
+[run-pad.sh] Checking if qemu is already running...
+[run-pad.sh] Running test: smc-alias sync (sous qemu-aarch64 )
+[sudo] password for pi: Running as unit: run-p29943-i159668.scope; invocation ID: 91cbcd8547134e3abbf5021189f4cd16
+mode=sync (IC IVAU emis) | memfd dual-map W^X : w_alias=0xb29e9000 (RW) x_alias=0xb29e8000 (RX), page=4096
+round 0 : want=0x1111 got=0x1111 OK
+round 1 : want=0x2222 got=0x2222 OK
+round 2 : want=0x1111 got=0x1111 OK
+round 3 : want=0x2222 got=0x2222 OK
+round 4 : want=0x1111 got=0x1111 OK
+round 5 : want=0x2222 got=0x2222 OK
+round 6 : want=0x1111 got=0x1111 OK
+round 7 : want=0x2222 got=0x2222 OK
+SUCCESS: code frais execute a chaque tour (8 tours) [mode=sync]
+[run-pad.sh] Checking temperature after run...
+Temperature after: 76C
+SMC_SYNC_EXIT=0

@@ -1,0 +1,5 @@
+Running as unit: run-p30398-i30399.scope; invocation ID: b1544aca8df84aaf99b96ef6447f2e0b
+Error: Internal error: {
+  "message": "API error (status 402 Payment Required): Grok Build usage balance exhausted\n\nRequest URL: https://cli-chat-proxy.grok.com/v1/responses",
+  "http_status": 402
+}

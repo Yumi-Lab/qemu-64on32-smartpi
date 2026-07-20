@@ -1,0 +1,35 @@
+V2, preuve de boot Claude Code natif (linux-arm64-musl) sous le fork qemu 8373bb58, sur le pad.
+Commande : CLAUDE_CPUS=0 CLAUDE_MEMMAX=700M CLAUDE_POLL_INTERVAL=20 ./test/run-claude-pad.sh version 360
+But : prouver que le binaire natif musl DEMARRE sous notre fork (loader musl + runtime JS) sans
+crash TCG, a moindre cout thermique (MONO-COEUR taskset -c 0, apres le gel du pad sur un boot 2 coeurs).
+
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (8373bb580a6a49b9d201643038eadb45067f04cfbcfdd6f3b844df26c056a767)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 50C
+[run-claude-pad] Lancement: claude --version (mode=version, timeout=360s, MemoryMax=700M, abort=90C) sous le fork
+[claudepad] t=0s temp=51C rss=8MB out=0
+[claudepad] t=20s temp=54C rss=35MB out=0
+[claudepad] t=40s temp=53C rss=38MB out=0
+[claudepad] t=60s temp=53C rss=39MB out=0
+[claudepad] t=80s temp=54C rss=41MB out=0
+[claudepad] t=101s temp=54C rss=42MB out=0
+[claudepad] t=121s temp=54C rss=48MB out=0
+[claudepad] t=141s temp=55C rss=66MB out=0
+[claudepad] t=161s temp=55C rss=90MB out=0
+[claudepad] t=181s temp=58C rss=92MB out=0
+[claudepad] t=201s temp=55C rss=95MB out=0
+[claudepad] t=221s temp=55C rss=98MB out=0
+[claudepad] t=241s temp=56C rss=104MB out=0
+[claudepad] t=261s temp=55C rss=105MB out=0
+[claudepad] t=281s temp=56C rss=121MB out=0
+[claudepad] t=301s temp=57C rss=146MB out=0
+[claudepad] t=322s temp=56C rss=176MB out=0
+[claudepad] t=342s temp=61C rss=194MB out=0
+RESULT=TIMEOUT exit_rc=124 elapsed=362 out_bytes=0 peak_temp_c=61 min_temp_c=51 temp_before_c=50
+
+CONSTAT : aucun crash, aucune assertion TCG, aucun SIGABRT. Le fork execute le binaire Claude natif.
+RSS monte regulierement (8 -> 194 MB) = init runtime JS/JIT en cours, PAS un stall fige, PAS d'OOM
+(cap 700M, 852 MB libres). Thermique triviale en mono-coeur (pic 61C, gel ~100C jamais approche) : le
+gel precedent venait du boot 2 coeurs. Le boot n'a pas fini d'imprimer --version en 360 s (mono-coeur,
+emulation ~10-20x lente). Suite : le vrai critere V2 (`claude -p` court) en tache de fond, timeout genereux.

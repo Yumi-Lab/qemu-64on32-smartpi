@@ -1,0 +1,78 @@
+From f3cc256d377d83b799d2b02f73ad49d9dd1d0f73 Mon Sep 17 00:00:00 2001
+From: Yumi-Lab <nicolas@yumi-lab.com>
+Date: Sat, 18 Jul 2026 02:42:59 +0200
+Subject: [PATCH 01/16] tcg/arm: emit LDRD for single-copy-atomic 64-bit guest
+ loads
+
+On a 32-bit ARM host (TCG_TARGET_REG_BITS == 32) an ordinary 64-bit guest
+load was lowered to two host ld32, which is not single-copy atomic: a
+concurrent host thread can observe a value torn between the two halves.
+This corrupts heavily threaded aarch64 guests (JSC/V8/Bun) whose ordinary
+aligned 64-bit accesses are architecturally atomic.
+
+The Cortex-A7 (LPAE) makes LDRD to an 8-byte aligned address single-copy
+atomic, and the backend already allocates the data register pair, but it
+only emitted LDRD when the memop carried an explicit alignment
+(memop_alignment_bits(opc) >= MO_64). Ordinary accesses do not request
+MO_ALIGN, so they fell through to the torn pair of ld32.
+
+Gate the inline LDRD on the required atomicity (h.aa.atom) instead. To keep
+LDRD legal, prepare_host_addr now raises the alignment requirement to 8
+bytes whenever 64-bit atomicity is required, so an unaligned address is
+diverted to the slow-path helper (which is atomic and does not tear) rather
+than reaching a faulting LDRD. Aligned accesses take the guaranteed LDRD.
+
+The store side (STRD) is handled in a following change.
+---
+ tcg/arm/tcg-target.c.inc | 28 ++++++++++++++++++++++++++--
+ 1 file changed, 26 insertions(+), 2 deletions(-)
+
+diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
+index 56072d8..6145c5e 100644
+--- a/tcg/arm/tcg-target.c.inc
++++ b/tcg/arm/tcg-target.c.inc
+@@ -1433,6 +1433,22 @@ static TCGLabelQemuLdst *prepare_host_addr(TCGContext *s, HostAddress *h,
+     h->aa = atom_and_align_for_opc(s, opc, MO_ATOM_IFALIGN, false);
+     a_mask = (1 << h->aa.align) - 1;
+ 
++    /*
++     * A 64-bit guest access that must be single-copy atomic is emitted inline
++     * as LDRD/STRD, which the architecture only guarantees to be atomic for an
++     * 8-byte aligned address (Cortex-A7 LPAE).  Ordinary guest accesses do not
++     * carry MO_ALIGN, so their alignment requirement here is zero and an
++     * unaligned address would otherwise reach the inline path.  When the
++     * required atomicity is 64-bit, raise the alignment so an unaligned address
++     * fails the test below and is routed to the slow-path helper (which handles
++     * it atomically, without tearing), instead of a faulting LDRD/STRD or a
++     * torn pair of 32-bit accesses.
++     */
++    if (h->aa.atom >= MO_64 && h->aa.align < MO_64) {
++        h->aa.align = MO_64;
++        a_mask = (1 << h->aa.align) - 1;
++    }
++
+     if (tcg_use_softmmu) {
+         int mem_index = get_mmuidx(oi);
+         int cmp_off = is_ld ? offsetof(CPUTLBEntry, addr_read)
+@@ -1586,8 +1602,16 @@ static void tcg_out_qemu_ld_direct(TCGContext *s, MemOp opc, TCGReg datalo,
+         /* We used pair allocation for datalo, so already should be aligned. */
+         tcg_debug_assert((datalo & 1) == 0);
+         tcg_debug_assert(datahi == datalo + 1);
+-        /* LDRD requires alignment; double-check that. */
+-        if (memop_alignment_bits(opc) >= MO_64) {
++        /*
++         * LDRD is single-copy atomic for an 8-byte aligned address.  Emit it
++         * whenever 64-bit atomicity is required (h.aa.atom), not only when the
++         * memop carries an explicit alignment: prepare_host_addr has already
++         * forced the alignment for atomic accesses and routed any unaligned
++         * address to the slow-path helper, so reaching here with atom >= MO_64
++         * guarantees an aligned address.  The memop_alignment_bits() case is
++         * kept for explicitly aligned accesses (e.g. exclusives).
++         */
++        if (h.aa.atom >= MO_64 || memop_alignment_bits(opc) >= MO_64) {
+             if (h.index < 0) {
+                 tcg_out_ldrd_8(s, h.cond, datalo, h.base, 0);
+                 break;
+-- 
+2.39.5 (Apple Git-154)
+

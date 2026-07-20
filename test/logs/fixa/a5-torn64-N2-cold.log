@@ -1,0 +1,98 @@
+[run-pad.sh] Deploying qemu-aarch64 and torn64 to pad...
+[run-pad.sh] Checking temperature before run...
+Temperature before: 69C
+[run-pad.sh] Checking if qemu is already running...
+[run-pad.sh] Running test: torn64 2 600 (sous qemu-aarch64 )
+[sudo] password for pi: Running as unit: run-p4980-i37420.scope; invocation ID: 80c9dba87ce64824b23982356fb96b22
+torn64 test: 2 threads, duration 600 sec, target 0 iterations
+Iterations: 2000000
+Iterations: 3000000
+Iterations: 4000000
+Iterations: 5000000
+Iterations: 12000000
+Iterations: 14000000
+Iterations: 15000000
+Iterations: 16000000
+Iterations: 17000000
+Iterations: 18000000
+Iterations: 20000000
+Iterations: 22000000
+Iterations: 23000000
+Iterations: 24000000
+Iterations: 26000000
+Iterations: 27000000
+Iterations: 28000000
+Iterations: 35000000
+Iterations: 36000000
+Iterations: 38000000
+Iterations: 39000000
+Iterations: 43000000
+Iterations: 45000000
+Iterations: 47000000
+Iterations: 49000000
+Iterations: 51000000
+Iterations: 54000000
+Iterations: 55000000
+Iterations: 56000000
+Iterations: 58000000
+Iterations: 59000000
+Iterations: 63000000
+Iterations: 64000000
+Iterations: 67000000
+Iterations: 68000000
+Iterations: 69000000
+Iterations: 70000000
+Iterations: 72000000
+Iterations: 74000000
+Iterations: 76000000
+Iterations: 77000000
+Iterations: 78000000
+Iterations: 80000000
+Iterations: 83000000
+Iterations: 84000000
+Iterations: 85000000
+Iterations: 87000000
+Iterations: 89000000
+Iterations: 92000000
+Iterations: 95000000
+Iterations: 98000000
+Iterations: 99000000
+Iterations: 102000000
+Iterations: 107000000
+Iterations: 108000000
+Iterations: 109000000
+Iterations: 110000000
+Iterations: 112000000
+Iterations: 114000000
+Iterations: 118000000
+Iterations: 119000000
+Iterations: 122000000
+Iterations: 128000000
+Iterations: 132000000
+Iterations: 133000000
+Iterations: 134000000
+Iterations: 135000000
+Iterations: 139000000
+Iterations: 140000000
+Iterations: 144000000
+Iterations: 146000000
+Iterations: 150000000
+Iterations: 152000000
+Iterations: 153000000
+Iterations: 157000000
+Iterations: 159000000
+Iterations: 163000000
+Iterations: 171000000
+Iterations: 172000000
+Iterations: 175000000
+Iterations: 176000000
+Iterations: 178000000
+Iterations: 181000000
+Iterations: 182000000
+Iterations: 186000000
+Iterations: 187000000
+Final iterations: 187964525
+SUCCESS: No torn reads detected after 187964525 iterations
+[run-pad.sh] Checking temperature after run...
+Temperature after: 85C
+RUN_EXIT=0

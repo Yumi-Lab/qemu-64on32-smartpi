@@ -1,0 +1,160 @@
+From 141e72e7fdec9f7348e2d399ee8c04f705a48ae0 Mon Sep 17 00:00:00 2001
+From: Yumi-Lab <nicolas@yumi-lab.com>
+Date: Mon, 20 Jul 2026 22:31:20 +0200
+Subject: [PATCH 16/16] tcg: classify TB endings in the execution profile
+
+Extend QEMU_TB_EXEC_PROFILE with an execution-weighted classification of
+how TBs end: direct unconditional branch within the page (forward or
+backward), direct branch crossing a page, indirect branch, or other
+(conditional branches, syscalls, exits).  Sizes the opportunity of
+translating through direct branches before attempting it.
+
+Measured on the guest runtime: same-page unconditional endings are only
+5.3 percent of executed endings on the boot path and 6.3 percent on the
+full CLI init, so following them caps below a few percent and the
+superblock experiment stops here.  The mass sits in conditional
+branches, which the two-goto_tb-slot structure per TB cannot absorb
+without much heavier surgery.
+---
+ include/tcg/startup.h          | 15 +++++++++++++++
+ target/arm/tcg/translate-a64.c | 15 +++++++++++++++
+ tcg/tcg.c                      | 22 ++++++++++++++++++++++
+ 3 files changed, 52 insertions(+)
+
+diff --git a/include/tcg/startup.h b/include/tcg/startup.h
+index 7fa4b84..f8776eb 100644
+--- a/include/tcg/startup.h
++++ b/include/tcg/startup.h
+@@ -91,6 +91,21 @@ static inline bool tcg_tb_prof_active(void)
+     return tcg_tb_prof_on > 0;
+ }
+ 
++/*
++ * Execution-weighted TB ending classification, to size the superblock
++ * opportunity: how many executed TBs end in a direct unconditional
++ * branch that stays in the same page (followable without speculation).
++ */
++enum {
++    TCG_TBPROF_END_OTHER = 0,     /* cond branches, syscalls, exits, ... */
++    TCG_TBPROF_END_B_SP_FWD,      /* uncond B, same page, forward */
++    TCG_TBPROF_END_B_SP_BWD,      /* uncond B, same page, backward */
++    TCG_TBPROF_END_B_XPAGE,       /* uncond B, crosses a page */
++    TCG_TBPROF_END_INDIRECT,      /* BR/BLR/RET -> goto_ptr */
++    TCG_TBPROF_END_NB
++};
++void tcg_tb_prof_set_endclass(unsigned cls);
++
+ void tcg_tb_prof_new_rec(uint64_t pc, uint32_t n_insns);
+ void tcg_tb_prof_begin_code(void);
+ void tcg_tb_prof_record_op(unsigned opc);
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index c5a61e3..9c81b72 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -25,6 +25,7 @@
+ #include "arm_ldst.h"
+ #include "semihosting/semihost.h"
+ #include "cpregs.h"
++#include "tcg/startup.h"
+ #ifdef CONFIG_USER_ONLY
+ #include "accel/tcg/tb-jmp-cache.h"
+ #endif
+@@ -1452,6 +1453,17 @@ static inline AArch64DecodeFn *lookup_disas_fn(const AArch64DecodeTable *table,
+ 
+ static bool trans_B(DisasContext *s, arg_i *a)
+ {
++    if (unlikely(tcg_tb_prof_active())) {
++        uint64_t target = s->pc_curr + a->imm;
++
++        if ((target ^ s->pc_curr) & TARGET_PAGE_MASK) {
++            tcg_tb_prof_set_endclass(TCG_TBPROF_END_B_XPAGE);
++        } else if (a->imm > 0) {
++            tcg_tb_prof_set_endclass(TCG_TBPROF_END_B_SP_FWD);
++        } else {
++            tcg_tb_prof_set_endclass(TCG_TBPROF_END_B_SP_BWD);
++        }
++    }
+     reset_btype(s);
+     gen_goto_tb(s, 0, a->imm);
+     return true;
+@@ -12022,6 +12034,9 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             gen_a64_update_pc(dc, 4);
+             /* fall through */
+         case DISAS_JUMP:
++            if (unlikely(tcg_tb_prof_active())) {
++                tcg_tb_prof_set_endclass(TCG_TBPROF_END_INDIRECT);
++            }
+ #ifdef CONFIG_USER_ONLY
+             gen_lookup_and_goto_ptr_probe(dc);
+ #else
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 91b1069..8a16ded 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -299,6 +299,7 @@ typedef struct TCGTBProfRec {
+     uint32_t n_insns;
+     uint8_t n_ops;
+     uint8_t truncated;
++    uint8_t endclass;
+     uint8_t ops[TCG_TBPROF_MAX_OPS];
+ } TCGTBProfRec;
+ QEMU_BUILD_BUG_ON(sizeof(TCGTBProfRec) % 8 != 0);
+@@ -309,6 +310,12 @@ static TCGTBProfRec *tcg_tb_prof_arena;
+ static unsigned tcg_tb_prof_next;
+ static uint64_t tcg_tb_prof_dropped;
+ static __thread TCGTBProfRec *tcg_tb_prof_cur;
++static __thread uint8_t tcg_tb_prof_pending_end;
++
++void tcg_tb_prof_set_endclass(unsigned cls)
++{
++    tcg_tb_prof_pending_end = cls;
++}
+ 
+ void tcg_tb_prof_resolve(void)
+ {
+@@ -348,6 +355,8 @@ void tcg_tb_prof_new_rec(uint64_t pc, uint32_t n_insns)
+     tcg_tb_prof_cur = &tcg_tb_prof_arena[idx];
+     tcg_tb_prof_cur->pc = pc;
+     tcg_tb_prof_cur->n_insns = n_insns;
++    tcg_tb_prof_cur->endclass = tcg_tb_prof_pending_end;
++    tcg_tb_prof_pending_end = TCG_TBPROF_END_OTHER;
+ }
+ 
+ void tcg_tb_prof_begin_code(void)
+@@ -383,6 +392,11 @@ void tcg_tb_prof_dump(void)
+         "  jmp cache hits", "  jmp cache miss, htable hit",
+         "main loop lookups", "  ... new translation",
+     };
++    static const char *end_names[TCG_TBPROF_END_NB] = {
++        "other (cond/sys/exit)", "B same-page forward",
++        "B same-page backward", "B cross-page", "indirect (goto_ptr)",
++    };
++    uint64_t endw[TCG_TBPROF_END_NB] = { 0 };
+     uint64_t whist[NB_OPS] = { 0 };
+     uint64_t total_exec = 0, total_insns = 0, total_wops = 0, trunc_exec = 0;
+     unsigned n_recs, live = 0, i, j, k;
+@@ -407,6 +421,7 @@ void tcg_tb_prof_dump(void)
+         if (rec->truncated) {
+             trunc_exec += ec;
+         }
++        endw[rec->endclass < TCG_TBPROF_END_NB ? rec->endclass : 0] += ec;
+         for (j = 0; j < rec->n_ops; j++) {
+             whist[rec->ops[j]] += ec;
+             total_wops += ec;
+@@ -451,6 +466,13 @@ void tcg_tb_prof_dump(void)
+                 100.0 * via_lookup / total_exec,
+                 100.0 * mainloop / total_exec);
+     }
++    if (total_exec) {
++        fprintf(stderr, "[tcg] tb ending classes (execution weighted):\n");
++        for (i = 0; i < TCG_TBPROF_END_NB; i++) {
++            fprintf(stderr, "[tcg]   %-24s %12" PRIu64 "  %5.1f%%\n",
++                    end_names[i], endw[i], 100.0 * endw[i] / total_exec);
++        }
++    }
+     if (trunc_exec && total_exec) {
+         fprintf(stderr, "[tcg] warning: %.1f%% of executions hit op-list "
+                 "truncation (>%d ops/TB)\n",
+-- 
+2.39.5 (Apple Git-154)
+

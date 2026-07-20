@@ -1,0 +1,576 @@
+From ed94d61eb3381b02144ce5825af9bae31de353bf Mon Sep 17 00:00:00 2001
+From: Yumi-Lab <nicolas@yumi-lab.com>
+Date: Sun, 19 Jul 2026 21:27:50 +0200
+Subject: [PATCH 07/16] accel/tcg: add a persistent translation cache for
+ user-mode (-tb-cache)
+
+A large guest that does not generate code at run time is translated
+once per run, and on a slow 32-bit host that translation dominates
+start-up.  Serialise the code generation buffer, which holds the
+TranslationBlock descriptors, the generated code and the search data
+contiguously, on process exit, and reload it on the next run so that
+nothing is retranslated.
+
+The generated code contains absolute host addresses, so the buffer is
+mapped at a fixed address when the cache is enabled, and the cache is
+only accepted when the environment matches: same emulator binary, same
+guest binary, same guest_base and reserved_va, same buffer address and
+size, same translation options.  Any mismatch falls back transparently
+to normal translation.  Reloaded blocks are relinked through the
+regular tb_link_page path; a cache produced by a multi-threaded run
+only contains CF_PARALLEL translations, so the flag is set before the
+first execution, which also keeps the first clone() from flushing the
+reloaded cache.
+
+Enabled with -tb-cache <file> or QEMU_TB_CACHE, user-mode only.
+---
+ accel/tcg/meson.build     |   2 +-
+ accel/tcg/tb-persist.c    | 402 ++++++++++++++++++++++++++++++++++++++
+ include/exec/tb-persist.h |  14 ++
+ linux-user/exit.c         |   2 +
+ linux-user/main.c         |  11 ++
+ tcg/region.c              |  23 ++-
+ 6 files changed, 451 insertions(+), 3 deletions(-)
+ create mode 100644 accel/tcg/tb-persist.c
+ create mode 100644 include/exec/tb-persist.h
+
+diff --git a/accel/tcg/meson.build b/accel/tcg/meson.build
+index aef80de..f7c03a3 100644
+--- a/accel/tcg/meson.build
++++ b/accel/tcg/meson.build
+@@ -11,7 +11,7 @@ tcg_specific_ss.add(files(
+   'translate-all.c',
+   'translator.c',
+ ))
+-tcg_specific_ss.add(when: 'CONFIG_USER_ONLY', if_true: files('user-exec.c'))
++tcg_specific_ss.add(when: 'CONFIG_USER_ONLY', if_true: files('user-exec.c', 'tb-persist.c'))
+ tcg_specific_ss.add(when: 'CONFIG_SYSTEM_ONLY', if_false: files('user-exec-stub.c'))
+ if get_option('plugins')
+   tcg_specific_ss.add(files('plugin-gen.c'))
+diff --git a/accel/tcg/tb-persist.c b/accel/tcg/tb-persist.c
+new file mode 100644
+index 0000000..cd2713b
+--- /dev/null
++++ b/accel/tcg/tb-persist.c
+@@ -0,0 +1,402 @@
++/*
++ * Persistent translation cache for user-mode emulation.
++ *
++ * A large guest that never modifies its own code (for example a JIT
++ * runtime executed with its JIT disabled) is translated once per run,
++ * and the translation dominates start-up time on slow hosts.  This
++ * module serialises the code generation buffer, which holds the
++ * TranslationBlock descriptors, the generated host code and the search
++ * data contiguously, and reloads it on the next run so that nothing is
++ * retranslated.
++ *
++ * The reload is only possible when the environment is identical:
++ * same QEMU binary, same guest binary, same guest_base, same buffer
++ * address (the generated code contains absolute host addresses), same
++ * translation options.  Any mismatch falls back to normal translation.
++ *
++ * Enabled with -tb-cache <file> / QEMU_TB_CACHE, user-mode only.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++
++#ifdef CONFIG_USER_ONLY
++
++#include "qemu/cacheflush.h"
++#include "qemu/qht.h"
++#include "exec/cpu-common.h"
++#include "exec/exec-all.h"
++#include "exec/translation-block.h"
++#include "exec/tb-persist.h"
++#include "tcg/tcg.h"
++#include "hw/core/cpu.h"
++#include "internal-common.h"
++#include "internal-target.h"
++#include "tb-context.h"
++
++#define TB_PERSIST_MAGIC    0x3148434142545151ULL  /* "QQTBACH1" */
++#define TB_PERSIST_VERSION  1
++
++#define TB_PERSIST_F_PARALLEL       1u
++#define TB_PERSIST_F_ONE_INSN       2u
++
++typedef struct TbPersistHeader {
++    uint64_t magic;
++    uint32_t version;
++    uint32_t page_size;
++    uint64_t buffer_base;       /* host VA of code_gen_buffer */
++    uint64_t buffer_size;
++    uint64_t prologue_size;     /* code_gen_ptr - base after prologue init */
++    uint64_t used;              /* code_gen_ptr - base at save time */
++    uint64_t guest_base_val;
++    uint64_t reserved_va_val;
++    uint64_t qemu_ident;
++    uint64_t guest_ident;
++    uint32_t tb_count;
++    uint32_t flags;
++} TbPersistHeader;
++
++extern char *exec_path;    /* linux-user/main.c */
++
++static const char *persist_path;
++static uint64_t tb_persist_prologue_size;
++
++static uint64_t ident_hash_file(const char *path)
++{
++    struct stat st;
++    uint64_t h = 0xcbf29ce484222325ULL;
++    uint64_t vals[4];
++    size_t i;
++
++    if (!path || stat(path, &st) != 0) {
++        return 0;
++    }
++    vals[0] = st.st_dev;
++    vals[1] = st.st_ino;
++    vals[2] = st.st_size;
++    vals[3] = st.st_mtime;
++    for (i = 0; i < ARRAY_SIZE(vals); i++) {
++        int b;
++        for (b = 0; b < 8; b++) {
++            h ^= (vals[i] >> (b * 8)) & 0xff;
++            h *= 0x100000001b3ULL;
++        }
++    }
++    return h;
++}
++
++void tb_persist_request(const char *path)
++{
++    persist_path = path;
++}
++
++const char *tb_persist_path(void)
++{
++    return persist_path;
++}
++
++/* Reinitialise the host-pointer state of one reloaded TB and relink it. */
++static bool tb_persist_relink(TranslationBlock *tb, uintptr_t base,
++                              uint64_t used)
++{
++    uintptr_t tc = (uintptr_t)tb->tc.ptr;
++    tb_page_addr_t p0, p1;
++
++    if (tc <= (uintptr_t)tb || tc >= base + used) {
++        return false;
++    }
++    if (tb->cflags & CF_INVALID) {
++        return false;
++    }
++    p0 = tb_page_addr0(tb);
++    if (p0 == (tb_page_addr_t)-1) {
++        return false;
++    }
++
++    /*
++     * The red-black node pointed into the previous run's tb_root; it is
++     * rebuilt by tb_record.  itree.start doubles as tb_page_addr0 and
++     * itree.last is recomputed, both are kept.
++     */
++    memset(&tb->itree.rb, 0, sizeof(tb->itree.rb));
++    tb->itree.subtree_last = 0;
++
++    /* Same jump list init as tb_gen_code after code generation. */
++    qemu_spin_init(&tb->jmp_lock);
++    tb->jmp_list_head = (uintptr_t)NULL;
++    tb->jmp_list_next[0] = (uintptr_t)NULL;
++    tb->jmp_list_next[1] = (uintptr_t)NULL;
++    tb->jmp_dest[0] = (uintptr_t)NULL;
++    tb->jmp_dest[1] = (uintptr_t)NULL;
++    if (tb->jmp_reset_offset[0] != TB_JMP_OFFSET_INVALID) {
++        tb_reset_jump(tb, 0);
++    }
++    if (tb->jmp_reset_offset[1] != TB_JMP_OFFSET_INVALID) {
++        tb_reset_jump(tb, 1);
++    }
++
++    p1 = tb_page_addr1(tb);
++    tb_lock_page0(p0);
++    if (p1 != (tb_page_addr_t)-1) {
++        tb_lock_page1(p0, p1);
++    }
++
++    /* Region tree first, then publication through QHT, as tb_gen_code. */
++    tcg_tb_insert(tb);
++    if (tb_link_page(tb) != tb) {
++        tcg_tb_remove(tb);
++        return false;
++    }
++    return true;
++}
++
++void tb_persist_load(CPUState *cpu)
++{
++    TbPersistHeader hd;
++    uintptr_t base;
++    uint64_t prologue_size;
++    g_autofree uint64_t *offsets = NULL;
++    g_autofree uint8_t *prologue = NULL;
++    uint64_t payload_off;
++    uint32_t linked = 0, i;
++    ssize_t n;
++    int fd;
++
++    if (!persist_path) {
++        return;
++    }
++
++    base = (uintptr_t)tcg_ctx->code_gen_buffer;
++    prologue_size = (uintptr_t)tcg_ctx->code_gen_ptr - base;
++    tb_persist_prologue_size = prologue_size;   /* for a cold-run save */
++
++    fd = open(persist_path, O_RDONLY);
++    if (fd < 0) {
++        if (getenv("QEMU_TB_CACHE_DEBUG")) {
++            fprintf(stderr, "[tcg] tb cache dbg: open(%s): %s\n",
++                    persist_path, strerror(errno));
++        }
++        return;                                  /* cold start */
++    }
++
++    n = read(fd, &hd, sizeof(hd));
++    if (getenv("QEMU_TB_CACHE_DEBUG")) {
++        fprintf(stderr, "[tcg] tb cache dbg: hdr n=%zd magic=%d ver=%d psz=%d "
++                "base=%d bsz=%d psize=%d used_ok=%d hw=%d gb=%d rva=%d "
++                "qid=%d gid=%d insn=%d cnt=%u\n", n,
++                hd.magic == TB_PERSIST_MAGIC, hd.version == TB_PERSIST_VERSION,
++                hd.page_size == qemu_real_host_page_size(),
++                hd.buffer_base == base,
++                hd.buffer_size == tcg_ctx->code_gen_buffer_size,
++                hd.prologue_size == prologue_size, hd.used >= prologue_size,
++                base + hd.used <= (uintptr_t)tcg_ctx->code_gen_highwater,
++                hd.guest_base_val == guest_base,
++                hd.reserved_va_val == reserved_va,
++                hd.qemu_ident == ident_hash_file("/proc/self/exe"),
++                hd.guest_ident == ident_hash_file(exec_path),
++                !!(hd.flags & TB_PERSIST_F_ONE_INSN) == one_insn_per_tb,
++                hd.tb_count);
++    }
++    if (n != sizeof(hd)
++        || hd.magic != TB_PERSIST_MAGIC
++        || hd.version != TB_PERSIST_VERSION
++        || hd.page_size != qemu_real_host_page_size()
++        || hd.buffer_base != base
++        || hd.buffer_size != tcg_ctx->code_gen_buffer_size
++        || hd.prologue_size != prologue_size
++        || hd.used < prologue_size
++        || base + hd.used > (uintptr_t)tcg_ctx->code_gen_highwater
++        || hd.guest_base_val != guest_base
++        || hd.reserved_va_val != reserved_va
++        || hd.qemu_ident != ident_hash_file("/proc/self/exe")
++        || hd.guest_ident != ident_hash_file(exec_path)
++        || !!(hd.flags & TB_PERSIST_F_ONE_INSN) != one_insn_per_tb
++        || hd.tb_count == 0) {
++        fprintf(stderr, "[tcg] tb cache: stale or foreign cache, "
++                "falling back to normal translation\n");
++        close(fd);
++        return;
++    }
++
++    offsets = g_try_new(uint64_t, hd.tb_count);
++    if (!offsets
++        || read(fd, offsets, hd.tb_count * sizeof(uint64_t))
++           != (ssize_t)(hd.tb_count * sizeof(uint64_t))) {
++        if (getenv("QEMU_TB_CACHE_DEBUG")) {
++            fprintf(stderr, "[tcg] tb cache dbg: offsets read failed "
++                    "(alloc=%d): %s\n", offsets != NULL, strerror(errno));
++        }
++        close(fd);
++        return;
++    }
++    payload_off = sizeof(hd) + (uint64_t)hd.tb_count * sizeof(uint64_t);
++
++    /*
++     * After tcg_prologue_init, tcg_region_prologue_set re-bases the
++     * region: code_gen_buffer already points after the prologue, so
++     * prologue_size is normally 0.  If a future change makes it non
++     * zero, the regenerated bytes must match the saved ones.
++     */
++    if (prologue_size != 0) {
++        prologue = g_try_malloc(prologue_size);
++        if (!prologue
++            || pread(fd, prologue, prologue_size, payload_off)
++               != (ssize_t)prologue_size
++            || memcmp(prologue, (void *)base, prologue_size) != 0) {
++            fprintf(stderr, "[tcg] tb cache: prologue mismatch, "
++                    "falling back to normal translation\n");
++            close(fd);
++            return;
++        }
++    }
++
++    if (pread(fd, (void *)(base + (uintptr_t)prologue_size),
++              (size_t)(hd.used - prologue_size),
++              payload_off + prologue_size)
++        != (ssize_t)(hd.used - prologue_size)) {
++        fprintf(stderr, "[tcg] tb cache: truncated cache file, "
++                "falling back to normal translation\n");
++        close(fd);
++        return;
++    }
++    close(fd);
++
++    flush_idcache_range(base, base, hd.used);
++
++    /*
++     * A cache produced by a multi-threaded run only contains CF_PARALLEL
++     * translations.  Set the flag before the first execution so that the
++     * lookups match, and so that the first clone() does not tb_flush the
++     * reloaded cache away.
++     */
++    if (hd.flags & TB_PERSIST_F_PARALLEL) {
++        tcg_cflags_set(cpu, CF_PARALLEL);
++    }
++
++    mmap_lock();
++    qatomic_set(&tcg_ctx->code_gen_ptr, (void *)(base + (uintptr_t)hd.used));
++    for (i = 0; i < hd.tb_count; i++) {
++        uint64_t off = offsets[i];
++
++        if (off < prologue_size || off >= hd.used) {
++            continue;
++        }
++        if (tb_persist_relink((TranslationBlock *)(base + (uintptr_t)off),
++                              base, hd.used)) {
++            linked++;
++        }
++    }
++    mmap_unlock();
++
++    fprintf(stderr, "[tcg] tb cache: reloaded %" PRIu32 "/%" PRIu32
++            " TBs, %" PRIu64 " KiB of translated code\n",
++            linked, hd.tb_count, hd.used / 1024);
++}
++
++struct TbPersistCollect {
++    uint64_t *offsets;
++    uint32_t count;
++    uint32_t max;
++    uintptr_t base;
++    bool parallel;
++};
++
++static gboolean tb_persist_collect(gpointer key, gpointer value,
++                                   gpointer data)
++{
++    struct TbPersistCollect *c = data;
++    const TranslationBlock *tb = value;
++
++    if (c->count < c->max) {
++        c->offsets[c->count] = (uintptr_t)tb - c->base;
++        if (tb->cflags & CF_PARALLEL) {
++            c->parallel = true;
++        }
++    }
++    c->count++;
++    return FALSE;
++}
++
++void tb_persist_save(void)
++{
++    TbPersistHeader hd;
++    struct TbPersistCollect c;
++    g_autofree char *tmp_path = NULL;
++    uintptr_t base;
++    uint64_t used;
++    size_t nb_tbs;
++    int fd;
++    bool ok;
++
++    if (!persist_path) {
++        return;
++    }
++
++    mmap_lock();
++
++    base = (uintptr_t)tcg_ctx->code_gen_buffer;
++    used = (uintptr_t)tcg_ctx->code_gen_ptr - base;
++    nb_tbs = tcg_nb_tbs();
++    if (nb_tbs == 0 || used == 0) {
++        mmap_unlock();
++        return;
++    }
++
++    c.offsets = g_try_new(uint64_t, nb_tbs);
++    c.count = 0;
++    c.max = nb_tbs;
++    c.base = base;
++    c.parallel = false;
++    if (!c.offsets) {
++        mmap_unlock();
++        return;
++    }
++    tcg_tb_foreach(tb_persist_collect, &c);
++    if (c.count > c.max) {
++        c.count = c.max;
++    }
++
++    memset(&hd, 0, sizeof(hd));
++    hd.magic = TB_PERSIST_MAGIC;
++    hd.version = TB_PERSIST_VERSION;
++    hd.page_size = qemu_real_host_page_size();
++    hd.buffer_base = base;
++    hd.buffer_size = tcg_ctx->code_gen_buffer_size;
++    hd.prologue_size = tb_persist_prologue_size;
++    hd.used = used;
++    hd.guest_base_val = guest_base;
++    hd.reserved_va_val = reserved_va;
++    hd.qemu_ident = ident_hash_file("/proc/self/exe");
++    hd.guest_ident = ident_hash_file(exec_path);
++    hd.tb_count = c.count;
++    hd.flags = (c.parallel ? TB_PERSIST_F_PARALLEL : 0)
++             | (one_insn_per_tb ? TB_PERSIST_F_ONE_INSN : 0);
++
++    tmp_path = g_strdup_printf("%s.tmp", persist_path);
++    fd = open(tmp_path, O_WRONLY | O_CREAT | O_TRUNC, 0600);
++    ok = fd >= 0;
++    if (ok) {
++        ok = write(fd, &hd, sizeof(hd)) == sizeof(hd)
++          && write(fd, c.offsets, c.count * sizeof(uint64_t))
++             == (ssize_t)(c.count * sizeof(uint64_t))
++          && write(fd, (void *)base, used) == (ssize_t)used;
++        close(fd);
++    }
++    if (ok) {
++        ok = rename(tmp_path, persist_path) == 0;
++    } else {
++        unlink(tmp_path);
++    }
++    g_free(c.offsets);
++    mmap_unlock();
++
++    if (ok) {
++        fprintf(stderr, "[tcg] tb cache: saved %" PRIu32 " TBs, %" PRIu64
++                " KiB of translated code\n", hd.tb_count, used / 1024);
++    } else {
++        fprintf(stderr, "[tcg] tb cache: save to %s failed: %s\n",
++                tmp_path ? tmp_path : persist_path, strerror(errno));
++    }
++}
++
++#endif /* CONFIG_USER_ONLY */
+diff --git a/include/exec/tb-persist.h b/include/exec/tb-persist.h
+new file mode 100644
+index 0000000..4d51340
+--- /dev/null
++++ b/include/exec/tb-persist.h
+@@ -0,0 +1,14 @@
++/*
++ * Persistent translation cache for user-mode emulation.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#ifndef EXEC_TB_PERSIST_H
++#define EXEC_TB_PERSIST_H
++
++void tb_persist_request(const char *path);
++const char *tb_persist_path(void);
++void tb_persist_load(CPUState *cpu);
++void tb_persist_save(void);
++
++#endif
+diff --git a/linux-user/exit.c b/linux-user/exit.c
+index 1ff8fe4..d742087 100644
+--- a/linux-user/exit.c
++++ b/linux-user/exit.c
+@@ -17,6 +17,7 @@
+  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ #include "qemu/osdep.h"
++#include "exec/tb-persist.h"
+ #include "tcg/perf.h"
+ #include "gdbstub/syscalls.h"
+ #include "qemu.h"
+@@ -35,4 +36,5 @@ void preexit_cleanup(CPUArchState *env, int code)
+         gdb_exit(code);
+         qemu_plugin_user_exit();
+         perf_exit();
++        tb_persist_save();
+ }
+diff --git a/linux-user/main.c b/linux-user/main.c
+index aaea0fb..00c2ac6 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -41,6 +41,7 @@
+ #include "user/guest-base.h"
+ #include "exec/exec-all.h"
+ #include "exec/gdbstub.h"
++#include "exec/tb-persist.h"
+ #include "gdbstub/user.h"
+ #include "tcg/startup.h"
+ #include "qemu/timer.h"
+@@ -433,6 +434,11 @@ static void handle_arg_tb_size(const char *arg)
+     }
+ }
+ 
++static void handle_arg_tb_cache(const char *arg)
++{
++    tb_persist_request(arg);
++}
++
+ static void handle_arg_strace(const char *arg)
+ {
+     enable_strace = true;
+@@ -527,6 +533,8 @@ static const struct qemu_argument arg_table[] = {
+      "",           "run with one guest instruction per emulated TB"},
+     {"tb-size",    "QEMU_TB_SIZE",     true,  handle_arg_tb_size,
+      "size",       "TCG translation cache size in MiB"},
++    {"tb-cache",   "QEMU_TB_CACHE",    true,  handle_arg_tb_cache,
++     "file",       "persistent translation cache file"},
+     {"strace",     "QEMU_STRACE",      false, handle_arg_strace,
+      "",           "log system calls"},
+     {"seed",       "QEMU_RAND_SEED",   true,  handle_arg_seed,
+@@ -1034,6 +1042,9 @@ int main(int argc, char **argv, char **envp)
+        the real value of GUEST_BASE into account.  */
+     tcg_prologue_init();
+ 
++    /* Reload a persistent translation cache, if one was requested. */
++    tb_persist_load(cpu);
++
+     target_cpu_copy_regs(env, regs);
+ 
+     if (gdbstub) {
+diff --git a/tcg/region.c b/tcg/region.c
+index 6f199b0..cefc4c1 100644
+--- a/tcg/region.c
++++ b/tcg/region.c
+@@ -518,9 +518,28 @@ static int alloc_code_gen_buffer(size_t tb_size, int splitwx, Error **errp)
+      * On mapping failure, fall through to the builtin buffer.
+      */
+     if (tb_size > sizeof(static_code_gen_buffer)) {
++        int flags = MAP_PRIVATE | MAP_ANONYMOUS | MAP_NORESERVE;
++
+         size = QEMU_ALIGN_DOWN(tb_size, qemu_real_host_page_size());
+-        buf = mmap(NULL, size, PROT_READ | PROT_WRITE,
+-                   MAP_PRIVATE | MAP_ANONYMOUS | MAP_NORESERVE, -1, 0);
++        buf = MAP_FAILED;
++
++        /*
++         * A persistent translation cache needs the buffer at the same
++         * address on every run: the generated code contains absolute
++         * host addresses.  Try a fixed spot first; if it is taken, the
++         * cache is silently unusable (the loader checks the address)
++         * but execution is unaffected.
++         */
++        if (getenv("QEMU_TB_CACHE") != NULL) {
++#ifndef MAP_FIXED_NOREPLACE
++#define MAP_FIXED_NOREPLACE 0x100000
++#endif
++            buf = mmap((void *)0x58000000, size, PROT_READ | PROT_WRITE,
++                       flags | MAP_FIXED_NOREPLACE, -1, 0);
++        }
++        if (buf == MAP_FAILED) {
++            buf = mmap(NULL, size, PROT_READ | PROT_WRITE, flags, -1, 0);
++        }
+         if (buf != MAP_FAILED) {
+             region.start_aligned = buf;
+             region.total_size = size;
+-- 
+2.39.5 (Apple Git-154)
+

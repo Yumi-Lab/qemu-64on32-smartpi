@@ -1,0 +1,58 @@
+From 95a465edd38b1e183434930f0317fd2a8ec477df Mon Sep 17 00:00:00 2001
+From: Yumi-Lab <nicolas@yumi-lab.com>
+Date: Mon, 20 Jul 2026 18:14:48 +0200
+Subject: [PATCH 11/16] target/arm: do not advertise FEAT_LSE2 in user-mode on
+ 32-bit hosts
+
+With FEAT_LSE2 (included in the default max model) every 16-byte aligned
+LDP/STP requires single-copy 16-byte atomicity.  A 32-bit host has no
+16-byte atomic primitive, so the atomicity layer falls back to a
+stop-the-world exclusive step for each such access.  The function
+prologue stp x29,x30,[sp,#-16]! alone makes this a storm: an execution
+profile of one guest runtime boot measured about 17 million exclusive
+steps, 18.6 percent of all TB entries coming back through the main loop
+and a saturated jump cache.
+
+Clear ID_AA64MMFR2.AT during realize for TCG user-mode when the host is
+32-bit, so the guest sees no HWCAP_USCAT and uses pre-8.4 pairwise
+atomic semantics, which the LDRD/STRD fast path honours natively.  The
+guest runtime boot drops from 106 s to 12 s on the reference board, with
+the torn64, simd-dup2 and smc-alias batteries green.  Setting
+QEMU_KEEP_LSE2=1 restores the previous behaviour, measured at 106 s
+unchanged, for comparison.
+---
+ target/arm/cpu.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index da1c46e..b91bf1b 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1985,6 +1985,24 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     tcg_cflags_set(cs, CF_PCREL);
+ #endif
+ 
++#if defined(CONFIG_TCG) && defined(CONFIG_USER_ONLY)
++    /*
++     * On a 32-bit host there is no 16-byte atomic primitive.  With
++     * FEAT_LSE2 (part of the default `max` model) every 16-byte aligned
++     * LDP/STP requires single-copy 16-byte atomicity, which the atomicity
++     * layer can only provide by a stop-the-world exclusive step: measured
++     * ~17 M such steps for one guest runtime boot, an 8x slowdown.  Do not
++     * advertise LSE2 (HWCAP_USCAT) on such hosts; guests then use the
++     * pre-8.4 pairwise-atomic semantics that LDRD/STRD honour natively.
++     * QEMU_KEEP_LSE2=1 restores the advertised feature for comparison.
++     */
++    if (sizeof(void *) == 4 && arm_feature(env, ARM_FEATURE_AARCH64) &&
++        getenv("QEMU_KEEP_LSE2") == NULL) {
++        cpu->isar.id_aa64mmfr2 =
++            FIELD_DP64(cpu->isar.id_aa64mmfr2, ID_AA64MMFR2, AT, 0);
++    }
++#endif
++
+     /* If we needed to query the host kernel for the CPU features
+      * then it's possible that might have failed in the initfn, but
+      * this is the first point where we can report it.
+-- 
+2.39.5 (Apple Git-154)
+

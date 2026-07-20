@@ -1,0 +1,51 @@
+=== V2 real criterion: claude -p, SINGLE core, 700M, timeout 2400s, abort 90C ===
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (8373bb580a6a49b9d201643038eadb45067f04cfbcfdd6f3b844df26c056a767)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 55C
+[run-claude-pad] Lancement: claude -p (mode=prompt, timeout=2400s, MemoryMax=700M, abort=90C) sous le fork
+[claudepad] t=0s temp=54C rss=9MB out=0
+[claudepad] t=30s temp=55C rss=38MB out=0
+[claudepad] t=60s temp=59C rss=39MB out=0
+[claudepad] t=90s temp=55C rss=42MB out=0
+[claudepad] t=120s temp=57C rss=51MB out=0
+
+=== RE-ATTACH monitor (fresh session, 90C abort re-armed) 2026-07-18T23:02:44Z ===
+cpus_allowed_list=0
+elapsed=13:02  rss_mb=250  temp_c=62
+[claudepad-reattach] t=0s temp=63C rss=250MB out=0
+[claudepad-reattach] t=15s temp=59C rss=250MB out=0
+[claudepad-reattach] t=30s temp=58C rss=250MB out=0
+[claudepad-reattach] t=46s temp=59C rss=251MB out=0
+[claudepad-reattach] t=61s temp=60C rss=252MB out=0
+[claudepad-reattach] t=76s temp=59C rss=252MB out=0
+[claudepad-reattach] t=91s temp=58C rss=252MB out=0
+
+=== BG POLL + THERMAL GUARD (fresh session) 2026-07-18T23:09:42Z ===
+tick=1 tempC=63 rss_kb=262016 out=0 err=0
+tick=2 tempC=59 rss_kb=262340 out=0 err=0
+
+=== POLL v2 (fresh session, read-only from Mac) 2026-07-18T23:16:18Z ===
+[poll] tick=1 temp=63C out=0 err=0 rss=260MB alive=1 rc=
+
+=== DIAGNOSTIC slow-vs-blocked (read-only /proc, pid 6947, elapsed ~1893s) 2026-07-18T23:21Z ===
+# But : trancher LENTEUR d'emulation (hors-sujet par le GOAL) vs BLOCAGE post-init (bug fork).
+State:  R (running)            VmRSS: 269608 kB   Threads: 3
+main wchan=0 (sur CPU, pas bloque)
+tid=6947 state=R wchan=0                 # thread principal : execute reellement
+tid=6948 state=S wchan=futex_do_wait     # worker au repos (pool JS/JIT)
+tid=6949 state=S wchan=futex_do_wait     # worker au repos
+voluntary_ctxt_switches=460              # ne se bloque quasi jamais sur un syscall
+nonvoluntary_ctxt_switches: 32688 -> 32852 -> 32906  # MONTE = preempte = CPU-bound
+# VERDICT : CPU-bound (thread principal sur le CPU, preempte, workers idle en futex,
+#           voluntary bas = pas de boucle syscall). C'est de la LENTEUR d'emulation
+#           PURE, PAS un deadlock, PAS un blocage syscall, PAS un bug d'emulation du fork.
+
+=== TERMINAL (run coupe par son propre timeout 2400s, read-only depuis le Mac) 2026-07-18T23:32Z ===
+RESULT=TIMEOUT exit_rc=124 elapsed=2400 out_bytes=0 err_bytes=0 peak_temp_c=64 temp_after_c=54
+# rc=124 = coupe par `timeout` (PAS un signal >=128, donc PAS un crash/SIGABRT/assertion TCG).
+# 40 min de boot emule CPU-bound, RSS 8->263 MB puis plateau, 0 octet stdout ET stderr,
+# thermique triviale (pic 64C, gel ~100C jamais approche). Le fork BOOTE le binaire natif
+# musl SANS crash ; l'absence de rendu = lenteur d'emulation (phase auth/reseau non atteinte
+# dans une fenetre bornee thermiquement sure), pas un plantage. V2 reste NON cochee (critere
+# honnete : un PID vivant-mais-muet ne compte pas). Decision de fenetre multi-heures = humain.

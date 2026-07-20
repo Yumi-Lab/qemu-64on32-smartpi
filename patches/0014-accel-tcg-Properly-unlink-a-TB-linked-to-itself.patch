@@ -1,0 +1,44 @@
+From 75deb12db19dd8bd7d7767787c62a5b2c67f445c Mon Sep 17 00:00:00 2001
+From: Richard Henderson <richard.henderson@linaro.org>
+Date: Tue, 23 Sep 2025 16:02:03 -0700
+Subject: [PATCH 14/16] accel/tcg: Properly unlink a TB linked to itself
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When we remove dest from orig's links, we lose the link
+that we rely on later to reset links.  This can lead to
+failure to release from spinlock with self-modifying code.
+
+Cc: qemu-stable@nongnu.org
+Reported-by: 李威威 <liweiwei@kubuds.cn>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Anton Johansson <anjo@rev.ng>
+Tested-by: Anton Johansson <anjo@rev.ng>
+(cherry picked from commit 03fe6659803f)
+---
+ accel/tcg/tb-maint.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/accel/tcg/tb-maint.c b/accel/tcg/tb-maint.c
+index 3820f12..1f5b887 100644
+--- a/accel/tcg/tb-maint.c
++++ b/accel/tcg/tb-maint.c
+@@ -844,6 +844,14 @@ static inline void tb_remove_from_jmp_list(TranslationBlock *orig, int n_orig)
+      * We first acquired the lock, and since the destination pointer matches,
+      * we know for sure that @orig is in the jmp list.
+      */
++    if (dest == orig) {
++        /*
++         * In the case of a TB that links to itself, removing the entry
++         * from the list means that it won't be present later during
++         * tb_jmp_unlink -- unlink now.
++         */
++        tb_reset_jump(orig, n_orig);
++    }
+     pprev = &dest->jmp_list_head;
+     TB_FOR_EACH_JMP(dest, tb, n) {
+         if (tb == orig && n == n_orig) {
+-- 
+2.39.5 (Apple Git-154)
+

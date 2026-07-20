@@ -1,0 +1,39 @@
+V1, PREUVE DE CRASH DU FORK sous la charge JIT SIMD reelle de grok
+===================================================================
+
+Contexte : le vrai binaire grok (/opt/grok/grok-aarch64, aarch64 statique)
+execute sous NOTRE fork (build-out/qemu-aarch64, sha256 d232aa14a3daebd14...)
+en mode HEADLESS STREAMING (le seul mode qui rend sous emulation ; la TUI
+native est cassee sous 64-on-32, cf. entete de /usr/local/bin/grok-tui).
+
+Commande exacte sur le pad (taskset -c 0,1, timeout 900) :
+  taskset -c 0,1 timeout 900 ./qemu-aarch64 /opt/grok/grok-aarch64 \
+      --always-approve --output-format streaming-json \
+      -p 'Reply with just the word READY and nothing else.'
+
+Resultat : apres plusieurs minutes de bootstrap JIT (aucune sortie), NOTRE
+qemu AVORTE sur une assertion du backend TCG arm :
+
+  qemu-aarch64: /workspace/qemu/tcg/arm/tcg-target.c.inc:2437: tcg_out_movi: Assertion `ret < TCG_REG_Q0' failed.
+  FORK900_EXIT=134
+
+Lecture :
+- exit 134 = 128 + 6 = SIGABRT (assertion, build --enable-debug).
+- tcg_out_movi (materialisation d'un immediat ENTIER) recoit un registre
+  destination >= TCG_REG_Q0, c.-a-d. un registre VECTEUR NEON (Q). Un entier
+  ne doit jamais atterrir dans un registre vecteur : bug de lowering SIMD du
+  backend arm 64-on-32 (path aarch64-guest -> hote arm 32-bit).
+- INDEPENDANT de Fix A (atomicite 64-bit) : nos deux commits tcg/arm
+  (f3cc256 LDRD, 1ba623b STRD) ne modifient QUE l'emission des acces memoire
+  64-bit ENTIERS (tcg_out_qemu_ld_direct/st_direct/prepare_host_addr), ni
+  l'allocation de registres, ni les contraintes de paire (deja presentes en
+  9.2.4), ni aucun path vecteur. cf. `git -C qemu show f3cc256 1ba623b`.
+- En build RELEASE (sans --enable-debug) l'assertion serait un NOP : le fork
+  emettrait alors du code hote FAUX silencieusement. L'assertion nous protege.
+
+Non deterministe : l'assertion se declenche quand la codegen JIT de grok emet
+justement l'operation SIMD fautive (declenchee dans ce run ; un autre run peut
+CALER >10 min sans sortie avant d'etre coupe, cf. v1-grok-fork-monitor-*.log
+RESULT=STALLED). Dans les deux cas grok ne SURVIT PAS a une charge reelle.
+
+Prealable a V1 : cf. PROGRESS.md V1-SIMD.

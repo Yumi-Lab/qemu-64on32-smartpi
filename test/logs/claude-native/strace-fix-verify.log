@@ -1,0 +1,125 @@
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (87cd71ceb624eb55b4807d05eb52c44a3e94c52ed673105f213bcf46c045a4a1)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 46C
+[run-claude-pad] Lancement: claude -p --output-format stream-json --verbose (mode=prompt, timeout=1800s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=49C rss=15MB out=0
+[claudepad] t=15s temp=48C rss=83MB out=0
+[claudepad] t=30s temp=43C rss=97MB out=0
+[claudepad] t=45s temp=43C rss=154MB out=0
+[claudepad] t=60s temp=44C rss=230MB out=0
+[claudepad] t=75s temp=44C rss=241MB out=0
+[claudepad] t=90s temp=46C rss=243MB out=0
+[claudepad] t=105s temp=44C rss=245MB out=0
+[claudepad] t=120s temp=44C rss=262MB out=0
+[claudepad] t=135s temp=44C rss=271MB out=0
+[claudepad] t=150s temp=44C rss=276MB out=0
+[claudepad] t=166s temp=43C rss=285MB out=0
+[claudepad] t=181s temp=43C rss=289MB out=0
+[claudepad] t=196s temp=43C rss=294MB out=0
+[claudepad] t=211s temp=43C rss=298MB out=0
+[claudepad] t=226s temp=43C rss=304MB out=0
+[claudepad] t=241s temp=44C rss=306MB out=0
+[claudepad] t=256s temp=43C rss=311MB out=0
+[claudepad] t=271s temp=42C rss=313MB out=0
+[claudepad] t=286s temp=43C rss=318MB out=0
+[claudepad] t=301s temp=44C rss=319MB out=0
+[claudepad] t=316s temp=43C rss=322MB out=0
+[claudepad] t=331s temp=43C rss=323MB out=0
+[claudepad] t=346s temp=43C rss=324MB out=0
+[claudepad] t=362s temp=43C rss=325MB out=0
+[claudepad] t=377s temp=43C rss=326MB out=0
+[claudepad] t=392s temp=43C rss=327MB out=0
+[claudepad] t=407s temp=43C rss=329MB out=0
+[claudepad] t=422s temp=43C rss=332MB out=0
+[claudepad] t=437s temp=43C rss=332MB out=0
+[claudepad] t=452s temp=43C rss=332MB out=0
+[claudepad] t=467s temp=43C rss=332MB out=0
+[claudepad] t=482s temp=43C rss=332MB out=0
+[claudepad] t=497s temp=44C rss=332MB out=0
+[claudepad] t=512s temp=43C rss=333MB out=0
+[claudepad] t=527s temp=43C rss=335MB out=0
+[claudepad] t=542s temp=43C rss=337MB out=0
+[claudepad] t=558s temp=43C rss=340MB out=0
+[claudepad] t=573s temp=43C rss=342MB out=0
+[claudepad] t=588s temp=43C rss=345MB out=0
+[claudepad] t=603s temp=43C rss=346MB out=0
+[claudepad] t=618s temp=44C rss=347MB out=0
+[claudepad] t=633s temp=44C rss=347MB out=0
+[claudepad] t=648s temp=43C rss=347MB out=0
+[claudepad] t=663s temp=44C rss=347MB out=0
+[claudepad] t=678s temp=43C rss=347MB out=0
+[claudepad] t=693s temp=44C rss=346MB out=0
+[claudepad] t=708s temp=44C rss=347MB out=0
+[claudepad] t=723s temp=43C rss=349MB out=0
+[claudepad] t=738s temp=43C rss=353MB out=0
+[claudepad] t=754s temp=43C rss=356MB out=0
+[claudepad] t=769s temp=43C rss=359MB out=0
+[claudepad] t=784s temp=43C rss=358MB out=0
+[claudepad] t=799s temp=44C rss=358MB out=0
+[claudepad] t=814s temp=44C rss=358MB out=0
+[claudepad] t=829s temp=44C rss=358MB out=0
+[claudepad] t=844s temp=43C rss=358MB out=0
+[claudepad] t=859s temp=44C rss=358MB out=0
+[claudepad] t=874s temp=43C rss=358MB out=0
+[claudepad] t=889s temp=43C rss=361MB out=0
+[claudepad] t=904s temp=43C rss=361MB out=0
+[claudepad] t=919s temp=43C rss=362MB out=0
+[claudepad] t=934s temp=44C rss=362MB out=0
+[claudepad] t=949s temp=43C rss=363MB out=0
+[claudepad] t=965s temp=43C rss=363MB out=0
+[claudepad] t=980s temp=43C rss=364MB out=0
+[claudepad] t=995s temp=43C rss=365MB out=0
+[claudepad] t=1010s temp=44C rss=366MB out=0
+[claudepad] t=1025s temp=43C rss=367MB out=0
+[claudepad] t=1040s temp=43C rss=367MB out=0
+[claudepad] t=1055s temp=44C rss=367MB out=0
+[claudepad] t=1070s temp=43C rss=367MB out=0
+[claudepad] t=1085s temp=44C rss=367MB out=0
+[claudepad] t=1100s temp=44C rss=367MB out=0
+[claudepad] t=1115s temp=43C rss=367MB out=0
+[claudepad] t=1130s temp=43C rss=367MB out=0
+[claudepad] t=1145s temp=43C rss=367MB out=0
+[claudepad] t=1161s temp=43C rss=367MB out=0
+[claudepad] t=1176s temp=43C rss=367MB out=0
+[claudepad] t=1191s temp=43C rss=371MB out=0
+[claudepad] t=1206s temp=44C rss=373MB out=0
+[claudepad] t=1221s temp=43C rss=374MB out=0
+[claudepad] t=1236s temp=44C rss=378MB out=0
+[claudepad] t=1251s temp=44C rss=380MB out=0
+bash: line 13: 18329 Segmentation fault      systemd-run --user --scope -q -p MemoryMax="$MEMMAX" -- taskset -c "$CPUS" timeout -k 60 "$TIMEOUT" env HOME="$HOMEDIR" DISABLE_AUTOUPDATER=1 CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 $EXTRA $SA "$QEMU" -L "$SYS" "$CLA" $ARGS "$PROMPT" < /dev/null >> "$OUT" 2>> "$ERR"
+RESULT=CRASHED exit_rc=139 elapsed=1266 out_bytes=0 peak_temp_c=49 min_temp_c=42 temp_before_c=46
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+[run-claude-pad] --- claude stderr (tail) ---
+ = 1
+18333 clock_gettime(CLOCK_MONOTONIC,0x00000000a19c8fa0) = 0 ({tv_sec = 8314,tv_nsec = 289654374})
+18333 clock_gettime(CLOCK_MONOTONIC,0x00000000a19c9058) = 0 ({tv_sec = 8314,tv_nsec = 289827754})
+18333 futex(0x0000000004a05c10,FUTEX_PRIVATE_FLAG|FUTEX_WAIT,6646820,{tv_sec = 30,tv_nsec = 0},NULL,6646820)20326 epoll_pwait(9,1858470112,1024,3672,1069480984,8) = 1
+20326 epoll_ctl(9,3,11,1069477264,1069480984,8) = 0
+20326 setsockopt(11,0,6,(nil),0x1) = 0
+20326 epoll_ctl(9,2,12,1069476936,4,0) = 0
+20326 setsockopt(12,0,1,(nil),0xd) = 0
+20326 close(12) = 0
+20326 clock_gettime(CLOCK_MONOTONIC,0x000000003fbeeb68) = 0 ({tv_sec = 8314,tv_nsec = 309211180})
+ = -1 errno=110 (Connection timed out)
+19318 clock_gettime(CLOCK_MONOTONIC,0x000000003fff8338) = 0 ({tv_sec = 8314,tv_nsec = 360371997})
+19318 futex(0x0000000004a05c10,FUTEX_PRIVATE_FLAG|FUTEX_WAKE,6646820,NULL,NULL,6646820) = 1
+19318 clock_gettime(CLOCK_MONOTONIC,0x000000003fff8438) = 0 ({tv_sec = 8314,tv_nsec = 361098223})
+19318 clock_gettime(CLOCK_MONOTONIC,0x000000003fff8438) = 0 ({tv_sec = 8314,tv_nsec = 361328604})
+19318 madvise(0x000000006ef11000,6646820,MADV_DONTNEED) = 0
+19318 clock_gettime(CLOCK_MONOTONIC,0x000000003fff85b0) = 0 ({tv_sec = 8314,tv_nsec = 362951434})
+19318 futex(0x00000000048ffbd4,FUTEX_PRIVATE_FLAG|FUTEX_WAIT,6646820,NULL,0x000000006ef10f00,6646820) = 0
+18333 clock_gettime(CLOCK_MONOTONIC,0x00000000a19c9058) = 0 ({tv_sec = 8314,tv_nsec = 373080137})
+18333 clock_gettime(CLOCK_MONOTONIC,0x00000000a19c8fc8) = 0 ({tv_sec = 8314,tv_nsec = 373258600})
+18333 madvise(0x000000006e300000,6646820,MADV_DONTNEED) = 0
+18333 futex(0x0000000004a05c10,FUTEX_PRIVATE_FLAG|FUTEX_WAIT,6646820,{tv_sec = 30,tv_nsec = 0},NULL,6646820)20326 getrandom(0x3fbeea20,0,32) = 32
+20326 setsockopt(11,0,1,(nil),0x9) = 0
+20326 setsockopt(11,0,6,(nil),0x4) = 0
+20326 setsockopt(11,0,6,(nil),0x5) = 0
+20326 setsockopt(11,0,6,(nil),0x6) = 0
+20326 getrandom(0x3fbef240,0,32) = 32
+20326 getrandom(0x3fbef240,0,32) = 32
+20326 getrandom(0x3fbef100,0,32) = 32
+20326 sendto(11,"\26\3\1\2\0\1\0\1\374\3\3*\220\276\314\32\25\240\376\213#TJQ}g\273\312\317\3Uu\3750\267\353\352\343"\257"...,517,MSG_DONTWAIT|MSG_NOSIGNAL,qemu-aarch64: QEMU internal SIGSEGV {code=MAPERR, addr=0x3e9c000}
+[run-claude-pad] logs pad: /home/pi/qemu-fork-test/claude-prompt-20260720-105016.out / /home/pi/qemu-fork-test/claude-prompt-20260720-105016.err

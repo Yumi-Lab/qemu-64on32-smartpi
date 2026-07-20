@@ -1,0 +1,121 @@
+From f6c3a9fc854d9331ce981fbb06546dc19e2793bd Mon Sep 17 00:00:00 2001
+From: Yumi-Lab <nicolas@yumi-lab.com>
+Date: Mon, 20 Jul 2026 10:57:58 +0200
+Subject: [PATCH 09/16] tcg: add an opcode translation histogram
+ (QEMU_OP_HISTOGRAM)
+
+Count how often each TCG opcode is emitted during translation and dump the
+sorted result on process exit when QEMU_OP_HISTOGRAM is set.  A first look at
+the shape of a guest workload to guide backend optimisation, with no external
+profiler (TCG plugins are unavailable in a static build).
+---
+ include/tcg/startup.h |  6 +++++
+ linux-user/exit.c     |  2 ++
+ tcg/tcg.c             | 51 +++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 59 insertions(+)
+
+diff --git a/include/tcg/startup.h b/include/tcg/startup.h
+index f713057..93382de 100644
+--- a/include/tcg/startup.h
++++ b/include/tcg/startup.h
+@@ -55,4 +55,10 @@ void tcg_register_thread(void);
+  */
+ void tcg_prologue_init(void);
+ 
++/*
++ * Dump the TCG opcode translation histogram to stderr, if it was enabled
++ * with QEMU_OP_HISTOGRAM.  A no-op otherwise.
++ */
++void tcg_op_histogram_dump(void);
++
+ #endif
+diff --git a/linux-user/exit.c b/linux-user/exit.c
+index d742087..faf08c8 100644
+--- a/linux-user/exit.c
++++ b/linux-user/exit.c
+@@ -18,6 +18,7 @@
+  */
+ #include "qemu/osdep.h"
+ #include "exec/tb-persist.h"
++#include "tcg/startup.h"
+ #include "tcg/perf.h"
+ #include "gdbstub/syscalls.h"
+ #include "qemu.h"
+@@ -37,4 +38,5 @@ void preexit_cleanup(CPUArchState *env, int code)
+         qemu_plugin_user_exit();
+         perf_exit();
+         tb_persist_save();
++        tcg_op_histogram_dump();
+ }
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 13f735b..f6ce363 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -238,6 +238,48 @@ bool tcg_use_softmmu;
+ TCGContext tcg_init_ctx;
+ __thread TCGContext *tcg_ctx;
+ 
++/*
++ * Opcode translation histogram, enabled by QEMU_OP_HISTOGRAM.  Counts how
++ * often each TCG opcode is emitted during translation (static frequency,
++ * not weighted by execution).  Dumped on process exit.  A quick first look
++ * at what the guest workload is made of, to guide backend optimisation.
++ */
++int tcg_op_hist_on = -1;
++uint64_t tcg_op_hist[NB_OPS];
++
++void tcg_op_histogram_dump(void)
++{
++    unsigned order[NB_OPS];
++    uint64_t total = 0;
++    unsigned n = 0, i, j;
++
++    if (tcg_op_hist_on <= 0) {
++        return;
++    }
++    for (i = 0; i < NB_OPS; i++) {
++        if (tcg_op_hist[i]) {
++            order[n++] = i;
++            total += tcg_op_hist[i];
++        }
++    }
++    /* simple insertion sort by descending count, n is small */
++    for (i = 1; i < n; i++) {
++        unsigned key = order[i];
++        for (j = i; j > 0 && tcg_op_hist[order[j - 1]] < tcg_op_hist[key]; j--) {
++            order[j] = order[j - 1];
++        }
++        order[j] = key;
++    }
++    fprintf(stderr, "[tcg] op histogram (translation frequency), %" PRIu64
++            " ops total:\n", total);
++    for (i = 0; i < n; i++) {
++        unsigned opc = order[i];
++        fprintf(stderr, "[tcg]   %-24s %10" PRIu64 "  %5.1f%%\n",
++                tcg_op_defs[opc].name, tcg_op_hist[opc],
++                100.0 * tcg_op_hist[opc] / total);
++    }
++}
++
+ TCGContext **tcg_ctxs;
+ unsigned int tcg_cur_ctxs;
+ unsigned int tcg_max_ctxs;
+@@ -6196,6 +6238,15 @@ int tcg_gen_code(TCGContext *s, TranslationBlock *tb, uint64_t pc_start)
+     QTAILQ_FOREACH(op, &s->ops, link) {
+         TCGOpcode opc = op->opc;
+ 
++        if (unlikely(tcg_op_hist_on)) {
++            if (tcg_op_hist_on < 0) {
++                tcg_op_hist_on = getenv("QEMU_OP_HISTOGRAM") != NULL;
++            }
++            if (tcg_op_hist_on > 0) {
++                tcg_op_hist[opc]++;
++            }
++        }
++
+         switch (opc) {
+         case INDEX_op_mov_i32:
+         case INDEX_op_mov_i64:
+-- 
+2.39.5 (Apple Git-154)
+

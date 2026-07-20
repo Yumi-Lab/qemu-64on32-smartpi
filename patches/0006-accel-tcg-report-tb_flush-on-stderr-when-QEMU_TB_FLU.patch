@@ -1,0 +1,38 @@
+From 82a6285ca289a226e4183b19b56dcb758c518bbe Mon Sep 17 00:00:00 2001
+From: Yumi-Lab <nicolas@yumi-lab.com>
+Date: Sun, 19 Jul 2026 08:24:54 +0200
+Subject: [PATCH 06/16] accel/tcg: report tb_flush on stderr when
+ QEMU_TB_FLUSH_LOG is set
+
+The tb_flush_count statistic is only reachable through the HMP monitor
+in system mode.  For user-mode guests there is no way to observe how
+often the translation cache overflows.  Print a one line message per
+flush on stderr when QEMU_TB_FLUSH_LOG is set in the environment, to
+size the translation cache (-tb-size) against the real workload.
+---
+ accel/tcg/tb-maint.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/accel/tcg/tb-maint.c b/accel/tcg/tb-maint.c
+index cc0f5af..3820f12 100644
+--- a/accel/tcg/tb-maint.c
++++ b/accel/tcg/tb-maint.c
+@@ -781,6 +781,15 @@ static void do_tb_flush(CPUState *cpu, run_on_cpu_data tb_flush_count)
+ done:
+     mmap_unlock();
+     if (did_flush) {
++        static int log_flush = -1;
++
++        if (log_flush < 0) {
++            log_flush = getenv("QEMU_TB_FLUSH_LOG") != NULL;
++        }
++        if (log_flush) {
++            fprintf(stderr, "[tcg] tb_flush #%u\n",
++                    qatomic_read(&tb_ctx.tb_flush_count));
++        }
+         qemu_plugin_flush_cb();
+     }
+ }
+-- 
+2.39.5 (Apple Git-154)
+

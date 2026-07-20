@@ -1,0 +1,117 @@
+From 4831b426c2a3c759ed6844a62440a097b2557cbc Mon Sep 17 00:00:00 2001
+From: Yumi-Lab <nicolas@yumi-lab.com>
+Date: Mon, 20 Jul 2026 19:51:30 +0200
+Subject: [PATCH 13/16] target/arm: hide BTI and SVE/SME in user-mode on 32-bit
+ hosts
+
+Extend the LSE2 reasoning to two more features of the default max model
+that are hostile to emulation on this host class, and move the whole
+block after arm_cpu_finalize_features, which otherwise rewrites the SVE
+field from the cpu properties and undoes the change.
+
+FEAT_BTI costs a guarded-page helper call on every BR and leaves BTYPE
+unpredictable at translation time, which disables the inline jump-cache
+probe on exactly the branches that dominate interpreter-style guests;
+unmarked binaries get no protection from it anyway.  QEMU_KEEP_BTI=1
+restores it.
+
+Advertising SVE/SME makes runtimes select vector routines that are
+emulated instruction-by-instruction through helpers, measured slower
+than the NEON paths they replace (guest runtime boot 13 s vs 10 s).
+The sub-feature registers id_aa64zfr0/id_aa64smfr0 must be hidden with
+the top-level bits: leaving SVE2 visible in hwcap2 while SVE is hidden
+made the guest execute now-undefined SVE instructions and die on
+SIGILL.  QEMU_KEEP_SVE=1 restores the advertisement.
+
+With both hidden the default model boots the guest runtime in 10 s with
+no command-line options, equal to -cpu cortex-a53, batteries green.
+---
+ target/arm/cpu.c | 65 ++++++++++++++++++++++++++++++++++--------------
+ 1 file changed, 47 insertions(+), 18 deletions(-)
+
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index b91bf1b..467e20c 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1985,24 +1985,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     tcg_cflags_set(cs, CF_PCREL);
+ #endif
+ 
+-#if defined(CONFIG_TCG) && defined(CONFIG_USER_ONLY)
+-    /*
+-     * On a 32-bit host there is no 16-byte atomic primitive.  With
+-     * FEAT_LSE2 (part of the default `max` model) every 16-byte aligned
+-     * LDP/STP requires single-copy 16-byte atomicity, which the atomicity
+-     * layer can only provide by a stop-the-world exclusive step: measured
+-     * ~17 M such steps for one guest runtime boot, an 8x slowdown.  Do not
+-     * advertise LSE2 (HWCAP_USCAT) on such hosts; guests then use the
+-     * pre-8.4 pairwise-atomic semantics that LDRD/STRD honour natively.
+-     * QEMU_KEEP_LSE2=1 restores the advertised feature for comparison.
+-     */
+-    if (sizeof(void *) == 4 && arm_feature(env, ARM_FEATURE_AARCH64) &&
+-        getenv("QEMU_KEEP_LSE2") == NULL) {
+-        cpu->isar.id_aa64mmfr2 =
+-            FIELD_DP64(cpu->isar.id_aa64mmfr2, ID_AA64MMFR2, AT, 0);
+-    }
+-#endif
+-
+     /* If we needed to query the host kernel for the CPU features
+      * then it's possible that might have failed in the initfn, but
+      * this is the first point where we can report it.
+@@ -2115,6 +2097,53 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++#if defined(CONFIG_TCG) && defined(CONFIG_USER_ONLY)
++    /*
++     * On a 32-bit host there is no 16-byte atomic primitive.  With
++     * FEAT_LSE2 (part of the default `max` model) every 16-byte aligned
++     * LDP/STP requires single-copy 16-byte atomicity, which the atomicity
++     * layer can only provide by a stop-the-world exclusive step: measured
++     * ~17 M such steps for one guest runtime boot, an 8x slowdown.  Do not
++     * advertise LSE2 (HWCAP_USCAT) on such hosts; guests then use the
++     * pre-8.4 pairwise-atomic semantics that LDRD/STRD honour natively.
++     * QEMU_KEEP_LSE2=1 restores the advertised feature for comparison.
++     */
++    if (sizeof(void *) == 4 && arm_feature(env, ARM_FEATURE_AARCH64) &&
++        getenv("QEMU_KEEP_LSE2") == NULL) {
++        cpu->isar.id_aa64mmfr2 =
++            FIELD_DP64(cpu->isar.id_aa64mmfr2, ID_AA64MMFR2, AT, 0);
++    }
++    /*
++     * FEAT_BTI is similarly hostile to emulation on this host class:
++     * every BR needs a guarded-page helper call and leaves BTYPE
++     * unpredictable at translation time, which disables the inline
++     * jump-cache probe on exactly the branches that dominate
++     * interpreter-style guests.  Unmarked binaries (no GP pages) get
++     * no protection from it anyway.  QEMU_KEEP_BTI=1 restores it.
++     */
++    if (sizeof(void *) == 4 && arm_feature(env, ARM_FEATURE_AARCH64) &&
++        getenv("QEMU_KEEP_BTI") == NULL) {
++        cpu->isar.id_aa64pfr1 =
++            FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, BT, 0);
++    }
++    /*
++     * Advertising SVE/SME makes runtimes select vector routines that
++     * are emulated instruction-by-instruction through helpers, measured
++     * clearly slower here than the NEON paths they replace.  Hide both
++     * so guests pick NEON.  QEMU_KEEP_SVE=1 restores the advertisement.
++     */
++    if (sizeof(void *) == 4 && arm_feature(env, ARM_FEATURE_AARCH64) &&
++        getenv("QEMU_KEEP_SVE") == NULL) {
++        cpu->isar.id_aa64pfr0 =
++            FIELD_DP64(cpu->isar.id_aa64pfr0, ID_AA64PFR0, SVE, 0);
++        cpu->isar.id_aa64pfr1 =
++            FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, SME, 0);
++        /* Hide the sub-feature registers too (SVE2 etc. feed hwcap2). */
++        cpu->isar.id_aa64zfr0 = 0;
++        cpu->isar.id_aa64smfr0 = 0;
++    }
++#endif
++
+ #ifdef CONFIG_USER_ONLY
+     /*
+      * User mode relies on IC IVAU instructions to catch modification of
+-- 
+2.39.5 (Apple Git-154)
+

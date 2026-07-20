@@ -1,0 +1,19 @@
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (35658ce8d7f1be53d0334d46ff57d6d37b4c78ccc7dd04a6466e6d2756dbb393)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 42C
+[run-claude-pad] Lancement: claude --version (mode=version, timeout=2400s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=41C rss=9MB out=0
+[claudepad] t=15s temp=41C rss=31MB out=0
+[claudepad] t=30s temp=42C rss=51MB out=0
+[claudepad] t=45s temp=42C rss=81MB out=0
+[claudepad] t=60s temp=41C rss=83MB out=0
+[claudepad] t=75s temp=42C rss=85MB out=0
+[claudepad] t=90s temp=42C rss=87MB out=0
+[claudepad] t=105s temp=42C rss=88MB out=0
+[claudepad] t=120s temp=42C rss=93MB out=0
+[claudepad] t=135s temp=43C rss=96MB out=0
+[claudepad] t=150s temp=42C rss=97MB out=0
+[claudepad] t=165s temp=42C rss=107MB out=0
+[claudepad] t=180s temp=42C rss=124MB out=0
+[claudepad] t=196s temp=42C rss=143MB out=0

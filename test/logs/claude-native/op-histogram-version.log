@@ -1,0 +1,48 @@
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (b65fd602ac0675794166610abc4d7648cbfc8d5ccd817523b97b23f93b8bea39)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 40C
+[run-claude-pad] Lancement: claude --version (mode=version, timeout=900s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=42C rss=18MB out=0
+[claudepad] t=15s temp=43C rss=86MB out=0
+[claudepad] t=30s temp=43C rss=101MB out=0
+[claudepad] t=45s temp=43C rss=193MB out=0
+[claudepad] t=60s temp=43C rss=239MB out=0
+[claudepad] t=75s temp=43C rss=245MB out=0
+[claudepad] t=90s temp=43C rss=247MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=105 out_bytes=22 peak_temp_c=43 min_temp_c=42 temp_before_c=40
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+2.1.214 (Claude Code)
+[run-claude-pad] --- claude stderr (tail) ---
+[tcg]   deposit_i32                     538    0.0%
+[tcg]   extract_i32                     504    0.0%
+[tcg]   mulu2_i32                       483    0.0%
+[tcg]   ld_vec                          450    0.0%
+[tcg]   not_i32                         279    0.0%
+[tcg]   clz_i32                         232    0.0%
+[tcg]   st16_i32                        224    0.0%
+[tcg]   mov_vec                         183    0.0%
+[tcg]   rotl_i32                        169    0.0%
+[tcg]   cmp_vec                         167    0.0%
+[tcg]   ext16u_i32                      132    0.0%
+[tcg]   ld16s_i32                       128    0.0%
+[tcg]   ld16u_i32                        88    0.0%
+[tcg]   ext16s_i32                       71    0.0%
+[tcg]   and_vec                          51    0.0%
+[tcg]   add_vec                          47    0.0%
+[tcg]   ext8s_i32                        42    0.0%
+[tcg]   dup_vec                          29    0.0%
+[tcg]   br                               28    0.0%
+[tcg]   or_vec                           28    0.0%
+[tcg]   sub_vec                          16    0.0%
+[tcg]   dup2_vec                          5    0.0%
+[tcg]   shli_vec                          5    0.0%
+[tcg]   orc_vec                           4    0.0%
+[tcg]   smax_vec                          3    0.0%
+[tcg]   andc_vec                          2    0.0%
+[tcg]   shri_vec                          2    0.0%
+[tcg]   negsetcond_i32                    1    0.0%
+[tcg]   dupm_vec                          1    0.0%
+[tcg]   not_vec                           1    0.0%
+[run-claude-pad] logs pad: /home/pi/qemu-fork-test/claude-version-20260720-111416.out / /home/pi/qemu-fork-test/claude-version-20260720-111416.err
