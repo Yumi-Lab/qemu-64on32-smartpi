@@ -18,7 +18,7 @@ clean exit).
 
 | Benchmark (native Claude Code guest) | vanilla qemu 9.2.4 | this fork |
 |---|---|---|
-| `--version` (runtime boot) | never finishes (>4 h, tb_flush storm) | **10 s** (6 s with persistent cache) |
+| `--version` (runtime boot) | never finishes (>4 h, tb_flush storm) | **10 s** |
 | `--help` (full CLI init) | never finishes | **61 s** |
 | `-p` (full agent turn, network + TLS, 2 cores) | never reached | **151 s**, result success |
 | torn64 (atomic throughput, 4 threads / 180 s) | 64-bit torn reads (corruption) | **1.3 G iterations, 0 torn reads** |
@@ -47,12 +47,41 @@ the fork), not micro-optimisations:
 5. **Indirect branch dispatch**: an inline jump-cache probe validated against
    translation-time constants replaces a roughly 40-instruction helper call
    (patch 0012).
-6. **Persistent translation cache** (`-tb-cache <file>` / `QEMU_TB_CACHE`): 100 %
-   reload of translated code between runs of the same binary (patch 0007).
+6. **Persistent translation cache** (`-tb-cache <file>` / `QEMU_TB_CACHE`): 94-98 %
+   reload of translated code between runs of the same binary (patch 0007). Later
+   measurement showed it does NOT speed up boot (execution dominates, translating in
+   one pass is essentially free): keep it for deterministic layouts and profiling,
+   not as a performance feature.
 
 Also included: termios2/TCGETS2 backport (required by Rust TUIs), a SIMD dup2_vec
 lowering fix, two upstream cherry-picks (self-linked TB unlink fix, TSTNE optimisation),
 and built-in profiling tools (`QEMU_OP_HISTOGRAM`, `QEMU_TB_EXEC_PROFILE`).
+
+## Optimization status (July 2026): measured optimum
+
+A systematic host-cycle profiling campaign closed the optimization work: hardware-PMU
+`perf` on the board, JIT code symbolized through the stock `QEMU_PERFMAP` support,
+instrument overhead measured at 0.05 %. Attribution on real workloads: translated
+guest code takes 37-58 % of host cycles (the structural cost of 64-on-32
+translation), the translator 16-33 % depending on how cold the boot is, TB dispatch
+9-12 %, helpers 2-3 %.
+
+Every remaining avenue was then measured to its ceiling, and closed by the numbers:
+
+- Lazy NZCV flags (i386-style cc_op, two implementations tried): net loss. With a
+  corrected execution-weighted counter, most defined flag groups are actually read
+  before being overwritten (defs/reads 0.39): there is nothing to elide.
+- Superblocks across direct branches: only 5-6 % of executed TB endings qualify.
+- Persistent cache as a speed-up: 94-98 % of TBs reload, wall-clock gain zero.
+- Dispatch tuning: 86-91 % of the dispatch cost is the already-minimal jump-cache
+  hit path (6.2 M hits vs 113 k misses on a runtime boot).
+- Guest JIT threshold sweep (JavaScriptCore): flat, the shipped recipes stand.
+- Inlining the remaining i64 helpers: 0.9-1.1 % of total cycles at best; 64-bit
+  add/sub already lower to exactly two host instructions (adds/adc) thanks to LPAE.
+
+The shipped defaults are, as measured, the practical optimum of this architecture on
+this class of hardware. The remaining cost is the intrinsic price of translating a
+64-bit guest on a 32-bit host.
 
 ## Installation
 
@@ -85,7 +114,8 @@ Or apply the `patches/` series onto a pristine QEMU v9.2.4 tree: `git am patches
 # Large guest JIT runtime (Bun/Node/JSC/V8): big translation cache
 QEMU_TB_SIZE=256 ./qemu-aarch64 ./big-binary
 
-# Frequent relaunches of the same binary: persistent cache (deterministic layout required)
+# Deterministic relaunches of the same binary (reproducible layout for measurements;
+# reloads translated code but does not speed up boot)
 setarch $(uname -m) -R env QEMU_TB_SIZE=256 QEMU_TB_CACHE=/path/cache.bin \
   ./qemu-aarch64 ./big-binary
 
