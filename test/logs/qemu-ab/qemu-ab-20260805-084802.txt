@@ -1,0 +1,41 @@
+=== A/B EMULATEURS, invite=claude-native charge=--help, 4 paires (ABAB), 20260805-084802 ===
+A = qemu-aarch64-baseline   B = qemu-aarch64-o3mcpu
+env commun : HOME=/root/qemu-fork-test DISABLE_AUTOUPDATER=1 QEMU_TB_SIZE=256 BUN_JSC_useJIT=1 BUN_JSC_useConcurrentGC=0 BUN_JSC_numberOfGCMarkers=1
+  deploiement qemu-aarch64-o3mcpu -> qemu-ab-b (local=f422666629602e87 pad=db71cbbcb66e111a)...
+  A=qemu-aarch64-baseline sha=6d9ada3184c84826   B=qemu-aarch64-o3mcpu sha=f422666629602e87 (identiques des deux cotes)
+  invite claude-native sha=e219a631e194e71b
+
+--- run de chauffe (JETE) ---
+    [qemu-ab-a] rc=0 elapsed=68s out_bytes=16036 temp_before=42C
+
+--- paire 1/4 ---
+    [qemu-ab-a] rc=0 elapsed=69s out_bytes=16036 temp_before=42C
+    [qemu-ab-b] rc=0 elapsed=66s out_bytes=16036 temp_before=42C
+--- paire 2/4 ---
+    [qemu-ab-a] rc=0 elapsed=71s out_bytes=16036 temp_before=42C
+    [qemu-ab-b] rc=0 elapsed=66s out_bytes=16036 temp_before=42C
+--- paire 3/4 ---
+    [qemu-ab-a] rc=0 elapsed=67s out_bytes=16036 temp_before=41C
+    pad occupe (autre qemu ou transfert en cours), attente 1/10...
+    pad occupe (autre qemu ou transfert en cours), attente 2/10...
+    pad occupe (autre qemu ou transfert en cours), attente 3/10...
+    pad occupe (autre qemu ou transfert en cours), attente 4/10...
+    pad occupe (autre qemu ou transfert en cours), attente 5/10...
+    pad occupe (autre qemu ou transfert en cours), attente 6/10...
+    pad occupe (autre qemu ou transfert en cours), attente 7/10...
+    pad occupe (autre qemu ou transfert en cours), attente 8/10...
+    [qemu-ab-b] rc=0 elapsed=67s out_bytes=16036 temp_before=42C
+--- paire 4/4 ---
+    [qemu-ab-a] rc=0 elapsed=68s out_bytes=16036 temp_before=42C
+    [qemu-ab-b] rc=0 elapsed=66s out_bytes=16036 temp_before=42C
+
+=== RESULTATS ===
+A (qemu-aarch64-baseline, n=4) : 69 71 67 68
+B (qemu-aarch64-o3mcpu, n=4) : 66 66 67 66
+octets rendus : A=16036 B=16036
+mediane A = 68s   mediane B = 66s
+B vs A : +2.94 %  (positif = B est PLUS RAPIDE que A)
+
+RAPPEL DE PORTEE : ce chiffre vaut pour l'invite e219a631e194e71b, la charge '--help', le pad
+dans son etat du jour. Il ne dit RIEN d'une autre charge ni d'un autre banc.
+Log : /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/qemu-ab/qemu-ab-20260805-084802.txt

@@ -1,0 +1,19 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 6K of event 'cycles:P'
+# Event count (approx.): 93348854534
+#
+# Overhead  Shared Object    
+# ........  .................
+#
+    51.71%  [JIT] tid 15088  
+    46.27%  qemu-aarch64     
+     2.02%  [kernel.kallsyms]
+
+
+#
+# (Tip: For memory address profiling, try: perf mem record / perf mem report)
+#

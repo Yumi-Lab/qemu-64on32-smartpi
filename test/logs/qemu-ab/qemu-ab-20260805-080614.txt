@@ -1,0 +1,4 @@
+=== A/B EMULATEURS, invite=claude-native charge=--help, 4 paires (ABAB), 20260805-080614 ===
+A = qemu-aarch64-baseline   B = qemu-aarch64-o2mcpu
+env commun : HOME=/root/qemu-fork-test DISABLE_AUTOUPDATER=1 QEMU_TB_SIZE=256 BUN_JSC_useJIT=1 BUN_JSC_useConcurrentGC=0 BUN_JSC_numberOfGCMarkers=1
+  deploiement qemu-aarch64-o2mcpu -> qemu-ab-b (local=db71cbbcb66e111a pad=bd5f1061572d8fdc)...

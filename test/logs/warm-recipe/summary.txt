@@ -1,0 +1,11 @@
+############ mode=version ############
+=== COLD (version) : 3 runs, combo standard sans cache ===
+=== COLD-SAVE (version) : amorce /home/pi/qemu-fork-test/tbcache-version.bin ===
+=== WARM (version) : 3 runs, cache recharge + setarch -R ===
+--- BILAN version ---
+cold mediane   : 15s (n=3, out_bytes=22)
+warm mediane   : 15s (n=3, out_bytes=22)
+cache warm     : reloaded 85074/85520 TBs
+delta warm/cold: 0.0%
+############ mode=help ############
+=== COLD (help) : 3 runs, combo standard sans cache ===

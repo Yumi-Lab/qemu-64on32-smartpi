@@ -1,0 +1,470 @@
+=== V4-2, A/B wall-clock JIT-ACTIF, mode=help, 4 paires (ABAB), 20260801-031944 ===
+env commun : QEMU_TB_SIZE=256 BUN_JSC_useJIT=1 BUN_JSC_useConcurrentGC=0 BUN_JSC_numberOfGCMarkers=1
+bras ON = QEMU_TB_DEDUP=1 ; bras OFF = flag absent
+
+--- run de chauffe (JETE, amorce le cache) ---
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (c624260cf626765a0b0adaaf0ee6fe970f674db509d798924496f8800e925ebf)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 47C
+[run-claude-pad] Lancement: claude --help (mode=help, timeout=1800s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=46C rss=26MB out=0
+[claudepad] t=15s temp=48C rss=277MB out=0
+[claudepad] t=30s temp=46C rss=318MB out=0
+[claudepad] t=45s temp=47C rss=350MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=60 out_bytes=16036 peak_temp_c=48 min_temp_c=46 temp_before_c=47
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+  -v, --version                         Output the version number
+  -w, --worktree [name]                 Create a new git worktree for this
+                                        session (optionally specify a name)
+
+Commands:
+  agents [options]                      Manage background agents
+  auth                                  Manage authentication
+  auto-mode                             Inspect or reset auto mode classifier
+                                        configuration
+  doctor                                Check the health of your Claude Code
+                                        installation. Reads settings files in
+                                        the current directory without a trust
+                                        prompt. For a full checkup that can also
+                                        fix issues, run /doctor in a session.
+  gateway [options]                     Run the enterprise auth/telemetry
+                                        gateway
+  install [options] [target]            Install Claude Code native build. Use
+                                        [target] to specify version (stable,
+                                        latest, or specific version)
+  mcp                                   Configure and manage MCP servers
+  plugin|plugins                        Manage Claude Code plugins
+  project                               Manage Claude Code project state
+  setup-token                           Set up a long-lived authentication token
+                                        (requires Claude subscription)
+  ultrareview [options] [target]        Run a cloud-hosted multi-agent code
+                                        review of the current branch (or a PR
+                                        number / base branch) and print the
+                                        findings
+  update|upgrade                        Check for updates and install if
+                                        available
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-help-20260801-031948.out / /root/qemu-fork-test/claude-help-20260801-031948.err
+    [OFF] RESULT=BOOTED exit_rc=0 elapsed=60 out_bytes=16036
+
+--- paire 1/4 ---
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (c624260cf626765a0b0adaaf0ee6fe970f674db509d798924496f8800e925ebf)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 47C
+[run-claude-pad] Lancement: claude --help (mode=help, timeout=1800s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=46C rss=32MB out=0
+[claudepad] t=15s temp=48C rss=294MB out=0
+[claudepad] t=30s temp=47C rss=335MB out=0
+[claudepad] t=46s temp=47C rss=360MB out=0
+[claudepad] t=61s temp=47C rss=383MB out=0
+[claudepad] t=76s temp=47C rss=392MB out=0
+[claudepad] t=91s temp=49C rss=404MB out=0
+[claudepad] t=106s temp=47C rss=406MB out=0
+[claudepad] t=121s temp=47C rss=407MB out=0
+[claudepad] t=136s temp=47C rss=409MB out=0
+[claudepad] t=151s temp=47C rss=413MB out=0
+[claudepad] t=166s temp=47C rss=426MB out=0
+[claudepad] t=181s temp=48C rss=430MB out=0
+[claudepad] t=196s temp=47C rss=432MB out=0
+[claudepad] t=211s temp=51C rss=435MB out=0
+[claudepad] t=226s temp=53C rss=450MB out=0
+[claudepad] t=242s temp=49C rss=452MB out=0
+[claudepad] t=257s temp=48C rss=453MB out=0
+[claudepad] t=272s temp=48C rss=457MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=287 out_bytes=16036 peak_temp_c=53 min_temp_c=46 temp_before_c=47
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+  -v, --version                         Output the version number
+  -w, --worktree [name]                 Create a new git worktree for this
+                                        session (optionally specify a name)
+
+Commands:
+  agents [options]                      Manage background agents
+  auth                                  Manage authentication
+  auto-mode                             Inspect or reset auto mode classifier
+                                        configuration
+  doctor                                Check the health of your Claude Code
+                                        installation. Reads settings files in
+                                        the current directory without a trust
+                                        prompt. For a full checkup that can also
+                                        fix issues, run /doctor in a session.
+  gateway [options]                     Run the enterprise auth/telemetry
+                                        gateway
+  install [options] [target]            Install Claude Code native build. Use
+                                        [target] to specify version (stable,
+                                        latest, or specific version)
+  mcp                                   Configure and manage MCP servers
+  plugin|plugins                        Manage Claude Code plugins
+  project                               Manage Claude Code project state
+  setup-token                           Set up a long-lived authentication token
+                                        (requires Claude subscription)
+  ultrareview [options] [target]        Run a cloud-hosted multi-agent code
+                                        review of the current branch (or a PR
+                                        number / base branch) and print the
+                                        findings
+  update|upgrade                        Check for updates and install if
+                                        available
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-help-20260801-032141.out / /root/qemu-fork-test/claude-help-20260801-032141.err
+    [ON] RESULT=BOOTED exit_rc=0 elapsed=287 out_bytes=16036
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (c624260cf626765a0b0adaaf0ee6fe970f674db509d798924496f8800e925ebf)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 46C
+[run-claude-pad] Lancement: claude --help (mode=help, timeout=1800s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=47C rss=25MB out=0
+[claudepad] t=15s temp=48C rss=274MB out=0
+[claudepad] t=30s temp=46C rss=314MB out=0
+[claudepad] t=45s temp=48C rss=345MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=60 out_bytes=16036 peak_temp_c=48 min_temp_c=46 temp_before_c=46
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+  -v, --version                         Output the version number
+  -w, --worktree [name]                 Create a new git worktree for this
+                                        session (optionally specify a name)
+
+Commands:
+  agents [options]                      Manage background agents
+  auth                                  Manage authentication
+  auto-mode                             Inspect or reset auto mode classifier
+                                        configuration
+  doctor                                Check the health of your Claude Code
+                                        installation. Reads settings files in
+                                        the current directory without a trust
+                                        prompt. For a full checkup that can also
+                                        fix issues, run /doctor in a session.
+  gateway [options]                     Run the enterprise auth/telemetry
+                                        gateway
+  install [options] [target]            Install Claude Code native build. Use
+                                        [target] to specify version (stable,
+                                        latest, or specific version)
+  mcp                                   Configure and manage MCP servers
+  plugin|plugins                        Manage Claude Code plugins
+  project                               Manage Claude Code project state
+  setup-token                           Set up a long-lived authentication token
+                                        (requires Claude subscription)
+  ultrareview [options] [target]        Run a cloud-hosted multi-agent code
+                                        review of the current branch (or a PR
+                                        number / base branch) and print the
+                                        findings
+  update|upgrade                        Check for updates and install if
+                                        available
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-help-20260801-032721.out / /root/qemu-fork-test/claude-help-20260801-032721.err
+    [OFF] RESULT=BOOTED exit_rc=0 elapsed=60 out_bytes=16036
+--- paire 2/4 ---
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (c624260cf626765a0b0adaaf0ee6fe970f674db509d798924496f8800e925ebf)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 46C
+[run-claude-pad] Lancement: claude --help (mode=help, timeout=1800s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=46C rss=31MB out=0
+[claudepad] t=15s temp=47C rss=291MB out=0
+[claudepad] t=31s temp=47C rss=332MB out=0
+[claudepad] t=46s temp=47C rss=357MB out=0
+[claudepad] t=61s temp=47C rss=379MB out=0
+[claudepad] t=76s temp=47C rss=388MB out=0
+[claudepad] t=91s temp=47C rss=400MB out=0
+[claudepad] t=106s temp=47C rss=403MB out=0
+[claudepad] t=121s temp=47C rss=404MB out=0
+[claudepad] t=136s temp=47C rss=407MB out=0
+[claudepad] t=151s temp=48C rss=418MB out=0
+[claudepad] t=166s temp=47C rss=425MB out=0
+[claudepad] t=181s temp=47C rss=428MB out=0
+[claudepad] t=196s temp=46C rss=431MB out=0
+[claudepad] t=211s temp=47C rss=442MB out=0
+[claudepad] t=227s temp=47C rss=447MB out=0
+[claudepad] t=242s temp=47C rss=448MB out=0
+[claudepad] t=257s temp=47C rss=452MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=272 out_bytes=16036 peak_temp_c=48 min_temp_c=46 temp_before_c=46
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+  -v, --version                         Output the version number
+  -w, --worktree [name]                 Create a new git worktree for this
+                                        session (optionally specify a name)
+
+Commands:
+  agents [options]                      Manage background agents
+  auth                                  Manage authentication
+  auto-mode                             Inspect or reset auto mode classifier
+                                        configuration
+  doctor                                Check the health of your Claude Code
+                                        installation. Reads settings files in
+                                        the current directory without a trust
+                                        prompt. For a full checkup that can also
+                                        fix issues, run /doctor in a session.
+  gateway [options]                     Run the enterprise auth/telemetry
+                                        gateway
+  install [options] [target]            Install Claude Code native build. Use
+                                        [target] to specify version (stable,
+                                        latest, or specific version)
+  mcp                                   Configure and manage MCP servers
+  plugin|plugins                        Manage Claude Code plugins
+  project                               Manage Claude Code project state
+  setup-token                           Set up a long-lived authentication token
+                                        (requires Claude subscription)
+  ultrareview [options] [target]        Run a cloud-hosted multi-agent code
+                                        review of the current branch (or a PR
+                                        number / base branch) and print the
+                                        findings
+  update|upgrade                        Check for updates and install if
+                                        available
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-help-20260801-032914.out / /root/qemu-fork-test/claude-help-20260801-032914.err
+    [ON] RESULT=BOOTED exit_rc=0 elapsed=272 out_bytes=16036
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (c624260cf626765a0b0adaaf0ee6fe970f674db509d798924496f8800e925ebf)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 46C
+[run-claude-pad] Lancement: claude --help (mode=help, timeout=1800s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=46C rss=25MB out=0
+[claudepad] t=15s temp=48C rss=274MB out=0
+[claudepad] t=30s temp=47C rss=315MB out=0
+[claudepad] t=45s temp=47C rss=346MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=60 out_bytes=16036 peak_temp_c=48 min_temp_c=46 temp_before_c=46
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+  -v, --version                         Output the version number
+  -w, --worktree [name]                 Create a new git worktree for this
+                                        session (optionally specify a name)
+
+Commands:
+  agents [options]                      Manage background agents
+  auth                                  Manage authentication
+  auto-mode                             Inspect or reset auto mode classifier
+                                        configuration
+  doctor                                Check the health of your Claude Code
+                                        installation. Reads settings files in
+                                        the current directory without a trust
+                                        prompt. For a full checkup that can also
+                                        fix issues, run /doctor in a session.
+  gateway [options]                     Run the enterprise auth/telemetry
+                                        gateway
+  install [options] [target]            Install Claude Code native build. Use
+                                        [target] to specify version (stable,
+                                        latest, or specific version)
+  mcp                                   Configure and manage MCP servers
+  plugin|plugins                        Manage Claude Code plugins
+  project                               Manage Claude Code project state
+  setup-token                           Set up a long-lived authentication token
+                                        (requires Claude subscription)
+  ultrareview [options] [target]        Run a cloud-hosted multi-agent code
+                                        review of the current branch (or a PR
+                                        number / base branch) and print the
+                                        findings
+  update|upgrade                        Check for updates and install if
+                                        available
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-help-20260801-033439.out / /root/qemu-fork-test/claude-help-20260801-033439.err
+    [OFF] RESULT=BOOTED exit_rc=0 elapsed=60 out_bytes=16036
+--- paire 3/4 ---
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (c624260cf626765a0b0adaaf0ee6fe970f674db509d798924496f8800e925ebf)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 46C
+[run-claude-pad] Lancement: claude --help (mode=help, timeout=1800s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=47C rss=32MB out=0
+[claudepad] t=15s temp=47C rss=294MB out=0
+[claudepad] t=30s temp=47C rss=341MB out=0
+[claudepad] t=45s temp=47C rss=361MB out=0
+[claudepad] t=61s temp=47C rss=385MB out=0
+[claudepad] t=76s temp=47C rss=392MB out=0
+[claudepad] t=91s temp=49C rss=404MB out=0
+[claudepad] t=106s temp=47C rss=407MB out=0
+[claudepad] t=121s temp=47C rss=407MB out=0
+[claudepad] t=136s temp=47C rss=410MB out=0
+[claudepad] t=151s temp=48C rss=414MB out=0
+[claudepad] t=166s temp=47C rss=426MB out=0
+[claudepad] t=181s temp=47C rss=430MB out=0
+[claudepad] t=196s temp=46C rss=432MB out=0
+[claudepad] t=211s temp=47C rss=445MB out=0
+[claudepad] t=226s temp=47C rss=451MB out=0
+[claudepad] t=241s temp=47C rss=452MB out=0
+[claudepad] t=257s temp=47C rss=457MB out=16036
+RESULT=BOOTED exit_rc=0 elapsed=272 out_bytes=16036 peak_temp_c=49 min_temp_c=46 temp_before_c=46
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+  -v, --version                         Output the version number
+  -w, --worktree [name]                 Create a new git worktree for this
+                                        session (optionally specify a name)
+
+Commands:
+  agents [options]                      Manage background agents
+  auth                                  Manage authentication
+  auto-mode                             Inspect or reset auto mode classifier
+                                        configuration
+  doctor                                Check the health of your Claude Code
+                                        installation. Reads settings files in
+                                        the current directory without a trust
+                                        prompt. For a full checkup that can also
+                                        fix issues, run /doctor in a session.
+  gateway [options]                     Run the enterprise auth/telemetry
+                                        gateway
+  install [options] [target]            Install Claude Code native build. Use
+                                        [target] to specify version (stable,
+                                        latest, or specific version)
+  mcp                                   Configure and manage MCP servers
+  plugin|plugins                        Manage Claude Code plugins
+  project                               Manage Claude Code project state
+  setup-token                           Set up a long-lived authentication token
+                                        (requires Claude subscription)
+  ultrareview [options] [target]        Run a cloud-hosted multi-agent code
+                                        review of the current branch (or a PR
+                                        number / base branch) and print the
+                                        findings
+  update|upgrade                        Check for updates and install if
+                                        available
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-help-20260801-033632.out / /root/qemu-fork-test/claude-help-20260801-033632.err
+    [ON] RESULT=BOOTED exit_rc=0 elapsed=272 out_bytes=16036
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (c624260cf626765a0b0adaaf0ee6fe970f674db509d798924496f8800e925ebf)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 46C
+[run-claude-pad] Lancement: claude --help (mode=help, timeout=1800s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=47C rss=25MB out=0
+[claudepad] t=15s temp=47C rss=274MB out=0
+[claudepad] t=30s temp=47C rss=314MB out=0
+[claudepad] t=45s temp=47C rss=345MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=60 out_bytes=16036 peak_temp_c=47 min_temp_c=47 temp_before_c=46
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+  -v, --version                         Output the version number
+  -w, --worktree [name]                 Create a new git worktree for this
+                                        session (optionally specify a name)
+
+Commands:
+  agents [options]                      Manage background agents
+  auth                                  Manage authentication
+  auto-mode                             Inspect or reset auto mode classifier
+                                        configuration
+  doctor                                Check the health of your Claude Code
+                                        installation. Reads settings files in
+                                        the current directory without a trust
+                                        prompt. For a full checkup that can also
+                                        fix issues, run /doctor in a session.
+  gateway [options]                     Run the enterprise auth/telemetry
+                                        gateway
+  install [options] [target]            Install Claude Code native build. Use
+                                        [target] to specify version (stable,
+                                        latest, or specific version)
+  mcp                                   Configure and manage MCP servers
+  plugin|plugins                        Manage Claude Code plugins
+  project                               Manage Claude Code project state
+  setup-token                           Set up a long-lived authentication token
+                                        (requires Claude subscription)
+  ultrareview [options] [target]        Run a cloud-hosted multi-agent code
+                                        review of the current branch (or a PR
+                                        number / base branch) and print the
+                                        findings
+  update|upgrade                        Check for updates and install if
+                                        available
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-help-20260801-034158.out / /root/qemu-fork-test/claude-help-20260801-034158.err
+    [OFF] RESULT=BOOTED exit_rc=0 elapsed=60 out_bytes=16036
+--- paire 4/4 ---
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (c624260cf626765a0b0adaaf0ee6fe970f674db509d798924496f8800e925ebf)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 46C
+[run-claude-pad] Lancement: claude --help (mode=help, timeout=1800s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=46C rss=31MB out=0
+[claudepad] t=15s temp=45C rss=294MB out=0
+[claudepad] t=30s temp=45C rss=343MB out=0
+[claudepad] t=45s temp=45C rss=360MB out=0
+[claudepad] t=60s temp=46C rss=383MB out=0
+Read from remote host 192.168.1.108: Connection reset by peer
+client_loop: send disconnect: Broken pipe
+[run-claude-pad] ssh_rc=255
+[run-claude-pad] --- claude stdout (tail) ---
+  -v, --version                         Output the version number
+  -w, --worktree [name]                 Create a new git worktree for this
+                                        session (optionally specify a name)
+
+Commands:
+  agents [options]                      Manage background agents
+  auth                                  Manage authentication
+  auto-mode                             Inspect or reset auto mode classifier
+                                        configuration
+  doctor                                Check the health of your Claude Code
+                                        installation. Reads settings files in
+                                        the current directory without a trust
+                                        prompt. For a full checkup that can also
+                                        fix issues, run /doctor in a session.
+  gateway [options]                     Run the enterprise auth/telemetry
+                                        gateway
+  install [options] [target]            Install Claude Code native build. Use
+                                        [target] to specify version (stable,
+                                        latest, or specific version)
+  mcp                                   Configure and manage MCP servers
+  plugin|plugins                        Manage Claude Code plugins
+  project                               Manage Claude Code project state
+  setup-token                           Set up a long-lived authentication token
+                                        (requires Claude subscription)
+  ultrareview [options] [target]        Run a cloud-hosted multi-agent code
+                                        review of the current branch (or a PR
+                                        number / base branch) and print the
+                                        findings
+  update|upgrade                        Check for updates and install if
+                                        available
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-help-20260801-040127.out / /root/qemu-fork-test/claude-help-20260801-040127.err
+    [ON] AUCUNE ligne RESULT -> run invalide
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (c624260cf626765a0b0adaaf0ee6fe970f674db509d798924496f8800e925ebf)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 55C
+[run-claude-pad] Lancement: claude --help (mode=help, timeout=1800s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=53C rss=22MB out=0
+[claudepad] t=15s temp=55C rss=264MB out=0
+[claudepad] t=30s temp=52C rss=304MB out=0
+[claudepad] t=45s temp=54C rss=333MB out=0
+[claudepad] t=60s temp=55C rss=353MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=75 out_bytes=16036 peak_temp_c=55 min_temp_c=52 temp_before_c=55
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+  -v, --version                         Output the version number
+  -w, --worktree [name]                 Create a new git worktree for this
+                                        session (optionally specify a name)
+
+Commands:
+  agents [options]                      Manage background agents
+  auth                                  Manage authentication
+  auto-mode                             Inspect or reset auto mode classifier
+                                        configuration
+  doctor                                Check the health of your Claude Code
+                                        installation. Reads settings files in
+                                        the current directory without a trust
+                                        prompt. For a full checkup that can also
+                                        fix issues, run /doctor in a session.
+  gateway [options]                     Run the enterprise auth/telemetry
+                                        gateway
+  install [options] [target]            Install Claude Code native build. Use
+                                        [target] to specify version (stable,
+                                        latest, or specific version)
+  mcp                                   Configure and manage MCP servers
+  plugin|plugins                        Manage Claude Code plugins
+  project                               Manage Claude Code project state
+  setup-token                           Set up a long-lived authentication token
+                                        (requires Claude subscription)
+  ultrareview [options] [target]        Run a cloud-hosted multi-agent code
+                                        review of the current branch (or a PR
+                                        number / base branch) and print the
+                                        findings
+  update|upgrade                        Check for updates and install if
+                                        available
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-help-20260801-134634.out / /root/qemu-fork-test/claude-help-20260801-134634.err
+    [OFF] RESULT=BOOTED exit_rc=0 elapsed=75 out_bytes=16036
+
+=== RESULTATS ===
+ON  (n=3) : 287 272 272
+OFF (n=4) : 60 60 60 75
+mediane ON  = 272s
+mediane OFF = 60s
+gain median = -353.33 % (positif = la dedup accelere)
+VERDICT : GAIN < 2 % -> FERMETURE CHIFFREE (la dedup marche mais ne rend pas).
+Log : /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/v42-ab/v42-ab-20260801-031944.txt

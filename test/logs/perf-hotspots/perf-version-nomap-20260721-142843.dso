@@ -1,0 +1,19 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 6K of event 'cycles:P'
+# Event count (approx.): 16555551990
+#
+# Overhead  Shared Object    
+# ........  .................
+#
+    58.39%  qemu-aarch64     
+    37.02%  [JIT] tid 11236  
+     4.58%  [kernel.kallsyms]
+
+
+#
+# (Tip: When collecting LBR backtraces use --stitch-lbr to handle more than 32 deep entries: perf record --call-graph lbr ; perf report --stitch-lbr)
+#

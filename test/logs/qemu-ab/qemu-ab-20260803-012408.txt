@@ -1,0 +1,32 @@
+=== A/B EMULATEURS, invite=claude-native charge=--help, 4 paires (ABAB), 20260803-012408 ===
+A = qemu-aarch64-baseline   B = qemu-aarch64-o3lto
+env commun : HOME=/root/qemu-fork-test DISABLE_AUTOUPDATER=1 QEMU_TB_SIZE=256 BUN_JSC_useJIT=1 BUN_JSC_useConcurrentGC=0 BUN_JSC_numberOfGCMarkers=1
+  A=qemu-aarch64-baseline sha=6d9ada3184c84826   B=qemu-aarch64-o3lto sha=bd5f1061572d8fdc (identiques des deux cotes)
+  invite claude-native sha=e219a631e194e71b
+
+--- run de chauffe (JETE) ---
+    [qemu-ab-a] rc=0 elapsed=60s out_bytes=16036 temp_before=46C
+
+--- paire 1/4 ---
+    [qemu-ab-a] rc=0 elapsed=61s out_bytes=16036 temp_before=45C
+    [qemu-ab-b] rc=0 elapsed=57s out_bytes=16036 temp_before=46C
+--- paire 2/4 ---
+    [qemu-ab-a] rc=0 elapsed=61s out_bytes=16036 temp_before=45C
+    [qemu-ab-b] rc=0 elapsed=57s out_bytes=16036 temp_before=46C
+--- paire 3/4 ---
+    [qemu-ab-a] rc=0 elapsed=61s out_bytes=16036 temp_before=46C
+    [qemu-ab-b] rc=0 elapsed=57s out_bytes=16036 temp_before=46C
+--- paire 4/4 ---
+    [qemu-ab-a] rc=0 elapsed=60s out_bytes=16036 temp_before=46C
+    [qemu-ab-b] rc=0 elapsed=57s out_bytes=16036 temp_before=48C
+
+=== RESULTATS ===
+A (qemu-aarch64-baseline, n=4) : 61 61 61 60
+B (qemu-aarch64-o3lto, n=4) : 57 57 57 57
+octets rendus : A=16036 B=16036
+mediane A = 61s   mediane B = 57s
+B vs A : +6.56 %  (positif = B est PLUS RAPIDE que A)
+
+RAPPEL DE PORTEE : ce chiffre vaut pour l'invite e219a631e194e71b, la charge '--help', le pad
+dans son etat du jour. Il ne dit RIEN d'une autre charge ni d'un autre banc.
+Log : /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/qemu-ab/qemu-ab-20260803-012408.txt

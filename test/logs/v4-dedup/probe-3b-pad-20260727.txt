@@ -1,0 +1,75 @@
+GATE 3b, sonde d'installation dedup (V4-1) sur le PAD, 2026-07-27
+=================================================================
+
+Critere du gate (PROGRESS.md, RESTE du sous-lot 15) : la ligne guest
+`RESULT=OK copies=64 calls_ok=64` ET la ligne qemu
+`tb-dedup-index: ... probe_ok=<>0> probe_mismatch=0 ...`.
+
+Binaires (sha256 verifies identiques des deux cotes, Mac et pad) :
+  qemu-aarch64     36ced756ad3f7c90bd1553bfc01d79930e067d99065a39e70f58ce8463708da3
+  tb-dedup-guest   cbd3f00ee8e2506df390cfc3bf09a3af27ffab614c5e0cfcbfaed9db1b01e48a
+Source inner : branche tb-dedup, HEAD ed59a3c
+  (tb-dedup: rebase ADRP page bases as a step function, not linearly)
+
+Pad : instance DietPi minimale, user root, dossier /root/qemu-fork-test.
+Transfert par `gzip -c | ssh 'gunzip -c > fichier'` (ni scp ni sftp-server sur
+cette image ; un `cat >` brut de 34 Mo avait fait tomber le lien).
+
+
+RUN (commande reelle)
+---------------------
+  TEMP_BEFORE=$(cat /sys/class/thermal/thermal_zone0/temp)
+  pgrep qemu-aarch64 && exit 9   # un seul qemu a la fois
+  cd /root/qemu-fork-test && taskset -c 0,1 timeout 300 \
+    env QEMU_TB_DEDUP=1 QEMU_TB_DEDUP_LOG=1 ./qemu-aarch64 ./tb-dedup-guest
+  TEMP_AFTER=$(cat /sys/class/thermal/thermal_zone0/temp)
+
+
+SORTIE REELLE
+-------------
+TEMP_BEFORE=57270
+NOQEMU
+tb-dedup-guest: 64 copies byte-identiques de `adr x0,. ; ret`, une par page de 4096 o
+RESULT=OK copies=64 calls_ok=64
+juge dedup : lire la ligne `tb-dedup-index: ... probe_ok probe_mismatch` emise par qemu sous QEMU_TB_DEDUP=1 QEMU_TB_DEDUP_LOG=1 ; attendu probe_mismatch=0 et probe_ok>0 (idealement copies-1)
+tb-dedup: tbs=1065 with_reloc=1065 reloc_words=4205 overflow=0 bad_readback=0
+tb-dedup-index: seen=1065 templates=980 hits=85 collisions=0 evictions=0 installs=85 install_aborts=0 probe_ok=85 probe_mismatch=0 probe_size_mismatch=0 probe_skip=980
+RC=0
+TEMP_AFTER=56543
+
+
+VERDICT
+-------
+probe_mismatch=0 et probe_ok=85 sur 85 installs : VERT, le critere du gate 3b
+est atteint. L'installateur (lookup index, garde octet-exacte sur la source,
+memcpy du snapshot, rebase des relocs) reproduit EXACTEMENT les octets hotes que
+le traducteur froid vient d'emettre au meme site, sur 85 installs, sur le
+silicium reel. collisions=0, install_aborts=0, probe_size_mismatch=0.
+Temperature 57,3 C avant / 56,5 C apres, aucun throttle.
+
+Progression de la sonde : 85 mismatches (pad, sous-lot 16) -> 5 (emission
+position-independante) -> 2 (snapshot du template) -> 0 (rebase des bases de
+page ADRP en fonction en escalier).
+
+
+BANC LOCAL NESTED (meme binaire, meme jour, pour comparaison)
+------------------------------------------------------------
+  $ docker run --rm -v "$PWD/build-out:/g:ro" -e QEMU_TB_DEDUP=1 \
+      -e QEMU_TB_DEDUP_LOG=1 nest-emu:latest \
+      /usr/bin/qemu-arm-static /g/qemu-aarch64 /g/tb-dedup-guest
+  RESULT=OK copies=64 calls_ok=64
+  tb-dedup: tbs=1066 with_reloc=1066 reloc_words=4209 overflow=0 bad_readback=0
+  tb-dedup-index: seen=1066 templates=981 hits=85 collisions=0 evictions=0 installs=85 install_aborts=0 probe_ok=85 probe_mismatch=0 probe_size_mismatch=0 probe_skip=980
+
+Les deux bancs concordent aux memes 85 installs et au meme verdict. L'ecart d'un
+TB (1065 contre 1066) vient du prologue libc, pas de la dedup.
+
+
+CE QUE CE GATE NE PROUVE PAS
+----------------------------
+La sonde est NON DESTRUCTIVE : elle installe dans un scratch prive et compare,
+elle n'ecrit rien dans le code cache et ne relie aucun TB. Elle prouve que les
+octets servis seraient corrects, PAS que l'install chaud destructif (item 3c :
+ecriture dans le code cache + tb_reset_jump + tb_link) est correct, ni qu'il
+rend la moindre seconde. La correctness reelle reste V4-1G, le juge wall-clock
+reste V4-2.

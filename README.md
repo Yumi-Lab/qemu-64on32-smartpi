@@ -1,151 +1,131 @@
 # qemu-64on32-smartpi
 
-**The last living 64-on-32 qemu-user, correct AND fast.**
+Fork de QEMU 9.2.4 qui rend le user-mode **64-on-32** — invité aarch64 **multithread** sur hôte
+armv7l — **atomiquement correct** sur Cortex-A7 LPAE (Allwinner H3, SmartPi / SmartPad).
 
-A fork of QEMU **9.2.4** that runs **multithreaded aarch64-linux-user** binaries on an
-**armv7l** host (Cortex-A7 LPAE, Allwinner H3 class boards: SmartPi One, SmartPad,
-Orange Pi...). QEMU >= 10.0 removed "64-bit guest on 32-bit host" support entirely;
-9.2.4 is the last working base, but its user mode was officially broken there ("in user
-mode atomicity was simply broken") and pathologically slow. This fork fixes both.
+QEMU >= 10.0 a supprimé le 64-on-32 ; 9.2.4 est la dernière base fonctionnelle, mais son
+user-mode déchire les accès 64 bits entre threads (*« in user mode atomicity was simply
+broken »*). Sur Cortex-A7 LPAE, `LDRD`/`STRD` alignés sont single-copy atomic : ce fork route
+tout accès invité 64 bits par une émission atomique garantie.
 
-Validated on real workloads on an H3 (1 GHz, 1 GB RAM): the native **Grok CLI** TUI
-(static Rust, crashes within 2-5 minutes under qemu 7.2) runs stable, and the native
-**Claude Code** binary (Bun/JavaScriptCore, 247 MB, the most brutal stress test the
-author knows of) boots and completes a full agent turn (init, TLS, API call, response,
-clean exit).
+Résultat mesuré : le binaire natif **Claude Code** (aarch64-linux-musl, ~258 Mo, runtime Bun /
+JavaScriptCore avec JIT) démarre, rend son aide, affiche sa TUI interactive et mène un tour
+d'agent jusqu'à l'authentification — sur une carte armv7 32 bits à 1 Go de RAM.
 
-## Measured results (H3, single core unless noted)
+## Appliquer les patches
 
-| Benchmark (native Claude Code guest) | vanilla qemu 9.2.4 | this fork |
-|---|---|---|
-| `--version` (runtime boot) | never finishes (>4 h, tb_flush storm) | **10 s** |
-| `--help` (full CLI init) | never finishes | **61 s** |
-| `-p` (full agent turn, network + TLS, 2 cores) | never reached | **151 s**, result success |
-| torn64 (atomic throughput, 4 threads / 180 s) | 64-bit torn reads (corruption) | **1.3 G iterations, 0 torn reads** |
-| Native Grok CLI TUI | crashes in 2-5 min (7.2/8.x/9.x) | **stable >30 min** |
-
-## Why it was slow, and what was fixed
-
-The gains come from measured root causes (an execution-weighted profiler is built into
-the fork), not micro-optimisations:
-
-1. **64-bit atomicity (correctness)**: guest 64-bit accesses were lowered to two 32-bit
-   host accesses, torn between threads. On Cortex-A7 LPAE, aligned LDRD/STRD are
-   single-copy atomic: guaranteed inline emission, atomic helper otherwise
-   (patches 0001-0002).
-2. **Translation cache hardwired to 32 MiB**: any large guest runtime entered perpetual
-   retranslation. Made configurable: `-tb-size` / `QEMU_TB_SIZE` (patch 0005).
-3. **FEAT_LSE2 in the default CPU model**: every 16-byte aligned LDP/STP (the prologue
-   of every single function!) required 16-byte atomicity that a 32-bit host cannot
-   provide, causing ~17 million stop-the-world exclusive steps per boot. Hidden by
-   default in 32-bit-host user mode, `QEMU_KEEP_LSE2=1` restores it (patch 0011).
-   Measured gain: 8x.
-4. **FEAT_BTI and SVE/SME advertised**: a helper call per indirect branch, and vector
-   routines emulated instruction-by-instruction, slower than the NEON paths they
-   replace. Hidden by default, `QEMU_KEEP_BTI=1` / `QEMU_KEEP_SVE=1` restore them
-   (patch 0013).
-5. **Indirect branch dispatch**: an inline jump-cache probe validated against
-   translation-time constants replaces a roughly 40-instruction helper call
-   (patch 0012).
-6. **Persistent translation cache** (`-tb-cache <file>` / `QEMU_TB_CACHE`): 94-98 %
-   reload of translated code between runs of the same binary (patch 0007). Later
-   measurement showed it does NOT speed up boot (execution dominates, translating in
-   one pass is essentially free): keep it for deterministic layouts and profiling,
-   not as a performance feature.
-
-Also included: termios2/TCGETS2 backport (required by Rust TUIs), a SIMD dup2_vec
-lowering fix, two upstream cherry-picks (self-linked TB unlink fix, TSTNE optimisation),
-and built-in profiling tools (`QEMU_OP_HISTOGRAM`, `QEMU_TB_EXEC_PROFILE`).
-
-## Optimization status (July 2026): measured optimum
-
-A systematic host-cycle profiling campaign closed the optimization work: hardware-PMU
-`perf` on the board, JIT code symbolized through the stock `QEMU_PERFMAP` support,
-instrument overhead measured at 0.05 %. Attribution on real workloads: translated
-guest code takes 37-58 % of host cycles (the structural cost of 64-on-32
-translation), the translator 16-33 % depending on how cold the boot is, TB dispatch
-9-12 %, helpers 2-3 %.
-
-Every remaining avenue was then measured to its ceiling, and closed by the numbers:
-
-- Lazy NZCV flags (i386-style cc_op, two implementations tried): net loss. With a
-  corrected execution-weighted counter, most defined flag groups are actually read
-  before being overwritten (defs/reads 0.39): there is nothing to elide.
-- Superblocks across direct branches: only 5-6 % of executed TB endings qualify.
-- Persistent cache as a speed-up: 94-98 % of TBs reload, wall-clock gain zero.
-- Dispatch tuning: 86-91 % of the dispatch cost is the already-minimal jump-cache
-  hit path (6.2 M hits vs 113 k misses on a runtime boot).
-- Guest JIT threshold sweep (JavaScriptCore): flat, the shipped recipes stand.
-- Inlining the remaining i64 helpers: 0.9-1.1 % of total cycles at best; 64-bit
-  add/sub already lower to exactly two host instructions (adds/adc) thanks to LPAE.
-
-The shipped defaults are, as measured, the practical optimum of this architecture on
-this class of hardware. The remaining cost is the intrinsic price of translating a
-64-bit guest on a 32-bit host.
-
-## Installation
-
-### Prebuilt binary
-
-See [Releases](../../releases): a static `qemu-aarch64` for armv7l, no dependencies.
+Série de **16 patches** sur le tag upstream `v9.2.4`, exportée par
+`git format-patch v9.2.4..yumi-64on32` :
 
 ```bash
-chmod +x qemu-aarch64
-./qemu-aarch64 --version
+git clone --branch v9.2.4 https://gitlab.com/qemu-project/qemu.git
+cd qemu
+git apply --check ../patches/*.patch     # vérification à blanc
+git am ../patches/*.patch                # application dans l'ordre
 ```
 
-### Building from source
+L'ordre compte : plusieurs patches touchent `tcg/arm/tcg-target.c.inc`.
 
-Builds run in docker (static armhf cross build), never on the target:
+## Compiler
+
+Le build ne se fait **jamais sur la carte** (1 Go de RAM) : il tourne dans Docker sur une
+machine de développement, en cross-compilation armhf statique.
 
 ```bash
-bash build/mkimage.sh        # build docker image (once)
-bash build.sh                # artifact: build-out/qemu-aarch64
+bash build/mkimage.sh   # image de build qemu64on32-build (cross armhf + glib statique)
+bash build.sh           # -> build-out/qemu-aarch64 (ELF 32-bit ARM, statique)
 ```
 
-Or apply the `patches/` series onto a pristine QEMU v9.2.4 tree: `git am patches/*.patch`.
+## Le point technique central
 
-## Usage recipes
+Un invité aarch64 multithread écrit et lit des mots de 64 bits qui doivent être vus **entiers**
+par les autres threads. Sur un hôte 32 bits, QEMU 9.2.4 les décompose en deux accès 32 bits :
+un thread peut alors observer une moitié ancienne et une moitié nouvelle — une **déchirure**,
+qui corrompt silencieusement la mémoire de l'invité.
 
-```bash
-# Light binary (Rust CLI, tools): nothing to tune
-./qemu-aarch64 ./my-aarch64-binary
+Le Cortex-A7 avec LPAE garantit l'atomicité single-copy des `LDRD`/`STRD` **alignés**. Les
+patches 0001 et 0002 forcent le backend TCG à les émettre pour tout accès invité `MO_64` aligné
+(contraintes de paire de registres, alignement forcé), et à router le cas non aligné vers le
+helper atomique. C'est le cœur du fork ; le reste traite des pièges rencontrés en exerçant un
+vrai runtime JIT.
 
-# Large guest JIT runtime (Bun/Node/JSC/V8): big translation cache
-QEMU_TB_SIZE=256 ./qemu-aarch64 ./big-binary
+## Contenu
 
-# Deterministic relaunches of the same binary (reproducible layout for measurements;
-# reloads translated code but does not speed up boot)
-setarch $(uname -m) -R env QEMU_TB_SIZE=256 QEMU_TB_CACHE=/path/cache.bin \
-  ./qemu-aarch64 ./big-binary
+| Chemin | Rôle |
+|---|---|
+| `patches/` | la série applicable sur `v9.2.4` (16 patches) |
+| `build.sh`, `build/` | build cross armhf statique reproductible (Docker) |
+| `test/` | harnais d'exécution sur carte réelle ; `test/pad.env` (non versionné) porte la config |
+| `test/logs/` | **preuves d'exécution brutes** de chaque mesure citée ici |
+| `docs/METHODOLOGY.md` | méthode, mesures, et limites assumées |
+| `docs/REPRO.md` | reproduction de la déchirure en baseline |
+| `PROGRESS.md` | journal de bord complet, y compris les pistes fermées et les erreurs |
 
-# Short one-shot of a JSC runtime: interpreter only (boots faster than the JIT)
-QEMU_TB_SIZE=256 BUN_JSC_useJIT=0 ./qemu-aarch64 ./bun-binary --version
-# Long agent session: keep the guest JIT active (1.55x measured on a full turn)
-```
+## Prérequis
 
-On 1 GB boards: bound runs with `systemd-run --scope -p MemoryMax=600M` and `timeout`,
-and watch the SoC temperature on heatsink-less boards.
+- **Build** : Docker, ~4 Go de disque. Aucun outil ARM sur la machine hôte, tout est dans l'image.
+- **Test** : une carte armv7l (Cortex-A7) accessible en SSH. Le harnais impose `taskset` sur
+  2 cœurs, une borne mémoire, un `timeout` dur, une garde thermique, et refuse de lancer un
+  second qemu concurrent.
+- L'invité dynamique musl exige un sysroot minimal (`ld-musl-aarch64.so.1`), voir `test/`.
 
-## Repository contents
+## Statut mesuré
 
-- `patches/`: the full series (16 atomic patches on v9.2.4, `git am`-ready)
-- `build/` + `build.sh`: reproducible docker build (static armhf)
-- `test/`: validation guests (torn64, simd-dup2, smc-alias, tcgets2...), board harness,
-  proof logs for the results above
-- `docs/METHODOLOGY.md`: the full journey, from diagnosis to measurements
-- `docs/REPRO.md`, `docs/AUDIT-ldst.md`, `docs/AUDIT-simd-movi.md`: reproduction and audits
+Chaque ligne ci-dessous correspond à un log dans `test/logs/`. Rien n'est annoncé qui n'ait été
+exécuté sur la carte réelle.
 
-## Known limitations
+**Correctness — c'est l'objet du projet.**
 
-- 128-bit exclusives (LDXP/STXP, CASP) stay on a stop-the-world path: correct but slow.
-  Rare in practice once LSE2 is hidden.
-- The `-strace` tracer can segfault on heavily multithreaded guests (bounded by
-  patch 0008, not fully fixed): a debug tool, not the execution path.
-- Ultra-short one-shots (~1 s) can be slightly faster under qemu 7.2 (simpler
-  translator); this fork wins as soon as execution dominates, and 7.2 crashes on
-  multithreaded guests.
+- `torn64`, 4 threads, 180 s : **0 déchirure sur 1 175 356 114 itérations**. Le même test est
+  **rouge en baseline** (QEMU 9.2.4 non patché) : la reproduction de la panne est dans
+  `docs/REPRO.md`.
+- `simd-dup2` : le crash de lowering SIMD (`dup2_vec` à une moitié constante) est corrigé et la
+  valeur calculée vérifiée.
+- `smc-alias` : le code auto-modifiant dual-mappé W^X exécute bien du code frais à chaque tour
+  (l'invalidation sur `IC IVAU` est correcte).
+- `tcgets2` : la famille d'ioctl `termios2` répond (nécessaire aux TUI).
 
-## License
+**Charges réelles.**
 
-GPL-2.0, like QEMU. Upstream cherry-picks keep their original author attribution.
+- **Claude Code 2.1.217** : `--version` rend `rc=0` ; `--help` rend ses 16 036 octets ; la TUI
+  interactive s'affiche ; `claude -p` atteint le contrôle d'authentification. Les versions
+  antérieures à 2.1.214 **échouent** (SIGTRAP) — c'est une propriété de l'invité, pas du fork.
+- **TUI grok** : survit plus de 30 minutes sous charge JIT.
+
+**Vitesse — explicitement hors critère.** Le surcoût TCG (8 à 20×) est structurel sur cette
+classe de machine. Une seule optimisation a été retenue, parce qu'elle est mesurée : les options
+de compilation `-O3 -mcpu=cortex-a7 -flto` donnent **+4,41 %** sur `claude --help` (médiane 65 s
+contre 68 s, 4 paires alternées, sortie identique). La décomposition montre que `-mcpu` seul
+n'apporte rien.
+
+**Pistes explorées et fermées, avec leurs chiffres** — elles sont documentées pour éviter qu'on
+les refasse :
+
+- mémoïsation de traduction par contenu : **−353 %** de débit, et un défaut de correctness
+  démontré (la longueur du code hôte émis dépend du contexte) ;
+- cache de traduction persistant : supprime 100 % de la retraduction pour **0,0 %** de gain —
+  ce qui établit que la traduction n'est pas le goulot ;
+- calcul paresseux des drapeaux NZCV : la prémisse était un artefact de compteur (ratio réel
+  0,39 et non 2,74).
+
+**En cours.** Un banc de débit multithread (`test/mtbench.c`) montre que le code auto-modifiant
+**anti-scale** : 0,76× à 2 threads, là où les charges atomiques et d'allocation scalent
+normalement (1,77× et 2,15×). La cause est localisée — contention, pas volume. Le correctif
+n'est pas validé à ce jour.
+
+## Développement
+
+Le travail avance lot par lot (`PROGRESS.md`, tags `[EASY]` / `[MED]` / `[HARD]`), chaque lot
+étant validé par un gate mécanique (`verify.sh`) et une exécution réelle sur carte. Le clone de
+travail `qemu/` n'est pas versionné ici : seuls les patches exportés le sont.
+
+Une règle gouverne le journal : **toute mesure porte son jeu d'attribution** — la commande
+exacte, la sortie brute, l'identité (sha, version) de chaque composant qui pourrait expliquer le
+résultat, et ce que la mesure ne dit pas. Un résultat sous-documenté ne manque pas de détail : il
+propage une conclusion fausse à la relecture. Ce projet en a fait les frais quatre jours durant.
+
+## Licences
+
+Les patches de `patches/` sont dérivés de QEMU et suivent sa licence, **GPL-2.0**. Le harnais
+(`build.sh`, `build/`, `test/`, `docs/`) est publié sous la même licence pour la cohérence de
+l'ensemble. QEMU est un projet tiers ; ce dépôt n'y est pas affilié.

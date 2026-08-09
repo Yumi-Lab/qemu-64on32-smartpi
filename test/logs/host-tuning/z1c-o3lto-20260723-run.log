@@ -1,0 +1,27 @@
+=== torn64 ABAB (N=4, 120s x 3 par bras) : correctness d'abord ===
+  torn64 ON  run 1: FAIL it
+  torn64 OFF run 1: FAIL it
+  torn64 ON  run 2: 874522693 it
+  torn64 OFF run 2: 840190700 it
+  torn64 ON  run 3: 875036902 it
+  torn64 OFF run 3: 846849170 it
+torn64 mediane: ON=874522693 OFF=840190700
+=== claude --version ABAB (combo, x3 par bras) ===
+  version ON  run 1: 30s
+  version OFF run 1: 15s
+  version ON  run 2: 15s
+  version OFF run 2: 15s
+  version ON  run 3: 15s
+  version OFF run 3: 15s
+version mediane: ON=15 OFF=15
+=== claude --help ABAB (combo, x3 par bras) ===
+  help ON  run 1: 61s
+  help OFF run 1: 60s
+  help ON  run 2: 61s
+  help OFF run 2: 61s
+  help ON  run 3: 60s
+  help OFF run 3: 61s
+help mediane: ON=61 OFF=61
+torn64 mediane it/120s: ON=874522693 OFF=840190700
+version mediane elapsed s: ON=15 OFF=15
+help mediane elapsed s: ON=61 OFF=61

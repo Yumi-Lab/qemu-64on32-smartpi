@@ -1,0 +1,6 @@
+RECRC=0
+MAPFILE=/tmp/perf-15088.map
+MAPLINES=938898
+# Samples: 6K of event 'cycles:P'
+# Event count (approx.): 93348854534
+TEMP_AFTER=37651

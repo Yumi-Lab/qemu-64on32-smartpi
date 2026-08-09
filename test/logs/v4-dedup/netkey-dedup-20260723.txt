@@ -1,0 +1,5 @@
+[tcg] tb executions: 751614097, guest insns: 4408922162, avg insns/exec'd TB: 5.87
+[tcg] template dedup: 466156 live TBs, 466156 hashed. src = raw byte key (Z0), net = + flags/cflags/cs_base (true dedupable), netpc = net + page offset (no relocation).
+[tcg] template dedup [src]: 466156 hashed, 140364 distinct, 325792 redundant (69.9%)
+[tcg] template dedup [net]: 466156 hashed, 140856 distinct, 325300 redundant (69.8%)
+[tcg] template dedup [netpc]: 466156 hashed, 172908 distinct, 293248 redundant (62.9%)

@@ -1,0 +1,34 @@
+=== A/B EMULATEURS, invite=claude-native charge=--help, 4 paires (ABAB), 20260802-151041 ===
+A = qemu-aarch64-baseline   B = qemu-aarch64-o3lto
+env commun : HOME=/root/qemu-fork-test DISABLE_AUTOUPDATER=1 QEMU_TB_SIZE=256 BUN_JSC_useJIT=1 BUN_JSC_useConcurrentGC=0 BUN_JSC_numberOfGCMarkers=1
+  deploiement qemu-aarch64-baseline -> qemu-ab-a (local=6d9ada3184c84826 pad=5bcd85d57bbef8c0)...
+  A=qemu-aarch64-baseline sha=6d9ada3184c84826   B=qemu-aarch64-o3lto sha=bd5f1061572d8fdc (identiques des deux cotes)
+  invite claude-native sha=e219a631e194e71b
+
+--- run de chauffe (JETE) ---
+    [qemu-ab-a] rc=0 elapsed=61s out_bytes=16036 temp_before=50C
+
+--- paire 1/4 ---
+    [qemu-ab-a] rc=0 elapsed=61s out_bytes=16036 temp_before=48C
+    [qemu-ab-b] rc=126 elapsed=1s out_bytes=0 temp_before=48C
+    [qemu-ab-b] rc!=0 -> EXCLU de la mediane
+--- paire 2/4 ---
+    [qemu-ab-a] rc=0 elapsed=62s out_bytes=16036 temp_before=47C
+    [qemu-ab-b] rc=126 elapsed=1s out_bytes=0 temp_before=49C
+    [qemu-ab-b] rc!=0 -> EXCLU de la mediane
+--- paire 3/4 ---
+    [qemu-ab-a] rc=0 elapsed=61s out_bytes=16036 temp_before=50C
+    [qemu-ab-b] rc=126 elapsed=2s out_bytes=0 temp_before=48C
+    [qemu-ab-b] rc!=0 -> EXCLU de la mediane
+--- paire 4/4 ---
+    [qemu-ab-a] rc=0 elapsed=61s out_bytes=16036 temp_before=49C
+    [qemu-ab-b] rc=126 elapsed=1s out_bytes=0 temp_before=49C
+    [qemu-ab-b] rc!=0 -> EXCLU de la mediane
+
+=== RESULTATS ===
+A (qemu-aarch64-baseline, n=4) : 61 62 61 61
+B (qemu-aarch64-o3lto, n=0) : aucun
+octets rendus : A=16036 B=?
+ATTENTION : les deux bras ne rendent PAS la meme taille de sortie — la comparaison de vitesse n'a pas de sens tant que ce n'est pas explique.
+VERDICT : INCONCLUSIF, moins de 3 runs valides par bras.
+Log : /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/qemu-ab/qemu-ab-20260802-151041.txt

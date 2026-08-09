@@ -1,0 +1,13 @@
+############ mode=help (reprise) ############
+=== COLD help run 3 ===
+  cold run 3: RESULT=BOOTED elapsed=60s
+=== COLD-SAVE help ===
+  cold-save: RESULT=BOOTED elapsed=61s (saved 178233 TBs, 83296 KiB of translated code)
+  warm run 1: RESULT=BOOTED elapsed=45s cache=[reloaded 172165/178233 TBs]
+  warm run 2: RESULT=BOOTED elapsed=61s cache=[reloaded 173504/184167 TBs]
+  warm run 3: RESULT=BOOTED elapsed=61s cache=[reloaded 173569/184031 TBs]
+--- BILAN help ---
+cold mediane   : 60s (n=3, out_bytes=16036)
+warm mediane   : 61s (n=3, out_bytes=16036)
+cache warm     : reloaded 173569/184031 TBs
+delta warm/cold: 1.7%

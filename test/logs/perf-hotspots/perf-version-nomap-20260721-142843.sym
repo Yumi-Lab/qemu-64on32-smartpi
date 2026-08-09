@@ -1,0 +1,102 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 6K of event 'cycles:P'
+# Event count (approx.): 16555551990
+#
+# Overhead  Shared Object      Symbol                                         
+# ........  .................  ...............................................
+#
+     8.44%  qemu-aarch64       [.] liveness_pass_1
+     5.42%  qemu-aarch64       [.] tcg_gen_code
+     3.86%  qemu-aarch64       [.] helper_lookup_tb_ptr
+     3.39%  qemu-aarch64       [.] tb_lookup
+     2.98%  qemu-aarch64       [.] tcg_optimize
+     2.11%  qemu-aarch64       [.] memset
+     1.89%  qemu-aarch64       [.] init_ts_info
+     1.47%  qemu-aarch64       [.] la_cross_call
+     1.22%  qemu-aarch64       [.] tcg_reg_alloc
+     1.15%  qemu-aarch64       [.] cpu_get_tb_cpu_state
+     0.99%  qemu-aarch64       [.] liveness_pass_0
+     0.89%  qemu-aarch64       [.] tcg_op_alloc
+     0.77%  qemu-aarch64       [.] __aeabi_uidiv
+     0.73%  qemu-aarch64       [.] helper_atomic_fetch_addl_le
+     0.63%  qemu-aarch64       [.] g_hash_table_lookup
+     0.59%  qemu-aarch64       [.] disas_a64
+     0.59%  qemu-aarch64       [.] tcg_emit_op
+     0.58%  qemu-aarch64       [.] tcg_opt_gen_mov
+     0.57%  qemu-aarch64       [.] helper_muluh_i64
+     0.56%  qemu-aarch64       [.] temp_free_or_dead
+     0.54%  qemu-aarch64       [.] interval_tree_insert
+     0.49%  qemu-aarch64       [.] mulu64
+     0.48%  qemu-aarch64       [.] tcg_constant_internal
+     0.48%  qemu-aarch64       [.] temp_load
+     0.46%  qemu-aarch64       [.] helper_shl_i64
+     0.45%  qemu-aarch64       [.] tcg_out_op
+     0.44%  qemu-aarch64       [.] qht_lookup_custom
+     0.43%  qemu-aarch64       [.] __memcpy_neon
+     0.43%  qemu-aarch64       [.] reachable_code_pass
+     0.43%  qemu-aarch64       [.] reset_ts
+     0.41%  qemu-aarch64       [.] tcg_out_movi32.constprop.0
+     0.41%  qemu-aarch64       [.] tcg_reg_alloc_bb_end.constprop.0
+     0.40%  qemu-aarch64       [.] _int_malloc
+     0.38%  qemu-aarch64       [.] q_tree_insert_internal.isra.0
+     0.38%  qemu-aarch64       [.] finish_folding
+     0.36%  qemu-aarch64       [.] interval_tree_subtree_search
+     0.36%  qemu-aarch64       [.] tcg_temp_new_internal
+     0.36%  qemu-aarch64       [.] atomic_mmu_lookup
+     0.34%  [kernel.kallsyms]  [k] _raw_spin_unlock_irqrestore
+     0.33%  qemu-aarch64       [.] tb_gen_code
+     0.33%  qemu-aarch64       [.] translator_loop
+     0.31%  [JIT] tid 11236    [.] 0xa78bfcfc
+     0.30%  qemu-aarch64       [.] _int_free
+     0.28%  qemu-aarch64       [.] cpu_exec_loop.constprop.0
+     0.28%  qemu-aarch64       [.] cpu_ldq_mmu
+     0.28%  qemu-aarch64       [.] tb_tc_cmp
+     0.28%  qemu-aarch64       [.] g_hash_table_insert_node
+     0.28%  qemu-aarch64       [.] aarch64_tr_translate_insn
+     0.26%  [kernel.kallsyms]  [k] memset
+     0.25%  qemu-aarch64       [.] realloc
+     0.24%  [kernel.kallsyms]  [k] v7wbi_flush_user_tlb_range
+     0.20%  [kernel.kallsyms]  [k] mas_walk
+     0.20%  qemu-aarch64       [.] interval_tree_iter_first
+     0.20%  qemu-aarch64       [.] tb_lookup_cmp
+     0.20%  [kernel.kallsyms]  [k] handle_mm_fault
+     0.20%  qemu-aarch64       [.] tcg_op_remove
+     0.18%  [kernel.kallsyms]  [k] do_page_fault
+     0.18%  qemu-aarch64       [.] translator_ld
+     0.18%  [kernel.kallsyms]  [k] v7_coherent_user_range
+     0.18%  qemu-aarch64       [.] g_hash_table_insert
+     0.17%  qemu-aarch64       [.] helper_atomic_cmpxchgb
+     0.17%  [JIT] tid 11236    [.] 0xa73b8494
+     0.16%  [JIT] tid 11236    [.] 0xa6ba8d38
+     0.16%  [kernel.kallsyms]  [k] mod_memcg_lruvec_state
+     0.15%  qemu-aarch64       [.] __pthread_mutex_lock
+     0.15%  [kernel.kallsyms]  [k] __kmap_local_pfn_prot
+     0.15%  qemu-aarch64       [.] tcg_out_st32.constprop.0
+     0.13%  qemu-aarch64       [.] fold_and
+     0.13%  [JIT] tid 11236    [.] 0xa79e1a78
+     0.13%  [kernel.kallsyms]  [k] get_page_from_freelist
+     0.13%  qemu-aarch64       [.] temp_sync
+     0.13%  qemu-aarch64       [.] qht_insert__locked
+     0.13%  qemu-aarch64       [.] tcg_reg_alloc_pair
+     0.13%  qemu-aarch64       [.] tcg_out_st
+     0.13%  [JIT] tid 11236    [.] 0xa73b9074
+     0.13%  [kernel.kallsyms]  [k] vector_swi
+     0.13%  qemu-aarch64       [.] __aeabi_uidivmod
+     0.12%  qemu-aarch64       [.] g_hash_table_resize
+     0.12%  qemu-aarch64       [.] page_get_flags
+     0.12%  [JIT] tid 11236    [.] 0xa79e18d4
+     0.12%  qemu-aarch64       [.] aarch64_tr_init_disas_context
+     0.12%  qemu-aarch64       [.] malloc
+     0.11%  qemu-aarch64       [.] translator_ldl
+     0.11%  qemu-aarch64       [.] do_constant_folding_cond
+     0.11%  [kernel.kallsyms]  [k] get_mem_cgroup_from_mm
+     0.10%  [kernel.kallsyms]  [k] try_charge_memcg
+
+
+#
+# (Tip: Search options using a keyword: perf report -h <keyword>)
+#

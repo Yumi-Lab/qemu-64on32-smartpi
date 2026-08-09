@@ -1,0 +1,7 @@
+=== R2, balayage seuils JIT invite (--help, 3 runs/config) ===
+llint: mediane=60s
+jit-default: mediane=61s
+jit-5000: mediane=61s
+jit-20000: mediane=60s
+jit-50000: mediane=61s
+jit-200000: mediane=60s

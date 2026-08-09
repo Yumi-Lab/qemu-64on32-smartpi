@@ -1,0 +1,56 @@
+[run-mtbench.sh] run workload=smc N=1 (60s) -> /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/mtbench/mtbench-smc-N1-20260807-011529.log
+[run-pad.sh] Deploying qemu-aarch64-serstats and mtbench to pad...
+Read from remote host 10.8.0.15: Operation timed out
+client_loop: send disconnect: Broken pipe
+Connection to 192.168.1.108 closed by remote host.
+client_loop: send disconnect: Broken pipe
+[run-pad.sh] connexion pad rejetee (throttle sshd ?), retry 1/5 apres backoff...
+Read from remote host 10.8.0.15: Operation timed out
+client_loop: send disconnect: Broken pipe
+Connection to 192.168.1.108 closed by remote host.
+client_loop: send disconnect: Broken pipe
+[run-pad.sh] connexion pad rejetee (throttle sshd ?), retry 2/5 apres backoff...
+Read from remote host 10.8.0.15: Operation timed out
+client_loop: send disconnect: Broken pipe
+Connection to 192.168.1.108 closed by remote host.
+client_loop: send disconnect: Broken pipe
+[run-pad.sh] connexion pad rejetee (throttle sshd ?), retry 3/5 apres backoff...
+Connection timed out during banner exchange
+Connection to UNKNOWN port 65535 timed out
+[run-pad.sh] connexion pad rejetee (throttle sshd ?), retry 4/5 apres backoff...
+Read from remote host 10.8.0.15: Operation timed out
+client_loop: send disconnect: Broken pipe
+Connection to 192.168.1.108 closed by remote host.
+client_loop: send disconnect: Broken pipe
+[run-pad.sh] connexion pad echouee apres 5 tentatives
+[run-mtbench.sh] ECHEC run workload=smc N=1 (rc=1)
+[run-mtbench.sh] run workload=smc N=2 (60s) -> /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/mtbench/mtbench-smc-N2-20260807-011529.log
+[run-pad.sh] Deploying qemu-aarch64-serstats and mtbench to pad...
+Connection timed out during banner exchange
+Connection to UNKNOWN port 65535 timed out
+[run-pad.sh] connexion pad rejetee (throttle sshd ?), retry 1/5 apres backoff...
+Connection timed out during banner exchange
+Connection to UNKNOWN port 65535 timed out
+[run-pad.sh] connexion pad rejetee (throttle sshd ?), retry 2/5 apres backoff...
+Read from remote host 10.8.0.15: Operation timed out
+client_loop: send disconnect: Broken pipe
+Connection to 192.168.1.108 closed by remote host.
+client_loop: send disconnect: Broken pipe
+[run-pad.sh] connexion pad rejetee (throttle sshd ?), retry 1/5 apres backoff...
+Connection timed out during banner exchange
+Connection to UNKNOWN port 65535 timed out
+[run-pad.sh] connexion pad rejetee (throttle sshd ?), retry 2/5 apres backoff...
+Connection timed out during banner exchange
+Connection to UNKNOWN port 65535 timed out
+[run-pad.sh] connexion pad rejetee (throttle sshd ?), retry 3/5 apres backoff...
+Connection timed out during banner exchange
+Connection to UNKNOWN port 65535 timed out
+[run-pad.sh] connexion pad rejetee (throttle sshd ?), retry 4/5 apres backoff...
+Connection timed out during banner exchange
+Connection to UNKNOWN port 65535 timed out
+[run-pad.sh] connexion pad echouee apres 5 tentatives
+[run-mtbench.sh] ECHEC run workload=smc N=2 (rc=1)
+
+[run-mtbench.sh] TABLE DE SCALING (ops/s, ratio vs N=1) :
+workload          N=1          N=2
+smc             ECHEC        ECHEC

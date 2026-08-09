@@ -1,0 +1,4 @@
+[tcg] serial stats (QEMU_SERIAL_STATS):
+[tcg]   cpu_exec_step_atomic entries: 0
+[tcg]   tb_flush count: 6
+[tcg]   mmap lock: 421479 acquisitions, 11027 contended (2.62%)

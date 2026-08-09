@@ -1,0 +1,4 @@
+=== GATE V4-1G, correctness pad de la dedup de TB, 20260804-154450 ===
+pad=root@192.168.1.108 dir=/root/qemu-fork-test torn64: N=4 duree=180s bras ON juge a >= 90 % du bras OFF du meme run
+
+=== Deploiement (le piege du sha : on verifie les DEUX cotes) ===

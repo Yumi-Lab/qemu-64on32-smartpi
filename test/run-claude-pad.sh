@@ -12,7 +12,8 @@
 #
 # Regles GOAL respectees, tout cote pad : taskset (CLAUDE_CPUS, "0" mono-coeur pour
 # le boot lourd a froid ou "0,1"), MemoryMax
-# (systemd-run --user --scope, protection OOM SANS root), timeout (garde-fou dur),
+# (systemd-run, scope utilisateur si une session existe, sinon scope systeme en root
+# -- cf. le bloc adaptatif SR plus bas), timeout (garde-fou dur),
 # garde thermique (abort avant le gel ~100C, echantillon fin anti-gel), un seul
 # qemu a la fois (refus si un autre tourne), teardown limite a NOTRE pid. HOME est
 # confine au dossier de travail (ecritures de claude dans $PAD_DIR/.claude, jamais
@@ -23,22 +24,28 @@
 #   prompt  : claude -p "<prompt_text>" (boot + tour agent ; sans cle il atteint
 #             une erreur d'auth propre = boot sans crash ; avec cle il repond)
 # Sortie machine (derniere ligne) :
-#   RESULT=<BOOTED|CRASHED|TEMP_ABORT|TIMEOUT|NOSTART> exit_rc=<n> elapsed=<s>
+#   RESULT=<BOOTED|CRASHED|TEMP_ABORT|TIMEOUT|BENCH_FAIL|NOSTART> exit_rc=<n> elapsed=<s>
 #          out_bytes=<n> peak_temp_c=<n> min_temp_c=<n> temp_before_c=<n>
 #   BOOTED    = qemu a execute claude jusqu'a une sortie/erreur propre (rc<128).
 #   CRASHED   = qemu a AVORTE (signal, ex. SIGABRT d'une assertion TCG) = bug fork.
 #   TIMEOUT   = coupe par timeout (rc=124) ou SIGTERM (rc=143), pas un crash.
 #   TEMP_ABORT= coupe par la garde thermique du H3.
-#   NOSTART   = qemu n'a jamais demarre.
+#   BENCH_FAIL= qemu n'a JAMAIS REELEMENT tourne (rc=126 non executable, rc=127
+#               introuvable) : defaut de PREPARATION du banc (deploiement, chmod,
+#               chemin), aucune conclusion possible sur l'emulateur teste (W2,
+#               cf. PROGRESS.md phase W et test/pad-lib.sh:classify_qemu_rc).
+#   NOSTART   = qemu n'a jamais demarre (PID jamais trouve, aucun rc lisible).
 set -u
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TEST_DIR="$REPO_ROOT/test"
 BUILD_OUT="$REPO_ROOT/build-out"
-QEMU_BIN="qemu-aarch64"
+QEMU_BIN="${QEMU_BIN:-qemu-aarch64}"
 
 # shellcheck disable=SC1091
 source "$TEST_DIR/pad.env"
+# shellcheck disable=SC1091
+source "$TEST_DIR/pad-lib.sh"
 
 MODE="${1:?usage: run-claude-pad.sh <version|prompt> [timeout_s] [prompt_text]}"
 TIMEOUT="${2:-300}"
@@ -97,7 +104,8 @@ fi
 echo "  claude-native + loader musl OK"
 
 # --- Garde : un seul qemu a la fois -----------------------------------------------
-QEMU_RUNNING=$(pad_capture "pgrep -x $QEMU_BIN || echo 0")
+# argv[0], pas `pgrep -x` : cf. pgrep_argv0 dans pad-lib.sh, comm est tronque a 15c.
+QEMU_RUNNING=$(pad_capture "$(declare -f pgrep_argv0); pgrep_argv0 '$QEMU_BIN' | wc -l")
 if [ "$QEMU_RUNNING" != "0" ]; then
     echo "ERROR: un qemu-aarch64 tourne deja sur le pad, on n'en lance jamais un 2e (ni ne tue celui d'autrui)." >&2
     exit 1
@@ -127,43 +135,57 @@ echo "[run-claude-pad] Lancement: claude $CLAUDE_ARGS ${MODE:+}(mode=$MODE, time
 # tombe, `timeout` termine qemu. Le loop surveille temp + aliveness et coupe NOTRE
 # pid seul si la temperature approche le gel. Le prompt est passe en argument
 # positionnel de bash ("$1") pour un quoting propre.
-REMOTE=$(cat <<'REMOTE_EOF'
+# classify_qemu_rc et pgrep_argv0 sont injectees TELLES QUELLES (declare -f) : source
+# unique W2/W6, jamais une seconde copie divergente dans le script distant.
+REMOTE_FUNCS="$(declare -f classify_qemu_rc pgrep_argv0)"
+REMOTE_BODY=$(cat <<'REMOTE_EOF'
 set -u
-QEMU="$Q"; CLA="$C"; SYS="$S"; HOMEDIR="$H"; QOPTS="$QO"
+QEMU="$Q"; QBIN="$QB"; CLA="$C"; SYS="$S"; HOMEDIR="$H"; QOPTS="$QO"
 ARGS="$A"; MODE="$M"; PROMPT="$1"
 OUT="$O"; ERR="$E"; TIMEOUT="$T"; MEMMAX="$MM"; ABORT="$AB"; INTERVAL="$IV"; CPUS="$CP"
 EXTRA="$X"
 SA=""; [ -n "$SX" ] && SA="setarch $(uname -m) -R"
+# Confinement memoire ADAPTATIF (corrige le 2026-08-01). `systemd-run --user` exige une
+# session utilisateur (XDG_RUNTIME_DIR + bus D-Bus) : ce script a ete ecrit quand le pad
+# tournait sous l'utilisateur `pi`. Depuis le reflash DietPi il tourne en ROOT via ssh, SANS
+# session -> `--user` echouait AVANT de lancer qemu ("Failed to connect to user scope bus
+# via local transport"), rendant RESULT=BOOTED exit_rc=1 elapsed=0 out_bytes=0. C'est ce qui
+# faisait echouer l'item 5 du gate V4-1G alors que l'invite boote parfaitement.
+# En root, le scope SYSTEME apporte la meme borne MemoryMax.
+if systemd-run --user --scope -q -- true >/dev/null 2>&1; then
+  SR="systemd-run --user --scope -q -p MemoryMax=$MEMMAX --"
+elif systemd-run --scope -q -- true >/dev/null 2>&1; then
+  SR="systemd-run --scope -q -p MemoryMax=$MEMMAX --"
+else
+  SR=""
+  echo "[run-claude-pad] AVERTISSEMENT: systemd-run indisponible, run SANS borne MemoryMax" >&2
+fi
 : >"$OUT"; : >"$ERR"
 peak=0; min=999000; rc=""
 tempc(){ cat /sys/class/thermal/thermal_zone0/temp 2>/dev/null; }
 # Lance qemu -> claude en tache de fond, capture le code de sortie dans un fichier.
 RCF="$OUT.rc"; : >"$RCF"
 if [ "$MODE" = "prompt" ]; then
-  ( systemd-run --user --scope -q -p MemoryMax="$MEMMAX" -- \
+  ( $SR \
       taskset -c "$CPUS" timeout -k 60 "$TIMEOUT" \
       env HOME="$HOMEDIR" DISABLE_AUTOUPDATER=1 CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 $EXTRA \
       $SA "$QEMU" $QOPTS -L "$SYS" "$CLA" $ARGS "$PROMPT" </dev/null >>"$OUT" 2>>"$ERR"; echo $? >"$RCF" ) &
 else
-  ( systemd-run --user --scope -q -p MemoryMax="$MEMMAX" -- \
+  ( $SR \
       taskset -c "$CPUS" timeout -k 60 "$TIMEOUT" \
       env HOME="$HOMEDIR" DISABLE_AUTOUPDATER=1 CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 $EXTRA \
       $SA "$QEMU" $QOPTS -L "$SYS" "$CLA" $ARGS </dev/null >>"$OUT" 2>>"$ERR"; echo $? >"$RCF" ) &
 fi
 LP=$!
-# Retrouver NOTRE pid qemu (comm exact, exclut la gateway -static).
+# Retrouver NOTRE pid qemu (argv[0] exact, exclut la gateway -static). argv[0], pas
+# `pgrep -x` : `comm` est tronque a 15c par le noyau (cf. pgrep_argv0 dans pad-lib.sh).
 PID=""
-for _ in $(seq 1 40); do sleep 2; PID=$(pgrep -x qemu-aarch64 | head -1); [ -n "$PID" ] && break; done
+for _ in $(seq 1 40); do sleep 2; PID=$(pgrep_argv0 "$QBIN" | head -1); [ -n "$PID" ] && break; done
 if [ -z "$PID" ]; then
   # qemu a pu deja finir (boot ultra court) : lire le rc si present.
   wait "$LP" 2>/dev/null; rc=$(cat "$RCF" 2>/dev/null)
   if [ -n "$rc" ]; then
-    # 124 = timeout SIGTERM, 143 = 128+SIGTERM, 137 = 128+SIGKILL (timeout -k) :
-    # ce sont des coupures par le garde-fou, PAS des crashs. Seuls les autres
-    # signaux >=128 (139 SIGSEGV, 134 SIGABRT, 132 SIGILL, 135 SIGBUS...) le sont.
-    res=BOOTED
-    if [ "$rc" -ge 128 ] && [ "$rc" -ne 143 ] && [ "$rc" -ne 137 ]; then res=CRASHED; fi
-    if [ "$rc" -eq 124 ] || [ "$rc" -eq 143 ] || [ "$rc" -eq 137 ]; then res=TIMEOUT; fi
+    res=$(classify_qemu_rc "$rc")
     ta=$(tempc); echo "RESULT=$res exit_rc=$rc elapsed=0 out_bytes=$(wc -c <"$OUT") peak_temp_c=$(( ${ta:-0}/1000 )) min_temp_c=$(( ${ta:-0}/1000 )) temp_before_c=$(( ${ta:-0}/1000 ))"
     exit 0
   fi
@@ -174,10 +196,7 @@ while :; do
   el=$(( $(date +%s) - START ))
   if [ ! -d "/proc/$PID" ]; then
     wait "$LP" 2>/dev/null; rc=$(cat "$RCF" 2>/dev/null)
-    # 124/143/137 = coupures du garde-fou (timeout, timeout -k), pas des crashs.
-    if [ -n "$rc" ] && [ "$rc" -ge 128 ] && [ "$rc" -ne 143 ] && [ "$rc" -ne 137 ]; then result=CRASHED
-    elif [ "${rc:-0}" -eq 124 ] || [ "${rc:-0}" -eq 143 ] || [ "${rc:-0}" -eq 137 ]; then result=TIMEOUT
-    else result=BOOTED; fi
+    result=$(classify_qemu_rc "${rc:-0}")
     break
   fi
   t=$(tempc)
@@ -210,9 +229,11 @@ ta=$(tempc); [ -n "${ta:-}" ] && { [ "$ta" -gt "$peak" ] && peak=$ta; }
 echo "RESULT=$result exit_rc=${rc:-NA} elapsed=$FINAL out_bytes=$(wc -c <"$OUT") peak_temp_c=$(( peak/1000 )) min_temp_c=$(( min/1000 )) temp_before_c=$TB"
 REMOTE_EOF
 )
+REMOTE="$REMOTE_FUNCS
+$REMOTE_BODY"
 
 set +e
-$PAD_SSH "Q='$QEMU_ON_PAD' C='$CLAUDE_PAD' S='$SYSROOT' H='$PAD_DIR' A='$CLAUDE_ARGS' M='$MODE' O='$OUT_PAD' E='$ERR_PAD' T='$TIMEOUT' MM='$MEMMAX' AB='$ABORT_TEMP' IV='$INTERVAL' CP='$CPUS' X='$EXTRA_ENV' SX='$SETARCH' QO='$QEMU_OPTS' TB='$((TEMP_BEFORE/1000))' bash -s -- '$PROMPT_TEXT'" <<<"$REMOTE"
+$PAD_SSH "Q='$QEMU_ON_PAD' QB='$QEMU_BIN' C='$CLAUDE_PAD' S='$SYSROOT' H='$PAD_DIR' A='$CLAUDE_ARGS' M='$MODE' O='$OUT_PAD' E='$ERR_PAD' T='$TIMEOUT' MM='$MEMMAX' AB='$ABORT_TEMP' IV='$INTERVAL' CP='$CPUS' X='$EXTRA_ENV' SX='$SETARCH' QO='$QEMU_OPTS' TB='$((TEMP_BEFORE/1000))' bash -s -- '$PROMPT_TEXT'" <<<"$REMOTE"
 SSH_RC=$?
 set -e 2>/dev/null || true
 

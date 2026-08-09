@@ -1,0 +1,18 @@
+[run-pad.sh] Deploying qemu-aarch64 and smc-alias to pad...
+[run-pad.sh] Checking temperature before run...
+Temperature before: 42C
+[run-pad.sh] Checking if qemu is already running...
+[run-pad.sh] Running test: smc-alias  (sous qemu-aarch64 )
+[sudo] password for pi: Running as unit: run-p10658-i43099.scope; invocation ID: 2a4e17032bde427591381c4ba348d176
+mode=sync (IC IVAU emis) | memfd dual-map W^X : w_alias=0xb3f4e000 (RW) x_alias=0xb3f4d000 (RX), page=4096
+round 0 : want=0x1111 got=0x1111 OK
+round 1 : want=0x2222 got=0x2222 OK
+round 2 : want=0x1111 got=0x1111 OK
+round 3 : want=0x2222 got=0x2222 OK
+round 4 : want=0x1111 got=0x1111 OK
+round 5 : want=0x2222 got=0x2222 OK
+round 6 : want=0x1111 got=0x1111 OK
+round 7 : want=0x2222 got=0x2222 OK
+SUCCESS: code frais execute a chaque tour (8 tours) [mode=sync]
+[run-pad.sh] Checking temperature after run...
+Temperature after: 42C

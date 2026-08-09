@@ -1,0 +1,3496 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 6K of event 'cycles:P'
+# Event count (approx.): 93348854534
+#
+# Overhead  Shared Object      Symbol                                         
+# ........  .................  ...............................................
+#
+     5.19%  qemu-aarch64       [.] liveness_pass_1
+     3.99%  qemu-aarch64       [.] helper_lookup_tb_ptr
+     3.85%  qemu-aarch64       [.] tb_lookup
+     3.41%  qemu-aarch64       [.] tcg_gen_code
+     1.58%  qemu-aarch64       [.] tcg_optimize
+     1.57%  qemu-aarch64       [.] __vfprintf_internal
+     1.40%  qemu-aarch64       [.] init_ts_info
+     1.11%  qemu-aarch64       [.] memset
+     0.96%  qemu-aarch64       [.] cpu_get_tb_cpu_state
+     0.90%  qemu-aarch64       [.] la_cross_call
+     0.63%  qemu-aarch64       [.] tcg_reg_alloc
+     0.63%  qemu-aarch64       [.] __aeabi_uidiv
+     0.61%  qemu-aarch64       [.] qht_lookup_custom
+     0.59%  qemu-aarch64       [.] tb_lookup_cmp
+     0.57%  qemu-aarch64       [.] tcg_op_alloc
+     0.49%  qemu-aarch64       [.] liveness_pass_0
+     0.49%  qemu-aarch64       [.] disas_a64
+     0.47%  qemu-aarch64       [.] helper_shl_i64
+     0.47%  qemu-aarch64       [.] _int_malloc
+     0.46%  qemu-aarch64       [.] __memcpy_neon
+     0.43%  qemu-aarch64       [.] tcg_emit_op
+     0.41%  qemu-aarch64       [.] interval_tree_insert
+     0.40%  qemu-aarch64       [.] interval_tree_subtree_search
+     0.37%  qemu-aarch64       [.] __strchrnul
+     0.36%  qemu-aarch64       [.] _IO_new_file_xsputn
+     0.34%  qemu-aarch64       [.] tcg_constant_internal
+     0.31%  qemu-aarch64       [.] tcg_reg_alloc_bb_end.constprop.0
+     0.28%  qemu-aarch64       [.] temp_load
+     0.25%  qemu-aarch64       [.] reachable_code_pass
+     0.24%  qemu-aarch64       [.] q_tree_insert_internal.isra.0
+     0.24%  qemu-aarch64       [.] reset_ts
+     0.24%  qemu-aarch64       [.] tcg_opt_gen_mov
+     0.23%  qemu-aarch64       [.] g_hash_table_lookup
+     0.22%  qemu-aarch64       [.] _int_free
+     0.22%  qemu-aarch64       [.] tb_gen_code
+     0.22%  qemu-aarch64       [.] translator_loop
+     0.22%  qemu-aarch64       [.] tcg_out_op
+     0.22%  qemu-aarch64       [.] finish_folding
+     0.22%  qemu-aarch64       [.] temp_free_or_dead
+     0.21%  qemu-aarch64       [.] _IO_default_xsputn
+     0.21%  qemu-aarch64       [.] helper_atomic_fetch_addl_le
+     0.21%  qemu-aarch64       [.] interval_tree_iter_first
+     0.21%  qemu-aarch64       [.] mulu64
+     0.21%  qemu-aarch64       [.] aarch64_tr_translate_insn
+     0.19%  qemu-aarch64       [.] tcg_out_movi32.constprop.0
+     0.19%  qemu-aarch64       [.] tb_tc_cmp
+     0.18%  qemu-aarch64       [.] _itoa
+     0.18%  qemu-aarch64       [.] g_hash_table_insert
+     0.18%  qemu-aarch64       [.] perf_report_code
+     0.18%  qemu-aarch64       [.] tcg_op_remove
+     0.16%  qemu-aarch64       [.] cpu_exec_loop.constprop.0
+     0.16%  qemu-aarch64       [.] tcg_temp_new_internal
+     0.16%  qemu-aarch64       [.] strlen
+     0.15%  qemu-aarch64       [.] required_atomicity
+     0.15%  qemu-aarch64       [.] helper_atomic_cmpxchgb
+     0.15%  qemu-aarch64       [.] helper_muluh_i64
+     0.15%  [kernel.kallsyms]  [k] _raw_spin_unlock_irqrestore
+     0.15%  [JIT] tid 15088    [.] guest-0x194c67c
+     0.13%  [kernel.kallsyms]  [k] memset
+     0.13%  qemu-aarch64       [.] get_page_addr_code_hostp
+     0.13%  [kernel.kallsyms]  [k] get_page_from_freelist
+     0.12%  qemu-aarch64       [.] prepare_host_addr
+     0.12%  [kernel.kallsyms]  [k] arm_syscall
+     0.12%  qemu-aarch64       [.] translator_ld
+     0.12%  qemu-aarch64       [.] g_hash_table_insert_node
+     0.11%  [kernel.kallsyms]  [k] handle_mm_fault
+     0.10%  qemu-aarch64       [.] temp_sync
+     0.10%  [JIT] tid 15088    [.] guest-0x42568f4
+     0.10%  qemu-aarch64       [.] __libc_calloc
+     0.10%  qemu-aarch64       [.] tcg_reg_alloc_pair
+     0.10%  qemu-aarch64       [.] qht_insert__locked
+     0.10%  qemu-aarch64       [.] tcg_out_st
+     0.10%  qemu-aarch64       [.] __pthread_mutex_unlock_usercnt
+     0.10%  qemu-aarch64       [.] atomic_mmu_lookup
+     0.10%  qemu-aarch64       [.] pretty_symbol
+     0.10%  qemu-aarch64       [.] helper_shr_i64
+     0.10%  qemu-aarch64       [.] __pthread_mutex_lock
+     0.10%  qemu-aarch64       [.] __aeabi_uidivmod
+     0.10%  qemu-aarch64       [.] __vsnprintf_internal
+     0.10%  qemu-aarch64       [.] tcg_out_movext2
+     0.10%  qemu-aarch64       [.] qht_insert
+     0.10%  qemu-aarch64       [.] aarch64_tr_init_disas_context
+     0.09%  qemu-aarch64       [.] g_hash_table_remove_all_nodes.part.0
+     0.09%  [JIT] tid 15088    [.] guest-0xa0bc31a4
+     0.09%  qemu-aarch64       [.] disas_sve
+     0.09%  qemu-aarch64       [.] g_hash_table_resize
+     0.09%  [kernel.kallsyms]  [k] mod_memcg_lruvec_state
+     0.09%  [kernel.kallsyms]  [k] vector_swi
+     0.09%  qemu-aarch64       [.] _itoa_word
+     0.09%  qemu-aarch64       [.] _IO_str_init_static_internal
+     0.09%  qemu-aarch64       [.] tb_link_page
+     0.08%  qemu-aarch64       [.] tcg_gen_sextract_i64
+     0.08%  qemu-aarch64       [.] g_int64_hash
+     0.08%  [JIT] tid 15088    [.] guest-0x194c390
+     0.08%  qemu-aarch64       [.] cpu_tb_exec
+     0.08%  [JIT] tid 15088    [.] guest-0x194c330
+     0.07%  qemu-aarch64       [.] fold_tcg_st.constprop.0
+     0.07%  [JIT] tid 15088    [.] guest-0x2c7b768
+     0.07%  [JIT] tid 15088    [.] guest-0x2c7b780
+     0.07%  qemu-aarch64       [.] __clear_cache
+     0.07%  qemu-aarch64       [.] cpu_ldq_mmu
+     0.07%  [JIT] tid 15088    [.] guest-0x2c7b790
+     0.07%  qemu-aarch64       [.] __snprintf_chk
+     0.07%  [JIT] tid 15088    [.] guest-0x194c678
+     0.07%  qemu-aarch64       [.] store_atom_8
+     0.07%  qemu-aarch64       [.] interval_tree_remove
+     0.07%  [JIT] tid 15088    [.] guest-0x4784e10
+     0.07%  [JIT] tid 15088    [.] guest-0x425b400
+     0.07%  qemu-aarch64       [.] flush_idcache_range
+     0.07%  qemu-aarch64       [.] record_mem_copy
+     0.07%  qemu-aarch64       [.] tcg_constant_i32
+     0.07%  qemu-aarch64       [.] cpu_mmu_lookup
+     0.06%  qemu-aarch64       [.] g_malloc
+     0.06%  [JIT] tid 15088    [.] guest-0x3fda412c
+     0.06%  qemu-aarch64       [.] trans_LDR_i
+     0.06%  [kernel.kallsyms]  [k] mas_walk
+     0.06%  [JIT] tid 15088    [.] guest-0x1ad9b74
+     0.06%  qemu-aarch64       [.] tcg_gen_op2
+     0.06%  qemu-aarch64       [.] tcg_out_qemu_ld_direct.isra.0
+     0.06%  qemu-aarch64       [.] realloc
+     0.06%  qemu-aarch64       [.] gen_pc_plus_diff
+     0.06%  qemu-aarch64       [.] fold_and
+     0.06%  [JIT] tid 15088    [.] guest-0x194c66c
+     0.06%  qemu-aarch64       [.] malloc_consolidate
+     0.06%  [JIT] tid 15088    [.] guest-0x194c32c
+     0.06%  qemu-aarch64       [.] __sigsetjmp
+     0.06%  [kernel.kallsyms]  [k] do_page_fault
+     0.06%  [JIT] tid 15088    [.] guest-0x2c832fc
+     0.06%  [JIT] tid 15088    [.] guest-0x408ee34
+     0.06%  qemu-aarch64       [.] malloc
+     0.06%  qemu-aarch64       [.] patch_reloc
+     0.06%  qemu-aarch64       [.] assert_hflags_rebuild_correctly
+     0.06%  qemu-aarch64       [.] do_constant_folding_cond1.constprop.0
+     0.06%  [JIT] tid 15088    [.] guest-0x2c51558
+     0.06%  qemu-aarch64       [.] tcg_out_st32.constprop.0
+     0.06%  [kernel.kallsyms]  [k] v7_coherent_user_range
+     0.06%  [JIT] tid 15088    [.] guest-0x2c67670
+     0.06%  qemu-aarch64       [.] do_constant_folding_cond
+     0.06%  [JIT] tid 15088    [.] guest-0x1aea1c4
+     0.06%  [JIT] tid 15088    [.] guest-0x2c5157c
+     0.06%  qemu-aarch64       [.] remove_mem_copy_in
+     0.06%  qemu-aarch64       [.] tcg_gen_callN
+     0.06%  [JIT] tid 15088    [.] guest-0x1aea1dc
+     0.06%  qemu-aarch64       [.] setjmp_gen_code.constprop.0
+     0.06%  qemu-aarch64       [.] __libc_cleanup_pop_restore
+     0.06%  qemu-aarch64       [.] __fprintf_chk
+     0.05%  qemu-aarch64       [.] tcg_canonicalize_memop
+     0.05%  [JIT] tid 15088    [.] guest-0x425b3f8
+     0.05%  qemu-aarch64       [.] g_hash_table_remove_all
+     0.04%  qemu-aarch64       [.] _int_realloc
+     0.04%  [JIT] tid 15088    [.] guest-0x3a754e4
+     0.04%  [kernel.kallsyms]  [k] __mod_node_page_state
+     0.04%  [JIT] tid 15088    [.] guest-0x3a8f890
+     0.04%  qemu-aarch64       [.] tcg_gen_mov_i64
+     0.04%  qemu-aarch64       [.] tcg_out_dat_rIN.constprop.0
+     0.04%  [JIT] tid 15088    [.] guest-0x3a8f888
+     0.04%  [JIT] tid 15088    [.] guest-0x3ae09c4
+     0.04%  [JIT] tid 15088    [.] guest-0x2e425a8
+     0.04%  [JIT] tid 15088    [.] guest-0x425b3fc
+     0.04%  [JIT] tid 15088    [.] guest-0x1aea228
+     0.04%  qemu-aarch64       [.] soft_f64_addsub
+     0.04%  [JIT] tid 15088    [.] guest-0x48e235c
+     0.04%  [JIT] tid 15088    [.] guest-0x2eadc1c
+     0.04%  qemu-aarch64       [.] _IO_no_init
+     0.04%  [kernel.kallsyms]  [k] get_mem_cgroup_from_mm
+     0.04%  [JIT] tid 15088    [.] guest-0x194c670
+     0.04%  [JIT] tid 15088    [.] guest-0x42590cc
+     0.04%  qemu-aarch64       [.] tcg_out_ld32u.constprop.0
+     0.04%  [JIT] tid 15088    [.] guest-0xa0bc0c58
+     0.04%  qemu-aarch64       [.] page_get_flags
+     0.04%  [JIT] tid 15088    [.] guest-0x3a51688
+     0.04%  qemu-aarch64       [.] __libc_cleanup_push_defer
+     0.04%  [JIT] tid 15088    [.] guest-0x3a8fa30
+     0.04%  [JIT] tid 15088    [.] guest-0xa0b784ec
+     0.04%  qemu-aarch64       [.] tcg_tb_insert
+     0.04%  [JIT] tid 15088    [.] guest-0x194c624
+     0.04%  qemu-aarch64       [.] tb_set_jmp_target
+     0.04%  [JIT] tid 15088    [.] guest-0x4256948
+     0.04%  [JIT] tid 15088    [.] guest-0x3a6b018
+     0.04%  qemu-aarch64       [.] have_mmap_lock
+     0.04%  qemu-aarch64       [.] helper_atomic_cmpxchgq_le
+     0.04%  qemu-aarch64       [.] tcg_gen_op4
+     0.04%  [JIT] tid 15088    [.] guest-0x402dca0
+     0.04%  qemu-aarch64       [.] aarch64_tr_insn_start
+     0.04%  [JIT] tid 15088    [.] guest-0x4135400
+     0.04%  [JIT] tid 15088    [.] guest-0x3a6b010
+     0.04%  qemu-aarch64       [.] tcg_cflags_has
+     0.04%  [JIT] tid 15088    [.] guest-0x2c7b08c
+     0.04%  qemu-aarch64       [.] int64_to_float64_scalbn
+     0.04%  [JIT] tid 15088    [.] guest-0x3a3c528
+     0.04%  qemu-aarch64       [.] disas_sme
+     0.04%  [JIT] tid 15088    [.] guest-0x39f6270
+     0.04%  [JIT] tid 15088    [.] guest-0x3b76af0
+     0.04%  qemu-aarch64       [.] float64_compare_quiet
+     0.04%  [JIT] tid 15088    [.] guest-0x40f0080
+     0.04%  qemu-aarch64       [.] _int_memalign
+     0.04%  [JIT] tid 15088    [.] guest-0x2e6c934
+     0.04%  [JIT] tid 15088    [.] guest-0x1ad9b1c
+     0.04%  [JIT] tid 15088    [.] guest-0x1a96218
+     0.04%  qemu-aarch64       [.] gen_goto_tb
+     0.04%  [JIT] tid 15088    [.] guest-0x4784e08
+     0.04%  qemu-aarch64       [.] do_gpr_ld_memidx
+     0.04%  [JIT] tid 15088    [.] guest-0x3cc30e0
+     0.04%  [JIT] tid 15088    [.] guest-0x3a41f24
+     0.04%  [JIT] tid 15088    [.] guest-0x2c67640
+     0.04%  [JIT] tid 15088    [.] guest-0x3a69744
+     0.04%  [JIT] tid 15088    [.] guest-0x2c67668
+     0.04%  qemu-aarch64       [.] __flockfile
+     0.04%  qemu-aarch64       [.] qemu_mutex_lock_impl
+     0.04%  qemu-aarch64       [.] page_protect
+     0.04%  qemu-aarch64       [.] op_addr_ldst_imm_pre
+     0.04%  [JIT] tid 15088    [.] guest-0xa0bc0c20
+     0.04%  [JIT] tid 15088    [.] guest-0x2c8a490
+     0.03%  [JIT] tid 15088    [.] guest-0x42a3ef4
+     0.03%  [JIT] tid 15088    [.] guest-0x1aea1f8
+     0.03%  [JIT] tid 15088    [.] guest-0x44d11a8
+     0.03%  [JIT] tid 15088    [.] guest-0x3bc2d10
+     0.03%  [JIT] tid 15088    [.] guest-0x2e42a6c
+     0.03%  qemu-aarch64       [.] unlink_chunk.constprop.0
+     0.03%  [JIT] tid 15088    [.] guest-0x2c67598
+     0.03%  [JIT] tid 15088    [.] guest-0x1ad9b30
+     0.03%  [JIT] tid 15088    [.] guest-0x3a696f4
+     0.03%  qemu-aarch64       [.] __getpagesize
+     0.03%  [JIT] tid 15088    [.] guest-0x2c671fc
+     0.03%  qemu-aarch64       [.] helper_vfp_cmpd_a64
+     0.03%  [JIT] tid 15088    [.] guest-0x3a6b094
+     0.03%  qemu-aarch64       [.] fold_setcond_tst_pow2
+     0.03%  [JIT] tid 15088    [.] guest-0x3cc35f8
+     0.03%  [JIT] tid 15088    [.] guest-0x3af6fe0
+     0.03%  qemu-aarch64       [.] helper_rbit64
+     0.03%  [JIT] tid 15088    [.] guest-0x3a452f0
+     0.03%  [JIT] tid 15088    [.] guest-0x1ae070c
+     0.03%  qemu-aarch64       [.] qht_map_lock_buckets
+     0.03%  [kernel.kallsyms]  [k] __cond_resched
+     0.03%  [JIT] tid 15088    [.] guest-0x3af6fdc
+     0.03%  [JIT] tid 15088    [.] guest-0x43a9308
+     0.03%  [JIT] tid 15088    [.] guest-0x1a9620c
+     0.03%  [JIT] tid 15088    [.] guest-0x2c7b744
+     0.03%  [JIT] tid 15088    [.] guest-0x2c61c5c
+     0.03%  [JIT] tid 15088    [.] guest-0x2e177c8
+     0.03%  [JIT] tid 15088    [.] guest-0xa0b886b8
+     0.03%  [JIT] tid 15088    [.] guest-0x1aea034
+     0.03%  [JIT] tid 15088    [.] guest-0x3fd9f018
+     0.03%  [JIT] tid 15088    [.] guest-0x3a8f884
+     0.03%  qemu-aarch64       [.] tcg_temp_new_i64
+     0.03%  [JIT] tid 15088    [.] guest-0x3fd9f170
+     0.03%  qemu-aarch64       [.] free
+     0.03%  [JIT] tid 15088    [.] guest-0x3a696d4
+     0.03%  [JIT] tid 15088    [.] guest-0x43b70bc
+     0.03%  [JIT] tid 15088    [.] guest-0x41262c8
+     0.03%  [JIT] tid 15088    [.] guest-0x3ae09b8
+     0.03%  [JIT] tid 15088    [.] guest-0x44ccdac
+     0.03%  [JIT] tid 15088    [.] guest-0x2eadc20
+     0.03%  [JIT] tid 15088    [.] guest-0x3b69b58
+     0.03%  [JIT] tid 15088    [.] guest-0x2eadc70
+     0.03%  [JIT] tid 15088    [.] guest-0x2eadc98
+     0.03%  [JIT] tid 15088    [.] guest-0x3a753bc
+     0.03%  [JIT] tid 15088    [.] guest-0x2c67978
+     0.03%  [JIT] tid 15088    [.] guest-0x4259e60
+     0.03%  qemu-aarch64       [.] do_constant_folding_2
+     0.03%  qemu-aarch64       [.] tcg_out_helper_load_slots.constprop.0
+     0.03%  [JIT] tid 15088    [.] guest-0xa0bc3644
+     0.03%  [JIT] tid 15088    [.] guest-0x2c7b740
+     0.03%  [JIT] tid 15088    [.] guest-0x3a41f00
+     0.03%  [JIT] tid 15088    [.] guest-0x459502c
+     0.03%  [JIT] tid 15088    [.] guest-0x42568fc
+     0.03%  [JIT] tid 15088    [.] guest-0x3a452f8
+     0.03%  [JIT] tid 15088    [.] guest-0x4178f30
+     0.03%  [JIT] tid 15088    [.] guest-0x425b404
+     0.03%  [JIT] tid 15088    [.] guest-0x43b6c40
+     0.03%  [JIT] tid 15088    [.] guest-0x2eadc4c
+     0.03%  [JIT] tid 15088    [.] guest-0x3b76b60
+     0.03%  [JIT] tid 15088    [.] guest-0x2e0a7c0
+     0.03%  [JIT] tid 15088    [.] guest-0x3b15684
+     0.03%  [JIT] tid 15088    [.] guest-0x3c0b688
+     0.03%  [JIT] tid 15088    [.] guest-0x3a8fa14
+     0.03%  [JIT] tid 15088    [.] guest-0x4259e54
+     0.03%  [JIT] tid 15088    [.] guest-0x413bccc
+     0.03%  [JIT] tid 15088    [.] guest-0x3a4521c
+     0.03%  [kernel.kallsyms]  [k] try_charge_memcg
+     0.03%  [JIT] tid 15088    [.] guest-0x3b068b8
+     0.03%  [kernel.kallsyms]  [k] __folio_batch_add_and_move
+     0.03%  [JIT] tid 15088    [.] guest-0x194c570
+     0.03%  qemu-aarch64       [.] _IO_setb
+     0.03%  [JIT] tid 15088    [.] guest-0x4784e0c
+     0.03%  qemu-aarch64       [.] translator_ldl
+     0.03%  [JIT] tid 15088    [.] guest-0x2eadbf0
+     0.03%  [JIT] tid 15088    [.] guest-0x425910c
+     0.03%  [JIT] tid 15088    [.] guest-0x3a75804
+     0.03%  [JIT] tid 15088    [.] guest-0x2e1986c
+     0.03%  [JIT] tid 15088    [.] guest-0x4326ee4
+     0.03%  [JIT] tid 15088    [.] guest-0x42590b0
+     0.03%  [JIT] tid 15088    [.] guest-0x1ab5bc4
+     0.03%  [JIT] tid 15088    [.] guest-0x43b6930
+     0.03%  [JIT] tid 15088    [.] guest-0x4537b30
+     0.03%  [JIT] tid 15088    [.] guest-0x4003f50
+     0.03%  [JIT] tid 15088    [.] guest-0x41ffea0
+     0.03%  [JIT] tid 15088    [.] guest-0x1afc28c
+     0.03%  [JIT] tid 15088    [.] guest-0x2c7acbc
+     0.03%  [JIT] tid 15088    [.] guest-0x41ffdf0
+     0.03%  [JIT] tid 15088    [.] guest-0x41a91e0
+     0.03%  [JIT] tid 15088    [.] guest-0x44c9754
+     0.03%  [JIT] tid 15088    [.] guest-0x42037e4
+     0.03%  [JIT] tid 15088    [.] guest-0x1aea104
+     0.03%  [JIT] tid 15088    [.] guest-0x4256944
+     0.03%  [JIT] tid 15088    [.] guest-0x43b6c54
+     0.03%  [JIT] tid 15088    [.] guest-0x41ffeb8
+     0.03%  [JIT] tid 15088    [.] guest-0x402ddc0
+     0.03%  [JIT] tid 15088    [.] guest-0x402f1e8
+     0.03%  qemu-aarch64       [.] tcg_reg_alloc_do_movi
+     0.03%  [JIT] tid 15088    [.] guest-0x4784fbc
+     0.03%  [JIT] tid 15088    [.] guest-0x41a4c6c
+     0.03%  [JIT] tid 15088    [.] guest-0x413ff60
+     0.03%  [JIT] tid 15088    [.] guest-0x3b01ae8
+     0.03%  [JIT] tid 15088    [.] guest-0x3a45354
+     0.03%  [JIT] tid 15088    [.] guest-0x1af6788
+     0.03%  [JIT] tid 15088    [.] guest-0x43b6c2c
+     0.03%  qemu-aarch64       [.] _init
+     0.03%  qemu-aarch64       [.] aarch64_tr_tb_stop
+     0.03%  [JIT] tid 15088    [.] guest-0x418a2f8
+     0.03%  [JIT] tid 15088    [.] guest-0x4513418
+     0.03%  qemu-aarch64       [.] tcg_gen_mov_i32
+     0.03%  [JIT] tid 15088    [.] guest-0x41a4d54
+     0.03%  qemu-aarch64       [.] arm_mmu_idx_to_el
+     0.03%  [JIT] tid 15088    [.] guest-0x2c51584
+     0.03%  [JIT] tid 15088    [.] guest-0x3a99db4
+     0.03%  qemu-aarch64       [.] arm_gen_test_cc
+     0.03%  [JIT] tid 15088    [.] guest-0x413fefc
+     0.03%  [JIT] tid 15088    [.] guest-0x3a3c294
+     0.03%  [JIT] tid 15088    [.] guest-0x3a8fa74
+     0.03%  qemu-aarch64       [.] tcg_out_helper_load_common_args.constprop.0
+     0.03%  [JIT] tid 15088    [.] guest-0x1ad33a0
+     0.03%  [JIT] tid 15088    [.] guest-0x3af7030
+     0.03%  [JIT] tid 15088    [.] guest-0x1ae1c10
+     0.03%  [JIT] tid 15088    [.] guest-0x4202e78
+     0.03%  [JIT] tid 15088    [.] guest-0x4196478
+     0.03%  [JIT] tid 15088    [.] guest-0xa0bc0c54
+     0.03%  [JIT] tid 15088    [.] guest-0x4539734
+     0.03%  [JIT] tid 15088    [.] guest-0x4263718
+     0.03%  [JIT] tid 15088    [.] guest-0x3a5171c
+     0.03%  [JIT] tid 15088    [.] guest-0x3b019a4
+     0.03%  [JIT] tid 15088    [.] guest-0x4135450
+     0.03%  [JIT] tid 15088    [.] guest-0x4544354
+     0.03%  [JIT] tid 15088    [.] guest-0x4189ab8
+     0.03%  [JIT] tid 15088    [.] guest-0x3a3c63c
+     0.03%  [JIT] tid 15088    [.] guest-0x3ff58f0
+     0.03%  [JIT] tid 15088    [.] guest-0x4256670
+     0.03%  [JIT] tid 15088    [.] guest-0x3a3c224
+     0.03%  [JIT] tid 15088    [.] guest-0x43cff50
+     0.03%  [JIT] tid 15088    [.] guest-0x425863c
+     0.03%  [JIT] tid 15088    [.] guest-0x2c4e564
+     0.03%  [JIT] tid 15088    [.] guest-0x3a8c900
+     0.03%  [JIT] tid 15088    [.] guest-0x3a5fb44
+     0.03%  [JIT] tid 15088    [.] guest-0x2c82b4c
+     0.03%  qemu-aarch64       [.] g_int64_equal
+     0.03%  [JIT] tid 15088    [.] guest-0x3a76a30
+     0.03%  [kernel.kallsyms]  [k] do_wp_page
+     0.03%  [JIT] tid 15088    [.] guest-0x41a4c20
+     0.03%  [JIT] tid 15088    [.] guest-0x41a4c84
+     0.03%  [JIT] tid 15088    [.] guest-0x413b8dc
+     0.03%  [JIT] tid 15088    [.] guest-0x43a8a98
+     0.03%  [JIT] tid 15088    [.] guest-0x1ae062c
+     0.03%  [JIT] tid 15088    [.] guest-0x2e6cab0
+     0.03%  [JIT] tid 15088    [.] guest-0x41a86b4
+     0.03%  [JIT] tid 15088    [.] guest-0x41a91d8
+     0.03%  [JIT] tid 15088    [.] guest-0x400bfa8
+     0.03%  [JIT] tid 15088    [.] guest-0x41a5004
+     0.03%  [JIT] tid 15088    [.] guest-0x3a8dac8
+     0.03%  [JIT] tid 15088    [.] guest-0x2ee53dc
+     0.03%  [JIT] tid 15088    [.] guest-0x2c82f74
+     0.03%  qemu-aarch64       [.] __clrsbdi2
+     0.03%  qemu-aarch64       [.] float64_mul
+     0.03%  [JIT] tid 15088    [.] guest-0x3af3ad4
+     0.03%  [JIT] tid 15088    [.] guest-0x41bd550
+     0.03%  [JIT] tid 15088    [.] guest-0x4784e20
+     0.03%  [kernel.kallsyms]  [k] _set_bit
+     0.03%  qemu-aarch64       [.] tcg_out_mov
+     0.03%  [JIT] tid 15088    [.] guest-0x4259c4c
+     0.03%  [JIT] tid 15088    [.] guest-0x44cc474
+     0.03%  [JIT] tid 15088    [.] guest-0x413ffa0
+     0.03%  [JIT] tid 15088    [.] guest-0x3fda8c9c
+     0.03%  qemu-aarch64       [.] __udivmoddi4
+     0.03%  [JIT] tid 15088    [.] guest-0x2c51564
+     0.03%  [JIT] tid 15088    [.] guest-0x194c56c
+     0.03%  [JIT] tid 15088    [.] guest-0x1ad9b70
+     0.03%  qemu-aarch64       [.] tcg_gen_brcond_i32
+     0.03%  [JIT] tid 15088    [.] guest-0x42639d0
+     0.03%  [JIT] tid 15088    [.] guest-0x1aea100
+     0.03%  [JIT] tid 15088    [.] guest-0x402ddd8
+     0.03%  [JIT] tid 15088    [.] guest-0x194c38c
+     0.03%  qemu-aarch64       [.] tcg_out_helper_load_imm.constprop.0
+     0.03%  [JIT] tid 15088    [.] guest-0x419eb00
+     0.03%  [JIT] tid 15088    [.] guest-0x42a1dcc
+     0.03%  [JIT] tid 15088    [.] guest-0x3a67d58
+     0.03%  [JIT] tid 15088    [.] guest-0x2c677c8
+     0.03%  [JIT] tid 15088    [.] guest-0x2c51cb0
+     0.03%  qemu-aarch64       [.] tcg_out_qemu_ld
+     0.03%  [JIT] tid 15088    [.] guest-0x2eadc64
+     0.03%  [JIT] tid 15088    [.] guest-0x1afd434
+     0.03%  [JIT] tid 15088    [.] guest-0x4269320
+     0.03%  [JIT] tid 15088    [.] guest-0x4178b6c
+     0.03%  [JIT] tid 15088    [.] guest-0x43b69b0
+     0.03%  [JIT] tid 15088    [.] guest-0x2ee52f0
+     0.03%  [JIT] tid 15088    [.] guest-0x3a76de0
+     0.03%  [JIT] tid 15088    [.] guest-0x2c82fc0
+     0.03%  [JIT] tid 15088    [.] guest-0x1ad9b28
+     0.03%  [JIT] tid 15088    [.] guest-0x4784e2c
+     0.03%  [JIT] tid 15088    [.] guest-0x40f00d4
+     0.03%  [JIT] tid 15088    [.] guest-0x2c67658
+     0.03%  [JIT] tid 15088    [.] guest-0x1ae974c
+     0.03%  [JIT] tid 15088    [.] guest-0x43aa604
+     0.03%  [JIT] tid 15088    [.] guest-0x3a516a4
+     0.03%  [JIT] tid 15088    [.] guest-0x43a92fc
+     0.03%  [JIT] tid 15088    [.] guest-0x400bb94
+     0.03%  [JIT] tid 15088    [.] guest-0x3a6ea64
+     0.03%  qemu-aarch64       [.] tcg_gen_movi_i64
+     0.03%  [JIT] tid 15088    [.] guest-0x43195bc
+     0.03%  [JIT] tid 15088    [.] guest-0x2c67748
+     0.03%  [JIT] tid 15088    [.] guest-0x1ad5398
+     0.03%  [JIT] tid 15088    [.] guest-0x2e17784
+     0.03%  [JIT] tid 15088    [.] guest-0x3b0178c
+     0.03%  [JIT] tid 15088    [.] guest-0x3a6b088
+     0.03%  [JIT] tid 15088    [.] guest-0x3c0b6f0
+     0.03%  [JIT] tid 15088    [.] guest-0x3b00d84
+     0.03%  [JIT] tid 15088    [.] guest-0x1aea068
+     0.03%  qemu-aarch64       [.] parts64_canonicalize.constprop.0
+     0.03%  [JIT] tid 15088    [.] guest-0x3a6e9e8
+     0.03%  [JIT] tid 15088    [.] guest-0x413bf5c
+     0.03%  qemu-aarch64       [.] tcg_gen_qemu_ld_i32_int
+     0.03%  [JIT] tid 15088    [.] guest-0x3a8f694
+     0.03%  [JIT] tid 15088    [.] guest-0x4784e00
+     0.03%  [JIT] tid 15088    [.] guest-0x425ae08
+     0.03%  qemu-aarch64       [.] parts64_float_to_sint
+     0.03%  [JIT] tid 15088    [.] guest-0x45395c0
+     0.03%  [JIT] tid 15088    [.] guest-0x2c7b0b4
+     0.03%  [JIT] tid 15088    [.] guest-0x31326fc
+     0.03%  [JIT] tid 15088    [.] guest-0x2e4345c
+     0.03%  [JIT] tid 15088    [.] guest-0x3c0b694
+     0.03%  qemu-aarch64       [.] tcg_out_goto_label
+     0.03%  [JIT] tid 15088    [.] guest-0x1afd464
+     0.03%  [JIT] tid 15088    [.] guest-0xa0b7845c
+     0.03%  [kernel.kallsyms]  [k] vfs_write
+     0.03%  [JIT] tid 15088    [.] guest-0x2c7ab80
+     0.03%  [JIT] tid 15088    [.] guest-0x2c67848
+     0.03%  [JIT] tid 15088    [.] guest-0x2c7ada4
+     0.03%  qemu-aarch64       [.] __libc_do_syscall
+     0.03%  [JIT] tid 15088    [.] guest-0x2c93708
+     0.03%  [JIT] tid 15088    [.] guest-0x43a91ac
+     0.03%  [JIT] tid 15088    [.] guest-0x2c67618
+     0.03%  [JIT] tid 15088    [.] guest-0x3c39ef0
+     0.03%  [JIT] tid 15088    [.] guest-0x2c4e038
+     0.03%  qemu-aarch64       [.] tcg_out_qemu_st_direct.isra.0
+     0.03%  [JIT] tid 15088    [.] guest-0x2c61c40
+     0.03%  qemu-aarch64       [.] disas_logic_reg
+     0.03%  [JIT] tid 15088    [.] guest-0x408ee24
+     0.03%  [JIT] tid 15088    [.] guest-0x43aa430
+     0.03%  [JIT] tid 15088    [.] guest-0x3c39e10
+     0.03%  [JIT] tid 15088    [.] guest-0x2c3b5fc
+     0.03%  qemu-aarch64       [.] gen_intermediate_code
+     0.03%  [JIT] tid 15088    [.] guest-0x48e2bd4
+     0.03%  [JIT] tid 15088    [.] guest-0xa0bc0c8c
+     0.03%  qemu-aarch64       [.] tcg_gen_op3
+     0.03%  [JIT] tid 15088    [.] guest-0x4200d78
+     0.03%  [JIT] tid 15088    [.] guest-0x3a52920
+     0.02%  [kernel.kallsyms]  [k] __futex_hash
+     0.02%  [kernel.kallsyms]  [k] __dev_queue_xmit
+     0.02%  [JIT] tid 15088    [.] guest-0x418a098
+     0.02%  [JIT] tid 15088    [.] guest-0x4538ffc
+     0.02%  [JIT] tid 15088    [.] guest-0x3ae11bc
+     0.02%  [JIT] tid 15088    [.] guest-0x2ee6544
+     0.02%  [JIT] tid 15088    [.] guest-0x1af64a0
+     0.02%  [JIT] tid 15088    [.] guest-0x3ae8908
+     0.02%  [JIT] tid 15088    [.] 0xa848dee8
+     0.02%  qemu-aarch64       [.] tcg_gen_extrl_i64_i32
+     0.02%  [JIT] tid 15088    [.] guest-0x42a42ec
+     0.02%  [kernel.kallsyms]  [k] finish_task_switch
+     0.02%  [JIT] tid 15088    [.] guest-0x413c2c8
+     0.02%  [JIT] tid 15088    [.] guest-0x43269b4
+     0.02%  [JIT] tid 15088    [.] guest-0x3a691fc
+     0.02%  [JIT] tid 15088    [.] guest-0x3b097d0
+     0.02%  [JIT] tid 15088    [.] guest-0x43a936c
+     0.02%  [JIT] tid 15088    [.] guest-0x3c0e5f4
+     0.02%  [JIT] tid 15088    [.] guest-0x2e34aa0
+     0.02%  [JIT] tid 15088    [.] guest-0x452c788
+     0.02%  [JIT] tid 15088    [.] guest-0x3a6b9ec
+     0.02%  [JIT] tid 15088    [.] guest-0xa0bc0c58
+     0.02%  [JIT] tid 15088    [.] guest-0x479d7cc
+     0.02%  [JIT] tid 15088    [.] guest-0x1ae1c48
+     0.02%  [JIT] tid 15088    [.] guest-0x3b6a164
+     0.02%  qemu-aarch64       [.] trans_SUBS_i.isra.0
+     0.02%  [JIT] tid 15088    [.] guest-0x4539b80
+     0.02%  [JIT] tid 15088    [.] guest-0x3aaf020
+     0.02%  [JIT] tid 15088    [.] guest-0x3de1afc
+     0.02%  [JIT] tid 15088    [.] guest-0x2e19918
+     0.02%  [JIT] tid 15088    [.] guest-0x3b15b98
+     0.02%  [JIT] tid 15088    [.] guest-0x402ddac
+     0.02%  [JIT] tid 15088    [.] guest-0x3ab8740
+     0.02%  [JIT] tid 15088    [.] guest-0x2e0b9f8
+     0.02%  [JIT] tid 15088    [.] guest-0x1aead84
+     0.02%  [JIT] tid 15088    [.] guest-0x45395e8
+     0.02%  [JIT] tid 15088    [.] guest-0x3fdb9efc
+     0.02%  [JIT] tid 15088    [.] guest-0x43283cc
+     0.02%  [JIT] tid 15088    [.] guest-0x44d11c8
+     0.02%  [JIT] tid 15088    [.] guest-0xa0b78278
+     0.02%  [JIT] tid 15088    [.] guest-0x4399ca0
+     0.02%  [JIT] tid 15088    [.] guest-0x3a75ac0
+     0.02%  [JIT] tid 15088    [.] guest-0x2c3b628
+     0.02%  [JIT] tid 15088    [.] guest-0x2e431f8
+     0.02%  [JIT] tid 15088    [.] guest-0x43d3e2c
+     0.02%  [JIT] tid 15088    [.] guest-0x3b8339c
+     0.02%  [JIT] tid 15088    [.] guest-0x44cccdc
+     0.02%  [JIT] tid 15088    [.] guest-0x3aff2e4
+     0.02%  [JIT] tid 15088    [.] guest-0x3b6af08
+     0.02%  [JIT] tid 15088    [.] guest-0x1adca68
+     0.02%  [JIT] tid 15088    [.] guest-0x3d1ecd8
+     0.02%  qemu-aarch64       [.] tcg_gen_andi_i32
+     0.02%  [kernel.kallsyms]  [k] task_mm_cid_work
+     0.02%  [JIT] tid 15088    [.] guest-0x3a6a51c
+     0.02%  [JIT] tid 15088    [.] guest-0x3a6da70
+     0.02%  [JIT] tid 15088    [.] guest-0x402dc44
+     0.02%  [JIT] tid 15088    [.] guest-0x43ebb40
+     0.02%  [JIT] tid 15088    [.] guest-0x3a9512c
+     0.02%  [JIT] tid 15088    [.] guest-0x3fdc15a0
+     0.02%  [kernel.kallsyms]  [k] wake_q_add_safe
+     0.02%  [JIT] tid 15088    [.] guest-0x3fdc51c8
+     0.02%  [JIT] tid 15088    [.] guest-0x44c96d8
+     0.02%  [JIT] tid 15088    [.] guest-0x43166d4
+     0.02%  [JIT] tid 15088    [.] guest-0x40d4f00
+     0.02%  [JIT] tid 15088    [.] guest-0x425a7d0
+     0.02%  [JIT] tid 15088    [.] guest-0x3d10e80
+     0.02%  [JIT] tid 15088    [.] guest-0x3bc8444
+     0.02%  [JIT] tid 15088    [.] guest-0x3a69714
+     0.02%  [JIT] tid 15088    [.] guest-0x3a6a278
+     0.02%  [JIT] tid 15088    [.] guest-0x4000874
+     0.02%  [JIT] tid 15088    [.] guest-0x4200754
+     0.02%  [kernel.kallsyms]  [k] aa_file_perm
+     0.02%  [JIT] tid 15088    [.] guest-0x3d02c68
+     0.02%  [JIT] tid 15088    [.] guest-0x3ae67c4
+     0.02%  [JIT] tid 15088    [.] guest-0x3af6ff4
+     0.02%  [JIT] tid 15088    [.] guest-0x43cfe68
+     0.02%  [JIT] tid 15088    [.] guest-0x3a76a34
+     0.02%  [JIT] tid 15088    [.] guest-0x4538184
+     0.02%  [JIT] tid 15088    [.] guest-0x409e088
+     0.02%  [JIT] tid 15088    [.] guest-0x3afea84
+     0.02%  [JIT] tid 15088    [.] guest-0x3bc2984
+     0.02%  [JIT] tid 15088    [.] guest-0x3aaeb50
+     0.02%  [JIT] tid 15088    [.] guest-0x2e435e8
+     0.02%  [JIT] tid 15088    [.] guest-0x3a94ef4
+     0.02%  [JIT] tid 15088    [.] guest-0x3b8043c
+     0.02%  [JIT] tid 15088    [.] guest-0x3c17a54
+     0.02%  [JIT] tid 15088    [.] guest-0x2c67850
+     0.02%  [JIT] tid 15088    [.] guest-0x41408d0
+     0.02%  [JIT] tid 15088    [.] guest-0x408ee5c
+     0.02%  [JIT] tid 15088    [.] guest-0x453658c
+     0.02%  [JIT] tid 15088    [.] guest-0x2c93cf0
+     0.02%  [JIT] tid 15088    [.] guest-0x3d7662c
+     0.02%  [JIT] tid 15088    [.] guest-0x2e0d894
+     0.02%  [JIT] tid 15088    [.] guest-0x1afbf1c
+     0.02%  [JIT] tid 15088    [.] guest-0x3adfbc8
+     0.02%  [JIT] tid 15088    [.] guest-0x43281f4
+     0.02%  [JIT] tid 15088    [.] guest-0x3fd9fbcc
+     0.02%  [JIT] tid 15088    [.] guest-0x4594f8c
+     0.02%  [JIT] tid 15088    [.] guest-0x3fdaeee0
+     0.02%  [JIT] tid 15088    [.] guest-0x4141c04
+     0.02%  [JIT] tid 15088    [.] guest-0x3b753e4
+     0.02%  [JIT] tid 15088    [.] guest-0x3cc2430
+     0.02%  [JIT] tid 15088    [.] guest-0x3ad4184
+     0.02%  [JIT] tid 15088    [.] guest-0x4126428
+     0.02%  [JIT] tid 15088    [.] guest-0x40e36b0
+     0.02%  [JIT] tid 15088    [.] guest-0x1ae1be4
+     0.02%  [JIT] tid 15088    [.] guest-0x43169a4
+     0.02%  [JIT] tid 15088    [.] guest-0x3af704c
+     0.02%  [JIT] tid 15088    [.] guest-0x3a8c99c
+     0.02%  [kernel.kallsyms]  [k] percpu_counter_add_batch
+     0.02%  [JIT] tid 15088    [.] guest-0x41a0008
+     0.02%  [JIT] tid 15088    [.] guest-0x3be0a74
+     0.02%  [JIT] tid 15088    [.] guest-0x3b7e4d4
+     0.02%  [kernel.kallsyms]  [k] xas_load
+     0.02%  [JIT] tid 15088    [.] guest-0x408ee1c
+     0.02%  qemu-aarch64       [.] __pthread_getspecific
+     0.02%  [JIT] tid 15088    [.] guest-0x40e7830
+     0.02%  [JIT] tid 15088    [.] guest-0x3ced67c
+     0.02%  [JIT] tid 15088    [.] guest-0x43aa610
+     0.02%  qemu-aarch64       [.] gen_new_label
+     0.02%  [JIT] tid 15088    [.] guest-0x42383e4
+     0.02%  [JIT] tid 15088    [.] guest-0x3d12d84
+     0.02%  [JIT] tid 15088    [.] guest-0x2c668cc
+     0.02%  [JIT] tid 15088    [.] guest-0x3a821fc
+     0.02%  [JIT] tid 15088    [.] guest-0x43e7510
+     0.02%  [JIT] tid 15088    [.] guest-0x2ea7878
+     0.02%  [JIT] tid 15088    [.] guest-0x453981c
+     0.02%  [JIT] tid 15088    [.] guest-0x3c3f4bc
+     0.02%  [JIT] tid 15088    [.] guest-0x2c51318
+     0.02%  [JIT] tid 15088    [.] guest-0x4099630
+     0.02%  [JIT] tid 15088    [.] guest-0x4213544
+     0.02%  [JIT] tid 15088    [.] guest-0x477e0f0
+     0.02%  qemu-aarch64       [.] trans_LDP
+     0.02%  [JIT] tid 15088    [.] guest-0x44cc4ac
+     0.02%  [JIT] tid 15088    [.] guest-0x3a951ec
+     0.02%  [JIT] tid 15088    [.] guest-0x41472b4
+     0.02%  [JIT] tid 15088    [.] guest-0x3b112e4
+     0.02%  [JIT] tid 15088    [.] guest-0x1ae2230
+     0.02%  [JIT] tid 15088    [.] guest-0x452f460
+     0.02%  [JIT] tid 15088    [.] guest-0x3cf1518
+     0.02%  [JIT] tid 15088    [.] guest-0x3adfbcc
+     0.02%  [JIT] tid 15088    [.] guest-0x1ad8f98
+     0.02%  [JIT] tid 15088    [.] guest-0x44cd328
+     0.02%  [JIT] tid 15088    [.] guest-0x3ad79d8
+     0.02%  [JIT] tid 15088    [.] guest-0x43283f0
+     0.02%  [JIT] tid 15088    [.] guest-0x2c67808
+     0.02%  [JIT] tid 15088    [.] guest-0x423d510
+     0.02%  [JIT] tid 15088    [.] guest-0x4202d84
+     0.02%  [JIT] tid 15088    [.] guest-0x3d985e0
+     0.02%  [JIT] tid 15088    [.] guest-0x1adabd8
+     0.02%  [JIT] tid 15088    [.] guest-0x410c258
+     0.02%  [JIT] tid 15088    [.] guest-0x1aeadd8
+     0.02%  [JIT] tid 15088    [.] guest-0x43a8a94
+     0.02%  [JIT] tid 15088    [.] guest-0x4124880
+     0.02%  [JIT] tid 15088    [.] guest-0x3ff6364
+     0.02%  [JIT] tid 15088    [.] guest-0x3d07784
+     0.02%  [JIT] tid 15088    [.] guest-0x3b03220
+     0.02%  [JIT] tid 15088    [.] guest-0x1aea038
+     0.02%  [JIT] tid 15088    [.] guest-0x425c038
+     0.02%  [JIT] tid 15088    [.] guest-0x3bb82cc
+     0.02%  [JIT] tid 15088    [.] guest-0x3b81da0
+     0.02%  [JIT] tid 15088    [.] guest-0x418a2dc
+     0.02%  [JIT] tid 15088    [.] guest-0x42162fc
+     0.02%  [JIT] tid 15088    [.] guest-0x3ab21d0
+     0.02%  [JIT] tid 15088    [.] guest-0x4399cc0
+     0.02%  [JIT] tid 15088    [.] guest-0x4328558
+     0.02%  [JIT] tid 15088    [.] guest-0x2c67784
+     0.02%  [JIT] tid 15088    [.] guest-0x3a3c2a8
+     0.01%  [kernel.kallsyms]  [k] __folio_alloc_noprof
+     0.01%  [JIT] tid 15088    [.] guest-0x3bc2004
+     0.01%  [JIT] tid 15088    [.] guest-0x4216488
+     0.01%  [JIT] tid 15088    [.] guest-0x4259f38
+     0.01%  [JIT] tid 15088    [.] guest-0x419753c
+     0.01%  [JIT] tid 15088    [.] guest-0x40f01e4
+     0.01%  [JIT] tid 15088    [.] guest-0x3feb6b0
+     0.01%  [JIT] tid 15088    [.] guest-0x4512b7c
+     0.01%  [JIT] tid 15088    [.] guest-0x2ec95a8
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1d18
+     0.01%  qemu-aarch64       [.] tcg_gen_qemu_ld_i64_chk
+     0.01%  [JIT] tid 15088    [.] guest-0x44cc7e4
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdab7b8
+     0.01%  [JIT] tid 15088    [.] guest-0x3bcbff8
+     0.01%  [JIT] tid 15088    [.] guest-0x413bef8
+     0.01%  [JIT] tid 15088    [.] guest-0x3bb6344
+     0.01%  [JIT] tid 15088    [.] guest-0x4539004
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82b90
+     0.01%  [JIT] tid 15088    [.] guest-0x402f188
+     0.01%  [JIT] tid 15088    [.] guest-0x3c0c900
+     0.01%  [JIT] tid 15088    [.] guest-0x3b7f098
+     0.01%  [JIT] tid 15088    [.] guest-0x452c720
+     0.01%  [JIT] tid 15088    [.] guest-0x3a69b94
+     0.01%  [JIT] tid 15088    [.] guest-0x3dbbf98
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdab210
+     0.01%  [JIT] tid 15088    [.] guest-0x41c2380
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdaa454
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae26b8
+     0.01%  [JIT] tid 15088    [.] guest-0x4316c24
+     0.01%  [JIT] tid 15088    [.] guest-0x41c1158
+     0.01%  [JIT] tid 15088    [.] guest-0x4269298
+     0.01%  [JIT] tid 15088    [.] guest-0x4539648
+     0.01%  [JIT] tid 15088    [.] guest-0x1aeb7ac
+     0.01%  [JIT] tid 15088    [.] guest-0x3ad3cc4
+     0.01%  [JIT] tid 15088    [.] guest-0x42a41e8
+     0.01%  [JIT] tid 15088    [.] guest-0x3bcbe4c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c677d0
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9fbd4
+     0.01%  [JIT] tid 15088    [.] guest-0x425b4d0
+     0.01%  [JIT] tid 15088    [.] guest-0x3abfc64
+     0.01%  [kernel.kallsyms]  [k] rcu_all_qs
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bb7c3c
+     0.01%  [JIT] tid 15088    [.] guest-0x1af1140
+     0.01%  [JIT] tid 15088    [.] guest-0x413bed0
+     0.01%  [JIT] tid 15088    [.] guest-0x413b550
+     0.01%  [JIT] tid 15088    [.] guest-0x4319564
+     0.01%  [JIT] tid 15088    [.] guest-0x413ddac
+     0.01%  [JIT] tid 15088    [.] guest-0x40fea70
+     0.01%  [JIT] tid 15088    [.] guest-0x3bcbadc
+     0.01%  [JIT] tid 15088    [.] guest-0x43eb60c
+     0.01%  [JIT] tid 15088    [.] guest-0x40caa78
+     0.01%  [JIT] tid 15088    [.] guest-0x3a7f0b8
+     0.01%  [JIT] tid 15088    [.] guest-0x1af801c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b15fa8
+     0.01%  [JIT] tid 15088    [.] guest-0x4538fc8
+     0.01%  [JIT] tid 15088    [.] guest-0x44e965c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0ab44
+     0.01%  [JIT] tid 15088    [.] guest-0x4539b28
+     0.01%  [JIT] tid 15088    [.] guest-0x1a96200
+     0.01%  [JIT] tid 15088    [.] guest-0x2c83330
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdaa6c0
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbd560
+     0.01%  [JIT] tid 15088    [.] guest-0x413dd40
+     0.01%  [JIT] tid 15088    [.] guest-0x3a753bc
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8fa54
+     0.01%  [JIT] tid 15088    [.] guest-0x44cd524
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbe6b4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b010a4
+     0.01%  [JIT] tid 15088    [.] guest-0x3bf75c0
+     0.01%  [JIT] tid 15088    [.] guest-0x413a3b0
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad9b20
+     0.01%  [JIT] tid 15088    [.] guest-0x3bff0d0
+     0.01%  [JIT] tid 15088    [.] guest-0x4537ae0
+     0.01%  [JIT] tid 15088    [.] guest-0x2ea7904
+     0.01%  [JIT] tid 15088    [.] guest-0x3a7f990
+     0.01%  [JIT] tid 15088    [.] guest-0x41251f4
+     0.01%  [JIT] tid 15088    [.] guest-0x2e0a7d0
+     0.01%  [JIT] tid 15088    [.] guest-0x41b5898
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc3588
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdba704
+     0.01%  [JIT] tid 15088    [.] guest-0x3a77724
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0c55c
+     0.01%  [JIT] tid 15088    [.] guest-0x4316710
+     0.01%  [JIT] tid 15088    [.] guest-0x3b3b9c0
+     0.01%  [JIT] tid 15088    [.] guest-0x39f5ea0
+     0.01%  [JIT] tid 15088    [.] guest-0x412498c
+     0.01%  [JIT] tid 15088    [.] guest-0x44fafd0
+     0.01%  [JIT] tid 15088    [.] guest-0x4265bb8
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1cd4
+     0.01%  qemu-aarch64       [.] helper_vfp_fcvtds
+     0.01%  [JIT] tid 15088    [.] guest-0x3a754d8
+     0.01%  [JIT] tid 15088    [.] guest-0x3b17938
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad8f60
+     0.01%  [JIT] tid 15088    [.] guest-0x4189f08
+     0.01%  [JIT] tid 15088    [.] guest-0x43eb620
+     0.01%  [JIT] tid 15088    [.] guest-0x413c2b0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a75398
+     0.01%  [JIT] tid 15088    [.] guest-0x430a190
+     0.01%  [JIT] tid 15088    [.] guest-0x400b79c
+     0.01%  [JIT] tid 15088    [.] guest-0x3c79c94
+     0.01%  [JIT] tid 15088    [.] guest-0x43d3e5c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3ca38
+     0.01%  [JIT] tid 15088    [.] guest-0x2c67e20
+     0.01%  [JIT] tid 15088    [.] guest-0x3a5f4b4
+     0.01%  [JIT] tid 15088    [.] guest-0x2e0d7a8
+     0.01%  [JIT] tid 15088    [.] guest-0x426cf68
+     0.01%  [JIT] tid 15088    [.] guest-0x44c9718
+     0.01%  [JIT] tid 15088    [.] guest-0x4539e80
+     0.01%  [JIT] tid 15088    [.] guest-0x1ade3e4
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad8bb4
+     0.01%  [JIT] tid 15088    [.] guest-0x452f444
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae9640
+     0.01%  [JIT] tid 15088    [.] guest-0x3ca0f68
+     0.01%  [JIT] tid 15088    [.] guest-0x43cff60
+     0.01%  [JIT] tid 15088    [.] guest-0x2c3f830
+     0.01%  [JIT] tid 15088    [.] guest-0x45b7558
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6a9e0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a7f088
+     0.01%  [JIT] tid 15088    [.] guest-0x44ccce0
+     0.01%  [JIT] tid 15088    [.] guest-0x41a5c44
+     0.01%  [JIT] tid 15088    [.] guest-0x413b58c
+     0.01%  qemu-aarch64       [.] cpu_exec
+     0.01%  [JIT] tid 15088    [.] guest-0x4257b60
+     0.01%  [JIT] tid 15088    [.] guest-0x4537b00
+     0.01%  [JIT] tid 15088    [.] guest-0x43aaec4
+     0.01%  [JIT] tid 15088    [.] guest-0x40e684c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9f188
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad874c
+     0.01%  [JIT] tid 15088    [.] guest-0x43e7a0c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdc1e28
+     0.01%  [JIT] tid 15088    [.] guest-0x3a76e40
+     0.01%  [JIT] tid 15088    [.] guest-0x3a52900
+     0.01%  [JIT] tid 15088    [.] guest-0x41c0640
+     0.01%  [JIT] tid 15088    [.] guest-0x3b82f48
+     0.01%  [JIT] tid 15088    [.] guest-0x4213bb4
+     0.01%  [JIT] tid 15088    [.] guest-0x3be08a0
+     0.01%  [JIT] tid 15088    [.] guest-0x4268eb4
+     0.01%  [JIT] tid 15088    [.] guest-0x4539aa0
+     0.01%  [JIT] tid 15088    [.] guest-0x42576ec
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c4b0
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae06a8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a97340
+     0.01%  [JIT] tid 15088    [.] guest-0x43e6fe8
+     0.01%  [JIT] tid 15088    [.] guest-0x413dd7c
+     0.01%  qemu-aarch64       [.] translator_use_goto_tb
+     0.01%  [JIT] tid 15088    [.] guest-0x2e43028
+     0.01%  [JIT] tid 15088    [.] guest-0x2e197c0
+     0.01%  [JIT] tid 15088    [.] guest-0x3ab8674
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdaa258
+     0.01%  [JIT] tid 15088    [.] guest-0x479e6c0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82b7c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8c084
+     0.01%  [kernel.kallsyms]  [k] vma_complete
+     0.01%  [JIT] tid 15088    [.] guest-0x4316594
+     0.01%  [JIT] tid 15088    [.] guest-0x43ee3bc
+     0.01%  [JIT] tid 15088    [.] guest-0x487d568
+     0.01%  [JIT] tid 15088    [.] guest-0x1af4fa4
+     0.01%  [JIT] tid 15088    [.] guest-0x48ca854
+     0.01%  [JIT] tid 15088    [.] guest-0x413b518
+     0.01%  [JIT] tid 15088    [.] guest-0x413489c
+     0.01%  qemu-aarch64       [.] g_try_malloc0
+     0.01%  [JIT] tid 15088    [.] guest-0x1afd434
+     0.01%  [JIT] tid 15088    [.] guest-0x4259364
+     0.01%  [kernel.kallsyms]  [k] __gup_longterm_locked
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6bd48
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c9d4
+     0.01%  [JIT] tid 15088    [.] guest-0x41a91c8
+     0.01%  [JIT] tid 15088    [.] guest-0x2ed3534
+     0.01%  [JIT] tid 15088    [.] guest-0x4899db0
+     0.01%  [JIT] tid 15088    [.] guest-0x4259330
+     0.01%  [JIT] tid 15088    [.] guest-0x4200df0
+     0.01%  [JIT] tid 15088    [.] guest-0x3bff918
+     0.01%  [JIT] tid 15088    [.] guest-0x4203f48
+     0.01%  [JIT] tid 15088    [.] guest-0x40059d4
+     0.01%  [JIT] tid 15088    [.] guest-0x42a3ec8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8dae0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c5154c
+     0.01%  [JIT] tid 15088    [.] guest-0x426e808
+     0.01%  [JIT] tid 15088    [.] guest-0x41ac350
+     0.01%  [JIT] tid 15088    [.] guest-0x3c5e018
+     0.01%  [JIT] tid 15088    [.] guest-0x2c67a40
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6d0c
+     0.01%  [JIT] tid 15088    [.] guest-0x4200c48
+     0.01%  [JIT] tid 15088    [.] guest-0x2c4e7c8
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6a60
+     0.01%  [JIT] tid 15088    [.] guest-0x3b2ea18
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8f89c
+     0.01%  [JIT] tid 15088    [.] guest-0x479d294
+     0.01%  [JIT] tid 15088    [.] guest-0x413b92c
+     0.01%  [JIT] tid 15088    [.] guest-0x3c0b658
+     0.01%  [JIT] tid 15088    [.] guest-0x4218328
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0a638
+     0.01%  [JIT] tid 15088    [.] guest-0x4259d7c
+     0.01%  [JIT] tid 15088    [.] guest-0x194c560
+     0.01%  [JIT] tid 15088    [.] guest-0x2e3f11c
+     0.01%  [JIT] tid 15088    [.] guest-0x4187000
+     0.01%  [JIT] tid 15088    [.] guest-0x1afc0fc
+     0.01%  [JIT] tid 15088    [.] guest-0x402ddbc
+     0.01%  [JIT] tid 15088    [.] guest-0x3ab8580
+     0.01%  [JIT] tid 15088    [.] guest-0x439987c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a94198
+     0.01%  [JIT] tid 15088    [.] guest-0x4256698
+     0.01%  [JIT] tid 15088    [.] guest-0x2c3b5e4
+     0.01%  [JIT] tid 15088    [.] guest-0x487dbc8
+     0.01%  [JIT] tid 15088    [.] guest-0x1aeb720
+     0.01%  [JIT] tid 15088    [.] guest-0x3a75360
+     0.01%  [JIT] tid 15088    [.] guest-0x410e900
+     0.01%  [JIT] tid 15088    [.] guest-0x43282ac
+     0.01%  [JIT] tid 15088    [.] guest-0x2eadbf4
+     0.01%  [JIT] tid 15088    [.] guest-0x43cfe70
+     0.01%  [JIT] tid 15088    [.] guest-0x48cb450
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c644
+     0.01%  [JIT] tid 15088    [.] guest-0x3acb6ec
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66a54
+     0.01%  [JIT] tid 15088    [.] guest-0x4259004
+     0.01%  [JIT] tid 15088    [.] guest-0x40c37b0
+     0.01%  [JIT] tid 15088    [.] guest-0x44e9634
+     0.01%  [JIT] tid 15088    [.] guest-0x4264000
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8bbb8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8fa1c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c5f0
+     0.01%  [JIT] tid 15088    [.] guest-0x48882cc
+     0.01%  [JIT] tid 15088    [.] guest-0x29ee0f4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3beb4
+     0.01%  qemu-aarch64       [.] gen_sub64_CC
+     0.01%  [JIT] tid 15088    [.] guest-0x3a491f4
+     0.01%  [JIT] tid 15088    [.] guest-0x48d2970
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3bed8
+     0.01%  [JIT] tid 15088    [.] guest-0x40e3604
+     0.01%  [JIT] tid 15088    [.] guest-0x3c0b68c
+     0.01%  [JIT] tid 15088    [.] guest-0x408ee2c
+     0.01%  [JIT] tid 15088    [.] guest-0x2e6ca14
+     0.01%  [JIT] tid 15088    [.] guest-0x40f007c
+     0.01%  [JIT] tid 15088    [.] guest-0x487dbc0
+     0.01%  qemu-aarch64       [.] __pthread_disable_asynccancel
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3bd0c
+     0.01%  [JIT] tid 15088    [.] guest-0x1a95a64
+     0.01%  [JIT] tid 15088    [.] guest-0x3ff6e20
+     0.01%  [JIT] tid 15088    [.] guest-0x48d20b8
+     0.01%  qemu-aarch64       [.] trans_STP.constprop.0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a95308
+     0.01%  [JIT] tid 15088    [.] guest-0x45379c8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3be20
+     0.01%  [JIT] tid 15088    [.] guest-0x2c671f4
+     0.01%  [JIT] tid 15088    [.] guest-0x2eadb7c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c46c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c5a4
+     0.01%  [JIT] tid 15088    [.] guest-0x40e785c
+     0.01%  [JIT] tid 15088    [.] guest-0x44e8634
+     0.01%  [JIT] tid 15088    [.] guest-0x418c054
+     0.01%  [JIT] tid 15088    [.] guest-0x48caa1c
+     0.01%  [JIT] tid 15088    [.] guest-0x42566a8
+     0.01%  [JIT] tid 15088    [.] guest-0x2eadaec
+     0.01%  [JIT] tid 15088    [.] guest-0x4259570
+     0.01%  [JIT] tid 15088    [.] guest-0x2c832f4
+     0.01%  [JIT] tid 15088    [.] guest-0x425928c
+     0.01%  [JIT] tid 15088    [.] guest-0x4204d70
+     0.01%  [JIT] tid 15088    [.] guest-0x402ddb4
+     0.01%  [JIT] tid 15088    [.] guest-0x39fd7dc
+     0.01%  [JIT] tid 15088    [.] guest-0x2c833ec
+     0.01%  [JIT] tid 15088    [.] guest-0x3a45318
+     0.01%  [kernel.kallsyms]  [k] __ret_fast_syscall
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78324
+     0.01%  [JIT] tid 15088    [.] guest-0x48cc470
+     0.01%  [JIT] tid 15088    [.] guest-0x3a76b74
+     0.01%  [JIT] tid 15088    [.] guest-0x488b7d0
+     0.01%  [JIT] tid 15088    [.] guest-0x4257ca8
+     0.01%  [JIT] tid 15088    [.] guest-0x4028024
+     0.01%  [JIT] tid 15088    [.] guest-0x2eadc94
+     0.01%  [JIT] tid 15088    [.] guest-0x43cedb0
+     0.01%  [JIT] tid 15088    [.] 0xa68e1840
+     0.01%  [JIT] tid 15088    [.] guest-0x45398b0
+     0.01%  qemu-aarch64       [.] tcg_gen_add_i64
+     0.01%  [JIT] tid 15088    [.] guest-0x425c030
+     0.01%  [JIT] tid 15088    [.] guest-0x2c9e814
+     0.01%  [JIT] tid 15088    [.] guest-0x1afbbec
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c604
+     0.01%  [JIT] tid 15088    [.] guest-0x413c2e8
+     0.01%  qemu-aarch64       [.] tcg_can_emit_vecop_list
+     0.01%  [JIT] tid 15088    [.] guest-0x1aea120
+     0.01%  [JIT] tid 15088    [.] guest-0x4538544
+     0.01%  [JIT] tid 15088    [.] guest-0x2eadc3c
+     0.01%  [JIT] tid 15088    [.] guest-0x2eadc8c
+     0.01%  [JIT] tid 15088    [.] guest-0x4399ca8
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6c38
+     0.01%  [JIT] tid 15088    [.] guest-0x2c3cb4c
+     0.01%  [JIT] tid 15088    [.] guest-0x413b4f8
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7ad50
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b784e8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a9ad60
+     0.01%  [JIT] tid 15088    [.] guest-0x48d2134
+     0.01%  qemu-aarch64       [.] tcg_temp_free_ptr
+     0.01%  [JIT] tid 15088    [.] guest-0x429cefc
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66c64
+     0.01%  [JIT] tid 15088    [.] guest-0x3b15e28
+     0.01%  [JIT] tid 15088    [.] guest-0x4258158
+     0.01%  [JIT] tid 15088    [.] guest-0x3b5b538
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c3ec
+     0.01%  [JIT] tid 15088    [.] guest-0x2c51ca0
+     0.01%  qemu-aarch64       [.] __memset_from_thumb
+     0.01%  [JIT] tid 15088    [.] guest-0x45404d8
+     0.01%  [JIT] tid 15088    [.] guest-0x40f00c4
+     0.01%  [JIT] tid 15088    [.] guest-0x2eadb44
+     0.01%  [JIT] tid 15088    [.] guest-0x2c51588
+     0.01%  [JIT] tid 15088    [.] guest-0x2e17740
+     0.01%  [JIT] tid 15088    [.] 0xa7c08978
+     0.01%  [JIT] tid 15088    [.] guest-0x4258d20
+     0.01%  [JIT] tid 15088    [.] guest-0x417a380
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3bd68
+     0.01%  [JIT] tid 15088    [.] guest-0x2ed35dc
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdba520
+     0.01%  [JIT] tid 15088    [.] guest-0x413b564
+     0.01%  [JIT] tid 15088    [.] guest-0x41a9c34
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bbe81c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b381c0
+     0.01%  [JIT] tid 15088    [.] guest-0x3ffd444
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad8d9c
+     0.01%  [JIT] tid 15088    [.] guest-0x3ca0f34
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8d660
+     0.01%  [kernel.kallsyms]  [k] sched_balance_rq
+     0.01%  [JIT] tid 15088    [.] guest-0x1aec1d0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0c598
+     0.01%  [JIT] tid 15088    [.] guest-0x48e1f3c
+     0.01%  [JIT] tid 15088    [.] guest-0x417ab3c
+     0.01%  [JIT] tid 15088    [.] guest-0x4259c38
+     0.01%  [JIT] tid 15088    [.] guest-0x48b5ff8
+     0.01%  [JIT] tid 15088    [.] guest-0x4361b64
+     0.01%  [JIT] tid 15088    [.] guest-0x419443c
+     0.01%  [JIT] tid 15088    [.] guest-0x4256944
+     0.01%  [JIT] tid 15088    [.] guest-0x425a184
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8c8b4
+     0.01%  [JIT] tid 15088    [.] guest-0x2eadc10
+     0.01%  [JIT] tid 15088    [.] guest-0x43998e8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6eee0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a49104
+     0.01%  [JIT] tid 15088    [.] guest-0x48d0f2c
+     0.01%  [JIT] tid 15088    [.] guest-0x4259e78
+     0.01%  [JIT] tid 15088    [.] guest-0x3b11a28
+     0.01%  [JIT] tid 15088    [.] guest-0x43eb694
+     0.01%  [JIT] tid 15088    [.] guest-0x402f168
+     0.01%  qemu-aarch64       [.] helper_ldq_mmu
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbe124
+     0.01%  [JIT] tid 15088    [.] guest-0x4259e74
+     0.01%  [JIT] tid 15088    [.] guest-0x44f6b68
+     0.01%  [JIT] tid 15088    [.] guest-0x402dcb0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c4e888
+     0.01%  [JIT] tid 15088    [.] guest-0x4033ea8
+     0.01%  [JIT] tid 15088    [.] guest-0x414016c
+     0.01%  [JIT] tid 15088    [.] guest-0x48b6018
+     0.01%  [JIT] tid 15088    [.] guest-0x4259168
+     0.01%  [JIT] tid 15088    [.] guest-0x1aeae08
+     0.01%  [JIT] tid 15088    [.] guest-0x2c674e0
+     0.01%  [JIT] tid 15088    [.] guest-0x43cedac
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6938
+     0.01%  [JIT] tid 15088    [.] guest-0x45371b0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7b764
+     0.01%  [JIT] tid 15088    [.] guest-0x413541c
+     0.01%  [JIT] tid 15088    [.] guest-0x43ebe48
+     0.01%  [JIT] tid 15088    [.] guest-0x3a5191c
+     0.01%  qemu-aarch64       [.] tcg_gen_lookup_and_goto_ptr
+     0.01%  [JIT] tid 15088    [.] guest-0x1afc7a4
+     0.01%  [JIT] tid 15088    [.] guest-0x2e3f0a8
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6d9c
+     0.01%  [JIT] tid 15088    [.] guest-0x2eeae0c
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78454
+     0.01%  [JIT] tid 15088    [.] guest-0x402dcfc
+     0.01%  [JIT] tid 15088    [.] guest-0x4258164
+     0.01%  [JIT] tid 15088    [.] guest-0x42586ac
+     0.01%  [JIT] tid 15088    [.] guest-0x4328224
+     0.01%  [JIT] tid 15088    [.] guest-0x2eadc48
+     0.01%  [JIT] tid 15088    [.] guest-0x2eadb78
+     0.01%  [JIT] tid 15088    [.] guest-0x4099314
+     0.01%  [JIT] tid 15088    [.] guest-0x2ee5744
+     0.01%  [JIT] tid 15088    [.] guest-0x4189fac
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7b044
+     0.01%  [JIT] tid 15088    [.] guest-0x488b9ac
+     0.01%  [JIT] tid 15088    [.] guest-0x418b9cc
+     0.01%  [JIT] tid 15088    [.] guest-0x1aea638
+     0.01%  [JIT] tid 15088    [.] guest-0x3b06988
+     0.01%  [JIT] tid 15088    [.] guest-0x3a5f3bc
+     0.01%  [JIT] tid 15088    [.] guest-0x4538f04
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6b08
+     0.01%  [kernel.kallsyms]  [k] blk_cgroup_congested
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae83d0
+     0.01%  [JIT] tid 15088    [.] guest-0x402805c
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bca1c0
+     0.01%  [JIT] tid 15088    [.] guest-0x48d51bc
+     0.01%  [JIT] tid 15088    [.] guest-0x413ae30
+     0.01%  [JIT] tid 15088    [.] guest-0x3a4ffcc
+     0.01%  [JIT] tid 15088    [.] guest-0x43eb6f4
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdc9024
+     0.01%  [JIT] tid 15088    [.] guest-0x41c0c2c
+     0.01%  [JIT] tid 15088    [.] guest-0x417a2fc
+     0.01%  [JIT] tid 15088    [.] guest-0x43283c8
+     0.01%  [JIT] tid 15088    [.] guest-0x42a40c0
+     0.01%  qemu-aarch64       [.] tcg_gen_andi_i64
+     0.01%  [JIT] tid 15088    [.] guest-0x40d4ef8
+     0.01%  [JIT] tid 15088    [.] guest-0x43a9358
+     0.01%  [JIT] tid 15088    [.] guest-0x2c67678
+     0.01%  [JIT] tid 15088    [.] guest-0x4179198
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae05cc
+     0.01%  [JIT] tid 15088    [.] guest-0x4257ca4
+     0.01%  [JIT] tid 15088    [.] guest-0x4203f74
+     0.01%  [JIT] tid 15088    [.] guest-0x3b76b64
+     0.01%  [JIT] tid 15088    [.] guest-0x4258604
+     0.01%  [JIT] tid 15088    [.] guest-0x4217c1c
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6db0
+     0.01%  [JIT] tid 15088    [.] guest-0x3ff5998
+     0.01%  [JIT] tid 15088    [.] guest-0x2eadbd0
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae8934
+     0.01%  [JIT] tid 15088    [.] guest-0x432829c
+     0.01%  [JIT] tid 15088    [.] guest-0x425ad40
+     0.01%  [JIT] tid 15088    [.] guest-0x3b05a30
+     0.01%  [JIT] tid 15088    [.] guest-0x458c978
+     0.01%  [JIT] tid 15088    [.] guest-0x425916c
+     0.01%  [JIT] tid 15088    [.] guest-0x42580b4
+     0.01%  [JIT] tid 15088    [.] guest-0x42ff578
+     0.01%  [JIT] tid 15088    [.] guest-0x4257cb4
+     0.01%  [JIT] tid 15088    [.] guest-0x4270060
+     0.01%  [JIT] tid 15088    [.] guest-0x4188d58
+     0.01%  [JIT] tid 15088    [.] guest-0x3c0b5c0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b15650
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c360
+     0.01%  [JIT] tid 15088    [.] guest-0x2c4e784
+     0.01%  [JIT] tid 15088    [.] guest-0x4257f34
+     0.01%  [JIT] tid 15088    [.] guest-0x3b064dc
+     0.01%  [kernel.kallsyms]  [k] ret_from_exception
+     0.01%  [JIT] tid 15088    [.] guest-0x43998a0
+     0.01%  [JIT] tid 15088    [.] guest-0x3adcdac
+     0.01%  [JIT] tid 15088    [.] guest-0x43aaf78
+     0.01%  qemu-aarch64       [.] fold_const2_commutative
+     0.01%  [JIT] tid 15088    [.] guest-0x3c0b638
+     0.01%  [JIT] tid 15088    [.] guest-0x3ffa4d0
+     0.01%  qemu-aarch64       [.] tcg_malloc_internal
+     0.01%  [JIT] tid 15088    [.] guest-0x425785c
+     0.01%  [JIT] tid 15088    [.] guest-0x1afbe4c
+     0.01%  [JIT] tid 15088    [.] guest-0x4538ea0
+     0.01%  [JIT] tid 15088    [.] guest-0x48b653c
+     0.01%  qemu-aarch64       [.] tcg_gen_ld_i32
+     0.01%  [JIT] tid 15088    [.] guest-0x2ead8e4
+     0.01%  [JIT] tid 15088    [.] guest-0x413b368
+     0.01%  [JIT] tid 15088    [.] guest-0x2ead7cc
+     0.01%  [JIT] tid 15088    [.] guest-0x41add0c
+     0.01%  [kernel.kallsyms]  [k] memblock_overlaps_region
+     0.01%  [JIT] tid 15088    [.] guest-0x3b15620
+     0.01%  [JIT] tid 15088    [.] guest-0x4258934
+     0.01%  qemu-aarch64       [.] safe_syscall_base
+     0.01%  [JIT] tid 15088    [.] guest-0x48b6788
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6b0e8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3beb8
+     0.01%  [JIT] tid 15088    [.] guest-0x402de04
+     0.01%  [JIT] tid 15088    [.] guest-0x4023c60
+     0.01%  [JIT] tid 15088    [.] guest-0x3adf218
+     0.01%  [JIT] tid 15088    [.] guest-0x479f2a4
+     0.01%  [JIT] tid 15088    [.] guest-0x41353b8
+     0.01%  [JIT] tid 15088    [.] guest-0x48ca878
+     0.01%  [JIT] tid 15088    [.] guest-0x3b381ac
+     0.01%  qemu-aarch64       [.] arm_test_cc
+     0.01%  [JIT] tid 15088    [.] guest-0x42ff37c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c677e4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c47180
+     0.01%  [JIT] tid 15088    [.] guest-0x48b60bc
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc3678
+     0.01%  [JIT] tid 15088    [.] guest-0x2c6778c
+     0.01%  [kernel.kallsyms]  [k] propagate_protected_usage
+     0.01%  [JIT] tid 15088    [.] guest-0x48b62e8
+     0.01%  [JIT] tid 15088    [.] guest-0x4215e24
+     0.01%  [JIT] tid 15088    [.] guest-0x47689f4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a9a2a8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a41e6c
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bc0ce0
+     0.01%  [JIT] tid 15088    [.] guest-0x488b64c
+     0.01%  [JIT] tid 15088    [.] guest-0x44e8208
+     0.01%  [JIT] tid 15088    [.] guest-0x4196fdc
+     0.01%  [JIT] tid 15088    [.] guest-0x3aaeb5c
+     0.01%  [JIT] tid 15088    [.] guest-0x48b803c
+     0.01%  [JIT] tid 15088    [.] guest-0x42011e4
+     0.01%  [JIT] tid 15088    [.] guest-0x43b69d0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6b080
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0c5b8
+     0.01%  [JIT] tid 15088    [.] guest-0x419f154
+     0.01%  [JIT] tid 15088    [.] guest-0x3c9ee0c
+     0.01%  qemu-aarch64       [.] tcg_gen_qemu_st_i128_chk
+     0.01%  [JIT] tid 15088    [.] guest-0x41a4d6c
+     0.01%  [JIT] tid 15088    [.] guest-0x2e0a7d8
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66ab0
+     0.01%  [JIT] tid 15088    [.] guest-0x3ffa47c
+     0.01%  [JIT] tid 15088    [.] guest-0x3c0b718
+     0.01%  [JIT] tid 15088    [.] guest-0x2ee5430
+     0.01%  qemu-aarch64       [.] mmap_unlock
+     0.01%  qemu-aarch64       [.] disas_data_proc_3src
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae05bc
+     0.01%  [JIT] tid 15088    [.] guest-0x2c61b9c
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae0924
+     0.01%  [JIT] tid 15088    [.] guest-0x3af3b30
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c2a4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b1ffe0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c9365c
+     0.01%  [JIT] tid 15088    [.] guest-0x402f1ec
+     0.01%  [JIT] tid 15088    [.] guest-0x3a9a300
+     0.01%  [JIT] tid 15088    [.] guest-0x458e884
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1da0
+     0.01%  [JIT] tid 15088    [.] guest-0x42580d0
+     0.01%  [JIT] tid 15088    [.] guest-0x4026604
+     0.01%  [JIT] tid 15088    [.] guest-0x413bd80
+     0.01%  [JIT] tid 15088    [.] guest-0x4203f20
+     0.01%  [JIT] tid 15088    [.] guest-0x2eada60
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae8924
+     0.01%  [JIT] tid 15088    [.] guest-0x45278f8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a76b98
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdd7ffc
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8ce10
+     0.01%  [JIT] tid 15088    [.] guest-0x41a555c
+     0.01%  [JIT] tid 15088    [.] guest-0x408ee4c
+     0.01%  [JIT] tid 15088    [.] guest-0x42587c4
+     0.01%  [JIT] tid 15088    [.] guest-0x41a9124
+     0.01%  [JIT] tid 15088    [.] guest-0x43b69bc
+     0.01%  [JIT] tid 15088    [.] guest-0x2c3b5c0
+     0.01%  [JIT] tid 15088    [.] guest-0x43195a4
+     0.01%  [JIT] tid 15088    [.] guest-0x4328244
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bc0c44
+     0.01%  [JIT] tid 15088    [.] guest-0x42585a4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b38628
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc360c
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6fa4
+     0.01%  [JIT] tid 15088    [.] guest-0x417967c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0c538
+     0.01%  [JIT] tid 15088    [.] 0xa65de44c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b37dc4
+     0.01%  [JIT] tid 15088    [.] guest-0x2e197c4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b381a4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a5fb24
+     0.01%  [JIT] tid 15088    [.] guest-0x1afbf84
+     0.01%  [JIT] tid 15088    [.] guest-0x4544298
+     0.01%  [JIT] tid 15088    [.] guest-0x43a9304
+     0.01%  [JIT] tid 15088    [.] guest-0x2ee6188
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7ac10
+     0.01%  [JIT] tid 15088    [.] guest-0x4199228
+     0.01%  [JIT] tid 15088    [.] guest-0x3b15ad4
+     0.01%  [JIT] tid 15088    [.] guest-0x42583f8
+     0.01%  [JIT] tid 15088    [.] guest-0x4328230
+     0.01%  [JIT] tid 15088    [.] guest-0x41400b8
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad9b58
+     0.01%  [JIT] tid 15088    [.] guest-0x3b05948
+     0.01%  [JIT] tid 15088    [.] guest-0x4184864
+     0.01%  [JIT] tid 15088    [.] guest-0x2ea7a44
+     0.01%  [JIT] tid 15088    [.] guest-0x413bf30
+     0.01%  [JIT] tid 15088    [.] guest-0x39fd824
+     0.01%  [JIT] tid 15088    [.] guest-0x1a7bdc4
+     0.01%  [JIT] tid 15088    [.] guest-0x4319608
+     0.01%  [JIT] tid 15088    [.] guest-0x41a4c68
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8046c
+     0.01%  [JIT] tid 15088    [.] guest-0x43eac1c
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc3524
+     0.01%  [JIT] tid 15088    [.] guest-0x2c935d0
+     0.01%  [JIT] tid 15088    [.] guest-0x477e3a4
+     0.01%  [JIT] tid 15088    [.] guest-0x1ca08e4
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae6620
+     0.01%  qemu-aarch64       [.] float64_add
+     0.01%  [JIT] tid 15088    [.] guest-0x47a1384
+     0.01%  [JIT] tid 15088    [.] guest-0x43a9380
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3bd88
+     0.01%  [JIT] tid 15088    [.] guest-0x3a45320
+     0.01%  [JIT] tid 15088    [.] guest-0x3b05f8c
+     0.01%  [JIT] tid 15088    [.] guest-0x1af4c7c
+     0.01%  [JIT] tid 15088    [.] guest-0x413b4d8
+     0.01%  [JIT] tid 15088    [.] guest-0x41aed50
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c2d0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a9088c
+     0.01%  [JIT] tid 15088    [.] guest-0x419b7f4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b05a34
+     0.01%  [JIT] tid 15088    [.] guest-0x41a8d44
+     0.01%  [JIT] tid 15088    [.] guest-0x3ff63c0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66a20
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6904
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82fa0
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b784f0
+     0.01%  [JIT] tid 15088    [.] guest-0x41a4cb0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c5e4
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6c28
+     0.01%  [JIT] tid 15088    [.] guest-0x3a76ee4
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6fac
+     0.01%  [JIT] tid 15088    [.] guest-0x41a818c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0c3dc
+     0.01%  [JIT] tid 15088    [.] guest-0x43a78f4
+     0.01%  [JIT] tid 15088    [.] guest-0x41ffe94
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01aac
+     0.01%  [JIT] tid 15088    [.] guest-0x43a9288
+     0.01%  [JIT] tid 15088    [.] guest-0x4328560
+     0.01%  [JIT] tid 15088    [.] guest-0x418a0b4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b40e98
+     0.01%  qemu-aarch64       [.] fold_or
+     0.01%  [JIT] tid 15088    [.] guest-0x3b1e2f4
+     0.01%  [JIT] tid 15088    [.] guest-0x2e193d4
+     0.01%  [JIT] tid 15088    [.] guest-0x4257f78
+     0.01%  qemu-aarch64       [.] process_queued_cpu_work
+     0.01%  [JIT] tid 15088    [.] guest-0x45391e0
+     0.01%  [JIT] tid 15088    [.] guest-0x42151c0
+     0.01%  [JIT] tid 15088    [.] guest-0x41ffe88
+     0.01%  [JIT] tid 15088    [.] guest-0x2c61b80
+     0.01%  [JIT] tid 15088    [.] guest-0x41ffe30
+     0.01%  [JIT] tid 15088    [.] guest-0x413b94c
+     0.01%  [JIT] tid 15088    [.] guest-0x2ead88c
+     0.01%  [JIT] tid 15088    [.] guest-0x4259668
+     0.01%  [JIT] tid 15088    [.] guest-0x41843d4
+     0.01%  [JIT] tid 15088    [.] guest-0x432ccd0
+     0.01%  [JIT] tid 15088    [.] guest-0x4544310
+     0.01%  [JIT] tid 15088    [.] guest-0x41ba384
+     0.01%  [JIT] tid 15088    [.] guest-0x4257e14
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdc8d4c
+     0.01%  [JIT] tid 15088    [.] guest-0x2e5dc38
+     0.01%  [JIT] tid 15088    [.] guest-0x1adca44
+     0.01%  [JIT] tid 15088    [.] guest-0x3b40e20
+     0.01%  [JIT] tid 15088    [.] guest-0x2f6f4d0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b064d8
+     0.01%  [JIT] tid 15088    [.] guest-0x477e1a0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7b74c
+     0.01%  [JIT] tid 15088    [.] guest-0x4204e68
+     0.01%  [JIT] tid 15088    [.] guest-0x41a4d90
+     0.01%  [JIT] tid 15088    [.] guest-0x2c833dc
+     0.01%  [JIT] tid 15088    [.] guest-0x44f6acc
+     0.01%  [JIT] tid 15088    [.] guest-0x4218904
+     0.01%  [JIT] tid 15088    [.] guest-0x2ec8964
+     0.01%  [JIT] tid 15088    [.] guest-0x1af6458
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0cbc4
+     0.01%  [JIT] tid 15088    [.] guest-0x3ab84bc
+     0.01%  [JIT] tid 15088    [.] guest-0x41a8468
+     0.01%  [JIT] tid 15088    [.] guest-0x48d1634
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82c6c
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae9630
+     0.01%  [JIT] tid 15088    [.] guest-0x3a76e1c
+     0.01%  [JIT] tid 15088    [.] guest-0x488b638
+     0.01%  [JIT] tid 15088    [.] guest-0x2c451e0
+     0.01%  [JIT] tid 15088    [.] guest-0x2e4302c
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc3568
+     0.01%  [JIT] tid 15088    [.] guest-0x4000ff0
+     0.01%  [JIT] tid 15088    [.] guest-0x45d9e520
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6b150
+     0.01%  [JIT] tid 15088    [.] guest-0x4259dc4
+     0.01%  [JIT] tid 15088    [.] guest-0x4527554
+     0.01%  [JIT] tid 15088    [.] guest-0x44e961c
+     0.01%  [JIT] tid 15088    [.] guest-0x4200dac
+     0.01%  [JIT] tid 15088    [.] guest-0x3ffa39c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a520ac
+     0.01%  [JIT] tid 15088    [.] guest-0x3b14224
+     0.01%  [JIT] tid 15088    [.] guest-0x4179c50
+     0.01%  [JIT] tid 15088    [.] 0xa8be88a4
+     0.01%  [JIT] tid 15088    [.] guest-0x4200d9c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82bec
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad9344
+     0.01%  [JIT] tid 15088    [.] guest-0x3cdb088
+     0.01%  [JIT] tid 15088    [.] guest-0x2e3ce64
+     0.01%  [JIT] tid 15088    [.] guest-0x4513134
+     0.01%  [JIT] tid 15088    [.] guest-0x3b16d10
+     0.01%  [JIT] tid 15088    [.] guest-0x2c94f54
+     0.01%  [JIT] tid 15088    [.] guest-0x4189fb4
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdaae20
+     0.01%  [JIT] tid 15088    [.] guest-0x31329ec
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c4b4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c69c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b257d0
+     0.01%  qemu-aarch64       [.] tcg_gen_qemu_st_i64_int
+     0.01%  [JIT] tid 15088    [.] 0xa7c00940
+     0.01%  [JIT] tid 15088    [.] guest-0x413bd30
+     0.01%  [JIT] tid 15088    [.] guest-0x41a49c4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a5f46c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01828
+     0.01%  [JIT] tid 15088    [.] guest-0x45129b8
+     0.01%  [JIT] tid 15088    [.] guest-0x4259e08
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae6210
+     0.01%  [JIT] tid 15088    [.] guest-0x3a75ab8
+     0.01%  [JIT] tid 15088    [.] guest-0x4399878
+     0.01%  [JIT] tid 15088    [.] guest-0x48e2bc0
+     0.01%  [JIT] tid 15088    [.] guest-0x4179e08
+     0.01%  [JIT] tid 15088    [.] guest-0x4512b40
+     0.01%  [JIT] tid 15088    [.] guest-0x4513720
+     0.01%  [JIT] tid 15088    [.] guest-0x41ffdf4
+     0.01%  qemu-aarch64       [.] __longjmp_chk
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6948
+     0.01%  [JIT] tid 15088    [.] guest-0x4178b68
+     0.01%  [JIT] tid 15088    [.] guest-0x420379c
+     0.01%  [JIT] tid 15088    [.] guest-0x41ffe48
+     0.01%  [JIT] tid 15088    [.] guest-0x4179de0
+     0.01%  [JIT] tid 15088    [.] guest-0x413bd40
+     0.01%  [JIT] tid 15088    [.] guest-0x4200eb8
+     0.01%  [JIT] tid 15088    [.] guest-0x4268f2c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a755e8
+     0.01%  [JIT] tid 15088    [.] guest-0x40f01ec
+     0.01%  [JIT] tid 15088    [.] guest-0x3b1fde8
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae77dc
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae2630
+     0.01%  [JIT] tid 15088    [.] guest-0x2ea78d4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a51694
+     0.01%  qemu-aarch64       [.] __clock_gettime
+     0.01%  [JIT] tid 15088    [.] guest-0x4257864
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66100
+     0.01%  [JIT] tid 15088    [.] guest-0x3c0b620
+     0.01%  [kernel.kallsyms]  [k] handle_softirqs
+     0.01%  [JIT] tid 15088    [.] guest-0x2e1b5a0
+     0.01%  [JIT] tid 15088    [.] guest-0x41ffeac
+     0.01%  [JIT] tid 15088    [.] guest-0x419bcdc
+     0.01%  [JIT] tid 15088    [.] guest-0x2e194e4
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad53d4
+     0.01%  [JIT] tid 15088    [.] guest-0x413b570
+     0.01%  [JIT] tid 15088    [.] guest-0x453cf28
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01acc
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8cd88
+     0.01%  [JIT] tid 15088    [.] guest-0x2e19f64
+     0.01%  [JIT] tid 15088    [.] guest-0x2ead7a8
+     0.01%  [JIT] tid 15088    [.] guest-0x425c020
+     0.01%  [JIT] tid 15088    [.] guest-0x41b542c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b15fbc
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8cc0c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82c9c
+     0.01%  [JIT] tid 15088    [.] guest-0x41a8a78
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8dbd0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a7eec4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c40c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b06490
+     0.01%  [JIT] tid 15088    [.] guest-0x47850bc
+     0.01%  [JIT] tid 15088    [.] guest-0x3a75590
+     0.01%  [JIT] tid 15088    [.] guest-0x4264114
+     0.01%  [JIT] tid 15088    [.] guest-0x29ecef4
+     0.01%  [JIT] tid 15088    [.] guest-0x42051e0
+     0.01%  [JIT] tid 15088    [.] guest-0x42a1e48
+     0.01%  [JIT] tid 15088    [.] guest-0x4258324
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8c4cc
+     0.01%  [JIT] tid 15088    [.] guest-0x426c06c
+     0.01%  [JIT] tid 15088    [.] guest-0x425b23c
+     0.01%  [JIT] tid 15088    [.] guest-0x3af6820
+     0.01%  [JIT] tid 15088    [.] guest-0x3ad6784
+     0.01%  [JIT] tid 15088    [.] guest-0x425934c
+     0.01%  [JIT] tid 15088    [.] guest-0x4594f74
+     0.01%  [JIT] tid 15088    [.] guest-0x431959c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a75338
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6a40
+     0.01%  [JIT] tid 15088    [.] guest-0x2c832e4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c67740
+     0.01%  [JIT] tid 15088    [.] guest-0x4328514
+     0.01%  [JIT] tid 15088    [.] guest-0x417a2c4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7b084
+     0.01%  [JIT] tid 15088    [.] guest-0x3a9be5c
+     0.01%  [JIT] tid 15088    [.] guest-0x41a91e4
+     0.01%  [JIT] tid 15088    [.] guest-0x4217b30
+     0.01%  [JIT] tid 15088    [.] guest-0x3c0b5c8
+     0.01%  [JIT] tid 15088    [.] guest-0x4196cb0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c4dffc
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b7f094
+     0.01%  [JIT] tid 15088    [.] guest-0x4538034
+     0.01%  qemu-aarch64       [.] helper_vfp_sqrtd
+     0.01%  [JIT] tid 15088    [.] guest-0x2c83250
+     0.01%  [JIT] tid 15088    [.] guest-0x41a4c6c
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78500
+     0.01%  [JIT] tid 15088    [.] guest-0x452bcd4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82b98
+     0.01%  [JIT] tid 15088    [.] guest-0x3b00d5c
+     0.01%  [JIT] tid 15088    [.] guest-0x4179dc8
+     0.01%  [JIT] tid 15088    [.] guest-0x402dcf8
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82d08
+     0.01%  [JIT] tid 15088    [.] guest-0x4257eec
+     0.01%  [JIT] tid 15088    [.] guest-0x45394b4
+     0.01%  [JIT] tid 15088    [.] guest-0x48b65f4
+     0.01%  [JIT] tid 15088    [.] guest-0x2e4346c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c4e7f4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0bca8
+     0.01%  [JIT] tid 15088    [.] guest-0x483847c
+     0.01%  [JIT] tid 15088    [.] guest-0x425a7f8
+     0.01%  [JIT] tid 15088    [.] guest-0x432849c
+     0.01%  [JIT] tid 15088    [.] guest-0x4177bcc
+     0.01%  [JIT] tid 15088    [.] guest-0x48e2bdc
+     0.01%  [JIT] tid 15088    [.] 0xa8bcea00
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66b94
+     0.01%  [JIT] tid 15088    [.] guest-0x4259818
+     0.01%  [JIT] tid 15088    [.] guest-0x3b1c700
+     0.01%  [JIT] tid 15088    [.] guest-0x3a754e8
+     0.01%  [JIT] tid 15088    [.] guest-0x400bb98
+     0.01%  [JIT] tid 15088    [.] guest-0x4217be4
+     0.01%  [JIT] tid 15088    [.] guest-0x402dcf4
+     0.01%  [JIT] tid 15088    [.] guest-0x3adec1c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbaa64
+     0.01%  [JIT] tid 15088    [.] guest-0x4178a94
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7b78c
+     0.01%  [JIT] tid 15088    [.] guest-0x43d02c0
+     0.01%  [JIT] tid 15088    [.] guest-0x4538fc0
+     0.01%  [JIT] tid 15088    [.] guest-0x2e42720
+     0.01%  [JIT] tid 15088    [.] guest-0x3adf658
+     0.01%  [kernel.kallsyms]  [k] __mark_inode_dirty
+     0.01%  [JIT] tid 15088    [.] guest-0x2e42f70
+     0.01%  [JIT] tid 15088    [.] guest-0x41a5560
+     0.01%  [JIT] tid 15088    [.] guest-0x1af4fc4
+     0.01%  [JIT] tid 15088    [.] guest-0x44ba688
+     0.01%  [JIT] tid 15088    [.] guest-0x3b15fb0
+     0.01%  [JIT] tid 15088    [.] guest-0x2e5d740
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bc319c
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1c38
+     0.01%  [JIT] tid 15088    [.] guest-0x425b174
+     0.01%  [JIT] tid 15088    [.] guest-0x4218528
+     0.01%  [JIT] tid 15088    [.] guest-0x40e7854
+     0.01%  [JIT] tid 15088    [.] guest-0x452f3fc
+     0.01%  [JIT] tid 15088    [.] guest-0x1a7b818
+     0.01%  [JIT] tid 15088    [.] guest-0x2f6f444
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c2b0
+     0.01%  [JIT] tid 15088    [.] guest-0x1f69b5c
+     0.01%  [JIT] tid 15088    [.] guest-0x2e6c928
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1cdc
+     0.01%  qemu-aarch64       [.] mmap_lock
+     0.01%  [JIT] tid 15088    [.] guest-0x417b33c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b549ec
+     0.01%  [JIT] tid 15088    [.] guest-0x439986c
+     0.01%  [JIT] tid 15088    [.] guest-0x39fe288
+     0.01%  [JIT] tid 15088    [.] guest-0x2e4390c
+     0.01%  [JIT] tid 15088    [.] guest-0x2ead8a8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8c8bc
+     0.01%  [JIT] tid 15088    [.] guest-0x1aead2c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c9e804
+     0.01%  [JIT] tid 15088    [.] guest-0x2ee66b4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b2a804
+     0.01%  [JIT] tid 15088    [.] guest-0x43aa33c
+     0.01%  [JIT] tid 15088    [.] guest-0x45133d8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c304
+     0.01%  [JIT] tid 15088    [.] guest-0x419ea90
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdb691c
+     0.01%  [JIT] tid 15088    [.] guest-0x3c9ee18
+     0.01%  [JIT] tid 15088    [.] guest-0x2eadb54
+     0.01%  [JIT] tid 15088    [.] guest-0x419e198
+     0.01%  [JIT] tid 15088    [.] guest-0x41a62f0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c833b8
+     0.01%  [JIT] tid 15088    [.] guest-0x418a338
+     0.01%  [JIT] tid 15088    [.] guest-0x3b14d20
+     0.01%  [JIT] tid 15088    [.] guest-0x40f0068
+     0.01%  [JIT] tid 15088    [.] guest-0x4328570
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbd578
+     0.01%  [JIT] tid 15088    [.] guest-0x2c4e018
+     0.01%  [JIT] tid 15088    [.] guest-0x4200c14
+     0.01%  [JIT] tid 15088    [.] guest-0x417a2c0
+     0.01%  [JIT] tid 15088    [.] guest-0x419ce18
+     0.01%  [JIT] tid 15088    [.] guest-0x4200d8c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82fd8
+     0.01%  [JIT] tid 15088    [.] guest-0x43b70dc
+     0.01%  [JIT] tid 15088    [.] guest-0x425b3f0
+     0.01%  [JIT] tid 15088    [.] guest-0x413ba3c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdab25c
+     0.01%  [JIT] tid 15088    [.] guest-0x43aa5fc
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdba470
+     0.01%  [JIT] tid 15088    [.] guest-0x3b15f68
+     0.01%  [JIT] tid 15088    [.] guest-0x417936c
+     0.01%  [JIT] tid 15088    [.] guest-0x419f94c
+     0.01%  [JIT] tid 15088    [.] guest-0x41793a0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b69b68
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c308
+     0.01%  [JIT] tid 15088    [.] guest-0x41986dc
+     0.01%  [JIT] tid 15088    [.] guest-0x42036f4
+     0.01%  [JIT] tid 15088    [.] guest-0x1aeb248
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66cb4
+     0.01%  [JIT] tid 15088    [.] guest-0x44ccdd4
+     0.01%  [JIT] tid 15088    [.] guest-0x4207f80
+     0.01%  [JIT] tid 15088    [.] guest-0x4203964
+     0.01%  [JIT] tid 15088    [.] guest-0x4259184
+     0.01%  [JIT] tid 15088    [.] guest-0x41a49d8
+     0.01%  [JIT] tid 15088    [.] guest-0x43a9230
+     0.01%  [JIT] tid 15088    [.] guest-0x3b151e0
+     0.01%  [JIT] tid 15088    [.] guest-0x3ad2a4c
+     0.01%  [JIT] tid 15088    [.] guest-0x43a4260
+     0.01%  [JIT] tid 15088    [.] guest-0x4784f74
+     0.01%  [JIT] tid 15088    [.] guest-0x41b44ec
+     0.01%  qemu-aarch64       [.] tcg_gen_exit_tb
+     0.01%  [JIT] tid 15088    [.] guest-0x43d2c28
+     0.01%  [JIT] tid 15088    [.] guest-0x3ab2e80
+     0.01%  [JIT] tid 15088    [.] guest-0x420289c
+     0.01%  [JIT] tid 15088    [.] guest-0x1aea220
+     0.01%  [JIT] tid 15088    [.] guest-0x3b26fd8
+     0.01%  [JIT] tid 15088    [.] guest-0x42020b4
+     0.01%  [JIT] tid 15088    [.] guest-0x40798a0
+     0.01%  [JIT] tid 15088    [.] guest-0x2e5db48
+     0.01%  [JIT] tid 15088    [.] guest-0x3a84224
+     0.01%  [JIT] tid 15088    [.] guest-0x413c2d8
+     0.01%  [JIT] tid 15088    [.] guest-0x1c38d98
+     0.01%  [JIT] tid 15088    [.] guest-0x3c9babc
+     0.01%  [JIT] tid 15088    [.] guest-0x1afbf64
+     0.01%  [JIT] tid 15088    [.] guest-0x42590bc
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdab6bc
+     0.01%  [JIT] tid 15088    [.] guest-0x41c0ab0
+     0.01%  [JIT] tid 15088    [.] guest-0x41a8a00
+     0.01%  [JIT] tid 15088    [.] guest-0x3b099d4
+     0.01%  [JIT] tid 15088    [.] guest-0x3ad9744
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0593c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b11a40
+     0.01%  [JIT] tid 15088    [.] guest-0x41b696c
+     0.01%  [JIT] tid 15088    [.] guest-0x453d6cc
+     0.01%  [JIT] tid 15088    [.] guest-0x2e5d9d4
+     0.01%  qemu-aarch64       [.] tcg_out_ld
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdab530
+     0.01%  [JIT] tid 15088    [.] guest-0x41ffe80
+     0.01%  [JIT] tid 15088    [.] guest-0x419c1d8
+     0.01%  [JIT] tid 15088    [.] guest-0x425912c
+     0.01%  [JIT] tid 15088    [.] guest-0x4328504
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b784fc
+     0.01%  [JIT] tid 15088    [.] guest-0x2e5e71c
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae6670
+     0.01%  [JIT] tid 15088    [.] guest-0x4213b98
+     0.01%  [JIT] tid 15088    [.] guest-0x1afbf18
+     0.01%  [JIT] tid 15088    [.] guest-0x3a79628
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdaef0c
+     0.01%  [JIT] tid 15088    [.] guest-0x4259174
+     0.01%  [JIT] tid 15088    [.] guest-0x487db50
+     0.01%  [JIT] tid 15088    [.] guest-0x42a3f88
+     0.01%  [JIT] tid 15088    [.] guest-0x40ee708
+     0.01%  [JIT] tid 15088    [.] guest-0x42011c8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a1d41c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a9bea0
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbaa80
+     0.01%  [JIT] tid 15088    [.] guest-0x453eee4
+     0.01%  [JIT] tid 15088    [.] guest-0x40f01fc
+     0.01%  [JIT] tid 15088    [.] guest-0x3b116b4
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae084c
+     0.01%  [JIT] tid 15088    [.] guest-0x403b6d4
+     0.01%  [JIT] tid 15088    [.] guest-0x417df14
+     0.01%  [JIT] tid 15088    [.] guest-0x44cd374
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae06d4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b3b8ec
+     0.01%  [JIT] tid 15088    [.] guest-0x44f2318
+     0.01%  [JIT] tid 15088    [.] guest-0x4202e94
+     0.01%  [JIT] tid 15088    [.] guest-0x3b05998
+     0.01%  [JIT] tid 15088    [.] guest-0x338f04c
+     0.01%  [JIT] tid 15088    [.] guest-0x43aaf0c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b112cc
+     0.01%  [JIT] tid 15088    [.] guest-0x4188d44
+     0.01%  [JIT] tid 15088    [.] guest-0x3fda6118
+     0.01%  [JIT] tid 15088    [.] guest-0x3a41a14
+     0.01%  [JIT] tid 15088    [.] guest-0x2e0a7e0
+     0.01%  [JIT] tid 15088    [.] guest-0x42590b4
+     0.01%  [JIT] tid 15088    [.] guest-0x3ab8690
+     0.01%  [JIT] tid 15088    [.] guest-0x1afc00c
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae9710
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01bc8
+     0.01%  [JIT] tid 15088    [.] guest-0x41ffe4c
+     0.01%  [JIT] tid 15088    [.] guest-0x2e0a844
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c534
+     0.01%  [JIT] tid 15088    [.] guest-0x47858dc
+     0.01%  [kernel.kallsyms]  [k] css_rstat_updated
+     0.01%  [JIT] tid 15088    [.] guest-0x41a8750
+     0.01%  [JIT] tid 15088    [.] guest-0x2e1775c
+     0.01%  [JIT] tid 15088    [.] guest-0x41ffeb0
+     0.01%  [JIT] tid 15088    [.] guest-0x42a3f04
+     0.01%  [JIT] tid 15088    [.] guest-0x41a9ae0
+     0.01%  [JIT] tid 15088    [.] guest-0x3bcd450
+     0.01%  [JIT] tid 15088    [.] guest-0x41aeea0
+     0.01%  [JIT] tid 15088    [.] guest-0x41a8ab8
+     0.01%  [JIT] tid 15088    [.] guest-0x402f048
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01778
+     0.01%  [JIT] tid 15088    [.] guest-0x4536564
+     0.01%  [JIT] tid 15088    [.] guest-0x3adae78
+     0.01%  [JIT] tid 15088    [.] guest-0x41b947c
+     0.01%  qemu-aarch64       [.] tcg_out_dat_rIK
+     0.01%  [JIT] tid 15088    [.] guest-0x41ba8b8
+     0.01%  [JIT] tid 15088    [.] guest-0x4543d10
+     0.01%  [JIT] tid 15088    [.] guest-0x41aeea4
+     0.01%  [JIT] tid 15088    [.] guest-0x4203780
+     0.01%  qemu-aarch64       [.] float64_to_float32
+     0.01%  [JIT] tid 15088    [.] guest-0x3a99e6c
+     0.01%  [JIT] tid 15088    [.] guest-0x1af51bc
+     0.01%  [JIT] tid 15088    [.] guest-0x3e6cbe0
+     0.01%  [JIT] tid 15088    [.] guest-0x2e98258
+     0.01%  [JIT] tid 15088    [.] guest-0x42577ac
+     0.01%  [JIT] tid 15088    [.] guest-0x4258358
+     0.01%  [JIT] tid 15088    [.] guest-0x4239aa8
+     0.01%  [JIT] tid 15088    [.] guest-0x3ff3524
+     0.01%  [JIT] tid 15088    [.] guest-0x453b248
+     0.01%  [JIT] tid 15088    [.] guest-0x41018b0
+     0.01%  [JIT] tid 15088    [.] guest-0x413c300
+     0.01%  [JIT] tid 15088    [.] guest-0x43266cc
+     0.01%  [kernel.kallsyms]  [k] tmigr_handle_remote_up
+     0.01%  [JIT] tid 15088    [.] guest-0x48b6784
+     0.01%  [JIT] tid 15088    [.] guest-0x338efd0
+     0.01%  [JIT] tid 15088    [.] guest-0x1afd408
+     0.01%  [JIT] tid 15088    [.] guest-0x453cb68
+     0.01%  [JIT] tid 15088    [.] guest-0x48e1dac
+     0.01%  [JIT] tid 15088    [.] guest-0x425b444
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8cba4
+     0.01%  [JIT] tid 15088    [.] guest-0x45443ac
+     0.01%  [JIT] tid 15088    [.] guest-0x2ead784
+     0.01%  [JIT] tid 15088    [.] guest-0x419ee08
+     0.01%  [JIT] tid 15088    [.] guest-0x45129f4
+     0.01%  [JIT] tid 15088    [.] guest-0x48d0150
+     0.01%  [JIT] tid 15088    [.] guest-0x4783b0c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c67780
+     0.01%  [JIT] tid 15088    [.] guest-0x3fda8d04
+     0.01%  [JIT] tid 15088    [.] guest-0x3b063a4
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78498
+     0.01%  [JIT] tid 15088    [.] guest-0x1afbf70
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae8930
+     0.01%  [JIT] tid 15088    [.] guest-0x2e43154
+     0.01%  [JIT] tid 15088    [.] guest-0x4191a80
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8cd84
+     0.01%  [JIT] tid 15088    [.] guest-0x3a75384
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c648
+     0.01%  [JIT] tid 15088    [.] guest-0x1aeb1e8
+     0.01%  [JIT] tid 15088    [.] guest-0x3b05f58
+     0.01%  [JIT] tid 15088    [.] guest-0x4179c7c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8c0b8
+     0.01%  [JIT] tid 15088    [.] guest-0x43ac06c
+     0.01%  [JIT] tid 15088    [.] guest-0x42ff494
+     0.01%  [JIT] tid 15088    [.] guest-0x3c0b72c
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae55dc
+     0.01%  [JIT] tid 15088    [.] guest-0x42590a4
+     0.01%  [JIT] tid 15088    [.] guest-0x4200d84
+     0.01%  [JIT] tid 15088    [.] guest-0x2ea78a4
+     0.01%  [JIT] tid 15088    [.] guest-0x4315ab8
+     0.01%  [JIT] tid 15088    [.] guest-0x2c44ec0
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc3648
+     0.01%  [JIT] tid 15088    [.] guest-0x3b76b58
+     0.01%  [JIT] tid 15088    [.] guest-0x4537c14
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc347c
+     0.01%  [JIT] tid 15088    [.] guest-0x1a7b74c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8f8e8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8aeec
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbbf90
+     0.01%  [JIT] tid 15088    [.] guest-0x41a23e4
+     0.01%  [JIT] tid 15088    [.] guest-0x453966c
+     0.01%  [JIT] tid 15088    [.] guest-0x4179594
+     0.01%  [JIT] tid 15088    [.] guest-0x4200a50
+     0.01%  [JIT] tid 15088    [.] guest-0x41c0adc
+     0.01%  [JIT] tid 15088    [.] guest-0x4201244
+     0.01%  [JIT] tid 15088    [.] guest-0x3b384f8
+     0.01%  [JIT] tid 15088    [.] guest-0x2c3f80c
+     0.01%  [JIT] tid 15088    [.] guest-0x417a328
+     0.01%  [JIT] tid 15088    [.] guest-0x3b57b3c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b3b86c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b064a4
+     0.01%  [JIT] tid 15088    [.] guest-0x425b308
+     0.01%  [JIT] tid 15088    [.] guest-0x41a755c
+     0.01%  [kernel.kallsyms]  [k] generic_perform_write
+     0.01%  [JIT] tid 15088    [.] guest-0x40ee7b0
+     0.01%  [JIT] tid 15088    [.] guest-0x479a110
+     0.01%  [JIT] tid 15088    [.] guest-0x3c39684
+     0.01%  [JIT] tid 15088    [.] guest-0x41a040c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fda2d54
+     0.01%  [JIT] tid 15088    [.] guest-0x3b15628
+     0.01%  [JIT] tid 15088    [.] guest-0x44f6b0c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b38344
+     0.01%  [JIT] tid 15088    [.] guest-0x426933c
+     0.01%  [JIT] tid 15088    [.] guest-0x3c0b6dc
+     0.01%  [JIT] tid 15088    [.] guest-0x42011d4
+     0.01%  [JIT] tid 15088    [.] guest-0x4135340
+     0.01%  [JIT] tid 15088    [.] guest-0x3b1e110
+     0.01%  [JIT] tid 15088    [.] guest-0x413b8c0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a67db4
+     0.01%  [JIT] tid 15088    [.] guest-0x45136ec
+     0.01%  [JIT] tid 15088    [.] guest-0x2e0d7bc
+     0.01%  [JIT] tid 15088    [.] guest-0x413bee0
+     0.01%  [JIT] tid 15088    [.] guest-0x413bad8
+     0.01%  [JIT] tid 15088    [.] guest-0x4204ce0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0c110
+     0.01%  [JIT] tid 15088    [.] guest-0x4799f98
+     0.01%  [JIT] tid 15088    [.] guest-0x426c6a0
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae971c
+     0.01%  [JIT] tid 15088    [.] guest-0x43c8fb0
+     0.01%  [JIT] tid 15088    [.] guest-0x4539124
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8dad8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a7f9b0
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78308
+     0.01%  [JIT] tid 15088    [.] guest-0x41aed44
+     0.01%  [JIT] tid 15088    [.] guest-0x402ec88
+     0.01%  [JIT] tid 15088    [.] guest-0x40e36a8
+     0.01%  [JIT] tid 15088    [.] guest-0x2c936f8
+     0.01%  [JIT] tid 15088    [.] guest-0x3b3edec
+     0.01%  [JIT] tid 15088    [.] guest-0x40273a0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a1cda4
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdb39cc
+     0.01%  [JIT] tid 15088    [.] guest-0x45391e4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c8a404
+     0.01%  [JIT] tid 15088    [.] guest-0x42ff224
+     0.01%  [JIT] tid 15088    [.] guest-0x479d594
+     0.01%  [JIT] tid 15088    [.] guest-0x1aea20c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c344
+     0.01%  [JIT] tid 15088    [.] guest-0x3a90908
+     0.01%  [JIT] tid 15088    [.] guest-0x417a738
+     0.01%  [JIT] tid 15088    [.] guest-0x2ec88ec
+     0.01%  [JIT] tid 15088    [.] guest-0x3b15c90
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbde30
+     0.01%  [JIT] tid 15088    [.] guest-0x41aed14
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7ad44
+     0.01%  [JIT] tid 15088    [.] guest-0x44cbe98
+     0.01%  [JIT] tid 15088    [.] guest-0x40eab1c
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1f14
+     0.01%  [JIT] tid 15088    [.] guest-0x1afbea8
+     0.01%  [JIT] tid 15088    [.] guest-0x44cd710
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c65c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a45308
+     0.01%  [JIT] tid 15088    [.] guest-0x3ab8594
+     0.01%  [JIT] tid 15088    [.] guest-0x1af3f9c
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b783d8
+     0.01%  [JIT] tid 15088    [.] guest-0x4538040
+     0.01%  [JIT] tid 15088    [.] guest-0x2e43120
+     0.01%  [JIT] tid 15088    [.] guest-0x426ca08
+     0.01%  [JIT] tid 15088    [.] guest-0x4513218
+     0.01%  [JIT] tid 15088    [.] guest-0x2ee5e20
+     0.01%  [JIT] tid 15088    [.] guest-0x2e43044
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8c504
+     0.01%  qemu-aarch64       [.] do_syscall1.constprop.0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a1d578
+     0.01%  [JIT] tid 15088    [.] guest-0x44cbe54
+     0.01%  [JIT] tid 15088    [.] guest-0x4781a30
+     0.01%  [JIT] tid 15088    [.] guest-0x425ade0
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc35a4
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae063c
+     0.01%  [JIT] tid 15088    [.] guest-0x4179b64
+     0.01%  [JIT] tid 15088    [.] guest-0x4781b60
+     0.01%  [JIT] tid 15088    [.] guest-0x30834d8
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc34d0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8d6b0
+     0.01%  [JIT] tid 15088    [.] guest-0x2eada0c
+     0.01%  [JIT] tid 15088    [.] guest-0x4328550
+     0.01%  [JIT] tid 15088    [.] guest-0x3ff5924
+     0.01%  [JIT] tid 15088    [.] guest-0x419cff0
+     0.01%  [JIT] tid 15088    [.] guest-0x4783b00
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c728
+     0.01%  [JIT] tid 15088    [.] guest-0x4180c64
+     0.01%  [JIT] tid 15088    [.] guest-0x4259fac
+     0.01%  [JIT] tid 15088    [.] guest-0x3b11ca0
+     0.01%  [JIT] tid 15088    [.] guest-0x4135444
+     0.01%  [JIT] tid 15088    [.] guest-0x41a4c34
+     0.01%  [JIT] tid 15088    [.] guest-0x42ff38c
+     0.01%  qemu-aarch64       [.] tcg_gen_sextract_i32
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82c34
+     0.01%  [JIT] tid 15088    [.] guest-0x4328568
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbb230
+     0.01%  [JIT] tid 15088    [.] guest-0x3b3a180
+     0.01%  [JIT] tid 15088    [.] guest-0x41a9ac8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6b0c0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a87cbc
+     0.01%  [JIT] tid 15088    [.] guest-0x3ffa4f0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8b940
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82b84
+     0.01%  qemu-aarch64       [.] tcg_gen_qemu_ld_i64_int
+     0.01%  [JIT] tid 15088    [.] guest-0x4183af8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8398c
+     0.01%  [JIT] tid 15088    [.] guest-0x453b3ec
+     0.01%  [JIT] tid 15088    [.] guest-0x4192e30
+     0.01%  [JIT] tid 15088    [.] guest-0x4258068
+     0.01%  [JIT] tid 15088    [.] guest-0x3a908dc
+     0.01%  [JIT] tid 15088    [.] guest-0x414006c
+     0.01%  [JIT] tid 15088    [.] guest-0x43a9540
+     0.01%  [JIT] tid 15088    [.] guest-0x41a89ec
+     0.01%  qemu-aarch64       [.] __floatundidf
+     0.01%  [JIT] tid 15088    [.] guest-0x43eb6e8
+     0.01%  [JIT] tid 15088    [.] guest-0x4529f78
+     0.01%  [JIT] tid 15088    [.] guest-0x4258504
+     0.01%  [JIT] tid 15088    [.] guest-0x44d1184
+     0.01%  [JIT] tid 15088    [.] guest-0x426400c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a9b214
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc34dc
+     0.01%  [JIT] tid 15088    [.] guest-0x413b940
+     0.01%  [JIT] tid 15088    [.] guest-0x44cdec8
+     0.01%  [JIT] tid 15088    [.] guest-0x2e43224
+     0.01%  [JIT] tid 15088    [.] guest-0x3b02670
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7abf0
+     0.01%  [JIT] tid 15088    [.] guest-0x2ec9580
+     0.01%  [JIT] tid 15088    [.] guest-0x2c677cc
+     0.01%  [JIT] tid 15088    [.] guest-0x3b2dee4
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae96b4
+     0.01%  [JIT] tid 15088    [.] guest-0x43a9344
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b783d0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c6765c
+     0.01%  [JIT] tid 15088    [.] guest-0x417966c
+     0.01%  [JIT] tid 15088    [.] guest-0x4203894
+     0.01%  [JIT] tid 15088    [.] guest-0x42ff44c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01930
+     0.01%  [JIT] tid 15088    [.] guest-0x43aa330
+     0.01%  [JIT] tid 15088    [.] guest-0x400bc04
+     0.01%  [JIT] tid 15088    [.] guest-0x44d1168
+     0.01%  [JIT] tid 15088    [.] guest-0x413dd5c
+     0.01%  [JIT] tid 15088    [.] guest-0x2e43100
+     0.01%  [JIT] tid 15088    [.] guest-0x3a41ef0
+     0.01%  [JIT] tid 15088    [.] guest-0x41266e4
+     0.01%  [JIT] tid 15088    [.] guest-0x4594f9c
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad8bb8
+     0.01%  [JIT] tid 15088    [.] guest-0x1aeb158
+     0.01%  [JIT] tid 15088    [.] guest-0x1afd470
+     0.01%  [JIT] tid 15088    [.] guest-0x400bba4
+     0.01%  [JIT] tid 15088    [.] guest-0x41961f0
+     0.01%  [JIT] tid 15088    [.] guest-0x4539784
+     0.01%  qemu-aarch64       [.] gen_ldst_i64
+     0.01%  [JIT] tid 15088    [.] guest-0x1d3a78c
+     0.01%  [JIT] tid 15088    [.] guest-0x40e3450
+     0.01%  [JIT] tid 15088    [.] guest-0x4259e50
+     0.01%  [JIT] tid 15088    [.] guest-0x4512ba0
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdb9490
+     0.01%  [JIT] tid 15088    [.] guest-0x4257684
+     0.01%  [JIT] tid 15088    [.] guest-0x41ffe84
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8f6c4
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad8b6c
+     0.01%  [JIT] tid 15088    [.] guest-0x4327948
+     0.01%  [JIT] tid 15088    [.] guest-0x40eff78
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae55e4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b3b894
+     0.01%  [JIT] tid 15088    [.] guest-0x43ebb80
+     0.01%  [JIT] tid 15088    [.] guest-0x41a4e70
+     0.01%  [JIT] tid 15088    [.] guest-0x4215844
+     0.01%  [JIT] tid 15088    [.] guest-0x425a820
+     0.01%  [JIT] tid 15088    [.] guest-0x42ff358
+     0.01%  qemu-aarch64       [.] float64_hs_compare
+     0.01%  [JIT] tid 15088    [.] guest-0x4259588
+     0.01%  [JIT] tid 15088    [.] guest-0x3b38ea8
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdba17c
+     0.01%  [JIT] tid 15088    [.] guest-0x4257d04
+     0.01%  [JIT] tid 15088    [.] guest-0x3a41f0c
+     0.01%  qemu-aarch64       [.] use_two_i64_for_i128
+     0.01%  [JIT] tid 15088    [.] guest-0x4180314
+     0.01%  [kernel.kallsyms]  [k] __folio_throttle_swaprate
+     0.01%  [JIT] tid 15088    [.] guest-0x3b15f3c
+     0.01%  [JIT] tid 15088    [.] guest-0x4263b2c
+     0.01%  [JIT] tid 15088    [.] guest-0x41a4818
+     0.01%  [JIT] tid 15088    [.] guest-0x418999c
+     0.01%  [JIT] tid 15088    [.] guest-0x4138a50
+     0.01%  [JIT] tid 15088    [.] guest-0x43a25f8
+     0.01%  [JIT] tid 15088    [.] guest-0x425a7e4
+     0.01%  [JIT] tid 15088    [.] guest-0x479d334
+     0.01%  [JIT] tid 15088    [.] guest-0x4536750
+     0.01%  [JIT] tid 15088    [.] guest-0x418e09c
+     0.01%  [JIT] tid 15088    [.] guest-0x4269360
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0c43c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdb7078
+     0.01%  [JIT] tid 15088    [.] guest-0x3c0b734
+     0.01%  [JIT] tid 15088    [.] guest-0x2c67210
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae8130
+     0.01%  [JIT] tid 15088    [.] guest-0x3a4530c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a76c7c
+     0.01%  [JIT] tid 15088    [.] guest-0x477a01c
+     0.01%  [JIT] tid 15088    [.] guest-0x40dabcc
+     0.01%  [JIT] tid 15088    [.] guest-0x41bd5b8
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1c44
+     0.01%  [JIT] tid 15088    [.] guest-0x413ac18
+     0.01%  [JIT] tid 15088    [.] guest-0x413bd48
+     0.01%  [JIT] tid 15088    [.] guest-0x3ff34f8
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad8c00
+     0.01%  qemu-aarch64       [.] do_fp_st
+     0.01%  [JIT] tid 15088    [.] guest-0x3a79b10
+     0.01%  qemu-aarch64       [.] fold_addsub2
+     0.01%  [JIT] tid 15088    [.] guest-0x2e5e9c4
+     0.01%  [JIT] tid 15088    [.] guest-0x420124c
+     0.01%  [JIT] tid 15088    [.] guest-0x3dcc974
+     0.01%  [JIT] tid 15088    [.] guest-0x3b08eb0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b3811c
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc3628
+     0.01%  [JIT] tid 15088    [.] guest-0x3a99f8c
+     0.01%  [JIT] tid 15088    [.] guest-0x4193ce0
+     0.01%  [JIT] tid 15088    [.] guest-0x3ff58f8
+     0.01%  [JIT] tid 15088    [.] guest-0x4539530
+     0.01%  [JIT] tid 15088    [.] guest-0x42ff490
+     0.01%  [JIT] tid 15088    [.] guest-0x41a91c0
+     0.01%  [JIT] tid 15088    [.] guest-0x402dce0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0c4c4
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9f7a8
+     0.01%  [JIT] tid 15088    [.] guest-0x43f0d58
+     0.01%  [JIT] tid 15088    [.] guest-0x3a76e2c
+     0.01%  [JIT] tid 15088    [.] guest-0x41a6ffc
+     0.01%  [JIT] tid 15088    [.] guest-0x41aec70
+     0.01%  [JIT] tid 15088    [.] guest-0x418c9f0
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bc2558
+     0.01%  [JIT] tid 15088    [.] guest-0x4200ee4
+     0.01%  [JIT] tid 15088    [.] guest-0x2e97674
+     0.01%  [JIT] tid 15088    [.] guest-0x3af7034
+     0.01%  [JIT] tid 15088    [.] guest-0x1c38bd0
+     0.01%  [JIT] tid 15088    [.] guest-0x3ff61ec
+     0.01%  [JIT] tid 15088    [.] guest-0x477a2b4
+     0.01%  [JIT] tid 15088    [.] guest-0x44cd384
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9f9fc
+     0.01%  [JIT] tid 15088    [.] guest-0x453cb30
+     0.01%  [JIT] tid 15088    [.] guest-0x42590fc
+     0.01%  [JIT] tid 15088    [.] guest-0x477e21c
+     0.01%  [JIT] tid 15088    [.] guest-0x4259c50
+     0.01%  [JIT] tid 15088    [.] guest-0x1afc084
+     0.01%  [JIT] tid 15088    [.] guest-0x4136828
+     0.01%  [JIT] tid 15088    [.] guest-0x44d11f8
+     0.01%  [JIT] tid 15088    [.] guest-0x338f150
+     0.01%  [JIT] tid 15088    [.] guest-0x3c9ee30
+     0.01%  [JIT] tid 15088    [.] guest-0x1add11c
+     0.01%  [JIT] tid 15088    [.] guest-0x48cfe94
+     0.01%  [JIT] tid 15088    [.] guest-0x41a91d4
+     0.01%  [JIT] tid 15088    [.] guest-0x40a94b0
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b782ac
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae1188
+     0.01%  [JIT] tid 15088    [.] guest-0x4219054
+     0.01%  [JIT] tid 15088    [.] guest-0x42586b4
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae0660
+     0.01%  [JIT] tid 15088    [.] guest-0x1afaf64
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae9670
+     0.01%  [JIT] tid 15088    [.] guest-0x3b76b14
+     0.01%  [JIT] tid 15088    [.] guest-0x44c9744
+     0.01%  [JIT] tid 15088    [.] guest-0x2e98200
+     0.01%  [JIT] tid 15088    [.] guest-0x4512b5c
+     0.01%  [JIT] tid 15088    [.] guest-0x1afbf20
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbc1ac
+     0.01%  [JIT] tid 15088    [.] guest-0x4785a20
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdab540
+     0.01%  [JIT] tid 15088    [.] guest-0x3a9a2d4
+     0.01%  [JIT] tid 15088    [.] guest-0x42582c0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b38464
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbdb58
+     0.01%  [JIT] tid 15088    [.] guest-0x4525984
+     0.01%  [JIT] tid 15088    [.] guest-0x4538ff0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b194b4
+     0.01%  [JIT] tid 15088    [.] 0xa8c60400
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbdecc
+     0.01%  [JIT] tid 15088    [.] guest-0x4539984
+     0.01%  [JIT] tid 15088    [.] guest-0x426ca10
+     0.01%  [JIT] tid 15088    [.] guest-0x41a4dac
+     0.01%  [JIT] tid 15088    [.] guest-0x3a75aa4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7b0b0
+     0.01%  [JIT] tid 15088    [.] guest-0x41a8c60
+     0.01%  [JIT] tid 15088    [.] guest-0x41844e4
+     0.01%  [JIT] tid 15088    [.] guest-0x4215248
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9f148
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdd9bac
+     0.01%  [JIT] tid 15088    [.] guest-0x43ebb70
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6b074
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66024
+     0.01%  [JIT] tid 15088    [.] guest-0x4784f80
+     0.01%  [JIT] tid 15088    [.] guest-0x2c67530
+     0.01%  qemu-aarch64       [.] float64_min
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdb64c8
+     0.01%  [JIT] tid 15088    [.] guest-0x4263a3c
+     0.01%  [JIT] tid 15088    [.] guest-0x3c9bb88
+     0.01%  [JIT] tid 15088    [.] guest-0x44f7e50
+     0.01%  qemu-aarch64       [.] parts64_uncanon
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8bb60
+     0.01%  [JIT] tid 15088    [.] guest-0x4258764
+     0.01%  [JIT] tid 15088    [.] guest-0x3a46a68
+     0.01%  [JIT] tid 15088    [.] guest-0x2c61b04
+     0.01%  [JIT] tid 15088    [.] guest-0x42037ac
+     0.01%  [JIT] tid 15088    [.] guest-0x41bc27c
+     0.01%  [JIT] tid 15088    [.] guest-0x4399ca4
+     0.01%  [JIT] tid 15088    [.] guest-0x4179b08
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc3174
+     0.01%  [JIT] tid 15088    [.] guest-0x1aa5084
+     0.01%  [JIT] tid 15088    [.] guest-0x4512c3c
+     0.01%  [JIT] tid 15088    [.] guest-0x419c804
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6d24
+     0.01%  qemu-aarch64       [.] tcg_out_vmovi
+     0.01%  [JIT] tid 15088    [.] guest-0x4201254
+     0.01%  [JIT] tid 15088    [.] guest-0x413c08c
+     0.01%  [JIT] tid 15088    [.] guest-0x2e0a81c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b5be90
+     0.01%  [JIT] tid 15088    [.] guest-0x4213708
+     0.01%  qemu-aarch64       [.] tcg_gen_extract2_i32
+     0.01%  [JIT] tid 15088    [.] guest-0x338f120
+     0.01%  [JIT] tid 15088    [.] guest-0x3a75340
+     0.01%  [JIT] tid 15088    [.] guest-0x4141c00
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8bba4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c6690c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c68c
+     0.01%  [JIT] tid 15088    [.] guest-0x43eb5bc
+     0.01%  [JIT] tid 15088    [.] guest-0x41a4d48
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c6d8
+     0.01%  [JIT] tid 15088    [.] guest-0x40f0070
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3bd40
+     0.01%  [JIT] tid 15088    [.] guest-0x4140420
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66d1c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8ba38
+     0.01%  [JIT] tid 15088    [.] guest-0x3ff63bc
+     0.01%  [JIT] tid 15088    [.] guest-0x413bdac
+     0.01%  [JIT] tid 15088    [.] guest-0x41a6b40
+     0.01%  [JIT] tid 15088    [.] guest-0x4539b40
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad1ef0
+     0.01%  qemu-aarch64       [.] read_cpu_reg
+     0.01%  [JIT] tid 15088    [.] guest-0x43eb834
+     0.01%  [JIT] tid 15088    [.] guest-0x459503c
+     0.01%  [JIT] tid 15088    [.] guest-0x3abedb4
+     0.01%  [JIT] tid 15088    [.] guest-0x39f59ec
+     0.01%  [JIT] tid 15088    [.] guest-0x1aeadbc
+     0.01%  [JIT] tid 15088    [.] guest-0x4257f10
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b782d4
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbba30
+     0.01%  [JIT] tid 15088    [.] guest-0x3b4179c
+     0.01%  [JIT] tid 15088    [.] guest-0x4537b34
+     0.01%  [JIT] tid 15088    [.] guest-0x3c90e48
+     0.01%  [JIT] tid 15088    [.] guest-0x419528c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8dcec
+     0.01%  [JIT] tid 15088    [.] guest-0x479d284
+     0.01%  [JIT] tid 15088    [.] guest-0x4539d54
+     0.01%  [JIT] tid 15088    [.] guest-0x4200f38
+     0.01%  [JIT] tid 15088    [.] guest-0x1af4808
+     0.01%  [JIT] tid 15088    [.] guest-0x43283d0
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bc2b04
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8f8e4
+     0.01%  [JIT] tid 15088    [.] guest-0x487dd08
+     0.01%  [JIT] tid 15088    [.] guest-0x43ebb38
+     0.01%  [JIT] tid 15088    [.] guest-0x3b38e04
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c89c
+     0.01%  [JIT] tid 15088    [.] guest-0x4217bf0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b381e0
+     0.01%  qemu-aarch64       [.] fold_masks
+     0.01%  [JIT] tid 15088    [.] guest-0x3b099dc
+     0.01%  [JIT] tid 15088    [.] guest-0x41b9d74
+     0.01%  [JIT] tid 15088    [.] guest-0x3a76a68
+     0.01%  [JIT] tid 15088    [.] guest-0x4263a68
+     0.01%  [JIT] tid 15088    [.] guest-0x2c67820
+     0.01%  [JIT] tid 15088    [.] guest-0x413b4b0
+     0.01%  [JIT] tid 15088    [.] guest-0x403b628
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c30c
+     0.01%  [JIT] tid 15088    [.] guest-0x2ead864
+     0.01%  [JIT] tid 15088    [.] guest-0x2e0a820
+     0.01%  [JIT] tid 15088    [.] guest-0x413be00
+     0.01%  [JIT] tid 15088    [.] guest-0x3a69fec
+     0.01%  [JIT] tid 15088    [.] guest-0x42386a4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c9e7b4
+     0.01%  [JIT] tid 15088    [.] guest-0x1aead14
+     0.01%  [JIT] tid 15088    [.] guest-0x413fd38
+     0.01%  [JIT] tid 15088    [.] guest-0x41a62f8
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7ad64
+     0.01%  [JIT] tid 15088    [.] guest-0x44f4a80
+     0.01%  [JIT] tid 15088    [.] guest-0x3b05dc8
+     0.01%  [JIT] tid 15088    [.] guest-0x431d758
+     0.01%  [JIT] tid 15088    [.] guest-0x41a4e50
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdba2e8
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78280
+     0.01%  [JIT] tid 15088    [.] guest-0x3a76b64
+     0.01%  [JIT] tid 15088    [.] guest-0x3a45304
+     0.01%  [JIT] tid 15088    [.] guest-0x2ee6584
+     0.01%  [JIT] tid 15088    [.] guest-0x4258530
+     0.01%  [JIT] tid 15088    [.] guest-0x418f7ec
+     0.01%  [JIT] tid 15088    [.] guest-0x3b7ff14
+     0.01%  [JIT] tid 15088    [.] guest-0x4536618
+     0.01%  [JIT] tid 15088    [.] guest-0x42639a8
+     0.01%  [JIT] tid 15088    [.] guest-0x479e770
+     0.01%  [JIT] tid 15088    [.] guest-0x413c4d8
+     0.01%  [JIT] tid 15088    [.] guest-0x40f3720
+     0.01%  [JIT] tid 15088    [.] guest-0x4200394
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae77d0
+     0.01%  [JIT] tid 15088    [.] guest-0x43cff40
+     0.01%  [JIT] tid 15088    [.] guest-0x3a45364
+     0.01%  [JIT] tid 15088    [.] guest-0x3b382c8
+     0.01%  [JIT] tid 15088    [.] guest-0x3133544
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78470
+     0.01%  [JIT] tid 15088    [.] guest-0x3fda619c
+     0.01%  [JIT] tid 15088    [.] guest-0x1afbeec
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad934c
+     0.01%  [JIT] tid 15088    [.] guest-0x3dbda10
+     0.01%  [JIT] tid 15088    [.] guest-0x3ff6380
+     0.01%  [JIT] tid 15088    [.] guest-0x3a767cc
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbef9c
+     0.01%  [JIT] tid 15088    [.] guest-0x4263948
+     0.01%  [kernel.kallsyms]  [k] inode_to_bdi
+     0.01%  [JIT] tid 15088    [.] guest-0x3a516b8
+     0.01%  [JIT] tid 15088    [.] guest-0x417a1f4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a75abc
+     0.01%  [JIT] tid 15088    [.] guest-0x42fdabc
+     0.01%  [JIT] tid 15088    [.] guest-0x2c61b90
+     0.01%  [JIT] tid 15088    [.] guest-0x4256678
+     0.01%  [JIT] tid 15088    [.] guest-0x4257df4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c61b00
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6b020
+     0.01%  [JIT] tid 15088    [.] guest-0x2c9d3d4
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad8b84
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7b0a4
+     0.01%  [JIT] tid 15088    [.] guest-0x425b1f8
+     0.01%  [JIT] tid 15088    [.] guest-0x39f5ec0
+     0.01%  [JIT] tid 15088    [.] guest-0x3feb578
+     0.01%  [JIT] tid 15088    [.] guest-0x3b191e0
+     0.01%  [JIT] tid 15088    [.] guest-0x4257c28
+     0.01%  [JIT] tid 15088    [.] guest-0x1afd3c0
+     0.01%  qemu-aarch64       [.] cpu_stq_mmu
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad8df0
+     0.01%  [JIT] tid 15088    [.] guest-0x4513cac
+     0.01%  [JIT] tid 15088    [.] guest-0x2ead87c
+     0.01%  [JIT] tid 15088    [.] guest-0x42640f4
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6a5c
+     0.01%  [JIT] tid 15088    [.] guest-0x419f63c
+     0.01%  [JIT] tid 15088    [.] guest-0x40d4e5c
+     0.01%  [JIT] tid 15088    [.] guest-0x3d19368
+     0.01%  [JIT] tid 15088    [.] guest-0x2ea785c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b1537c
+     0.01%  [JIT] tid 15088    [.] guest-0x3132820
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b7fb14
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1ca8
+     0.01%  [JIT] tid 15088    [.] guest-0x4512a3c
+     0.01%  [JIT] tid 15088    [.] guest-0x47a09a8
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7abfc
+     0.01%  [JIT] tid 15088    [.] guest-0x3c72c44
+     0.01%  [JIT] tid 15088    [.] guest-0x425850c
+     0.01%  [JIT] tid 15088    [.] guest-0x44e96fc
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78284
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad9334
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6ea14
+     0.01%  [JIT] tid 15088    [.] guest-0x3a51690
+     0.01%  [JIT] tid 15088    [.] guest-0x3133528
+     0.01%  [JIT] tid 15088    [.] guest-0x453cf6c
+     0.01%  [JIT] tid 15088    [.] guest-0x42586bc
+     0.01%  [JIT] tid 15088    [.] guest-0x426fb88
+     0.01%  [JIT] tid 15088    [.] guest-0x487d704
+     0.01%  [JIT] tid 15088    [.] guest-0x41ba7c8
+     0.01%  [JIT] tid 15088    [.] guest-0x4528434
+     0.01%  qemu-aarch64       [.] __sigjmp_save
+     0.01%  qemu-aarch64       [.] tcg_out_vec_op
+     0.01%  [JIT] tid 15088    [.] guest-0x2c667b4
+     0.01%  qemu-aarch64       [.] tcg_gen_st8_i32
+     0.01%  [JIT] tid 15088    [.] guest-0x4539b2c
+     0.01%  [JIT] tid 15088    [.] guest-0x39fd834
+     0.01%  [JIT] tid 15088    [.] guest-0x3a76844
+     0.01%  [JIT] tid 15088    [.] guest-0x45130a0
+     0.01%  [JIT] tid 15088    [.] guest-0x4138bec
+     0.01%  [JIT] tid 15088    [.] guest-0x4201238
+     0.01%  [JIT] tid 15088    [.] guest-0x4399cc8
+     0.01%  qemu-aarch64       [.] helper_stq_mmu
+     0.01%  [JIT] tid 15088    [.] guest-0x4539aac
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01774
+     0.01%  [JIT] tid 15088    [.] guest-0x413536c
+     0.01%  [JIT] tid 15088    [.] guest-0x3c0ac3c
+     0.01%  [JIT] tid 15088    [.] guest-0x4268fb8
+     0.01%  [JIT] tid 15088    [.] guest-0x1b686c0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8ba84
+     0.01%  [JIT] tid 15088    [.] guest-0x40f01e8
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad9b3c
+     0.01%  [JIT] tid 15088    [.] guest-0x44f21d0
+     0.01%  [JIT] tid 15088    [.] guest-0x3afcdc0
+     0.01%  [JIT] tid 15088    [.] guest-0x402ddd0
+     0.01%  [JIT] tid 15088    [.] guest-0x4256924
+     0.01%  [JIT] tid 15088    [.] guest-0x3b06698
+     0.01%  [JIT] tid 15088    [.] guest-0x43283d8
+     0.01%  [JIT] tid 15088    [.] guest-0x3bb8ba4
+     0.01%  [JIT] tid 15088    [.] guest-0x4178fa0
+     0.01%  [JIT] tid 15088    [.] guest-0x44f26bc
+     0.01%  [JIT] tid 15088    [.] guest-0x413bd08
+     0.01%  [JIT] tid 15088    [.] guest-0x2c675bc
+     0.01%  [JIT] tid 15088    [.] guest-0x413ffa8
+     0.01%  [JIT] tid 15088    [.] guest-0x4328294
+     0.01%  [JIT] tid 15088    [.] guest-0x3af703c
+     0.01%  [JIT] tid 15088    [.] guest-0x4783be8
+     0.01%  qemu-aarch64       [.] tcg_out_goto
+     0.01%  [JIT] tid 15088    [.] guest-0x3c32ed4
+     0.01%  [JIT] tid 15088    [.] guest-0x41bd6a4
+     0.01%  [JIT] tid 15088    [.] guest-0x3c0b5b0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a516ac
+     0.01%  [JIT] tid 15088    [.] guest-0x4207f60
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0bdf8
+     0.01%  [JIT] tid 15088    [.] guest-0x3132810
+     0.01%  [JIT] tid 15088    [.] guest-0x3b02ce8
+     0.01%  [JIT] tid 15088    [.] guest-0x2e27b70
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdad254
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbe3d4
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1e1c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbe8d8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a52880
+     0.01%  [JIT] tid 15088    [.] guest-0x1afd404
+     0.01%  [JIT] tid 15088    [.] guest-0x3c4b670
+     0.01%  [JIT] tid 15088    [.] guest-0x1a95fe8
+     0.01%  [JIT] tid 15088    [.] guest-0x3b1b3cc
+     0.01%  [JIT] tid 15088    [.] guest-0x43ebe4c
+     0.01%  [JIT] tid 15088    [.] guest-0x42ff320
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbe1d0
+     0.01%  [JIT] tid 15088    [.] guest-0x4263a80
+     0.01%  [JIT] tid 15088    [.] guest-0x3d0e6bc
+     0.01%  [JIT] tid 15088    [.] guest-0x2ead90c
+     0.01%  [JIT] tid 15088    [.] guest-0x2e197dc
+     0.01%  [JIT] tid 15088    [.] guest-0x3a45370
+     0.01%  [JIT] tid 15088    [.] guest-0x3cdb038
+     0.01%  [JIT] tid 15088    [.] guest-0x47810cc
+     0.01%  [JIT] tid 15088    [.] guest-0x43cfe60
+     0.01%  [JIT] tid 15088    [.] guest-0x2c3b654
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bc3198
+     0.01%  [JIT] tid 15088    [.] guest-0x402eff4
+     0.01%  [JIT] tid 15088    [.] guest-0x3132a64
+     0.01%  [JIT] tid 15088    [.] guest-0x4536924
+     0.01%  [JIT] tid 15088    [.] guest-0x45131ac
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae17f4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8c394
+     0.01%  [JIT] tid 15088    [.] guest-0x3fde008
+     0.01%  [JIT] tid 15088    [.] guest-0x4200d94
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66004
+     0.01%  [JIT] tid 15088    [.] guest-0x47847cc
+     0.01%  [JIT] tid 15088    [.] guest-0x4192e6c
+     0.01%  [JIT] tid 15088    [.] guest-0x426bfac
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7ad54
+     0.01%  [kernel.kallsyms]  [k] arm_copy_from_user
+     0.01%  [JIT] tid 15088    [.] guest-0x4265bf8
+     0.01%  [JIT] tid 15088    [.] guest-0x3b83238
+     0.01%  [JIT] tid 15088    [.] guest-0x3b207f8
+     0.01%  [JIT] tid 15088    [.] guest-0x4200c10
+     0.01%  [JIT] tid 15088    [.] guest-0x2e972e8
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae0644
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66104
+     0.01%  [JIT] tid 15088    [.] guest-0x4538118
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1be0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c218
+     0.01%  [JIT] tid 15088    [.] guest-0x400bbb0
+     0.01%  [JIT] tid 15088    [.] guest-0x4218b24
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0605c
+     0.01%  [JIT] tid 15088    [.] guest-0x42037f0
+     0.01%  [JIT] tid 15088    [.] guest-0x413c0ac
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82bf0
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdab714
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82c94
+     0.01%  [JIT] tid 15088    [.] guest-0x41a8c54
+     0.01%  [JIT] tid 15088    [.] guest-0x2e42584
+     0.01%  [kernel.kallsyms]  [k] __lruvec_stat_mod_folio
+     0.01%  [JIT] tid 15088    [.] guest-0x2c5156c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a5fbb4
+     0.01%  [JIT] tid 15088    [.] guest-0x45398bc
+     0.01%  [JIT] tid 15088    [.] guest-0x2e5db4c
+     0.01%  qemu-aarch64       [.] tcg_gen_op6
+     0.01%  [JIT] tid 15088    [.] guest-0x4200d80
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78354
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdb1bd4
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdc5790
+     0.01%  [JIT] tid 15088    [.] guest-0x3b390b4
+     0.01%  [JIT] tid 15088    [.] guest-0x417af38
+     0.01%  [JIT] tid 15088    [.] guest-0x31332d8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a76ed8
+     0.01%  [JIT] tid 15088    [.] guest-0x29ecc28
+     0.01%  [JIT] tid 15088    [.] guest-0x2e5dcdc
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdb80e4
+     0.01%  [JIT] tid 15088    [.] guest-0x41388f4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a7665c
+     0.01%  [JIT] tid 15088    [.] guest-0x45391f8
+     0.01%  [JIT] tid 15088    [.] guest-0x4513014
+     0.01%  [JIT] tid 15088    [.] guest-0x41a1cd4
+     0.01%  qemu-aarch64       [.] __pthread_cleanup_upto
+     0.01%  [JIT] tid 15088    [.] guest-0x2c67584
+     0.01%  [JIT] tid 15088    [.] guest-0x3bf7714
+     0.01%  [JIT] tid 15088    [.] guest-0x44d1158
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8c090
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9fa10
+     0.01%  [JIT] tid 15088    [.] guest-0x3a755e8
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc3594
+     0.01%  [JIT] tid 15088    [.] guest-0x2e982c8
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9ff64
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc6084
+     0.01%  [JIT] tid 15088    [.] guest-0x3bce5e8
+     0.01%  [JIT] tid 15088    [.] guest-0x4784e18
+     0.01%  [JIT] tid 15088    [.] guest-0x4178e88
+     0.01%  [JIT] tid 15088    [.] guest-0x45367fc
+     0.01%  [JIT] tid 15088    [.] guest-0x3ffaa10
+     0.01%  [JIT] tid 15088    [.] guest-0x4177b98
+     0.01%  [JIT] tid 15088    [.] guest-0x4266bd4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c50660
+     0.01%  [JIT] tid 15088    [.] guest-0x2e6ca4c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01898
+     0.01%  [JIT] tid 15088    [.] guest-0x41b9490
+     0.01%  [JIT] tid 15088    [.] guest-0x4190fc0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c93304
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad9360
+     0.01%  [JIT] tid 15088    [.] guest-0x2e43454
+     0.01%  [JIT] tid 15088    [.] guest-0x43eb5fc
+     0.01%  [JIT] tid 15088    [.] guest-0x42585c0
+     0.01%  [JIT] tid 15088    [.] guest-0x48e2350
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6bc20
+     0.01%  [JIT] tid 15088    [.] guest-0x3b3e838
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdab2e4
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bc6acc
+     0.01%  [JIT] tid 15088    [.] guest-0x432ccd8
+     0.01%  [JIT] tid 15088    [.] guest-0x402808c
+     0.01%  [JIT] tid 15088    [.] guest-0x42a5d68
+     0.01%  [JIT] tid 15088    [.] guest-0x4184368
+     0.01%  [JIT] tid 15088    [.] guest-0x3bc7e7c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8bb94
+     0.01%  [JIT] tid 15088    [.] guest-0x3ab850c
+     0.01%  [JIT] tid 15088    [.] guest-0x413ff08
+     0.01%  [JIT] tid 15088    [.] guest-0x419f684
+     0.01%  [JIT] tid 15088    [.] guest-0x3aae3ac
+     0.01%  [JIT] tid 15088    [.] guest-0x40dab98
+     0.01%  qemu-aarch64       [.] fold_setcond_zmask
+     0.01%  [JIT] tid 15088    [.] guest-0x41ffeac
+     0.01%  [JIT] tid 15088    [.] guest-0x3ffa500
+     0.01%  qemu-aarch64       [.] gen_top_byte_ignore
+     0.01%  [JIT] tid 15088    [.] guest-0x413ff44
+     0.01%  [JIT] tid 15088    [.] guest-0x43eb624
+     0.01%  [JIT] tid 15088    [.] guest-0x3bc7ef4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66874
+     0.01%  [JIT] tid 15088    [.] guest-0x43ed35c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdab2f8
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bccbb4
+     0.01%  [JIT] tid 15088    [.] guest-0x41a9b50
+     0.01%  [JIT] tid 15088    [.] guest-0x4203898
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7b020
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8ba3c
+     0.01%  [JIT] tid 15088    [.] guest-0x43ed3c4
+     0.01%  [JIT] tid 15088    [.] guest-0x4537dc8
+     0.01%  [JIT] tid 15088    [.] guest-0x2c65a3c
+     0.01%  [JIT] tid 15088    [.] guest-0x2ead928
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78458
+     0.01%  [JIT] tid 15088    [.] guest-0x41797ac
+     0.01%  [JIT] tid 15088    [.] guest-0x2e70c8c
+     0.01%  [JIT] tid 15088    [.] guest-0x4529fc0
+     0.01%  [JIT] tid 15088    [.] guest-0x43eb518
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66060
+     0.01%  [JIT] tid 15088    [.] guest-0x3d10d44
+     0.01%  [JIT] tid 15088    [.] guest-0x430a18c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a76ba8
+     0.01%  [JIT] tid 15088    [.] guest-0x41a49b4
+     0.01%  [JIT] tid 15088    [.] guest-0x4177978
+     0.01%  [JIT] tid 15088    [.] guest-0x3ab8528
+     0.01%  [JIT] tid 15088    [.] guest-0x40eff00
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8b8a8
+     0.01%  [JIT] tid 15088    [.] guest-0x42a402c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a75880
+     0.01%  [JIT] tid 15088    [.] guest-0x3d10e10
+     0.01%  [JIT] tid 15088    [.] guest-0x41882ac
+     0.01%  [JIT] tid 15088    [.] guest-0x3ab8430
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3be9c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbc21c
+     0.01%  [JIT] tid 15088    [.] guest-0x4257634
+     0.01%  [JIT] tid 15088    [.] guest-0x425ad00
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbd5e4
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6a6c
+     0.01%  [JIT] tid 15088    [.] guest-0x402f17c
+     0.01%  [JIT] tid 15088    [.] guest-0x1afbe98
+     0.01%  [JIT] tid 15088    [.] guest-0x41a4bd4
+     0.01%  [JIT] tid 15088    [.] guest-0x413c2b4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c51cc0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a755dc
+     0.01%  [JIT] tid 15088    [.] guest-0x4539b3c
+     0.01%  qemu-aarch64       [.] tcg_gen_goto_tb
+     0.01%  [JIT] tid 15088    [.] guest-0x417a774
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78270
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bbe794
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8d9d0
+     0.01%  [JIT] tid 15088    [.] guest-0x3fda9e88
+     0.01%  [JIT] tid 15088    [.] guest-0x2c61c50
+     0.01%  [JIT] tid 15088    [.] guest-0x41944bc
+     0.01%  [JIT] tid 15088    [.] guest-0x194c614
+     0.01%  [JIT] tid 15088    [.] guest-0x458de38
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bc6ad0
+     0.01%  [JIT] tid 15088    [.] guest-0x2f62344
+     0.01%  [JIT] tid 15088    [.] guest-0x41c1fbc
+     0.01%  [JIT] tid 15088    [.] guest-0x3bc53c0
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae55d0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a76be8
+     0.01%  qemu-aarch64       [.] new_do_write
+     0.01%  [JIT] tid 15088    [.] guest-0x4259fa4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b53050
+     0.01%  [JIT] tid 15088    [.] guest-0x45394b8
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdaf350
+     0.01%  [JIT] tid 15088    [.] guest-0x426c064
+     0.01%  [JIT] tid 15088    [.] guest-0x43d2afc
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdb5f68
+     0.01%  [JIT] tid 15088    [.] guest-0x41a4b74
+     0.01%  qemu-aarch64       [.] tcg_func_start
+     0.01%  [JIT] tid 15088    [.] guest-0x4263a08
+     0.01%  [JIT] tid 15088    [.] guest-0x4178f60
+     0.01%  [JIT] tid 15088    [.] guest-0x45129c8
+     0.01%  [JIT] tid 15088    [.] guest-0x453cb74
+     0.01%  [JIT] tid 15088    [.] guest-0x43d1550
+     0.01%  [JIT] tid 15088    [.] guest-0x3b10f84
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01c18
+     0.01%  [JIT] tid 15088    [.] guest-0x400aa7c
+     0.01%  [JIT] tid 15088    [.] guest-0x47a09b8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8c8f8
+     0.01%  [JIT] tid 15088    [.] guest-0x2ee64c4
+     0.01%  [JIT] tid 15088    [.] guest-0x4259164
+     0.01%  [JIT] tid 15088    [.] 0xa8e35d58
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8d0bc
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdb6b90
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbb8e4
+     0.01%  [JIT] tid 15088    [.] guest-0x3afcd5c
+     0.01%  [JIT] tid 15088    [.] guest-0x4512c5c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c3f83c
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae1114
+     0.01%  [JIT] tid 15088    [.] guest-0x44e966c
+     0.01%  [JIT] tid 15088    [.] guest-0x4522168
+     0.01%  [JIT] tid 15088    [.] guest-0x413a578
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6ea64
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3de3c
+     0.01%  [JIT] tid 15088    [.] guest-0x413b4f4
+     0.01%  [JIT] tid 15088    [.] guest-0x2e4344c
+     0.01%  [JIT] tid 15088    [.] guest-0x44cd3d8
+     0.01%  [JIT] tid 15088    [.] guest-0x2eadadc
+     0.01%  [JIT] tid 15088    [.] guest-0x3b064e4
+     0.01%  [JIT] tid 15088    [.] guest-0x43cfec4
+     0.01%  [JIT] tid 15088    [.] guest-0x4527964
+     0.01%  [JIT] tid 15088    [.] guest-0x4784e98
+     0.01%  [JIT] tid 15088    [.] guest-0x4595018
+     0.01%  [JIT] tid 15088    [.] guest-0x479d178
+     0.01%  [JIT] tid 15088    [.] guest-0x44c972c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fddfc8
+     0.01%  [JIT] tid 15088    [.] guest-0x2ee5f70
+     0.01%  [JIT] tid 15088    [.] guest-0x3a26a34
+     0.01%  [JIT] tid 15088    [.] guest-0x477dc68
+     0.01%  [JIT] tid 15088    [.] guest-0x47810f0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8e20c
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae11e0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0c8f8
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc34a8
+     0.01%  [JIT] tid 15088    [.] guest-0x4539174
+     0.01%  [JIT] tid 15088    [.] guest-0x425860c
+     0.01%  [JIT] tid 15088    [.] guest-0x1afd458
+     0.01%  [JIT] tid 15088    [.] 0xa8e3d340
+     0.01%  [JIT] tid 15088    [.] guest-0x3dbd484
+     0.01%  [JIT] tid 15088    [.] guest-0x42582ec
+     0.01%  [JIT] tid 15088    [.] guest-0x408ee58
+     0.01%  [JIT] tid 15088    [.] guest-0x4178a98
+     0.01%  [JIT] tid 15088    [.] guest-0x42692b0
+     0.01%  qemu-aarch64       [.] tcg_gen_shl_i64
+     0.01%  [JIT] tid 15088    [.] guest-0x419fa3c
+     0.01%  [JIT] tid 15088    [.] guest-0x3ab8664
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6eefc
+     0.01%  [JIT] tid 15088    [.] guest-0x3b1ac8c
+     0.01%  [JIT] tid 15088    [.] guest-0x2ec9758
+     0.01%  [JIT] tid 15088    [.] guest-0x4258034
+     0.01%  [JIT] tid 15088    [.] guest-0x2e27b78
+     0.01%  [JIT] tid 15088    [.] guest-0x44d1210
+     0.01%  [JIT] tid 15088    [.] guest-0x2e5dbcc
+     0.01%  [JIT] tid 15088    [.] guest-0x39f5ed4
+     0.01%  qemu-aarch64       [.] find_mem_copy_for.constprop.0
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bc3660
+     0.01%  [JIT] tid 15088    [.] guest-0x4258644
+     0.01%  [JIT] tid 15088    [.] guest-0x4536634
+     0.01%  [JIT] tid 15088    [.] guest-0x3bff084
+     0.01%  [JIT] tid 15088    [.] guest-0x45d9efe0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c67524
+     0.01%  [JIT] tid 15088    [.] guest-0x3b38300
+     0.01%  [JIT] tid 15088    [.] guest-0x3b018e8
+     0.01%  [JIT] tid 15088    [.] guest-0x1afd464
+     0.01%  [JIT] tid 15088    [.] guest-0x2e5da98
+     0.01%  [JIT] tid 15088    [.] guest-0x41389e4
+     0.01%  [JIT] tid 15088    [.] guest-0x41974d4
+     0.01%  [JIT] tid 15088    [.] guest-0x4258ccc
+     0.01%  [JIT] tid 15088    [.] guest-0x3a69ea0
+     0.01%  [JIT] tid 15088    [.] guest-0x479d258
+     0.01%  [JIT] tid 15088    [.] guest-0x3a755a8
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78394
+     0.01%  [JIT] tid 15088    [.] guest-0x3b54c64
+     0.01%  [JIT] tid 15088    [.] guest-0x41a121c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a70704
+     0.01%  [JIT] tid 15088    [.] guest-0x3a90240
+     0.01%  [JIT] tid 15088    [.] guest-0x3a7ad84
+     0.01%  [JIT] tid 15088    [.] guest-0x4257dc8
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad9434
+     0.01%  [JIT] tid 15088    [.] guest-0x45384a4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b183c4
+     0.01%  qemu-aarch64       [.] g_realloc_n
+     0.01%  [JIT] tid 15088    [.] guest-0x4200c20
+     0.01%  qemu-aarch64       [.] tcg_gen_st16_i64
+     0.01%  [JIT] tid 15088    [.] guest-0x2c4e8ac
+     0.01%  [JIT] tid 15088    [.] guest-0x4524cd4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3bdac
+     0.01%  [JIT] tid 15088    [.] guest-0x44cd514
+     0.01%  [JIT] tid 15088    [.] guest-0x4327b24
+     0.01%  [JIT] tid 15088    [.] guest-0x43d0274
+     0.01%  [JIT] tid 15088    [.] guest-0x44fbc48
+     0.01%  [JIT] tid 15088    [.] guest-0x419445c
+     0.01%  [JIT] tid 15088    [.] guest-0x40f013c
+     0.01%  [JIT] tid 15088    [.] guest-0x400bec0
+     0.01%  [JIT] tid 15088    [.] guest-0x41408c4
+     0.01%  [JIT] tid 15088    [.] guest-0x3fddfbc
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01c48
+     0.01%  [JIT] tid 15088    [.] guest-0x4760d10
+     0.01%  [JIT] tid 15088    [.] guest-0x4837a80
+     0.01%  [JIT] tid 15088    [.] guest-0x1af64ac
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7c91c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8dd48
+     0.01%  [JIT] tid 15088    [.] guest-0x40da8cc
+     0.01%  [JIT] tid 15088    [.] guest-0x2c93c40
+     0.01%  [JIT] tid 15088    [.] guest-0x3a5fb50
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8c420
+     0.01%  [JIT] tid 15088    [.] guest-0x2c61b14
+     0.01%  [JIT] tid 15088    [.] guest-0x425b200
+     0.01%  [JIT] tid 15088    [.] guest-0x4134918
+     0.01%  [JIT] tid 15088    [.] guest-0x41b56f8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a516a8
+     0.01%  [JIT] tid 15088    [.] guest-0x2e2f808
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdabab0
+     0.01%  [JIT] tid 15088    [.] guest-0x4259590
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82b80
+     0.01%  [JIT] tid 15088    [.] guest-0x413be88
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8d0a0
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad9330
+     0.01%  [JIT] tid 15088    [.] guest-0x400bfd4
+     0.01%  [JIT] tid 15088    [.] guest-0x403b76c
+     0.01%  [JIT] tid 15088    [.] guest-0x4539ad4
+     0.01%  [JIT] tid 15088    [.] guest-0x44f6ee4
+     0.01%  [kernel.kallsyms]  [k] get_futex_key
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad9c60
+     0.01%  [JIT] tid 15088    [.] guest-0x42576ac
+     0.01%  [JIT] tid 15088    [.] guest-0x4513378
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae4cf8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a839cc
+     0.01%  [JIT] tid 15088    [.] guest-0x4779ac0
+     0.01%  [JIT] tid 15088    [.] guest-0x4327a70
+     0.01%  [JIT] tid 15088    [.] guest-0x4258978
+     0.01%  [JIT] tid 15088    [.] guest-0x413bf14
+     0.01%  [JIT] tid 15088    [.] guest-0x43aa600
+     0.01%  [JIT] tid 15088    [.] guest-0x4179b48
+     0.01%  [JIT] tid 15088    [.] guest-0x3a201e8
+     0.01%  [JIT] tid 15088    [.] guest-0x41a7ef4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8c8c4
+     0.01%  [JIT] tid 15088    [.] guest-0x3ff6184
+     0.01%  [JIT] tid 15088    [.] guest-0x41a548c
+     0.01%  [JIT] tid 15088    [.] guest-0x1aeae3c
+     0.01%  [JIT] tid 15088    [.] guest-0x4539544
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc14ec
+     0.01%  [JIT] tid 15088    [.] guest-0x40ee94c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b118bc
+     0.01%  [JIT] tid 15088    [.] guest-0x3fde024
+     0.01%  [JIT] tid 15088    [.] guest-0x4326e84
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdadb08
+     0.01%  [JIT] tid 15088    [.] guest-0x432841c
+     0.01%  [JIT] tid 15088    [.] guest-0x1af39cc
+     0.01%  [JIT] tid 15088    [.] guest-0x43eb598
+     0.01%  [JIT] tid 15088    [.] guest-0x4361a70
+     0.01%  [JIT] tid 15088    [.] guest-0x43d2d48
+     0.01%  [JIT] tid 15088    [.] guest-0x402f178
+     0.01%  [JIT] tid 15088    [.] guest-0x3b065a8
+     0.01%  [JIT] tid 15088    [.] guest-0x4784e04
+     0.01%  [JIT] tid 15088    [.] guest-0x417868c
+     0.01%  [JIT] tid 15088    [.] guest-0x3bc7ea0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01224
+     0.01%  [JIT] tid 15088    [.] guest-0x3132668
+     0.01%  [JIT] tid 15088    [.] guest-0x41bb2c8
+     0.01%  [JIT] tid 15088    [.] guest-0x4259f24
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdb9ee0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b148bc
+     0.01%  [JIT] tid 15088    [.] guest-0x4179e60
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6e9f0
+     0.01%  [JIT] tid 15088    [.] guest-0x4361338
+     0.01%  [JIT] tid 15088    [.] guest-0x195d410
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c210
+     0.01%  [JIT] tid 15088    [.] guest-0x41ffe48
+     0.01%  [JIT] tid 15088    [.] guest-0x4200da4
+     0.01%  [JIT] tid 15088    [.] guest-0x40e3638
+     0.01%  [JIT] tid 15088    [.] guest-0x3b5fb34
+     0.01%  [JIT] tid 15088    [.] guest-0x44cc904
+     0.01%  [JIT] tid 15088    [.] guest-0x42ff554
+     0.01%  [JIT] tid 15088    [.] guest-0x426bff0
+     0.01%  [JIT] tid 15088    [.] guest-0x47a0414
+     0.01%  [JIT] tid 15088    [.] guest-0x3c32c8c
+     0.01%  [JIT] tid 15088    [.] 0xa836a930
+     0.01%  [JIT] tid 15088    [.] guest-0x4258534
+     0.01%  [JIT] tid 15088    [.] guest-0x2c62534
+     0.01%  [JIT] tid 15088    [.] guest-0x402f1fc
+     0.01%  [JIT] tid 15088    [.] guest-0x43b697c
+     0.01%  [JIT] tid 15088    [.] guest-0x419bd14
+     0.01%  [JIT] tid 15088    [.] guest-0x1af6320
+     0.01%  [JIT] tid 15088    [.] guest-0x419ed40
+     0.01%  [JIT] tid 15088    [.] guest-0x1aea1d4
+     0.01%  [JIT] tid 15088    [.] guest-0x479a694
+     0.01%  [JIT] tid 15088    [.] guest-0x40f0058
+     0.01%  [JIT] tid 15088    [.] guest-0x4539964
+     0.01%  [JIT] tid 15088    [.] guest-0x3b18434
+     0.01%  [kernel.kallsyms]  [k] v7_flush_kern_dcache_area
+     0.01%  [JIT] tid 15088    [.] guest-0x45379e4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c3b5cc
+     0.01%  [JIT] tid 15088    [.] guest-0x3a75894
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0561c
+     0.01%  [JIT] tid 15088    [.] guest-0x40d4f04
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9f140
+     0.01%  [JIT] tid 15088    [.] guest-0x3a75810
+     0.01%  [JIT] tid 15088    [.] guest-0x31e680c
+     0.01%  [JIT] tid 15088    [.] guest-0x4536d40
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b7835c
+     0.01%  [JIT] tid 15088    [.] guest-0x4201870
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9f52c
+     0.01%  [JIT] tid 15088    [.] guest-0x4263a14
+     0.01%  [JIT] tid 15088    [.] guest-0x3a76f78
+     0.01%  [JIT] tid 15088    [.] guest-0x2c93578
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae88f0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b16f94
+     0.01%  [JIT] tid 15088    [.] guest-0x3b1d8ac
+     0.01%  [JIT] tid 15088    [.] guest-0x3a51698
+     0.01%  [JIT] tid 15088    [.] guest-0x3c9ec40
+     0.01%  [JIT] tid 15088    [.] guest-0x45378f8
+     0.01%  [JIT] tid 15088    [.] guest-0x39f6274
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bc0ca8
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdb6078
+     0.01%  [JIT] tid 15088    [.] guest-0x418f7e0
+     0.01%  [JIT] tid 15088    [.] guest-0x453e810
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8b40c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b19280
+     0.01%  [JIT] tid 15088    [.] guest-0x3132a54
+     0.01%  [JIT] tid 15088    [.] guest-0x41a9a98
+     0.01%  [JIT] tid 15088    [.] guest-0x4027344
+     0.01%  [JIT] tid 15088    [.] guest-0x3c1d3bc
+     0.01%  [JIT] tid 15088    [.] guest-0x3b38e40
+     0.01%  [JIT] tid 15088    [.] guest-0x41b56d4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7b094
+     0.01%  qemu-aarch64       [.] parts64_uncanon_normal
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdab6b8
+     0.01%  [JIT] tid 15088    [.] guest-0x1afd388
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc2390
+     0.01%  [JIT] tid 15088    [.] guest-0x42577c4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c93704
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6a49c
+     0.01%  [kernel.kallsyms]  [k] balance_dirty_pages_ratelimited_flags
+     0.01%  [JIT] tid 15088    [.] guest-0x3bdfca0
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdba7b4
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bccbd0
+     0.01%  [JIT] tid 15088    [.] guest-0x48d5cf8
+     0.01%  [JIT] tid 15088    [.] guest-0x4179be8
+     0.01%  [JIT] tid 15088    [.] guest-0x3b1fea0
+     0.01%  [JIT] tid 15088    [.] guest-0x2e177f4
+     0.01%  [JIT] tid 15088    [.] guest-0x4539188
+     0.01%  [JIT] tid 15088    [.] guest-0x2e5db58
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c3e8
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad8ac4
+     0.01%  [JIT] tid 15088    [.] guest-0x3c314e8
+     0.01%  [JIT] tid 15088    [.] guest-0x413c058
+     0.01%  [JIT] tid 15088    [.] guest-0x45366e0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c668
+     0.01%  [JIT] tid 15088    [.] guest-0x413b898
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6b01c
+     0.01%  [JIT] tid 15088    [.] guest-0x425b16c
+     0.01%  [JIT] tid 15088    [.] guest-0x2ead7e0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c3f838
+     0.01%  [JIT] tid 15088    [.] guest-0x45d9e3c8
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad9b4c
+     0.01%  [JIT] tid 15088    [.] guest-0x43a91bc
+     0.01%  [JIT] tid 15088    [.] guest-0x4259e6c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdada74
+     0.01%  [JIT] tid 15088    [.] guest-0x2ee60d0
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad5394
+     0.01%  [JIT] tid 15088    [.] guest-0x425ac10
+     0.01%  [JIT] tid 15088    [.] guest-0x2c671e8
+     0.01%  [JIT] tid 15088    [.] guest-0x45129f0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c9e7f4
+     0.01%  [JIT] tid 15088    [.] guest-0x4178e94
+     0.01%  [JIT] tid 15088    [.] guest-0x4215868
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78348
+     0.01%  [JIT] tid 15088    [.] guest-0x3a7f038
+     0.01%  [JIT] tid 15088    [.] guest-0x4594fbc
+     0.01%  [kernel.kallsyms]  [k] folio_add_new_anon_rmap
+     0.01%  [JIT] tid 15088    [.] guest-0x2e0a818
+     0.01%  [JIT] tid 15088    [.] guest-0x3b3846c
+     0.01%  [JIT] tid 15088    [.] guest-0x42566a0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66868
+     0.01%  [JIT] tid 15088    [.] guest-0x2c9354c
+     0.01%  [JIT] tid 15088    [.] guest-0x2ec8904
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8d04c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c93de0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b7c3e8
+     0.01%  [JIT] tid 15088    [.] guest-0x3ff63d0
+     0.01%  [JIT] tid 15088    [.] guest-0x40113d8
+     0.01%  [JIT] tid 15088    [.] guest-0x4837b50
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c608
+     0.01%  [JIT] tid 15088    [.] guest-0x44e8138
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6c98
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01994
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b783e0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a4537c
+     0.01%  [JIT] tid 15088    [.] guest-0x43aaed0
+     0.01%  [JIT] tid 15088    [.] guest-0x4258a34
+     0.01%  [JIT] tid 15088    [.] guest-0x30ee458
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82f7c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdba128
+     0.01%  [JIT] tid 15088    [.] guest-0x425883c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8e8a0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a76098
+     0.01%  [JIT] tid 15088    [.] guest-0x3ff6388
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc34f8
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b7ff9c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a20180
+     0.01%  [kernel.kallsyms]  [k] sched_balance_update_blocked_averages
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c580
+     0.01%  [JIT] tid 15088    [.] guest-0x4264534
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3be10
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdd90f0
+     0.01%  [JIT] tid 15088    [.] guest-0x3130a84
+     0.01%  qemu-aarch64       [.] __aeabi_uldivmod
+     0.01%  [JIT] tid 15088    [.] guest-0x4201a68
+     0.01%  [JIT] tid 15088    [.] guest-0x4178f14
+     0.01%  [JIT] tid 15088    [.] guest-0x43b69d8
+     0.01%  [JIT] tid 15088    [.] guest-0x42585cc
+     0.01%  [JIT] tid 15088    [.] guest-0x44c8160
+     0.01%  [JIT] tid 15088    [.] guest-0x3ab86cc
+     0.01%  [JIT] tid 15088    [.] guest-0x3a696dc
+     0.01%  [JIT] tid 15088    [.] guest-0x3b85d9c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdc13e8
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bbca2c
+     0.01%  [JIT] tid 15088    [.] guest-0x40efef0
+     0.01%  [JIT] tid 15088    [.] guest-0x413c054
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdb19c4
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdaea60
+     0.01%  [JIT] tid 15088    [.] guest-0x413dcc0
+     0.01%  [JIT] tid 15088    [.] guest-0x41b97e0
+     0.01%  [JIT] tid 15088    [.] guest-0x418a288
+     0.01%  [JIT] tid 15088    [.] guest-0x2e42700
+     0.01%  [JIT] tid 15088    [.] guest-0x350f260
+     0.01%  [JIT] tid 15088    [.] guest-0x3ade770
+     0.01%  [JIT] tid 15088    [.] guest-0x1af36f8
+     0.01%  [JIT] tid 15088    [.] guest-0x3b1ed68
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbc444
+     0.01%  [JIT] tid 15088    [.] guest-0x2ead940
+     0.01%  [JIT] tid 15088    [.] guest-0x44cb678
+     0.01%  [JIT] tid 15088    [.] guest-0x194c320
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae05e8
+     0.01%  [JIT] tid 15088    [.] guest-0x43a91dc
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc2308
+     0.01%  [JIT] tid 15088    [.] guest-0x1a96208
+     0.01%  [JIT] tid 15088    [.] guest-0x2c3b624
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad1e40
+     0.01%  [kernel.kallsyms]  [k] __zone_watermark_ok
+     0.01%  [JIT] tid 15088    [.] guest-0x4784e24
+     0.01%  [JIT] tid 15088    [.] guest-0x42a2228
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6ef2c
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad8df8
+     0.01%  [JIT] tid 15088    [.] 0xa65d943c
+     0.01%  [JIT] tid 15088    [.] guest-0x4217b9c
+     0.01%  [JIT] tid 15088    [.] guest-0x42ff324
+     0.01%  [JIT] tid 15088    [.] guest-0x2e0bc64
+     0.01%  [JIT] tid 15088    [.] guest-0x2ec88e0
+     0.01%  [JIT] tid 15088    [.] guest-0x4539960
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c61c
+     0.01%  [JIT] tid 15088    [.] guest-0x43a8660
+     0.01%  [JIT] tid 15088    [.] guest-0x4218b50
+     0.01%  [JIT] tid 15088    [.] guest-0x2c93704
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1c34
+     0.01%  [JIT] tid 15088    [.] guest-0x31333e4
+     0.01%  [JIT] tid 15088    [.] guest-0x41ffe38
+     0.01%  [JIT] tid 15088    [.] guest-0x43b68f4
+     0.01%  [JIT] tid 15088    [.] guest-0x4780e44
+     0.01%  [JIT] tid 15088    [.] guest-0x4784f80
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c5c8
+     0.01%  [JIT] tid 15088    [.] guest-0x45277f0
+     0.01%  [JIT] tid 15088    [.] guest-0x4029130
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8dbf8
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0110c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c677c4
+     0.01%  [JIT] tid 15088    [.] guest-0x41a7d54
+     0.01%  [JIT] tid 15088    [.] guest-0x4000fa0
+     0.01%  [JIT] tid 15088    [.] guest-0x1af8ad4
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad8ad0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01a88
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3b734
+     0.01%  [kernel.kallsyms]  [k] __vm_enough_memory
+     0.01%  qemu-aarch64       [.] tcg_gen_ori_i32
+     0.01%  [JIT] tid 15088    [.] guest-0x41af134
+     0.01%  [JIT] tid 15088    [.] guest-0x4265c74
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9f7a4
+     0.01%  [JIT] tid 15088    [.] guest-0x41a4e2c
+     0.01%  [JIT] tid 15088    [.] guest-0x4539624
+     0.01%  [JIT] tid 15088    [.] guest-0x2e5db70
+     0.01%  [JIT] tid 15088    [.] guest-0x2ee5670
+     0.01%  [JIT] tid 15088    [.] guest-0x479ec6c
+     0.01%  [JIT] tid 15088    [.] guest-0x413fef8
+     0.01%  [JIT] tid 15088    [.] guest-0x4178fcc
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbdeb0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3df50
+     0.01%  [JIT] tid 15088    [.] guest-0x194c384
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc1628
+     0.01%  [JIT] tid 15088    [.] guest-0x41bd664
+     0.01%  [JIT] tid 15088    [.] guest-0x425a180
+     0.01%  [JIT] tid 15088    [.] guest-0x4537988
+     0.01%  [JIT] tid 15088    [.] guest-0x2e17744
+     0.01%  [kernel.kallsyms]  [k] mas_next_slot
+     0.01%  [JIT] tid 15088    [.] guest-0x48d5cec
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdaa5e4
+     0.01%  [JIT] tid 15088    [.] guest-0x31326e0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a9bde4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3bdd8
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdac38c
+     0.01%  [JIT] tid 15088    [.] guest-0x41a9c7c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8dae4
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae2a68
+     0.01%  [JIT] tid 15088    [.] guest-0x477e444
+     0.01%  [JIT] tid 15088    [.] guest-0x3b548bc
+     0.01%  [JIT] tid 15088    [.] guest-0x41aec80
+     0.01%  [JIT] tid 15088    [.] guest-0x3b3a618
+     0.01%  [JIT] tid 15088    [.] guest-0x418a064
+     0.01%  [JIT] tid 15088    [.] guest-0x3fda5480
+     0.01%  [JIT] tid 15088    [.] guest-0x4134904
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc972c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7acbc
+     0.01%  [JIT] tid 15088    [.] guest-0x1af64a4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a4ff94
+     0.01%  [JIT] tid 15088    [.] guest-0x194c324
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdabaf0
+     0.01%  [JIT] tid 15088    [.] guest-0x453e95c
+     0.01%  [JIT] tid 15088    [.] guest-0x417a350
+     0.01%  [JIT] tid 15088    [.] guest-0x194c328
+     0.01%  [JIT] tid 15088    [.] guest-0x42178d0
+     0.01%  [JIT] tid 15088    [.] guest-0x2e42640
+     0.01%  [JIT] tid 15088    [.] guest-0x426c39c
+     0.01%  [JIT] tid 15088    [.] guest-0x40f1884
+     0.01%  [JIT] tid 15088    [.] guest-0x2ead794
+     0.01%  [JIT] tid 15088    [.] guest-0x1aea15c
+     0.01%  [JIT] tid 15088    [.] guest-0x41a0b68
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c6f8
+     0.01%  [JIT] tid 15088    [.] guest-0x2c9387c
+     0.01%  [JIT] tid 15088    [.] guest-0x42157e4
+     0.01%  [JIT] tid 15088    [.] guest-0x417a23c
+     0.01%  [JIT] tid 15088    [.] guest-0x45126b4
+     0.01%  qemu-aarch64       [.] float64_do_compare
+     0.01%  [JIT] tid 15088    [.] guest-0x3ab2034
+     0.01%  [JIT] tid 15088    [.] guest-0x3bc53a8
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdc64d8
+     0.01%  [JIT] tid 15088    [.] guest-0x425a1c0
+     0.01%  [JIT] tid 15088    [.] guest-0x3cecc94
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae0658
+     0.01%  [JIT] tid 15088    [.] guest-0x413c290
+     0.01%  [JIT] tid 15088    [.] guest-0x43a9284
+     0.01%  [JIT] tid 15088    [.] guest-0x43a5c2c
+     0.01%  [JIT] tid 15088    [.] guest-0x3130c60
+     0.01%  [JIT] tid 15088    [.] guest-0x43aaf74
+     0.01%  [JIT] tid 15088    [.] guest-0x2c9e770
+     0.01%  [JIT] tid 15088    [.] guest-0x45379bc
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad9340
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad1f54
+     0.01%  [JIT] tid 15088    [.] guest-0x42686bc
+     0.01%  [JIT] tid 15088    [.] guest-0x3b19438
+     0.01%  [JIT] tid 15088    [.] guest-0x4269000
+     0.01%  [JIT] tid 15088    [.] guest-0x3b27328
+     0.01%  [JIT] tid 15088    [.] guest-0x3fda3e4c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fda7e20
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbb0bc
+     0.01%  [JIT] tid 15088    [.] guest-0x3bb8a6c
+     0.01%  [JIT] tid 15088    [.] guest-0x1afc29c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a5f54c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b15f38
+     0.01%  [JIT] tid 15088    [.] guest-0x3bb8c2c
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bc2af4
+     0.01%  [JIT] tid 15088    [.] guest-0x41946a4
+     0.01%  [JIT] tid 15088    [.] guest-0x417a890
+     0.01%  [JIT] tid 15088    [.] guest-0x3b08f80
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc3620
+     0.01%  [JIT] tid 15088    [.] guest-0x43cff50
+     0.01%  [JIT] tid 15088    [.] guest-0x413dd08
+     0.01%  [JIT] tid 15088    [.] guest-0x3a75244
+     0.01%  [JIT] tid 15088    [.] guest-0x402ddb8
+     0.01%  [JIT] tid 15088    [.] guest-0x338ef94
+     0.01%  [JIT] tid 15088    [.] guest-0x3b116e0
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b783f4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82bb8
+     0.01%  [JIT] tid 15088    [.] guest-0x4527508
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01840
+     0.01%  [JIT] tid 15088    [.] guest-0x1bfe6d0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b2a698
+     0.01%  [JIT] tid 15088    [.] guest-0x2e196b4
+     0.01%  [JIT] tid 15088    [.] guest-0x3feb5fc
+     0.01%  [JIT] tid 15088    [.] guest-0x2e42718
+     0.01%  [JIT] tid 15088    [.] guest-0x2f083dc
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdad81c
+     0.01%  [JIT] tid 15088    [.] guest-0x413bad0
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bc3f08
+     0.01%  [JIT] tid 15088    [.] guest-0x413ff70
+     0.01%  [JIT] tid 15088    [.] guest-0x413bd30
+     0.01%  [JIT] tid 15088    [.] guest-0x4135348
+     0.01%  [JIT] tid 15088    [.] guest-0x482bba0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82c0c
+     0.01%  [JIT] tid 15088    [.] guest-0x41ac92c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c514a8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a69730
+     0.01%  [JIT] tid 15088    [.] guest-0x2f6f4ec
+     0.01%  [JIT] tid 15088    [.] guest-0x45379a0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c6610c
+     0.01%  [JIT] tid 15088    [.] guest-0x413dcd0
+     0.01%  [JIT] tid 15088    [.] guest-0x42ff49c
+     0.01%  [JIT] tid 15088    [.] guest-0x3aff238
+     0.01%  [JIT] tid 15088    [.] guest-0x4213c04
+     0.01%  [JIT] tid 15088    [.] guest-0x2e42fb4
+     0.01%  [JIT] tid 15088    [.] tcg-prologue-buffer
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae05c0
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdb9190
+     0.01%  [JIT] tid 15088    [.] guest-0x3a51720
+     0.01%  [kernel.kallsyms]  [k] get_signal
+     0.01%  [JIT] tid 15088    [.] guest-0x3ab853c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbf160
+     0.01%  [JIT] tid 15088    [.] guest-0x3b031f4
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9f74c
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b7846c
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae96fc
+     0.01%  [JIT] tid 15088    [.] guest-0x42585c8
+     0.01%  qemu-aarch64       [.] helper_sar_i64
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78310
+     0.01%  [JIT] tid 15088    [.] guest-0x3b37a24
+     0.01%  [JIT] tid 15088    [.] guest-0x4877238
+     0.01%  [JIT] tid 15088    [.] guest-0x41a9bbc
+     0.01%  [JIT] tid 15088    [.] guest-0x3132a50
+     0.01%  [JIT] tid 15088    [.] guest-0x45366a0
+     0.01%  [JIT] tid 15088    [.] guest-0x41a498c
+     0.01%  [JIT] tid 15088    [.] guest-0x4594fcc
+     0.01%  [JIT] tid 15088    [.] guest-0x42639a0
+     0.01%  [JIT] tid 15088    [.] guest-0x413c248
+     0.01%  [JIT] tid 15088    [.] guest-0x413bd90
+     0.01%  [JIT] tid 15088    [.] guest-0x2e42638
+     0.01%  [JIT] tid 15088    [.] guest-0x41ade60
+     0.01%  [JIT] tid 15088    [.] guest-0x41a8a5c
+     0.01%  [JIT] tid 15088    [.] guest-0x44cd424
+     0.01%  [JIT] tid 15088    [.] guest-0x44cd3d0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3b874
+     0.01%  [JIT] tid 15088    [.] guest-0x417a9a8
+     0.01%  [JIT] tid 15088    [.] guest-0x2c6679c
+     0.01%  [JIT] tid 15088    [.] guest-0x45b77a8
+     0.01%  [JIT] tid 15088    [.] guest-0x40eabd4
+     0.01%  [JIT] tid 15088    [.] guest-0x43d2b24
+     0.01%  [JIT] tid 15088    [.] guest-0x3a41e88
+     0.01%  [kernel.kallsyms]  [k] set_ptes
+     0.01%  [JIT] tid 15088    [.] guest-0x42028ac
+     0.01%  [JIT] tid 15088    [.] guest-0x4126320
+     0.01%  [JIT] tid 15088    [.] guest-0x2eac1f0
+     0.01%  qemu-aarch64       [.] temp_allocate_frame
+     0.01%  [JIT] tid 15088    [.] guest-0x3c0b660
+     0.01%  [JIT] tid 15088    [.] guest-0x2e2f84c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a75874
+     0.01%  qemu-aarch64       [.] tcg_gen_setcond_i64.part.0
+     0.01%  [JIT] tid 15088    [.] guest-0x3bc7990
+     0.01%  [JIT] tid 15088    [.] guest-0x42006e4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c93540
+     0.01%  [JIT] tid 15088    [.] guest-0x2c93554
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9ff60
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9fb90
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6b014
+     0.01%  [JIT] tid 15088    [.] guest-0x4135618
+     0.01%  [JIT] tid 15088    [.] guest-0x40eff04
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82b54
+     0.01%  [JIT] tid 15088    [.] guest-0x3b7c3d0
+     0.01%  [JIT] tid 15088    [.] guest-0x41a8a98
+     0.01%  [JIT] tid 15088    [.] guest-0x44cd32c
+     0.01%  [JIT] tid 15088    [.] guest-0x413be8c
+     0.01%  [JIT] tid 15088    [.] guest-0x453ca98
+     0.01%  [JIT] tid 15088    [.] guest-0x2ed354c
+     0.01%  [JIT] tid 15088    [.] guest-0x2e6ca64
+     0.01%  [JIT] tid 15088    [.] guest-0x43eb61c
+     0.01%  [JIT] tid 15088    [.] guest-0x4512780
+     0.01%  [JIT] tid 15088    [.] guest-0x43aa474
+     0.01%  [JIT] tid 15088    [.] guest-0x47a1178
+     0.01%  [JIT] tid 15088    [.] guest-0x3af3b28
+     0.01%  [JIT] tid 15088    [.] guest-0x1adac00
+     0.01%  [JIT] tid 15088    [.] guest-0x479a770
+     0.01%  [JIT] tid 15088    [.] guest-0x42fd11c
+     0.01%  [JIT] tid 15088    [.] guest-0x43a513c
+     0.01%  [JIT] tid 15088    [.] guest-0x43283c0
+     0.01%  [JIT] tid 15088    [.] guest-0x2e177fc
+     0.01%  [JIT] tid 15088    [.] guest-0x2e19910
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b9e3e0
+     0.01%  [JIT] tid 15088    [.] guest-0x419be68
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad8de8
+     0.01%  [JIT] tid 15088    [.] guest-0x2ea7930
+     0.01%  [JIT] tid 15088    [.] guest-0x419483c
+     0.01%  [JIT] tid 15088    [.] guest-0x400bf44
+     0.01%  [JIT] tid 15088    [.] guest-0x4257760
+     0.01%  [JIT] tid 15088    [.] guest-0x42ff39c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a67da4
+     0.01%  [JIT] tid 15088    [.] guest-0x43a919c
+     0.01%  [JIT] tid 15088    [.] guest-0x479d29c
+     0.01%  [JIT] tid 15088    [.] guest-0x4529f34
+     0.01%  [JIT] tid 15088    [.] guest-0x43b6d20
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdba3dc
+     0.01%  [JIT] tid 15088    [.] guest-0x3b792ec
+     0.01%  [JIT] tid 15088    [.] guest-0x3fde020
+     0.01%  qemu-aarch64       [.] __pthread_mutex_unlock
+     0.01%  [JIT] tid 15088    [.] guest-0x41bd570
+     0.01%  [JIT] tid 15088    [.] guest-0x42590e4
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae4be8
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1c7c
+     0.01%  [JIT] tid 15088    [.] 0xa65d9400
+     0.01%  [JIT] tid 15088    [.] guest-0x3a468b4
+     0.01%  [JIT] tid 15088    [.] guest-0x452cf78
+     0.01%  qemu-aarch64       [.] tcg_gen_gvec_dup_imm
+     0.01%  [JIT] tid 15088    [.] guest-0x417896c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8dd4c
+     0.01%  [JIT] tid 15088    [.] guest-0x45391fc
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6ea44
+     0.01%  [JIT] tid 15088    [.] guest-0x1afd3f4
+     0.01%  [JIT] tid 15088    [.] guest-0x2e0a7c8
+     0.01%  [JIT] tid 15088    [.] guest-0x417b280
+     0.01%  [JIT] tid 15088    [.] guest-0x43283c4
+     0.01%  [JIT] tid 15088    [.] guest-0x31329e8
+     0.01%  [JIT] tid 15088    [.] guest-0x4327da8
+     0.01%  [JIT] tid 15088    [.] guest-0x413b8f4
+     0.01%  [JIT] tid 15088    [.] guest-0x41ffeec
+     0.01%  [JIT] tid 15088    [.] guest-0x402dcac
+     0.01%  [JIT] tid 15088    [.] 0xa7da6fe4
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b7fce0
+     0.01%  [JIT] tid 15088    [.] guest-0x453cb10
+     0.01%  [JIT] tid 15088    [.] guest-0x413ba94
+     0.01%  [JIT] tid 15088    [.] guest-0x4257de0
+     0.01%  [JIT] tid 15088    [.] guest-0x413268c
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78390
+     0.01%  [JIT] tid 15088    [.] guest-0x4524b00
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8fa70
+     0.01%  [JIT] tid 15088    [.] guest-0x43d029c
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bc25a0
+     0.01%  [JIT] tid 15088    [.] guest-0x3d20e24
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8c5ac
+     0.01%  [JIT] tid 15088    [.] guest-0x425ac2c
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae95f0
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1bfc
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9f190
+     0.01%  [JIT] tid 15088    [.] guest-0x2e42634
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbd734
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3bde8
+     0.01%  [JIT] tid 15088    [.] guest-0x41ac7a0
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78318
+     0.01%  [JIT] tid 15088    [.] guest-0x4784e28
+     0.01%  [JIT] tid 15088    [.] guest-0x425786c
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1ec4
+     0.01%  qemu-aarch64       [.] uint64_to_float64_scalbn
+     0.01%  [JIT] tid 15088    [.] guest-0x3a41e84
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc263c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a9acc0
+     0.01%  [JIT] tid 15088    [.] guest-0x3bb8b44
+     0.01%  [JIT] tid 15088    [.] guest-0x4513738
+     0.01%  [JIT] tid 15088    [.] guest-0x42a3f84
+     0.01%  [JIT] tid 15088    [.] guest-0x3b177c4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3beec
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66968
+     0.01%  [JIT] tid 15088    [.] guest-0x42578ac
+     0.01%  [JIT] tid 15088    [.] guest-0x3a95108
+     0.01%  [JIT] tid 15088    [.] guest-0x43a9264
+     0.01%  [JIT] tid 15088    [.] guest-0x42fe368
+     0.01%  [kernel.kallsyms]  [k] file_update_time_flags
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8b694
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdba52c
+     0.01%  [JIT] tid 15088    [.] guest-0x3c7a810
+     0.01%  [JIT] tid 15088    [.] guest-0x2e4369c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a79b0c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a45214
+     0.01%  [JIT] tid 15088    [.] guest-0x417a22c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdbaa94
+     0.01%  [JIT] tid 15088    [.] guest-0x3a79ab0
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae06b0
+     0.01%  [JIT] tid 15088    [.] guest-0x4534b68
+     0.01%  [JIT] tid 15088    [.] guest-0x2c93d60
+     0.01%  [JIT] tid 15088    [.] guest-0x3b40cc0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b1f43c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c93bb8
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01884
+     0.01%  [JIT] tid 15088    [.] guest-0x3c9d518
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c73c
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad9058
+     0.01%  [JIT] tid 15088    [.] guest-0x4194898
+     0.01%  [JIT] tid 15088    [.] guest-0x313348c
+     0.01%  [JIT] tid 15088    [.] guest-0x4092324
+     0.01%  [JIT] tid 15088    [.] guest-0x41349d8
+     0.01%  [JIT] tid 15088    [.] guest-0x4132628
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bc31a0
+     0.01%  [JIT] tid 15088    [.] guest-0x44e934c
+     0.01%  [JIT] tid 15088    [.] guest-0x4259db0
+     0.01%  [JIT] tid 15088    [.] guest-0x3afcd20
+     0.01%  [JIT] tid 15088    [.] guest-0x2e1b568
+     0.01%  [JIT] tid 15088    [.] guest-0x3c6a01c
+     0.01%  [JIT] tid 15088    [.] guest-0x4263858
+     0.01%  [JIT] tid 15088    [.] guest-0x3a5fbd0
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae05c4
+     0.01%  [JIT] tid 15088    [.] guest-0x30da92c
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bbe818
+     0.01%  [JIT] tid 15088    [.] guest-0x42a5e20
+     0.01%  [JIT] tid 15088    [.] guest-0x3a41774
+     0.01%  [JIT] tid 15088    [.] guest-0x425ad18
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8b918
+     0.01%  [JIT] tid 15088    [.] guest-0x4784e30
+     0.01%  qemu-aarch64       [.] float64_sqrt
+     0.01%  [JIT] tid 15088    [.] guest-0x3b010b0
+     0.01%  [JIT] tid 15088    [.] guest-0x4257ba8
+     0.01%  [JIT] tid 15088    [.] guest-0x4000fc0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8aee0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b01218
+     0.01%  [JIT] tid 15088    [.] guest-0x4319568
+     0.01%  [JIT] tid 15088    [.] guest-0x3a452e8
+     0.01%  [JIT] tid 15088    [.] guest-0x425781c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66820
+     0.01%  [JIT] tid 15088    [.] guest-0x3a90870
+     0.01%  [JIT] tid 15088    [.] guest-0x413fbac
+     0.01%  [JIT] tid 15088    [.] guest-0x43cfe8c
+     0.01%  [JIT] tid 15088    [.] guest-0x3130ae0
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad9b50
+     0.01%  [JIT] tid 15088    [.] guest-0x419b1ac
+     0.01%  [JIT] tid 15088    [.] guest-0x3af6fe8
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66c10
+     0.01%  [JIT] tid 15088    [.] guest-0x3ff63a4
+     0.01%  [JIT] tid 15088    [.] guest-0x3c9ee34
+     0.01%  [JIT] tid 15088    [.] guest-0x453cf64
+     0.01%  [JIT] tid 15088    [.] guest-0x2c677c4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c570
+     0.01%  [JIT] tid 15088    [.] guest-0x417a4cc
+     0.01%  [JIT] tid 15088    [.] guest-0x425b218
+     0.01%  [JIT] tid 15088    [.] guest-0x3fda8c98
+     0.01%  [JIT] tid 15088    [.] guest-0x2ec972c
+     0.01%  [JIT] tid 15088    [.] guest-0x2e1b554
+     0.01%  [JIT] tid 15088    [.] guest-0x426c9f4
+     0.01%  [JIT] tid 15088    [.] guest-0x417772c
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc2348
+     0.01%  [JIT] tid 15088    [.] guest-0x2e17778
+     0.01%  [JIT] tid 15088    [.] guest-0x3cf414c
+     0.01%  [JIT] tid 15088    [.] guest-0x4538fd8
+     0.01%  [JIT] tid 15088    [.] guest-0x408ee30
+     0.01%  [JIT] tid 15088    [.] guest-0x402dd18
+     0.01%  [JIT] tid 15088    [.] guest-0x426839c
+     0.01%  [JIT] tid 15088    [.] guest-0x4217c24
+     0.01%  [JIT] tid 15088    [.] guest-0x3c87368
+     0.01%  [JIT] tid 15088    [.] guest-0x400b9d4
+     0.01%  [JIT] tid 15088    [.] guest-0x4785990
+     0.01%  [JIT] tid 15088    [.] guest-0x3bce7d8
+     0.01%  [JIT] tid 15088    [.] guest-0x2ead7f8
+     0.01%  [JIT] tid 15088    [.] guest-0x3afd5f0
+     0.01%  [JIT] tid 15088    [.] guest-0x1aead78
+     0.01%  [JIT] tid 15088    [.] guest-0x413b57c
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae5e24
+     0.01%  [JIT] tid 15088    [.] guest-0x2e9820c
+     0.01%  [JIT] tid 15088    [.] guest-0x417f348
+     0.01%  [JIT] tid 15088    [.] guest-0x3fde04c
+     0.01%  [JIT] tid 15088    [.] guest-0x4309848
+     0.01%  [JIT] tid 15088    [.] guest-0x413dc88
+     0.01%  [JIT] tid 15088    [.] guest-0x3cec178
+     0.01%  [JIT] tid 15088    [.] guest-0x42692b4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3bd38
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae0900
+     0.01%  [JIT] tid 15088    [.] guest-0x4265ce0
+     0.01%  [JIT] tid 15088    [.] guest-0x4539a84
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b784f0
+     0.01%  [JIT] tid 15088    [.] guest-0x4513480
+     0.01%  [JIT] tid 15088    [.] guest-0x413c594
+     0.01%  [JIT] tid 15088    [.] guest-0x3a4176c
+     0.01%  [JIT] tid 15088    [.] guest-0x41348d8
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bc6ac4
+     0.01%  [kernel.kallsyms]  [k] commit_merge
+     0.01%  [JIT] tid 15088    [.] guest-0x45442ac
+     0.01%  [JIT] tid 15088    [.] guest-0x2ead924
+     0.01%  [JIT] tid 15088    [.] guest-0x2e0d6cc
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b8a2a4
+     0.01%  [JIT] tid 15088    [.] guest-0x412631c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b05900
+     0.01%  [JIT] tid 15088    [.] guest-0x41ad48c
+     0.01%  [JIT] tid 15088    [.] guest-0x41a0054
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0dfac
+     0.01%  [JIT] tid 15088    [.] guest-0x42578b8
+     0.01%  [JIT] tid 15088    [.] guest-0x41a4b44
+     0.01%  [JIT] tid 15088    [.] guest-0x430a174
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae97ec
+     0.01%  [JIT] tid 15088    [.] guest-0x413bf68
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3bee0
+     0.01%  [JIT] tid 15088    [.] guest-0x3dbd5fc
+     0.01%  [JIT] tid 15088    [.] guest-0x474f834
+     0.01%  [JIT] tid 15088    [.] guest-0x425b2f0
+     0.01%  qemu-aarch64       [.] cpu_exec_end
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9f2e0
+     0.01%  [JIT] tid 15088    [.] guest-0x400081c
+     0.01%  [JIT] tid 15088    [.] guest-0x3ab871c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b6a4b8
+     0.01%  [JIT] tid 15088    [.] guest-0x3c3fddc
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78478
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1e9c
+     0.01%  [JIT] tid 15088    [.] guest-0x408ee48
+     0.01%  [JIT] tid 15088    [.] 0xa8362aa4
+     0.01%  [JIT] tid 15088    [.] guest-0x4259c58
+     0.01%  [JIT] tid 15088    [.] guest-0x44cd334
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdaa518
+     0.01%  [JIT] tid 15088    [.] guest-0x4539540
+     0.01%  [kernel.kallsyms]  [k] __alloc_frozen_pages_noprof
+     0.01%  [JIT] tid 15088    [.] guest-0x4265f04
+     0.01%  [JIT] tid 15088    [.] guest-0x4537db0
+     0.01%  [JIT] tid 15088    [.] guest-0x1afb7a4
+     0.01%  [JIT] tid 15088    [.] guest-0x40ea9e4
+     0.01%  [JIT] tid 15088    [.] guest-0x1af4fc8
+     0.01%  [JIT] tid 15088    [.] guest-0x3c47b38
+     0.01%  [JIT] tid 15088    [.] guest-0x3fddfe8
+     0.01%  [JIT] tid 15088    [.] guest-0x426e568
+     0.01%  [JIT] tid 15088    [.] guest-0x4594ff8
+     0.01%  [JIT] tid 15088    [.] guest-0x2ea7908
+     0.01%  [JIT] tid 15088    [.] guest-0x417a678
+     0.01%  [JIT] tid 15088    [.] guest-0x3bf8bcc
+     0.01%  [JIT] tid 15088    [.] guest-0x43aa348
+     0.01%  [JIT] tid 15088    [.] guest-0x44cd304
+     0.01%  [JIT] tid 15088    [.] guest-0x425869c
+     0.01%  [JIT] tid 15088    [.] guest-0x3d0682c
+     0.01%  [JIT] tid 15088    [.] guest-0x453ca9c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a45380
+     0.01%  [JIT] tid 15088    [.] guest-0x1afd450
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78304
+     0.01%  [JIT] tid 15088    [.] guest-0x3c9ee20
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bbe2bc
+     0.01%  [JIT] tid 15088    [.] guest-0x4259e68
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc3444
+     0.01%  [JIT] tid 15088    [.] guest-0x2e67220
+     0.01%  [JIT] tid 15088    [.] guest-0x41ffe34
+     0.01%  qemu-aarch64       [.] q_tree_node_balance
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae2748
+     0.01%  [JIT] tid 15088    [.] guest-0x413535c
+     0.01%  [JIT] tid 15088    [.] guest-0x4268354
+     0.01%  [JIT] tid 15088    [.] guest-0x3afd174
+     0.01%  [JIT] tid 15088    [.] guest-0x43cfec8
+     0.01%  [JIT] tid 15088    [.] guest-0x4256938
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8b804
+     0.01%  [JIT] tid 15088    [.] guest-0x4536738
+     0.01%  [JIT] tid 15088    [.] guest-0x3fddfb0
+     0.01%  [JIT] tid 15088    [.] guest-0x2e97374
+     0.01%  [JIT] tid 15088    [.] guest-0x41803ac
+     0.01%  [JIT] tid 15088    [.] guest-0x1aed1f8
+     0.01%  [JIT] tid 15088    [.] guest-0x4141bac
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c3c8
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1d14
+     0.01%  [JIT] tid 15088    [.] guest-0x40dae84
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0abcc
+     0.01%  [JIT] tid 15088    [.] guest-0x3a950e0
+     0.01%  [JIT] tid 15088    [.] guest-0x425a7e0
+     0.01%  qemu-aarch64       [.] tcg_out_movext
+     0.01%  [JIT] tid 15088    [.] guest-0x413ff58
+     0.01%  [JIT] tid 15088    [.] guest-0x3bc2014
+     0.01%  [JIT] tid 15088    [.] guest-0x4799fd8
+     0.01%  [JIT] tid 15088    [.] guest-0x3bc1f88
+     0.01%  [JIT] tid 15088    [.] guest-0x3d1ef50
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8d03c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b79950
+     0.01%  [JIT] tid 15088    [.] guest-0x3cf009c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a81380
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1d9c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdba520
+     0.01%  [JIT] tid 15088    [.] guest-0x3bc6728
+     0.01%  qemu-aarch64       [.] tcg_out_qemu_st
+     0.01%  [JIT] tid 15088    [.] guest-0x1afbefc
+     0.01%  [JIT] tid 15088    [.] guest-0x413bd0c
+     0.01%  [JIT] tid 15088    [.] guest-0x4138b2c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c407fc
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdaa684
+     0.01%  [kernel.kallsyms]  [k] _raw_spin_trylock
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdba7ac
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdaa1d0
+     0.01%  [JIT] tid 15088    [.] guest-0x3c0c438
+     0.01%  [JIT] tid 15088    [.] guest-0x400bf60
+     0.01%  [JIT] tid 15088    [.] guest-0x3bc9db0
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8d700
+     0.01%  [JIT] tid 15088    [.] guest-0x1afbf2c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a761e0
+     0.01%  [JIT] tid 15088    [.] guest-0x4539114
+     0.01%  [JIT] tid 15088    [.] guest-0x413a0ac
+     0.01%  [JIT] tid 15088    [.] guest-0x2e6c910
+     0.01%  [JIT] tid 15088    [.] guest-0x3b15b74
+     0.01%  [JIT] tid 15088    [.] guest-0x4257878
+     0.01%  [JIT] tid 15088    [.] guest-0x4595010
+     0.01%  [JIT] tid 15088    [.] guest-0x4537b28
+     0.01%  [JIT] tid 15088    [.] guest-0x3a80ca4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a7ee6c
+     0.01%  [JIT] tid 15088    [.] guest-0x48e1ec4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6ed8c
+     0.01%  [JIT] tid 15088    [.] guest-0x3ab8834
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8af0c
+     0.01%  [JIT] tid 15088    [.] guest-0x3c4c25c
+     0.01%  [JIT] tid 15088    [.] guest-0x3c39eec
+     0.01%  [JIT] tid 15088    [.] guest-0x3aea470
+     0.01%  [JIT] tid 15088    [.] guest-0x3dbbc84
+     0.01%  [JIT] tid 15088    [.] guest-0x45131ec
+     0.01%  [JIT] tid 15088    [.] guest-0x41a8e18
+     0.01%  [JIT] tid 15088    [.] guest-0x413b930
+     0.01%  [JIT] tid 15088    [.] guest-0x3fd9f180
+     0.01%  [JIT] tid 15088    [.] guest-0x3bc200c
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae50dc
+     0.01%  [JIT] tid 15088    [.] guest-0x4544b5c
+     0.01%  [JIT] tid 15088    [.] guest-0x45b77c0
+     0.01%  [JIT] tid 15088    [.] guest-0x43d2b14
+     0.01%  [JIT] tid 15088    [.] guest-0x4203930
+     0.01%  [JIT] tid 15088    [.] guest-0x3c9c5e8
+     0.01%  [JIT] tid 15088    [.] guest-0x413b4c4
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc33cc
+     0.01%  [kernel.kallsyms]  [k] shmem_add_to_page_cache
+     0.01%  [JIT] tid 15088    [.] guest-0x413fff8
+     0.01%  [JIT] tid 15088    [.] guest-0x3c2667c
+     0.01%  [JIT] tid 15088    [.] guest-0x4265ef8
+     0.01%  [JIT] tid 15088    [.] guest-0x4536654
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6b06c
+     0.01%  [JIT] tid 15088    [.] guest-0x41353f0
+     0.01%  [JIT] tid 15088    [.] guest-0x43a2684
+     0.01%  [JIT] tid 15088    [.] guest-0x3d8217c
+     0.01%  [JIT] tid 15088    [.] guest-0x40b08a8
+     0.01%  [JIT] tid 15088    [.] guest-0x4135300
+     0.01%  [JIT] tid 15088    [.] guest-0x3abb538
+     0.01%  [JIT] tid 15088    [.] guest-0x4539924
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c654
+     0.01%  [JIT] tid 15088    [.] guest-0x1af6310
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad8bcc
+     0.01%  [JIT] tid 15088    [.] guest-0x42646f0
+     0.01%  [JIT] tid 15088    [.] guest-0x4544398
+     0.01%  [JIT] tid 15088    [.] guest-0x410c3ec
+     0.01%  [JIT] tid 15088    [.] guest-0x40fa4b8
+     0.01%  [JIT] tid 15088    [.] guest-0x3fda9ef8
+     0.01%  [JIT] tid 15088    [.] guest-0x3a7efd8
+     0.01%  [JIT] tid 15088    [.] guest-0x3c316bc
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8dcb0
+     0.01%  [JIT] tid 15088    [.] guest-0x3af6734
+     0.01%  [JIT] tid 15088    [.] guest-0x3af3a70
+     0.01%  [JIT] tid 15088    [.] guest-0x43d02cc
+     0.01%  [JIT] tid 15088    [.] guest-0x3b75c5c
+     0.01%  [JIT] tid 15088    [.] guest-0x42646dc
+     0.01%  [JIT] tid 15088    [.] guest-0x3c39eb4
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6a314
+     0.01%  [JIT] tid 15088    [.] guest-0x43284e8
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad8d7c
+     0.01%  [JIT] tid 15088    [.] guest-0x3d0ef48
+     0.01%  qemu-aarch64       [.] tcg_gen_deposit_z_i64
+     0.01%  [JIT] tid 15088    [.] guest-0x3c9ec50
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdaf064
+     0.01%  [JIT] tid 15088    [.] guest-0x43eb51c
+     0.01%  [JIT] tid 15088    [.] guest-0x2e43488
+     0.01%  [JIT] tid 15088    [.] guest-0x426e544
+     0.01%  [JIT] tid 15088    [.] guest-0x3bf8cf8
+     0.01%  [JIT] tid 15088    [.] guest-0x42fd118
+     0.01%  [JIT] tid 15088    [.] guest-0x413d0d8
+     0.01%  [JIT] tid 15088    [.] guest-0x2c936d8
+     0.01%  [JIT] tid 15088    [.] guest-0x3fde038
+     0.01%  [JIT] tid 15088    [.] guest-0x3a71708
+     0.01%  [JIT] tid 15088    [.] guest-0x3acb434
+     0.01%  qemu-aarch64       [.] aarch64_tr_tb_start
+     0.01%  qemu-aarch64       [.] __aeabi_dsub
+     0.01%  [JIT] tid 15088    [.] guest-0x3b031c4
+     0.01%  [JIT] tid 15088    [.] guest-0x2c3f840
+     0.01%  [JIT] tid 15088    [.] guest-0x3c3ebb8
+     0.01%  [JIT] tid 15088    [.] guest-0x3b7ef9c
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b78338
+     0.01%  [JIT] tid 15088    [.] guest-0x3c38458
+     0.01%  [JIT] tid 15088    [.] guest-0x3bb61a4
+     0.01%  [JIT] tid 15088    [.] guest-0x3bca930
+     0.01%  [JIT] tid 15088    [.] guest-0x2c4e88c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c67a4c
+     0.01%  [JIT] tid 15088    [.] guest-0x3a7f0e8
+     0.01%  [JIT] tid 15088    [.] guest-0x2e977e0
+     0.01%  [JIT] tid 15088    [.] guest-0x413bd38
+     0.01%  [kernel.kallsyms]  [k] vma_start_read
+     0.01%  [JIT] tid 15088    [.] guest-0x44ccdf0
+     0.01%  [JIT] tid 15088    [.] guest-0x43283e8
+     0.01%  [JIT] tid 15088    [.] guest-0x3b6a114
+     0.01%  [JIT] tid 15088    [.] guest-0x3c39ee4
+     0.01%  [JIT] tid 15088    [.] guest-0x2fe4228
+     0.01%  [JIT] tid 15088    [.] guest-0x3d12a58
+     0.01%  [JIT] tid 15088    [.] guest-0x3b37774
+     0.01%  [JIT] tid 15088    [.] guest-0x43269d4
+     0.01%  [JIT] tid 15088    [.] guest-0x41959f8
+     0.01%  [JIT] tid 15088    [.] guest-0x43a25ac
+     0.01%  [JIT] tid 15088    [.] guest-0x44cc4f0
+     0.01%  [JIT] tid 15088    [.] guest-0x3b7f584
+     0.01%  [JIT] tid 15088    [.] guest-0x4527924
+     0.01%  [JIT] tid 15088    [.] guest-0x42157fc
+     0.01%  [JIT] tid 15088    [.] guest-0x3d83e5c
+     0.01%  qemu-aarch64       [.] tcg_tb_alloc
+     0.01%  [JIT] tid 15088    [.] guest-0x3c39ef4
+     0.01%  [JIT] tid 15088    [.] guest-0x1afbbf4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b838dc
+     0.01%  [JIT] tid 15088    [.] guest-0x4128480
+     0.01%  [JIT] tid 15088    [.] guest-0x43eb554
+     0.01%  [JIT] tid 15088    [.] guest-0x4539d50
+     0.01%  [JIT] tid 15088    [.] guest-0x3b7e628
+     0.01%  [JIT] tid 15088    [.] guest-0x1afbf48
+     0.01%  [JIT] tid 15088    [.] guest-0x2c935c0
+     0.01%  [JIT] tid 15088    [.] guest-0x40a17e4
+     0.01%  [JIT] tid 15088    [.] guest-0x42580ec
+     0.01%  [JIT] tid 15088    [.] guest-0x3c17a2c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c7abc4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b7e640
+     0.01%  [JIT] tid 15088    [.] guest-0x3c183e4
+     0.01%  [JIT] tid 15088    [.] guest-0x4188fbc
+     0.01%  [JIT] tid 15088    [.] guest-0x1afd484
+     0.01%  [JIT] tid 15088    [.] guest-0x3aeeb00
+     0.01%  [kernel.kallsyms]  [k] vma_modify
+     0.01%  [JIT] tid 15088    [.] guest-0x45b7564
+     0.01%  [JIT] tid 15088    [.] guest-0x3bf8d00
+     0.01%  [JIT] tid 15088    [.] guest-0x3b8404c
+     0.01%  [JIT] tid 15088    [.] guest-0x3c39e44
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdba75c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b0a2d0
+     0.01%  [JIT] tid 15088    [.] guest-0x1ae1eb4
+     0.01%  [JIT] tid 15088    [.] guest-0x43a9244
+     0.01%  [JIT] tid 15088    [.] guest-0xa0b8a2a8
+     0.01%  [JIT] tid 15088    [.] guest-0x4258694
+     0.01%  [JIT] tid 15088    [.] guest-0x4259f50
+     0.01%  [JIT] tid 15088    [.] guest-0x2e42a74
+     0.01%  [JIT] tid 15088    [.] guest-0x3a7fdc8
+     0.01%  [JIT] tid 15088    [.] guest-0x3feb754
+     0.01%  [JIT] tid 15088    [.] guest-0x3a3c594
+     0.01%  [JIT] tid 15088    [.] guest-0x2c660ec
+     0.01%  [JIT] tid 15088    [.] guest-0x43aaf3c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c93cd4
+     0.01%  [JIT] tid 15088    [.] guest-0x3bb65d8
+     0.01%  [JIT] tid 15088    [.] guest-0x3bc7ee8
+     0.01%  [JIT] tid 15088    [.] guest-0x3aac80c
+     0.01%  [JIT] tid 15088    [.] guest-0x4256680
+     0.01%  [JIT] tid 15088    [.] guest-0x3c22a88
+     0.01%  [JIT] tid 15088    [.] guest-0x3af59e4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b84250
+     0.01%  [kernel.kallsyms]  [k] v7wbi_flush_user_tlb_range
+     0.01%  [JIT] tid 15088    [.] guest-0x3a67d5c
+     0.01%  [JIT] tid 15088    [.] guest-0x2c66298
+     0.01%  [JIT] tid 15088    [.] guest-0x1ace448
+     0.01%  [JIT] tid 15088    [.] guest-0x3ce735c
+     0.01%  [JIT] tid 15088    [.] guest-0x3c21594
+     0.01%  [JIT] tid 15088    [.] guest-0x40debb8
+     0.01%  [JIT] tid 15088    [.] guest-0x3ae7abc
+     0.01%  [JIT] tid 15088    [.] guest-0x1ad99f0
+     0.01%  [JIT] tid 15088    [.] guest-0x3c183ec
+     0.01%  [JIT] tid 15088    [.] guest-0x3abfa38
+     0.01%  [JIT] tid 15088    [.] guest-0x3c39e38
+     0.01%  [JIT] tid 15088    [.] guest-0x3d0ff6c
+     0.01%  [JIT] tid 15088    [.] guest-0x3afce10
+     0.01%  [JIT] tid 15088    [.] guest-0x3afef90
+     0.01%  [JIT] tid 15088    [.] guest-0x2eada7c
+     0.01%  [JIT] tid 15088    [.] guest-0x2e42fc8
+     0.01%  [JIT] tid 15088    [.] guest-0x3b7fc30
+     0.01%  [JIT] tid 15088    [.] guest-0x3d0c498
+     0.01%  [JIT] tid 15088    [.] guest-0x41267d4
+     0.01%  [JIT] tid 15088    [.] guest-0x3c3fa98
+     0.01%  [JIT] tid 15088    [.] guest-0x3ce7e24
+     0.01%  [JIT] tid 15088    [.] guest-0x3a6ac28
+     0.01%  [JIT] tid 15088    [.] guest-0x3b7544c
+     0.01%  [JIT] tid 15088    [.] guest-0x3b6b0c8
+     0.01%  [JIT] tid 15088    [.] guest-0x3c39010
+     0.01%  [JIT] tid 15088    [.] guest-0x40b0264
+     0.01%  [kernel.kallsyms]  [k] __kmap_local_page_prot
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc2548
+     0.01%  [JIT] tid 15088    [.] guest-0x3babdb0
+     0.01%  qemu-aarch64       [.] tcg_tb_prof_new_rec
+     0.01%  [JIT] tid 15088    [.] guest-0x2c82ff8
+     0.01%  [JIT] tid 15088    [.] guest-0x452f638
+     0.01%  [JIT] tid 15088    [.] guest-0x1afaf34
+     0.01%  [JIT] tid 15088    [.] guest-0x3aed084
+     0.01%  [JIT] tid 15088    [.] guest-0x2c3b604
+     0.01%  [JIT] tid 15088    [.] guest-0x1af67bc
+     0.01%  [JIT] tid 15088    [.] guest-0x453ca30
+     0.01%  [JIT] tid 15088    [.] guest-0x3fdce4f4
+     0.01%  [JIT] tid 15088    [.] guest-0x2fe47b8
+     0.01%  qemu-aarch64       [.] do_constant_folding_cond2.constprop.0
+     0.01%  [JIT] tid 15088    [.] guest-0x453695c
+     0.01%  [JIT] tid 15088    [.] guest-0x3fddff8
+     0.01%  [JIT] tid 15088    [.] guest-0x40b1600
+     0.01%  [JIT] tid 15088    [.] guest-0x3ac12f0
+     0.01%  [JIT] tid 15088    [.] guest-0x2c496dc
+     0.01%  [JIT] tid 15088    [.] guest-0x413c2ec
+     0.01%  [JIT] tid 15088    [.] 0xa6c55144
+     0.01%  [JIT] tid 15088    [.] guest-0x44e8254
+     0.01%  [kernel.kallsyms]  [k] do_futex
+     0.01%  [JIT] tid 15088    [.] guest-0x4263700
+     0.01%  [JIT] tid 15088    [.] guest-0x3a8aba4
+     0.01%  [JIT] tid 15088    [.] guest-0x3b7fd30
+     0.01%  [JIT] tid 15088    [.] guest-0x3cc3400
+     0.01%  [kernel.kallsyms]  [k] local_restart
+     0.01%  [JIT] tid 15088    [.] guest-0x3c38c84
+     0.01%  [JIT] tid 15088    [.] guest-0x2e970f8
+     0.01%  [JIT] tid 15088    [.] guest-0x413fc3c
+     0.01%  [JIT] tid 15088    [.] guest-0x4264098
+     0.01%  [JIT] tid 15088    [.] guest-0x3a696e0
+     0.01%  [JIT] tid 15088    [.] guest-0x413c3d4
+     0.01%  [JIT] tid 15088    [.] guest-0x3d03800
+     0.01%  [kernel.kallsyms]  [k] do_undefinstr
+     0.01%  [JIT] tid 15088    [.] guest-0x3ba7e30
+     0.01%  [JIT] tid 15088    [.] guest-0x1aeadf8
+     0.01%  [JIT] tid 15088    [.] guest-0x3b7eee4
+     0.01%  [JIT] tid 15088    [.] guest-0x43ebe54
+     0.01%  [JIT] tid 15088    [.] guest-0x3b840c8
+     0.01%  [JIT] tid 15088    [.] guest-0x40a9494
+     0.01%  [JIT] tid 15088    [.] guest-0x4123550
+     0.01%  qemu-aarch64       [.] parts64_float_to_uint
+     0.01%  [kernel.kallsyms]  [k] __flush_dcache_folio
+     0.01%  [JIT] tid 15088    [.] guest-0xa0bcbca0
+     0.01%  [kernel.kallsyms]  [k] __tlb_remove_folio_pages
+     0.01%  [JIT] tid 15088    [.] guest-0x44ccdf8
+     0.00%  [kernel.kallsyms]  [k] run_timer_base
+     0.00%  qemu-aarch64       [.] get_ptr_rcu_reader
+     0.00%  [kernel.kallsyms]  [k] __schedule
+     0.00%  [kernel.kallsyms]  [k] __rseq_handle_notify_resume
+     0.00%  qemu-aarch64       [.] __nanosleep
+     0.00%  qemu-aarch64       [.] do_syscall
+     0.00%  qemu-aarch64       [.] 0x003630da
+     0.00%  [kernel.kallsyms]  [k] perf_event_exec
+
+
+#
+# (Tip: To not accumulate CPU time of children symbols add --no-children)
+#

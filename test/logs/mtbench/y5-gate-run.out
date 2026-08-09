@@ -1,0 +1,48 @@
+=== GATE Y5, mtbench smc, 3 repetitions ABAB, cellules 60s, 20260809-193103 ===
+AVANT (baseline pre-Y5) = qemu-aarch64-y5-baseline   APRES (pageflags_lock branche) = qemu-aarch64
+  AVANT=qemu-aarch64-y5-baseline sha=cd6a66c26d82d35f   APRES=qemu-aarch64 sha=679b73b752f2c4ab
+  invite mtbench sha=40b46273de0a2b71
+
+--- N=1 : run de chauffe (JETE) ---
+    [qemu-y5-a N=1] rc=0 ops_per_sec=9495 temp_before=39C
+
+--- N=1, paire 1/3 ---
+    [qemu-y5-a N=1] rc=0 ops_per_sec=9529 temp_before=39C
+    [qemu-y5-b N=1] rc=0 ops_per_sec=9464 temp_before=40C
+--- N=1, paire 2/3 ---
+    [qemu-y5-a N=1] rc=0 ops_per_sec=9516 temp_before=40C
+    [qemu-y5-b N=1] rc=0 ops_per_sec=9478 temp_before=40C
+--- N=1, paire 3/3 ---
+    [qemu-y5-a N=1] rc=0 ops_per_sec=9514 temp_before=40C
+    [qemu-y5-b N=1] rc=0 ops_per_sec=9489 temp_before=40C
+
+N=1 AVANT (n=3) : 9529 9516 9514 ops/s
+N=1 APRES (n=3) : 9464 9478 9489 ops/s
+N=1 mediane AVANT = 9516 ops/s   mediane APRES = 9478 ops/s
+
+--- N=2 : run de chauffe (JETE) ---
+    [qemu-y5-a N=2] rc=0 ops_per_sec=6869 temp_before=40C
+
+--- N=2, paire 1/3 ---
+    [qemu-y5-a N=2] rc=0 ops_per_sec=6766 temp_before=40C
+    [qemu-y5-b N=2] rc=0 ops_per_sec=6542 temp_before=40C
+--- N=2, paire 2/3 ---
+    [qemu-y5-a N=2] rc=0 ops_per_sec=6712 temp_before=40C
+    [qemu-y5-b N=2] rc=0 ops_per_sec=6754 temp_before=40C
+--- N=2, paire 3/3 ---
+    [qemu-y5-a N=2] rc=0 ops_per_sec=7095 temp_before=41C
+    [qemu-y5-b N=2] rc=0 ops_per_sec=6388 temp_before=41C
+
+N=2 AVANT (n=3) : 6766 6712 7095 ops/s
+N=2 APRES (n=3) : 6542 6754 6388 ops/s
+N=2 mediane AVANT = 6766 ops/s   mediane APRES = 6542 ops/s
+
+=== VERDICT ===
+scaling AVANT (N=2/N=1) = 0.711x  (9516 -> 6766 ops/s)
+scaling APRES (N=2/N=1) = 0.690x  (9478 -> 6542 ops/s)
+
+GATE Y5 (scaling smc > 1,0x a N=2, APRES) : NON
+
+RAPPEL DE PORTEE : ce chiffre vaut pour l'invite mtbench sha=40b46273de0a2b71, le pad dans son
+etat du jour. torn64/smc-alias restent a verifier separement (gate complet, pas ce script).
+Log : /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/mtbench/y5-gate-20260809-193103.txt

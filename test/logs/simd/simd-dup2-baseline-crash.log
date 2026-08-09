@@ -5,7 +5,7 @@ Temperature before: 72C
 [run-pad.sh] Running test: simd-dup2  (sous qemu-aarch64 )
 [sudo] password for pi: Running as unit: run-p8744-i138476.scope; invocation ID: 322df4d4792c4d94b06ee3bb8fce4da6
 qemu-aarch64: /workspace/qemu/tcg/arm/tcg-target.c.inc:2405: tcg_out_movi: Assertion `ret < TCG_REG_Q0' failed.
-bash: line 1:  8739 Done                    echo "$PAD_PASS"
+bash: line 1:  8739 Done                    echo yumi
       8740 Aborted                 | sudo -S taskset -c 0,1 systemd-run --scope -p MemoryMax=600M timeout 1800 /home/pi/qemu-fork-test/qemu-aarch64 /home/pi/qemu-fork-test/simd-dup2
 [run-pad.sh] Checking temperature after run...
 Temperature after: 73C

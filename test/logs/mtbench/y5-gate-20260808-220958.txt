@@ -1,0 +1,22 @@
+=== GATE Y5, mtbench smc, 3 repetitions ABAB, cellules 60s, 20260808-220958 ===
+AVANT (baseline pre-Y5) = qemu-aarch64-y5-baseline   APRES (pageflags_lock branche) = qemu-aarch64
+  deploiement qemu-aarch64-y5-baseline -> qemu-y5-a (local=cd6a66c26d82d35f pad=absent)...
+  deploiement qemu-aarch64 -> qemu-y5-b (local=7e3f5a464da67d8e pad=absent)...
+  AVANT=qemu-aarch64-y5-baseline sha=cd6a66c26d82d35f   APRES=qemu-aarch64 sha=7e3f5a464da67d8e
+  invite mtbench sha=40b46273de0a2b71
+
+--- N=1 : run de chauffe (JETE) ---
+    [qemu-y5-a N=1] rc=0 ops_per_sec=9475 temp_before=42C
+
+--- N=1, paire 1/3 ---
+    [qemu-y5-a N=1] rc=0 ops_per_sec=9505 temp_before=43C
+    [qemu-y5-b N=1] rc=0 ops_per_sec=9461 temp_before=42C
+--- N=1, paire 2/3 ---
+    [qemu-y5-a N=1] rc=0 ops_per_sec=9515 temp_before=44C
+    [qemu-y5-b N=1] rc=0 ops_per_sec=9502 temp_before=43C
+--- N=1, paire 3/3 ---
+    [qemu-y5-a N=1] rc=0 ops_per_sec=9490 temp_before=43C
+    [qemu-y5-b N=1] rc=0 ops_per_sec=9502 temp_before=43C
+
+N=1 AVANT (n=3) : 9505 9515 9490 ops/s
+N=1 APRES (n=3) : 9461 9502 9502 ops/s

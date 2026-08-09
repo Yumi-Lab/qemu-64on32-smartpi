@@ -1,0 +1,6 @@
+############ mode=help (reprise) ############
+--- BILAN help ---
+cold mediane   : 60s (n=3, out_bytes=16036)
+warm mediane   : 61s (n=3, out_bytes=16036)
+cache warm     : reloaded 173569/184031 TBs
+delta warm/cold: 1.7%

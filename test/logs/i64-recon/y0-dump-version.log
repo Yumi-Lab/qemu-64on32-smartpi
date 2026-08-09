@@ -1,0 +1,5071 @@
+PROLOGUE: [size=36]
+0xa657f000:  e92d4ff0  push     {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+0xa657f004:  e24ddfa1  sub      sp, sp, #0x284
+0xa657f008:  e1a06000  mov      r6, r0
+0xa657f00c:  e304b000  movw     fp, #0x4000
+0xa657f010:  e340b4f9  movt     fp, #0x4f9
+0xa657f014:  e12fff11  bx       r1
+0xa657f018:  e3a00000  mov      r0, #0
+0xa657f01c:  e28ddfa1  add      sp, sp, #0x284
+0xa657f020:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+Restarting code generation with smaller translation block (max 12 insns)
+Restarting code generation with smaller translation block (max 10 insns)
+Restarting code generation with smaller translation block (max 69 insns)
+Restarting code generation with smaller translation block (max 71 insns)
+Restarting code generation with smaller translation block (max 61 insns)
+Restarting code generation with smaller translation block (max 65 insns)
+Restarting code generation with smaller translation block (max 65 insns)
+Restarting code generation with smaller translation block (max 63 insns)
+Restarting code generation with smaller translation block (max 63 insns)
+Restarting code generation with smaller translation block (max 38 insns)
+Restarting code generation with smaller translation block (max 34 insns)
+Restarting code generation with smaller translation block (max 31 insns)
+Restarting code generation with smaller translation block (max 29 insns)
+Restarting code generation with smaller translation block (max 33 insns)
+Restarting code generation with smaller translation block (max 32 insns)
+Restarting code generation with smaller translation block (max 32 insns)
+Restarting code generation with smaller translation block (max 33 insns)
+Restarting code generation with smaller translation block (max 35 insns)
+Restarting code generation with smaller translation block (max 17 insns)
+Restarting code generation with smaller translation block (max 35 insns)
+Restarting code generation with smaller translation block (max 36 insns)
+Restarting code generation with smaller translation block (max 28 insns)
+Restarting code generation with smaller translation block (max 28 insns)
+Restarting code generation with smaller translation block (max 31 insns)
+Restarting code generation with smaller translation block (max 27 insns)
+Restarting code generation with smaller translation block (max 31 insns)
+Restarting code generation with smaller translation block (max 33 insns)
+Restarting code generation with smaller translation block (max 41 insns)
+Restarting code generation with smaller translation block (max 42 insns)
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 000000000194c66c 0000000000000000 0000000000000000
+ mov_i32 x16_0,$0x4942000
+ mov_i32 x16_1,$0x0
+
+ ---- 000000000194c670 0000000000000000 0000000000001880
+ mov_i32 loc3,x16_0
+ mov_i32 loc4,x16_1
+ add2_i32 loc3,loc4,loc3,loc4,$0x538,$0x0
+ mov_i32 loc6,loc3
+ sextract_i32 loc7,loc4,$0x0,$0x18
+ and_i32 loc6,loc6,loc3
+ and_i32 loc7,loc7,loc4
+ qemu_ld_a64_i32 x16_0,loc6,loc7,al+ub,0
+ mov_i32 x16_1,$0x0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 000000000194c674 0000000000000000 0000000000000000
+ mov_i32 loc8,x16_0
+ mov_i32 loc9,$0x0
+ brcond2_i32 loc8,loc9,$0x0,$0x0,eq,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x194c678
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa69ede40
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x194c680
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa69ede41
+ set_label $L0
+ exit_tb $0xa69ede43
+
+OUT: [size=168]
+  -- guest addr 0x000000000194c66c + tb prologue
+0xa69edec0:  e516400c  ldr      r4, [r6, #-0xc]
+0xa69edec4:  e3540000  cmp      r4, #0
+0xa69edec8:  ba000022  blt      #0xa69edf58
+0xa69edecc:  e3a04000  mov      r4, #0
+0xa69eded0:  e5464008  strb     r4, [r6, #-8]
+0xa69eded4:  e3025000  movw     r5, #0x2000
+0xa69eded8:  e3405494  movt     r5, #0x494
+0xa69ededc:  e58650c0  str      r5, [r6, #0xc0]
+0xa69edee0:  e58640c4  str      r4, [r6, #0xc4]
+  -- guest addr 0x000000000194c670
+0xa69edee4:  e3025538  movw     r5, #0x2538
+0xa69edee8:  e3405494  movt     r5, #0x494
+0xa69edeec:  e7d5500b  ldrb     r5, [r5, fp]
+0xa69edef0:  e58650c0  str      r5, [r6, #0xc0]
+0xa69edef4:  e3a07001  mov      r7, #1
+0xa69edef8:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x000000000194c674
+0xa69edefc:  e1550004  cmp      r5, r4
+0xa69edf00:  0a000009  beq      #0xa69edf2c
+0xa69edf04:  e320f000  nop      
+0xa69edf08:  e51ff074  ldr      pc, [pc, #-0x74]
+0xa69edf0c:  e30c4678  movw     r4, #0xc678
+0xa69edf10:  e3404194  movt     r4, #0x194
+0xa69edf14:  e5864140  str      r4, [r6, #0x140]
+0xa69edf18:  e3a04000  mov      r4, #0
+0xa69edf1c:  e5864144  str      r4, [r6, #0x144]
+0xa69edf20:  e24f00e8  sub      r0, pc, #0xe8
+0xa69edf24:  e28ddfa1  add      sp, sp, #0x284
+0xa69edf28:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa69edf2c:  e320f000  nop      
+0xa69edf30:  e51ff098  ldr      pc, [pc, #-0x98]
+0xa69edf34:  e30c4680  movw     r4, #0xc680
+0xa69edf38:  e3404194  movt     r4, #0x194
+0xa69edf3c:  e5864140  str      r4, [r6, #0x140]
+0xa69edf40:  e3a04000  mov      r4, #0
+0xa69edf44:  e5864144  str      r4, [r6, #0x144]
+0xa69edf48:  e30d0e41  movw     r0, #0xde41
+0xa69edf4c:  e34a069e  movt     r0, #0xa69e
+0xa69edf50:  e28ddfa1  add      sp, sp, #0x284
+0xa69edf54:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa69edf58:  e30d0e43  movw     r0, #0xde43
+0xa69edf5c:  e34a069e  movt     r0, #0xa69e
+0xa69edf60:  e28ddfa1  add      sp, sp, #0x284
+0xa69edf64:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 000000000194c678 0000000000000000 0000000000000000
+ mov_i32 loc2,x1_0
+ sextract_i32 loc3,x1_1,$0x0,$0x18
+ and_i32 loc2,loc2,x1_0
+ and_i32 loc3,loc3,x1_1
+ mov_i32 loc4,x0_0
+ mov_i32 loc5,x0_1
+ mov_i32 tmp6,loc4
+ call atomic_fetch_addl_le,$0x2,$1,tmp7,env,loc2,loc3,tmp6,$0xe20
+ mov_i32 x0_0,tmp7
+ mov_i32 x0_1,$0x0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 000000000194c67c 0000000000000000 0000000000000000
+ mov_i32 pc_0,lr_0
+ sextract_i32 pc_1,lr_1,$0x0,$0x18
+ and_i32 pc_0,pc_0,lr_0
+ and_i32 pc_1,pc_1,lr_1
+ mov_i32 loc9,pc_0
+ mov_i32 loc10,pc_1
+ shr_i32 loc11,loc9,$0xc
+ xor_i32 loc11,loc11,loc9
+ and_i32 loc11,loc11,$0xfff
+ shl_i32 loc11,loc11,$0x4
+ ld_i32 loc14,env,$0xfffffff0
+ mov_i32 loc15,loc11
+ add_i32 loc14,loc14,loc15
+ ld_i32 loc12,loc14,$0x8
+ brcond_i32 loc12,$0x0,eq,$L1
+ ld_i32 loc13,loc14,$0x10
+ brcond_i32 loc13,loc9,ne,$L1
+ ld_i32 loc13,loc14,$0x14
+ brcond_i32 loc13,loc10,ne,$L1
+ mov_i32 loc15,loc12
+ ld_i32 loc13,loc15,$0x10
+ brcond_i32 loc13,$0x1,ne,$L1
+ ld_i32 loc13,loc15,$0x8
+ brcond_i32 loc13,$0x80009101,ne,$L1
+ ld_i32 loc13,loc15,$0xc
+ brcond_i32 loc13,$0x0,ne,$L1
+ ld_i32 loc13,loc15,$0x14
+ brcond_i32 loc13,$0x8000,ne,$L1
+ ld_i32 loc16,loc15,$0x1c
+ goto_ptr loc16
+ set_label $L1
+ call lookup_tb_ptr,$0x6,$1,tmp6,env
+ goto_ptr tmp6
+ set_label $L0
+ exit_tb $0xa69edf83
+
+OUT: [size=272]
+  -- guest addr 0x000000000194c678 + tb prologue
+0xa69ee000:  e516400c  ldr      r4, [r6, #-0xc]
+0xa69ee004:  e3540000  cmp      r4, #0
+0xa69ee008:  ba00003c  blt      #0xa69ee100
+0xa69ee00c:  e3a04000  mov      r4, #0
+0xa69ee010:  e5464008  strb     r4, [r6, #-8]
+0xa69ee014:  e596504c  ldr      r5, [r6, #0x4c]
+0xa69ee018:  e7b77055  sbfx     r7, r5, #0, #0x18
+0xa69ee01c:  e0073005  and      r3, r7, r5
+0xa69ee020:  e3a05ee2  mov      r5, #0xe20
+0xa69ee024:  e58d5004  str      r5, [sp, #4]
+0xa69ee028:  e5967040  ldr      r7, [r6, #0x40]
+0xa69ee02c:  e58d7000  str      r7, [sp]
+0xa69ee030:  e5962048  ldr      r2, [r6, #0x48]
+0xa69ee034:  e1a00006  mov      r0, r6
+0xa69ee038:  e30ccb6d  movw     ip, #0xcb6d
+0xa69ee03c:  e340c01b  movt     ip, #0x1b
+0xa69ee040:  e12fff3c  blx      ip
+0xa69ee044:  e5860040  str      r0, [r6, #0x40]
+0xa69ee048:  e5864044  str      r4, [r6, #0x44]
+0xa69ee04c:  e3a05001  mov      r5, #1
+0xa69ee050:  e5465008  strb     r5, [r6, #-8]
+  -- guest addr 0x000000000194c67c
+0xa69ee054:  e5967130  ldr      r7, [r6, #0x130]
+0xa69ee058:  e5867140  str      r7, [r6, #0x140]
+0xa69ee05c:  e5968134  ldr      r8, [r6, #0x134]
+0xa69ee060:  e7b79058  sbfx     sb, r8, #0, #0x18
+0xa69ee064:  e0098008  and      r8, sb, r8
+0xa69ee068:  e5868144  str      r8, [r6, #0x144]
+0xa69ee06c:  e1a09627  lsr      sb, r7, #0xc
+0xa69ee070:  e0299007  eor      sb, sb, r7
+0xa69ee074:  e300afff  movw     sl, #0xfff
+0xa69ee078:  e009900a  and      sb, sb, sl
+0xa69ee07c:  e1a09209  lsl      sb, sb, #4
+0xa69ee080:  e516a010  ldr      sl, [r6, #-0x10]
+0xa69ee084:  e08a9009  add      sb, sl, sb
+0xa69ee088:  e599a008  ldr      sl, [sb, #8]
+0xa69ee08c:  e15a0004  cmp      sl, r4
+0xa69ee090:  0a000015  beq      #0xa69ee0ec
+0xa69ee094:  e5990010  ldr      r0, [sb, #0x10]
+0xa69ee098:  e1500007  cmp      r0, r7
+0xa69ee09c:  1a000012  bne      #0xa69ee0ec
+0xa69ee0a0:  e5997014  ldr      r7, [sb, #0x14]
+0xa69ee0a4:  e1570008  cmp      r7, r8
+0xa69ee0a8:  1a00000f  bne      #0xa69ee0ec
+0xa69ee0ac:  e59a7010  ldr      r7, [sl, #0x10]
+0xa69ee0b0:  e1570005  cmp      r7, r5
+0xa69ee0b4:  1a00000c  bne      #0xa69ee0ec
+0xa69ee0b8:  e59a5008  ldr      r5, [sl, #8]
+0xa69ee0bc:  e3097101  movw     r7, #0x9101
+0xa69ee0c0:  e3487000  movt     r7, #0x8000
+0xa69ee0c4:  e1550007  cmp      r5, r7
+0xa69ee0c8:  1a000007  bne      #0xa69ee0ec
+0xa69ee0cc:  e59a500c  ldr      r5, [sl, #0xc]
+0xa69ee0d0:  e1550004  cmp      r5, r4
+0xa69ee0d4:  1a000004  bne      #0xa69ee0ec
+0xa69ee0d8:  e59a4014  ldr      r4, [sl, #0x14]
+0xa69ee0dc:  e3540902  cmp      r4, #0x8000
+0xa69ee0e0:  1a000001  bne      #0xa69ee0ec
+0xa69ee0e4:  e59a401c  ldr      r4, [sl, #0x1c]
+0xa69ee0e8:  e12fff14  bx       r4
+0xa69ee0ec:  e1a00006  mov      r0, r6
+0xa69ee0f0:  e301ca21  movw     ip, #0x1a21
+0xa69ee0f4:  e340c01b  movt     ip, #0x1b
+0xa69ee0f8:  e12fff3c  blx      ip
+0xa69ee0fc:  e12fff10  bx       r0
+0xa69ee100:  e30d0f83  movw     r0, #0xdf83
+0xa69ee104:  e34a069e  movt     r0, #0xa69e
+0xa69ee108:  e28ddfa1  add      sp, sp, #0x284
+0xa69ee10c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+Restarting code generation with smaller translation block (max 67 insns)
+Restarting code generation with smaller translation block (max 69 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 69 insns)
+Restarting code generation with smaller translation block (max 69 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 69 insns)
+Restarting code generation with smaller translation block (max 69 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 69 insns)
+Restarting code generation with smaller translation block (max 69 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 68 insns)
+Restarting code generation with smaller translation block (max 37 insns)
+Restarting code generation with smaller translation block (max 35 insns)
+Restarting code generation with smaller translation block (max 29 insns)
+Restarting code generation with smaller translation block (max 36 insns)
+Restarting code generation with smaller translation block (max 32 insns)
+Restarting code generation with smaller translation block (max 35 insns)
+Restarting code generation with smaller translation block (max 31 insns)
+Restarting code generation with smaller translation block (max 30 insns)
+Restarting code generation with smaller translation block (max 25 insns)
+Restarting code generation with smaller translation block (max 22 insns)
+Restarting code generation with smaller translation block (max 23 insns)
+Restarting code generation with smaller translation block (max 21 insns)
+Restarting code generation with smaller translation block (max 18 insns)
+Restarting code generation with smaller translation block (max 22 insns)
+Restarting code generation with smaller translation block (max 26 insns)
+Restarting code generation with smaller translation block (max 26 insns)
+Restarting code generation with smaller translation block (max 33 insns)
+Restarting code generation with smaller translation block (max 32 insns)
+Restarting code generation with smaller translation block (max 31 insns)
+Restarting code generation with smaller translation block (max 39 insns)
+Restarting code generation with smaller translation block (max 34 insns)
+Restarting code generation with smaller translation block (max 30 insns)
+Restarting code generation with smaller translation block (max 29 insns)
+Restarting code generation with smaller translation block (max 10 insns)
+Restarting code generation with smaller translation block (max 22 insns)
+Restarting code generation with smaller translation block (max 19 insns)
+Restarting code generation with smaller translation block (max 20 insns)
+Restarting code generation with smaller translation block (max 18 insns)
+Restarting code generation with smaller translation block (max 29 insns)
+Restarting code generation with smaller translation block (max 76 insns)
+Restarting code generation with smaller translation block (max 56 insns)
+Restarting code generation with smaller translation block (max 40 insns)
+Restarting code generation with smaller translation block (max 63 insns)
+Restarting code generation with smaller translation block (max 63 insns)
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000002eadb94 0000000000000000 0000000000000000
+ sub2_i32 x4_0,x4_1,x16_0,x16_1,$0x30,$0x0
+
+ ---- 0000000002eadb98 0000000000000000 0000000000000000
+ mov_i32 loc4,$0x0
+ mov_i32 loc5,$0x0
+ mov_i32 loc6,x14_0
+ mov_i32 loc7,x14_1
+ mov_i32 loc8,x4_0
+ mov_i32 loc9,x4_1
+ sub2_i32 loc12,loc13,loc6,loc7,loc8,loc9
+ mov_i32 ZF,loc12
+ mov_i32 NF,loc13
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc14,loc6,loc7,loc8,loc9,geu
+ mov_i32 loc15,$0x0
+ mov_i32 CF,loc14
+ xor_i32 loc14,loc12,loc6
+ xor_i32 loc15,loc13,loc7
+ xor_i32 loc16,loc6,loc8
+ xor_i32 loc17,loc7,loc9
+ and_i32 loc14,loc14,loc16
+ and_i32 loc15,loc15,loc17
+ mov_i32 VF,loc15
+ mov_i32 loc10,loc12
+ mov_i32 loc11,loc13
+ mov_i32 loc4,loc10
+ mov_i32 loc5,loc11
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadb9c 0000000000000000 0000000000000000
+ brcond_i32 CF,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadba0
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c74a40
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadba8
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c74a41
+ set_label $L0
+ exit_tb $0xa6c74a43
+
+OUT: [size=224]
+  -- guest addr 0x0000000002eadb94 + tb prologue
+0xa6c74ac0:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c74ac4:  e3540000  cmp      r4, #0
+0xa6c74ac8:  ba000030  blt      #0xa6c74b90
+0xa6c74acc:  e3a04000  mov      r4, #0
+0xa6c74ad0:  e5464008  strb     r4, [r6, #-8]
+0xa6c74ad4:  e59650c0  ldr      r5, [r6, #0xc0]
+0xa6c74ad8:  e59670c4  ldr      r7, [r6, #0xc4]
+0xa6c74adc:  e2555030  subs     r5, r5, #0x30
+0xa6c74ae0:  e2c77000  sbc      r7, r7, #0
+0xa6c74ae4:  e5865060  str      r5, [r6, #0x60]
+0xa6c74ae8:  e5867064  str      r7, [r6, #0x64]
+  -- guest addr 0x0000000002eadb98
+0xa6c74aec:  e59680b0  ldr      r8, [r6, #0xb0]
+0xa6c74af0:  e59690b4  ldr      sb, [r6, #0xb4]
+0xa6c74af4:  e058a005  subs     sl, r8, r5
+0xa6c74af8:  e0c90007  sbc      r0, sb, r7
+0xa6c74afc:  e5860218  str      r0, [r6, #0x218]
+0xa6c74b00:  e18aa000  orr      sl, sl, r0
+0xa6c74b04:  e586a21c  str      sl, [r6, #0x21c]
+0xa6c74b08:  e1590007  cmp      sb, r7
+0xa6c74b0c:  01580005  cmpeq    r8, r5
+0xa6c74b10:  23a05001  movhs    r5, #1
+0xa6c74b14:  33a05000  movlo    r5, #0
+0xa6c74b18:  e5865210  str      r5, [r6, #0x210]
+0xa6c74b1c:  e0208009  eor      r8, r0, sb
+0xa6c74b20:  e0297007  eor      r7, sb, r7
+0xa6c74b24:  e0087007  and      r7, r8, r7
+0xa6c74b28:  e5867214  str      r7, [r6, #0x214]
+0xa6c74b2c:  e3a07001  mov      r7, #1
+0xa6c74b30:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x0000000002eadb9c
+0xa6c74b34:  e1550004  cmp      r5, r4
+0xa6c74b38:  1a000009  bne      #0xa6c74b64
+0xa6c74b3c:  e320f000  nop      
+0xa6c74b40:  e51ff0ac  ldr      pc, [pc, #-0xac]
+0xa6c74b44:  e30d4ba0  movw     r4, #0xdba0
+0xa6c74b48:  e34042ea  movt     r4, #0x2ea
+0xa6c74b4c:  e5864140  str      r4, [r6, #0x140]
+0xa6c74b50:  e3a04000  mov      r4, #0
+0xa6c74b54:  e5864144  str      r4, [r6, #0x144]
+0xa6c74b58:  e24f0e12  sub      r0, pc, #0x120
+0xa6c74b5c:  e28ddfa1  add      sp, sp, #0x284
+0xa6c74b60:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c74b64:  e320f000  nop      
+0xa6c74b68:  e51ff0d0  ldr      pc, [pc, #-0xd0]
+0xa6c74b6c:  e30d4ba8  movw     r4, #0xdba8
+0xa6c74b70:  e34042ea  movt     r4, #0x2ea
+0xa6c74b74:  e5864140  str      r4, [r6, #0x140]
+0xa6c74b78:  e3a04000  mov      r4, #0
+0xa6c74b7c:  e5864144  str      r4, [r6, #0x144]
+0xa6c74b80:  e3040a41  movw     r0, #0x4a41
+0xa6c74b84:  e34a06c7  movt     r0, #0xa6c7
+0xa6c74b88:  e28ddfa1  add      sp, sp, #0x284
+0xa6c74b8c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c74b90:  e3040a43  movw     r0, #0x4a43
+0xa6c74b94:  e34a06c7  movt     r0, #0xa6c7
+0xa6c74b98:  e28ddfa1  add      sp, sp, #0x284
+0xa6c74b9c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000002eadba8 0000000000000000 0000000000000000
+ sub2_i32 x3_0,x3_1,x16_0,x16_1,$0x28,$0x0
+
+ ---- 0000000002eadbac 0000000000000000 0000000000000000
+ mov_i32 loc4,$0x0
+ mov_i32 loc5,$0x0
+ mov_i32 loc6,x3_0
+ mov_i32 loc7,x3_1
+ mov_i32 loc8,x14_0
+ mov_i32 loc9,x14_1
+ sub2_i32 loc12,loc13,loc6,loc7,loc8,loc9
+ mov_i32 ZF,loc12
+ mov_i32 NF,loc13
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc14,loc6,loc7,loc8,loc9,geu
+ mov_i32 loc15,$0x0
+ mov_i32 CF,loc14
+ xor_i32 loc14,loc12,loc6
+ xor_i32 loc15,loc13,loc7
+ xor_i32 loc16,loc6,loc8
+ xor_i32 loc17,loc7,loc9
+ and_i32 loc14,loc14,loc16
+ and_i32 loc15,loc15,loc17
+ mov_i32 VF,loc15
+ mov_i32 loc10,loc12
+ mov_i32 loc11,loc13
+ mov_i32 loc4,loc10
+ mov_i32 loc5,loc11
+
+ ---- 0000000002eadbb0 0000000000000000 0000000000000000
+ neg_i32 loc18,CF
+ and_i32 loc18,loc18,ZF
+ mov_i32 loc19,loc18
+ sar_i32 loc20,loc19,$0x1f
+ setcond2_i32 x2_0,loc19,loc20,$0x0,$0x0,ne
+ mov_i32 x2_1,$0x0
+ mov_i32 x2_1,$0x0
+
+ ---- 0000000002eadbb4 0000000000000000 0000000000000000
+ mov_i32 loc24,$0x0
+ mov_i32 loc25,$0x0
+ mov_i32 loc26,x4_0
+ mov_i32 loc27,x4_1
+ mov_i32 loc28,x14_0
+ mov_i32 loc29,x14_1
+ sub2_i32 loc32,loc33,loc26,loc27,loc28,loc29
+ mov_i32 ZF,loc32
+ mov_i32 NF,loc33
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc34,loc26,loc27,loc28,loc29,geu
+ mov_i32 loc35,$0x0
+ mov_i32 CF,loc34
+ xor_i32 loc34,loc32,loc26
+ xor_i32 loc35,loc33,loc27
+ xor_i32 loc36,loc26,loc28
+ xor_i32 loc37,loc27,loc29
+ and_i32 loc34,loc34,loc36
+ and_i32 loc35,loc35,loc37
+ mov_i32 VF,loc35
+ mov_i32 loc30,loc32
+ mov_i32 loc31,loc33
+ mov_i32 loc24,loc30
+ mov_i32 loc25,loc31
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadbb8 0000000000000000 0000000000000000
+ brcond_i32 CF,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadbbc
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c74bc0
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadbc0
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c74bc1
+ set_label $L0
+ exit_tb $0xa6c74bc3
+
+OUT: [size=296]
+  -- guest addr 0x0000000002eadba8 + tb prologue
+0xa6c74c40:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c74c44:  e3540000  cmp      r4, #0
+0xa6c74c48:  ba000042  blt      #0xa6c74d58
+0xa6c74c4c:  e3a04000  mov      r4, #0
+0xa6c74c50:  e5464008  strb     r4, [r6, #-8]
+0xa6c74c54:  e59650c0  ldr      r5, [r6, #0xc0]
+0xa6c74c58:  e59670c4  ldr      r7, [r6, #0xc4]
+0xa6c74c5c:  e2555028  subs     r5, r5, #0x28
+0xa6c74c60:  e2c77000  sbc      r7, r7, #0
+0xa6c74c64:  e5865058  str      r5, [r6, #0x58]
+0xa6c74c68:  e586705c  str      r7, [r6, #0x5c]
+  -- guest addr 0x0000000002eadbac
+0xa6c74c6c:  e59680b0  ldr      r8, [r6, #0xb0]
+0xa6c74c70:  e59690b4  ldr      sb, [r6, #0xb4]
+0xa6c74c74:  e055a008  subs     sl, r5, r8
+0xa6c74c78:  e0c70009  sbc      r0, r7, sb
+0xa6c74c7c:  e18aa000  orr      sl, sl, r0
+0xa6c74c80:  e1570009  cmp      r7, sb
+0xa6c74c84:  01550008  cmpeq    r5, r8
+0xa6c74c88:  23a05001  movhs    r5, #1
+0xa6c74c8c:  33a05000  movlo    r5, #0
+  -- guest addr 0x0000000002eadbb0
+0xa6c74c90:  e2655000  rsb      r5, r5, #0
+0xa6c74c94:  e005500a  and      r5, r5, sl
+0xa6c74c98:  e1a07fc5  asr      r7, r5, #0x1f
+0xa6c74c9c:  e3570000  cmp      r7, #0
+0xa6c74ca0:  03550000  cmpeq    r5, #0
+0xa6c74ca4:  13a05001  movne    r5, #1
+0xa6c74ca8:  03a05000  moveq    r5, #0
+0xa6c74cac:  e5865050  str      r5, [r6, #0x50]
+0xa6c74cb0:  e5864054  str      r4, [r6, #0x54]
+  -- guest addr 0x0000000002eadbb4
+0xa6c74cb4:  e5965060  ldr      r5, [r6, #0x60]
+0xa6c74cb8:  e5967064  ldr      r7, [r6, #0x64]
+0xa6c74cbc:  e055a008  subs     sl, r5, r8
+0xa6c74cc0:  e0c70009  sbc      r0, r7, sb
+0xa6c74cc4:  e5860218  str      r0, [r6, #0x218]
+0xa6c74cc8:  e18aa000  orr      sl, sl, r0
+0xa6c74ccc:  e586a21c  str      sl, [r6, #0x21c]
+0xa6c74cd0:  e1570009  cmp      r7, sb
+0xa6c74cd4:  01550008  cmpeq    r5, r8
+0xa6c74cd8:  23a05001  movhs    r5, #1
+0xa6c74cdc:  33a05000  movlo    r5, #0
+0xa6c74ce0:  e5865210  str      r5, [r6, #0x210]
+0xa6c74ce4:  e0208007  eor      r8, r0, r7
+0xa6c74ce8:  e0277009  eor      r7, r7, sb
+0xa6c74cec:  e0087007  and      r7, r8, r7
+0xa6c74cf0:  e5867214  str      r7, [r6, #0x214]
+0xa6c74cf4:  e3a07001  mov      r7, #1
+0xa6c74cf8:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x0000000002eadbb8
+0xa6c74cfc:  e1550004  cmp      r5, r4
+0xa6c74d00:  1a000009  bne      #0xa6c74d2c
+0xa6c74d04:  e320f000  nop      
+0xa6c74d08:  e51ff0f4  ldr      pc, [pc, #-0xf4]
+0xa6c74d0c:  e30d4bbc  movw     r4, #0xdbbc
+0xa6c74d10:  e34042ea  movt     r4, #0x2ea
+0xa6c74d14:  e5864140  str      r4, [r6, #0x140]
+0xa6c74d18:  e3a04000  mov      r4, #0
+0xa6c74d1c:  e5864144  str      r4, [r6, #0x144]
+0xa6c74d20:  e24f0f5a  sub      r0, pc, #0x168
+0xa6c74d24:  e28ddfa1  add      sp, sp, #0x284
+0xa6c74d28:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c74d2c:  e320f000  nop      
+0xa6c74d30:  e51ff118  ldr      pc, [pc, #-0x118]
+0xa6c74d34:  e30d4bc0  movw     r4, #0xdbc0
+0xa6c74d38:  e34042ea  movt     r4, #0x2ea
+0xa6c74d3c:  e5864140  str      r4, [r6, #0x140]
+0xa6c74d40:  e3a04000  mov      r4, #0
+0xa6c74d44:  e5864144  str      r4, [r6, #0x144]
+0xa6c74d48:  e3040bc1  movw     r0, #0x4bc1
+0xa6c74d4c:  e34a06c7  movt     r0, #0xa6c7
+0xa6c74d50:  e28ddfa1  add      sp, sp, #0x284
+0xa6c74d54:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c74d58:  e3040bc3  movw     r0, #0x4bc3
+0xa6c74d5c:  e34a06c7  movt     r0, #0xa6c7
+0xa6c74d60:  e28ddfa1  add      sp, sp, #0x284
+0xa6c74d64:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadbbc 0000000000000000 0000000000000000
+ mov_i32 loc2,x2_0
+ mov_i32 loc3,$0x0
+ brcond2_i32 loc2,loc3,$0x0,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadbc0
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c74d80
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadc9c
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c74d81
+ set_label $L0
+ exit_tb $0xa6c74d83
+
+OUT: [size=124]
+  -- guest addr 0x0000000002eadbbc + tb prologue
+0xa6c74e00:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c74e04:  e3540000  cmp      r4, #0
+0xa6c74e08:  ba000018  blt      #0xa6c74e70
+0xa6c74e0c:  e3a04001  mov      r4, #1
+0xa6c74e10:  e5464008  strb     r4, [r6, #-8]
+0xa6c74e14:  e5964050  ldr      r4, [r6, #0x50]
+0xa6c74e18:  e3540000  cmp      r4, #0
+0xa6c74e1c:  1a000009  bne      #0xa6c74e48
+0xa6c74e20:  e320f000  nop      
+0xa6c74e24:  e51ff050  ldr      pc, [pc, #-0x50]
+0xa6c74e28:  e30d4bc0  movw     r4, #0xdbc0
+0xa6c74e2c:  e34042ea  movt     r4, #0x2ea
+0xa6c74e30:  e5864140  str      r4, [r6, #0x140]
+0xa6c74e34:  e3a04000  mov      r4, #0
+0xa6c74e38:  e5864144  str      r4, [r6, #0x144]
+0xa6c74e3c:  e24f00c4  sub      r0, pc, #0xc4
+0xa6c74e40:  e28ddfa1  add      sp, sp, #0x284
+0xa6c74e44:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c74e48:  e320f000  nop      
+0xa6c74e4c:  e51ff074  ldr      pc, [pc, #-0x74]
+0xa6c74e50:  e30d4c9c  movw     r4, #0xdc9c
+0xa6c74e54:  e34042ea  movt     r4, #0x2ea
+0xa6c74e58:  e5864140  str      r4, [r6, #0x140]
+0xa6c74e5c:  e3a04000  mov      r4, #0
+0xa6c74e60:  e5864144  str      r4, [r6, #0x144]
+0xa6c74e64:  e24f00eb  sub      r0, pc, #0xeb
+0xa6c74e68:  e28ddfa1  add      sp, sp, #0x284
+0xa6c74e6c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c74e70:  e24f00f5  sub      r0, pc, #0xf5
+0xa6c74e74:  e28ddfa1  add      sp, sp, #0x284
+0xa6c74e78:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000002eadbc0 0000000000000000 0000000000001e14
+ mov_i32 loc2,x4_0
+ mov_i32 loc3,x4_1
+ mov_i32 loc4,loc2
+ sextract_i32 loc5,loc3,$0x0,$0x18
+ and_i32 loc4,loc4,loc2
+ and_i32 loc5,loc5,loc3
+ qemu_ld_a64_i64 x2_0,x2_1,loc4,loc5,un+leq,0
+
+ ---- 0000000002eadbc4 0000000000000000 0000000000000000
+ mov_i32 loc6,$0x0
+ mov_i32 loc7,$0x0
+ mov_i32 loc8,x14_0
+ mov_i32 loc9,x14_1
+ mov_i32 loc10,x3_0
+ mov_i32 loc11,x3_1
+ sub2_i32 loc14,loc15,loc8,loc9,loc10,loc11
+ mov_i32 ZF,loc14
+ mov_i32 NF,loc15
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc16,loc8,loc9,loc10,loc11,geu
+ mov_i32 loc17,$0x0
+ mov_i32 CF,loc16
+ xor_i32 loc16,loc14,loc8
+ xor_i32 loc17,loc15,loc9
+ xor_i32 loc18,loc8,loc10
+ xor_i32 loc19,loc9,loc11
+ and_i32 loc16,loc16,loc18
+ and_i32 loc17,loc17,loc19
+ mov_i32 VF,loc17
+ mov_i32 loc12,loc14
+ mov_i32 loc13,loc15
+ mov_i32 loc6,loc12
+ mov_i32 loc7,loc13
+
+ ---- 0000000002eadbc8 0000000000000000 0000000000000000
+ mov_i32 loc20,CF
+ sar_i32 loc21,loc20,$0x1f
+ setcond2_i32 x5_0,loc20,loc21,$0x0,$0x0,eq
+ mov_i32 x5_1,$0x0
+ mov_i32 x5_1,$0x0
+
+ ---- 0000000002eadbcc 0000000000000000 0000000000000000
+ mov_i32 loc25,$0x0
+ mov_i32 loc26,$0x0
+ mov_i32 loc27,x14_0
+ mov_i32 loc28,x14_1
+ mov_i32 loc29,x4_0
+ mov_i32 loc30,x4_1
+ sub2_i32 loc33,loc34,loc27,loc28,loc29,loc30
+ mov_i32 ZF,loc33
+ mov_i32 NF,loc34
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc35,loc27,loc28,loc29,loc30,geu
+ mov_i32 loc36,$0x0
+ mov_i32 CF,loc35
+ xor_i32 loc35,loc33,loc27
+ xor_i32 loc36,loc34,loc28
+ xor_i32 loc37,loc27,loc29
+ xor_i32 loc38,loc28,loc30
+ and_i32 loc35,loc35,loc37
+ and_i32 loc36,loc36,loc38
+ mov_i32 VF,loc36
+ mov_i32 loc31,loc33
+ mov_i32 loc32,loc34
+ mov_i32 loc25,loc31
+ mov_i32 loc26,loc32
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadbd0 0000000000000000 0000000000000000
+ neg_i32 loc39,CF
+ and_i32 loc39,loc39,ZF
+ brcond_i32 loc39,$0x0,eq,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadbd4
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c750c0
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadbd8
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c750c1
+ set_label $L0
+ exit_tb $0xa6c750c3
+
+OUT: [size=320]
+  -- guest addr 0x0000000002eadbc0 + tb prologue
+0xa6c75140:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c75144:  e3540000  cmp      r4, #0
+0xa6c75148:  ba00003e  blt      #0xa6c75248
+0xa6c7514c:  e3a04000  mov      r4, #0
+0xa6c75150:  e5464008  strb     r4, [r6, #-8]
+0xa6c75154:  e5965064  ldr      r5, [r6, #0x64]
+0xa6c75158:  e7b77055  sbfx     r7, r5, #0, #0x18
+0xa6c7515c:  e0077005  and      r7, r7, r5
+0xa6c75160:  e5968060  ldr      r8, [r6, #0x60]
+0xa6c75164:  e3180007  tst      r8, #7
+0xa6c75168:  1b00003a  blne     #0xa6c75258
+0xa6c7516c:  e18800db  ldrd     r0, r1, [r8, fp]
+0xa6c75170:  e5860050  str      r0, [r6, #0x50]
+0xa6c75174:  e5861054  str      r1, [r6, #0x54]
+  -- guest addr 0x0000000002eadbc4
+0xa6c75178:  e59670b0  ldr      r7, [r6, #0xb0]
+0xa6c7517c:  e59690b4  ldr      sb, [r6, #0xb4]
+0xa6c75180:  e596a058  ldr      sl, [r6, #0x58]
+0xa6c75184:  e596005c  ldr      r0, [r6, #0x5c]
+0xa6c75188:  e1590000  cmp      sb, r0
+0xa6c7518c:  0157000a  cmpeq    r7, sl
+0xa6c75190:  23a0a001  movhs    sl, #1
+0xa6c75194:  33a0a000  movlo    sl, #0
+  -- guest addr 0x0000000002eadbc8
+0xa6c75198:  e22aa001  eor      sl, sl, #1
+0xa6c7519c:  e586a068  str      sl, [r6, #0x68]
+0xa6c751a0:  e586406c  str      r4, [r6, #0x6c]
+  -- guest addr 0x0000000002eadbcc
+0xa6c751a4:  e057a008  subs     sl, r7, r8
+0xa6c751a8:  e0c90005  sbc      r0, sb, r5
+0xa6c751ac:  e5860218  str      r0, [r6, #0x218]
+0xa6c751b0:  e18aa000  orr      sl, sl, r0
+0xa6c751b4:  e586a21c  str      sl, [r6, #0x21c]
+0xa6c751b8:  e1590005  cmp      sb, r5
+0xa6c751bc:  01570008  cmpeq    r7, r8
+0xa6c751c0:  23a07001  movhs    r7, #1
+0xa6c751c4:  33a07000  movlo    r7, #0
+0xa6c751c8:  e5867210  str      r7, [r6, #0x210]
+0xa6c751cc:  e0208009  eor      r8, r0, sb
+0xa6c751d0:  e0295005  eor      r5, sb, r5
+0xa6c751d4:  e0085005  and      r5, r8, r5
+0xa6c751d8:  e5865214  str      r5, [r6, #0x214]
+0xa6c751dc:  e3a05001  mov      r5, #1
+0xa6c751e0:  e5465008  strb     r5, [r6, #-8]
+  -- guest addr 0x0000000002eadbd0
+0xa6c751e4:  e2675000  rsb      r5, r7, #0
+0xa6c751e8:  e005500a  and      r5, r5, sl
+0xa6c751ec:  e1550004  cmp      r5, r4
+0xa6c751f0:  0a000009  beq      #0xa6c7521c
+0xa6c751f4:  e320f000  nop      
+0xa6c751f8:  e51ff0e4  ldr      pc, [pc, #-0xe4]
+0xa6c751fc:  e30d4bd4  movw     r4, #0xdbd4
+0xa6c75200:  e34042ea  movt     r4, #0x2ea
+0xa6c75204:  e5864140  str      r4, [r6, #0x140]
+0xa6c75208:  e3a04000  mov      r4, #0
+0xa6c7520c:  e5864144  str      r4, [r6, #0x144]
+0xa6c75210:  e24f0f56  sub      r0, pc, #0x158
+0xa6c75214:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75218:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c7521c:  e320f000  nop      
+0xa6c75220:  e51ff108  ldr      pc, [pc, #-0x108]
+0xa6c75224:  e30d4bd8  movw     r4, #0xdbd8
+0xa6c75228:  e34042ea  movt     r4, #0x2ea
+0xa6c7522c:  e5864140  str      r4, [r6, #0x140]
+0xa6c75230:  e3a04000  mov      r4, #0
+0xa6c75234:  e5864144  str      r4, [r6, #0x144]
+0xa6c75238:  e30500c1  movw     r0, #0x50c1
+0xa6c7523c:  e34a06c7  movt     r0, #0xa6c7
+0xa6c75240:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75244:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c75248:  e30500c3  movw     r0, #0x50c3
+0xa6c7524c:  e34a06c7  movt     r0, #0xa6c7
+0xa6c75250:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75254:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+  -- tb slow paths + alignment
+0xa6c75258:  e1a02008  mov      r2, r8
+0xa6c7525c:  e1a03007  mov      r3, r7
+0xa6c75260:  e1a00006  mov      r0, r6
+0xa6c75264:  e3a0c030  mov      ip, #0x30
+0xa6c75268:  e58dc000  str      ip, [sp]
+0xa6c7526c:  e58de004  str      lr, [sp, #4]
+0xa6c75270:  e30bc8b5  movw     ip, #0xb8b5
+0xa6c75274:  e340c01b  movt     ip, #0x1b
+0xa6c75278:  e12fff3c  blx      ip
+0xa6c7527c:  eaffffbb  b        #0xa6c75170
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadbd4 0000000000000000 0000000000000000
+ and_i32 loc2,x5_0,$0x1
+ mov_i32 loc3,$0x0
+ brcond2_i32 loc2,loc3,$0x0,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadbd8
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c752c0
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadc9c
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c752c1
+ set_label $L0
+ exit_tb $0xa6c752c3
+
+OUT: [size=128]
+  -- guest addr 0x0000000002eadbd4 + tb prologue
+0xa6c75340:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c75344:  e3540000  cmp      r4, #0
+0xa6c75348:  ba000019  blt      #0xa6c753b4
+0xa6c7534c:  e3a04001  mov      r4, #1
+0xa6c75350:  e5464008  strb     r4, [r6, #-8]
+0xa6c75354:  e5965068  ldr      r5, [r6, #0x68]
+0xa6c75358:  e0054004  and      r4, r5, r4
+0xa6c7535c:  e3540000  cmp      r4, #0
+0xa6c75360:  1a000009  bne      #0xa6c7538c
+0xa6c75364:  e320f000  nop      
+0xa6c75368:  e51ff054  ldr      pc, [pc, #-0x54]
+0xa6c7536c:  e30d4bd8  movw     r4, #0xdbd8
+0xa6c75370:  e34042ea  movt     r4, #0x2ea
+0xa6c75374:  e5864140  str      r4, [r6, #0x140]
+0xa6c75378:  e3a04000  mov      r4, #0
+0xa6c7537c:  e5864144  str      r4, [r6, #0x144]
+0xa6c75380:  e24f00c8  sub      r0, pc, #0xc8
+0xa6c75384:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75388:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c7538c:  e320f000  nop      
+0xa6c75390:  e51ff078  ldr      pc, [pc, #-0x78]
+0xa6c75394:  e30d4c9c  movw     r4, #0xdc9c
+0xa6c75398:  e34042ea  movt     r4, #0x2ea
+0xa6c7539c:  e5864140  str      r4, [r6, #0x140]
+0xa6c753a0:  e3a04000  mov      r4, #0
+0xa6c753a4:  e5864144  str      r4, [r6, #0x144]
+0xa6c753a8:  e24f00ef  sub      r0, pc, #0xef
+0xa6c753ac:  e28ddfa1  add      sp, sp, #0x284
+0xa6c753b0:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c753b4:  e24f00f9  sub      r0, pc, #0xf9
+0xa6c753b8:  e28ddfa1  add      sp, sp, #0x284
+0xa6c753bc:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000002eadbd8 0000000000000000 0000000000000000
+ sub2_i32 x4_0,x4_1,x16_0,x16_1,$0x20,$0x0
+
+ ---- 0000000002eadbdc 0000000000000000 0000000000000000
+ mov_i32 loc4,$0x0
+ mov_i32 loc5,$0x0
+ mov_i32 loc6,x4_0
+ mov_i32 loc7,x4_1
+ mov_i32 loc8,x14_0
+ mov_i32 loc9,x14_1
+ sub2_i32 loc12,loc13,loc6,loc7,loc8,loc9
+ mov_i32 ZF,loc12
+ mov_i32 NF,loc13
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc14,loc6,loc7,loc8,loc9,geu
+ mov_i32 loc15,$0x0
+ mov_i32 CF,loc14
+ xor_i32 loc14,loc12,loc6
+ xor_i32 loc15,loc13,loc7
+ xor_i32 loc16,loc6,loc8
+ xor_i32 loc17,loc7,loc9
+ and_i32 loc14,loc14,loc16
+ and_i32 loc15,loc15,loc17
+ mov_i32 VF,loc15
+ mov_i32 loc10,loc12
+ mov_i32 loc11,loc13
+ mov_i32 loc4,loc10
+ mov_i32 loc5,loc11
+
+ ---- 0000000002eadbe0 0000000000000000 0000000000000000
+ neg_i32 loc18,CF
+ and_i32 loc18,loc18,ZF
+ mov_i32 loc19,loc18
+ sar_i32 loc20,loc19,$0x1f
+ setcond2_i32 x5_0,loc19,loc20,$0x0,$0x0,ne
+ mov_i32 x5_1,$0x0
+ mov_i32 x5_1,$0x0
+
+ ---- 0000000002eadbe4 0000000000000000 0000000000000000
+ mov_i32 loc24,$0x0
+ mov_i32 loc25,$0x0
+ mov_i32 loc26,x3_0
+ mov_i32 loc27,x3_1
+ mov_i32 loc28,x14_0
+ mov_i32 loc29,x14_1
+ sub2_i32 loc32,loc33,loc26,loc27,loc28,loc29
+ mov_i32 ZF,loc32
+ mov_i32 NF,loc33
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc34,loc26,loc27,loc28,loc29,geu
+ mov_i32 loc35,$0x0
+ mov_i32 CF,loc34
+ xor_i32 loc34,loc32,loc26
+ xor_i32 loc35,loc33,loc27
+ xor_i32 loc36,loc26,loc28
+ xor_i32 loc37,loc27,loc29
+ and_i32 loc34,loc34,loc36
+ and_i32 loc35,loc35,loc37
+ mov_i32 VF,loc35
+ mov_i32 loc30,loc32
+ mov_i32 loc31,loc33
+ mov_i32 loc24,loc30
+ mov_i32 loc25,loc31
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadbe8 0000000000000000 0000000000000000
+ brcond_i32 CF,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadbec
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c75400
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadbf0
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c75401
+ set_label $L0
+ exit_tb $0xa6c75403
+
+OUT: [size=296]
+  -- guest addr 0x0000000002eadbd8 + tb prologue
+0xa6c75480:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c75484:  e3540000  cmp      r4, #0
+0xa6c75488:  ba000042  blt      #0xa6c75598
+0xa6c7548c:  e3a04000  mov      r4, #0
+0xa6c75490:  e5464008  strb     r4, [r6, #-8]
+0xa6c75494:  e59650c0  ldr      r5, [r6, #0xc0]
+0xa6c75498:  e59670c4  ldr      r7, [r6, #0xc4]
+0xa6c7549c:  e2555020  subs     r5, r5, #0x20
+0xa6c754a0:  e2c77000  sbc      r7, r7, #0
+0xa6c754a4:  e5865060  str      r5, [r6, #0x60]
+0xa6c754a8:  e5867064  str      r7, [r6, #0x64]
+  -- guest addr 0x0000000002eadbdc
+0xa6c754ac:  e59680b0  ldr      r8, [r6, #0xb0]
+0xa6c754b0:  e59690b4  ldr      sb, [r6, #0xb4]
+0xa6c754b4:  e055a008  subs     sl, r5, r8
+0xa6c754b8:  e0c70009  sbc      r0, r7, sb
+0xa6c754bc:  e18aa000  orr      sl, sl, r0
+0xa6c754c0:  e1570009  cmp      r7, sb
+0xa6c754c4:  01550008  cmpeq    r5, r8
+0xa6c754c8:  23a05001  movhs    r5, #1
+0xa6c754cc:  33a05000  movlo    r5, #0
+  -- guest addr 0x0000000002eadbe0
+0xa6c754d0:  e2655000  rsb      r5, r5, #0
+0xa6c754d4:  e005500a  and      r5, r5, sl
+0xa6c754d8:  e1a07fc5  asr      r7, r5, #0x1f
+0xa6c754dc:  e3570000  cmp      r7, #0
+0xa6c754e0:  03550000  cmpeq    r5, #0
+0xa6c754e4:  13a05001  movne    r5, #1
+0xa6c754e8:  03a05000  moveq    r5, #0
+0xa6c754ec:  e5865068  str      r5, [r6, #0x68]
+0xa6c754f0:  e586406c  str      r4, [r6, #0x6c]
+  -- guest addr 0x0000000002eadbe4
+0xa6c754f4:  e5965058  ldr      r5, [r6, #0x58]
+0xa6c754f8:  e596705c  ldr      r7, [r6, #0x5c]
+0xa6c754fc:  e055a008  subs     sl, r5, r8
+0xa6c75500:  e0c70009  sbc      r0, r7, sb
+0xa6c75504:  e5860218  str      r0, [r6, #0x218]
+0xa6c75508:  e18aa000  orr      sl, sl, r0
+0xa6c7550c:  e586a21c  str      sl, [r6, #0x21c]
+0xa6c75510:  e1570009  cmp      r7, sb
+0xa6c75514:  01550008  cmpeq    r5, r8
+0xa6c75518:  23a05001  movhs    r5, #1
+0xa6c7551c:  33a05000  movlo    r5, #0
+0xa6c75520:  e5865210  str      r5, [r6, #0x210]
+0xa6c75524:  e0208007  eor      r8, r0, r7
+0xa6c75528:  e0277009  eor      r7, r7, sb
+0xa6c7552c:  e0087007  and      r7, r8, r7
+0xa6c75530:  e5867214  str      r7, [r6, #0x214]
+0xa6c75534:  e3a07001  mov      r7, #1
+0xa6c75538:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x0000000002eadbe8
+0xa6c7553c:  e1550004  cmp      r5, r4
+0xa6c75540:  1a000009  bne      #0xa6c7556c
+0xa6c75544:  e320f000  nop      
+0xa6c75548:  e51ff0f4  ldr      pc, [pc, #-0xf4]
+0xa6c7554c:  e30d4bec  movw     r4, #0xdbec
+0xa6c75550:  e34042ea  movt     r4, #0x2ea
+0xa6c75554:  e5864140  str      r4, [r6, #0x140]
+0xa6c75558:  e3a04000  mov      r4, #0
+0xa6c7555c:  e5864144  str      r4, [r6, #0x144]
+0xa6c75560:  e24f0f5a  sub      r0, pc, #0x168
+0xa6c75564:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75568:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c7556c:  e320f000  nop      
+0xa6c75570:  e51ff118  ldr      pc, [pc, #-0x118]
+0xa6c75574:  e30d4bf0  movw     r4, #0xdbf0
+0xa6c75578:  e34042ea  movt     r4, #0x2ea
+0xa6c7557c:  e5864140  str      r4, [r6, #0x140]
+0xa6c75580:  e3a04000  mov      r4, #0
+0xa6c75584:  e5864144  str      r4, [r6, #0x144]
+0xa6c75588:  e3050401  movw     r0, #0x5401
+0xa6c7558c:  e34a06c7  movt     r0, #0xa6c7
+0xa6c75590:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75594:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c75598:  e3050403  movw     r0, #0x5403
+0xa6c7559c:  e34a06c7  movt     r0, #0xa6c7
+0xa6c755a0:  e28ddfa1  add      sp, sp, #0x284
+0xa6c755a4:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadbec 0000000000000000 0000000000000000
+ mov_i32 loc2,x5_0
+ mov_i32 loc3,$0x0
+ brcond2_i32 loc2,loc3,$0x0,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadbf0
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c755c0
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadc9c
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c755c1
+ set_label $L0
+ exit_tb $0xa6c755c3
+
+OUT: [size=124]
+  -- guest addr 0x0000000002eadbec + tb prologue
+0xa6c75640:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c75644:  e3540000  cmp      r4, #0
+0xa6c75648:  ba000018  blt      #0xa6c756b0
+0xa6c7564c:  e3a04001  mov      r4, #1
+0xa6c75650:  e5464008  strb     r4, [r6, #-8]
+0xa6c75654:  e5964068  ldr      r4, [r6, #0x68]
+0xa6c75658:  e3540000  cmp      r4, #0
+0xa6c7565c:  1a000009  bne      #0xa6c75688
+0xa6c75660:  e320f000  nop      
+0xa6c75664:  e51ff050  ldr      pc, [pc, #-0x50]
+0xa6c75668:  e30d4bf0  movw     r4, #0xdbf0
+0xa6c7566c:  e34042ea  movt     r4, #0x2ea
+0xa6c75670:  e5864140  str      r4, [r6, #0x140]
+0xa6c75674:  e3a04000  mov      r4, #0
+0xa6c75678:  e5864144  str      r4, [r6, #0x144]
+0xa6c7567c:  e24f00c4  sub      r0, pc, #0xc4
+0xa6c75680:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75684:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c75688:  e320f000  nop      
+0xa6c7568c:  e51ff074  ldr      pc, [pc, #-0x74]
+0xa6c75690:  e30d4c9c  movw     r4, #0xdc9c
+0xa6c75694:  e34042ea  movt     r4, #0x2ea
+0xa6c75698:  e5864140  str      r4, [r6, #0x140]
+0xa6c7569c:  e3a04000  mov      r4, #0
+0xa6c756a0:  e5864144  str      r4, [r6, #0x144]
+0xa6c756a4:  e24f00eb  sub      r0, pc, #0xeb
+0xa6c756a8:  e28ddfa1  add      sp, sp, #0x284
+0xa6c756ac:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c756b0:  e24f00f5  sub      r0, pc, #0xf5
+0xa6c756b4:  e28ddfa1  add      sp, sp, #0x284
+0xa6c756b8:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000002eadbf0 0000000000000000 0000000000001e1c
+ mov_i32 loc2,x3_0
+ mov_i32 loc3,x3_1
+ mov_i32 loc4,loc2
+ sextract_i32 loc5,loc3,$0x0,$0x18
+ and_i32 loc4,loc4,loc2
+ and_i32 loc5,loc5,loc3
+ qemu_ld_a64_i64 x3_0,x3_1,loc4,loc5,un+leq,0
+
+ ---- 0000000002eadbf4 0000000000000000 0000000000000000
+ mov_i32 loc6,$0x0
+ mov_i32 loc7,$0x0
+ mov_i32 loc8,x14_0
+ mov_i32 loc9,x14_1
+ mov_i32 loc10,x4_0
+ mov_i32 loc11,x4_1
+ sub2_i32 loc14,loc15,loc8,loc9,loc10,loc11
+ mov_i32 ZF,loc14
+ mov_i32 NF,loc15
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc16,loc8,loc9,loc10,loc11,geu
+ mov_i32 loc17,$0x0
+ mov_i32 CF,loc16
+ xor_i32 loc16,loc14,loc8
+ xor_i32 loc17,loc15,loc9
+ xor_i32 loc18,loc8,loc10
+ xor_i32 loc19,loc9,loc11
+ and_i32 loc16,loc16,loc18
+ and_i32 loc17,loc17,loc19
+ mov_i32 VF,loc17
+ mov_i32 loc12,loc14
+ mov_i32 loc13,loc15
+ mov_i32 loc6,loc12
+ mov_i32 loc7,loc13
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadbf8 0000000000000000 0000000000000000
+ brcond_i32 CF,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadbfc
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c75700
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadc04
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c75701
+ set_label $L0
+ exit_tb $0xa6c75703
+
+OUT: [size=292]
+  -- guest addr 0x0000000002eadbf0 + tb prologue
+0xa6c75780:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c75784:  e3540000  cmp      r4, #0
+0xa6c75788:  ba000035  blt      #0xa6c75864
+0xa6c7578c:  e3a04000  mov      r4, #0
+0xa6c75790:  e5464008  strb     r4, [r6, #-8]
+0xa6c75794:  e596505c  ldr      r5, [r6, #0x5c]
+0xa6c75798:  e7b77055  sbfx     r7, r5, #0, #0x18
+0xa6c7579c:  e0075005  and      r5, r7, r5
+0xa6c757a0:  e5967058  ldr      r7, [r6, #0x58]
+0xa6c757a4:  e3170007  tst      r7, #7
+0xa6c757a8:  1b000031  blne     #0xa6c75874
+0xa6c757ac:  e18780db  ldrd     r8, sb, [r7, fp]
+0xa6c757b0:  e5868058  str      r8, [r6, #0x58]
+0xa6c757b4:  e586905c  str      sb, [r6, #0x5c]
+  -- guest addr 0x0000000002eadbf4
+0xa6c757b8:  e59650b0  ldr      r5, [r6, #0xb0]
+0xa6c757bc:  e59670b4  ldr      r7, [r6, #0xb4]
+0xa6c757c0:  e5968060  ldr      r8, [r6, #0x60]
+0xa6c757c4:  e5969064  ldr      sb, [r6, #0x64]
+0xa6c757c8:  e055a008  subs     sl, r5, r8
+0xa6c757cc:  e0c70009  sbc      r0, r7, sb
+0xa6c757d0:  e5860218  str      r0, [r6, #0x218]
+0xa6c757d4:  e18aa000  orr      sl, sl, r0
+0xa6c757d8:  e586a21c  str      sl, [r6, #0x21c]
+0xa6c757dc:  e1570009  cmp      r7, sb
+0xa6c757e0:  01550008  cmpeq    r5, r8
+0xa6c757e4:  23a05001  movhs    r5, #1
+0xa6c757e8:  33a05000  movlo    r5, #0
+0xa6c757ec:  e5865210  str      r5, [r6, #0x210]
+0xa6c757f0:  e0208007  eor      r8, r0, r7
+0xa6c757f4:  e0277009  eor      r7, r7, sb
+0xa6c757f8:  e0087007  and      r7, r8, r7
+0xa6c757fc:  e5867214  str      r7, [r6, #0x214]
+0xa6c75800:  e3a07001  mov      r7, #1
+0xa6c75804:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x0000000002eadbf8
+0xa6c75808:  e1550004  cmp      r5, r4
+0xa6c7580c:  1a000009  bne      #0xa6c75838
+0xa6c75810:  e320f000  nop      
+0xa6c75814:  e51ff0c0  ldr      pc, [pc, #-0xc0]
+0xa6c75818:  e30d4bfc  movw     r4, #0xdbfc
+0xa6c7581c:  e34042ea  movt     r4, #0x2ea
+0xa6c75820:  e5864140  str      r4, [r6, #0x140]
+0xa6c75824:  e3a04000  mov      r4, #0
+0xa6c75828:  e5864144  str      r4, [r6, #0x144]
+0xa6c7582c:  e24f0f4d  sub      r0, pc, #0x134
+0xa6c75830:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75834:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c75838:  e320f000  nop      
+0xa6c7583c:  e51ff0e4  ldr      pc, [pc, #-0xe4]
+0xa6c75840:  e30d4c04  movw     r4, #0xdc04
+0xa6c75844:  e34042ea  movt     r4, #0x2ea
+0xa6c75848:  e5864140  str      r4, [r6, #0x140]
+0xa6c7584c:  e3a04000  mov      r4, #0
+0xa6c75850:  e5864144  str      r4, [r6, #0x144]
+0xa6c75854:  e3050701  movw     r0, #0x5701
+0xa6c75858:  e34a06c7  movt     r0, #0xa6c7
+0xa6c7585c:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75860:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c75864:  e3050703  movw     r0, #0x5703
+0xa6c75868:  e34a06c7  movt     r0, #0xa6c7
+0xa6c7586c:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75870:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+  -- tb slow paths + alignment
+0xa6c75874:  e1a02007  mov      r2, r7
+0xa6c75878:  e1a03005  mov      r3, r5
+0xa6c7587c:  e1a00006  mov      r0, r6
+0xa6c75880:  e3a0c030  mov      ip, #0x30
+0xa6c75884:  e58dc000  str      ip, [sp]
+0xa6c75888:  e58de004  str      lr, [sp, #4]
+0xa6c7588c:  e30bc8b5  movw     ip, #0xb8b5
+0xa6c75890:  e340c01b  movt     ip, #0x1b
+0xa6c75894:  e12fff3c  blx      ip
+0xa6c75898:  e1a08000  mov      r8, r0
+0xa6c7589c:  e1a09001  mov      sb, r1
+0xa6c758a0:  eaffffc2  b        #0xa6c757b0
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000002eadc04 0000000000000000 0000000000000000
+ sub2_i32 x5_0,x5_1,x16_0,x16_1,$0x18,$0x0
+
+ ---- 0000000002eadc08 0000000000000000 0000000000000000
+ mov_i32 loc4,$0x0
+ mov_i32 loc5,$0x0
+ mov_i32 loc6,x5_0
+ mov_i32 loc7,x5_1
+ mov_i32 loc8,x14_0
+ mov_i32 loc9,x14_1
+ sub2_i32 loc12,loc13,loc6,loc7,loc8,loc9
+ mov_i32 ZF,loc12
+ mov_i32 NF,loc13
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc14,loc6,loc7,loc8,loc9,geu
+ mov_i32 loc15,$0x0
+ mov_i32 CF,loc14
+ xor_i32 loc14,loc12,loc6
+ xor_i32 loc15,loc13,loc7
+ xor_i32 loc16,loc6,loc8
+ xor_i32 loc17,loc7,loc9
+ and_i32 loc14,loc14,loc16
+ and_i32 loc15,loc15,loc17
+ mov_i32 VF,loc15
+ mov_i32 loc10,loc12
+ mov_i32 loc11,loc13
+ mov_i32 loc4,loc10
+ mov_i32 loc5,loc11
+
+ ---- 0000000002eadc0c 0000000000000000 0000000000000000
+ neg_i32 loc18,CF
+ and_i32 loc18,loc18,ZF
+ mov_i32 loc19,loc18
+ sar_i32 loc20,loc19,$0x1f
+ setcond2_i32 x6_0,loc19,loc20,$0x0,$0x0,ne
+ mov_i32 x6_1,$0x0
+ mov_i32 x6_1,$0x0
+
+ ---- 0000000002eadc10 0000000000000000 0000000000000000
+ mov_i32 loc24,$0x0
+ mov_i32 loc25,$0x0
+ mov_i32 loc26,x4_0
+ mov_i32 loc27,x4_1
+ mov_i32 loc28,x14_0
+ mov_i32 loc29,x14_1
+ sub2_i32 loc32,loc33,loc26,loc27,loc28,loc29
+ mov_i32 ZF,loc32
+ mov_i32 NF,loc33
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc34,loc26,loc27,loc28,loc29,geu
+ mov_i32 loc35,$0x0
+ mov_i32 CF,loc34
+ xor_i32 loc34,loc32,loc26
+ xor_i32 loc35,loc33,loc27
+ xor_i32 loc36,loc26,loc28
+ xor_i32 loc37,loc27,loc29
+ and_i32 loc34,loc34,loc36
+ and_i32 loc35,loc35,loc37
+ mov_i32 VF,loc35
+ mov_i32 loc30,loc32
+ mov_i32 loc31,loc33
+ mov_i32 loc24,loc30
+ mov_i32 loc25,loc31
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadc14 0000000000000000 0000000000000000
+ brcond_i32 CF,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadc18
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c758c0
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadc1c
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c758c1
+ set_label $L0
+ exit_tb $0xa6c758c3
+
+OUT: [size=296]
+  -- guest addr 0x0000000002eadc04 + tb prologue
+0xa6c75940:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c75944:  e3540000  cmp      r4, #0
+0xa6c75948:  ba000042  blt      #0xa6c75a58
+0xa6c7594c:  e3a04000  mov      r4, #0
+0xa6c75950:  e5464008  strb     r4, [r6, #-8]
+0xa6c75954:  e59650c0  ldr      r5, [r6, #0xc0]
+0xa6c75958:  e59670c4  ldr      r7, [r6, #0xc4]
+0xa6c7595c:  e2555018  subs     r5, r5, #0x18
+0xa6c75960:  e2c77000  sbc      r7, r7, #0
+0xa6c75964:  e5865068  str      r5, [r6, #0x68]
+0xa6c75968:  e586706c  str      r7, [r6, #0x6c]
+  -- guest addr 0x0000000002eadc08
+0xa6c7596c:  e59680b0  ldr      r8, [r6, #0xb0]
+0xa6c75970:  e59690b4  ldr      sb, [r6, #0xb4]
+0xa6c75974:  e055a008  subs     sl, r5, r8
+0xa6c75978:  e0c70009  sbc      r0, r7, sb
+0xa6c7597c:  e18aa000  orr      sl, sl, r0
+0xa6c75980:  e1570009  cmp      r7, sb
+0xa6c75984:  01550008  cmpeq    r5, r8
+0xa6c75988:  23a05001  movhs    r5, #1
+0xa6c7598c:  33a05000  movlo    r5, #0
+  -- guest addr 0x0000000002eadc0c
+0xa6c75990:  e2655000  rsb      r5, r5, #0
+0xa6c75994:  e005500a  and      r5, r5, sl
+0xa6c75998:  e1a07fc5  asr      r7, r5, #0x1f
+0xa6c7599c:  e3570000  cmp      r7, #0
+0xa6c759a0:  03550000  cmpeq    r5, #0
+0xa6c759a4:  13a05001  movne    r5, #1
+0xa6c759a8:  03a05000  moveq    r5, #0
+0xa6c759ac:  e5865070  str      r5, [r6, #0x70]
+0xa6c759b0:  e5864074  str      r4, [r6, #0x74]
+  -- guest addr 0x0000000002eadc10
+0xa6c759b4:  e5965060  ldr      r5, [r6, #0x60]
+0xa6c759b8:  e5967064  ldr      r7, [r6, #0x64]
+0xa6c759bc:  e055a008  subs     sl, r5, r8
+0xa6c759c0:  e0c70009  sbc      r0, r7, sb
+0xa6c759c4:  e5860218  str      r0, [r6, #0x218]
+0xa6c759c8:  e18aa000  orr      sl, sl, r0
+0xa6c759cc:  e586a21c  str      sl, [r6, #0x21c]
+0xa6c759d0:  e1570009  cmp      r7, sb
+0xa6c759d4:  01550008  cmpeq    r5, r8
+0xa6c759d8:  23a05001  movhs    r5, #1
+0xa6c759dc:  33a05000  movlo    r5, #0
+0xa6c759e0:  e5865210  str      r5, [r6, #0x210]
+0xa6c759e4:  e0208007  eor      r8, r0, r7
+0xa6c759e8:  e0277009  eor      r7, r7, sb
+0xa6c759ec:  e0087007  and      r7, r8, r7
+0xa6c759f0:  e5867214  str      r7, [r6, #0x214]
+0xa6c759f4:  e3a07001  mov      r7, #1
+0xa6c759f8:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x0000000002eadc14
+0xa6c759fc:  e1550004  cmp      r5, r4
+0xa6c75a00:  1a000009  bne      #0xa6c75a2c
+0xa6c75a04:  e320f000  nop      
+0xa6c75a08:  e51ff0f4  ldr      pc, [pc, #-0xf4]
+0xa6c75a0c:  e30d4c18  movw     r4, #0xdc18
+0xa6c75a10:  e34042ea  movt     r4, #0x2ea
+0xa6c75a14:  e5864140  str      r4, [r6, #0x140]
+0xa6c75a18:  e3a04000  mov      r4, #0
+0xa6c75a1c:  e5864144  str      r4, [r6, #0x144]
+0xa6c75a20:  e24f0f5a  sub      r0, pc, #0x168
+0xa6c75a24:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75a28:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c75a2c:  e320f000  nop      
+0xa6c75a30:  e51ff118  ldr      pc, [pc, #-0x118]
+0xa6c75a34:  e30d4c1c  movw     r4, #0xdc1c
+0xa6c75a38:  e34042ea  movt     r4, #0x2ea
+0xa6c75a3c:  e5864140  str      r4, [r6, #0x140]
+0xa6c75a40:  e3a04000  mov      r4, #0
+0xa6c75a44:  e5864144  str      r4, [r6, #0x144]
+0xa6c75a48:  e30508c1  movw     r0, #0x58c1
+0xa6c75a4c:  e34a06c7  movt     r0, #0xa6c7
+0xa6c75a50:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75a54:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c75a58:  e30508c3  movw     r0, #0x58c3
+0xa6c75a5c:  e34a06c7  movt     r0, #0xa6c7
+0xa6c75a60:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75a64:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadc18 0000000000000000 0000000000000000
+ mov_i32 loc2,x6_0
+ mov_i32 loc3,$0x0
+ brcond2_i32 loc2,loc3,$0x0,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadc1c
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c75a80
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadc9c
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c75a81
+ set_label $L0
+ exit_tb $0xa6c75a83
+
+OUT: [size=124]
+  -- guest addr 0x0000000002eadc18 + tb prologue
+0xa6c75b00:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c75b04:  e3540000  cmp      r4, #0
+0xa6c75b08:  ba000018  blt      #0xa6c75b70
+0xa6c75b0c:  e3a04001  mov      r4, #1
+0xa6c75b10:  e5464008  strb     r4, [r6, #-8]
+0xa6c75b14:  e5964070  ldr      r4, [r6, #0x70]
+0xa6c75b18:  e3540000  cmp      r4, #0
+0xa6c75b1c:  1a000009  bne      #0xa6c75b48
+0xa6c75b20:  e320f000  nop      
+0xa6c75b24:  e51ff050  ldr      pc, [pc, #-0x50]
+0xa6c75b28:  e30d4c1c  movw     r4, #0xdc1c
+0xa6c75b2c:  e34042ea  movt     r4, #0x2ea
+0xa6c75b30:  e5864140  str      r4, [r6, #0x140]
+0xa6c75b34:  e3a04000  mov      r4, #0
+0xa6c75b38:  e5864144  str      r4, [r6, #0x144]
+0xa6c75b3c:  e24f00c4  sub      r0, pc, #0xc4
+0xa6c75b40:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75b44:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c75b48:  e320f000  nop      
+0xa6c75b4c:  e51ff074  ldr      pc, [pc, #-0x74]
+0xa6c75b50:  e30d4c9c  movw     r4, #0xdc9c
+0xa6c75b54:  e34042ea  movt     r4, #0x2ea
+0xa6c75b58:  e5864140  str      r4, [r6, #0x140]
+0xa6c75b5c:  e3a04000  mov      r4, #0
+0xa6c75b60:  e5864144  str      r4, [r6, #0x144]
+0xa6c75b64:  e24f00eb  sub      r0, pc, #0xeb
+0xa6c75b68:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75b6c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c75b70:  e24f00f5  sub      r0, pc, #0xf5
+0xa6c75b74:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75b78:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000002eadc1c 0000000000000000 0000000000001e24
+ mov_i32 loc2,x4_0
+ mov_i32 loc3,x4_1
+ mov_i32 loc4,loc2
+ sextract_i32 loc5,loc3,$0x0,$0x18
+ and_i32 loc4,loc4,loc2
+ and_i32 loc5,loc5,loc3
+ qemu_ld_a64_i64 x4_0,x4_1,loc4,loc5,un+leq,0
+
+ ---- 0000000002eadc20 0000000000000000 0000000000000000
+ mov_i32 loc6,$0x0
+ mov_i32 loc7,$0x0
+ mov_i32 loc8,x14_0
+ mov_i32 loc9,x14_1
+ mov_i32 loc10,x5_0
+ mov_i32 loc11,x5_1
+ sub2_i32 loc14,loc15,loc8,loc9,loc10,loc11
+ mov_i32 ZF,loc14
+ mov_i32 NF,loc15
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc16,loc8,loc9,loc10,loc11,geu
+ mov_i32 loc17,$0x0
+ mov_i32 CF,loc16
+ xor_i32 loc16,loc14,loc8
+ xor_i32 loc17,loc15,loc9
+ xor_i32 loc18,loc8,loc10
+ xor_i32 loc19,loc9,loc11
+ and_i32 loc16,loc16,loc18
+ and_i32 loc17,loc17,loc19
+ mov_i32 VF,loc17
+ mov_i32 loc12,loc14
+ mov_i32 loc13,loc15
+ mov_i32 loc6,loc12
+ mov_i32 loc7,loc13
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadc24 0000000000000000 0000000000000000
+ brcond_i32 CF,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadc28
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c75bc0
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadc30
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c75bc1
+ set_label $L0
+ exit_tb $0xa6c75bc3
+
+OUT: [size=292]
+  -- guest addr 0x0000000002eadc1c + tb prologue
+0xa6c75c40:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c75c44:  e3540000  cmp      r4, #0
+0xa6c75c48:  ba000035  blt      #0xa6c75d24
+0xa6c75c4c:  e3a04000  mov      r4, #0
+0xa6c75c50:  e5464008  strb     r4, [r6, #-8]
+0xa6c75c54:  e5965064  ldr      r5, [r6, #0x64]
+0xa6c75c58:  e7b77055  sbfx     r7, r5, #0, #0x18
+0xa6c75c5c:  e0075005  and      r5, r7, r5
+0xa6c75c60:  e5967060  ldr      r7, [r6, #0x60]
+0xa6c75c64:  e3170007  tst      r7, #7
+0xa6c75c68:  1b000031  blne     #0xa6c75d34
+0xa6c75c6c:  e18780db  ldrd     r8, sb, [r7, fp]
+0xa6c75c70:  e5868060  str      r8, [r6, #0x60]
+0xa6c75c74:  e5869064  str      sb, [r6, #0x64]
+  -- guest addr 0x0000000002eadc20
+0xa6c75c78:  e59650b0  ldr      r5, [r6, #0xb0]
+0xa6c75c7c:  e59670b4  ldr      r7, [r6, #0xb4]
+0xa6c75c80:  e5968068  ldr      r8, [r6, #0x68]
+0xa6c75c84:  e596906c  ldr      sb, [r6, #0x6c]
+0xa6c75c88:  e055a008  subs     sl, r5, r8
+0xa6c75c8c:  e0c70009  sbc      r0, r7, sb
+0xa6c75c90:  e5860218  str      r0, [r6, #0x218]
+0xa6c75c94:  e18aa000  orr      sl, sl, r0
+0xa6c75c98:  e586a21c  str      sl, [r6, #0x21c]
+0xa6c75c9c:  e1570009  cmp      r7, sb
+0xa6c75ca0:  01550008  cmpeq    r5, r8
+0xa6c75ca4:  23a05001  movhs    r5, #1
+0xa6c75ca8:  33a05000  movlo    r5, #0
+0xa6c75cac:  e5865210  str      r5, [r6, #0x210]
+0xa6c75cb0:  e0208007  eor      r8, r0, r7
+0xa6c75cb4:  e0277009  eor      r7, r7, sb
+0xa6c75cb8:  e0087007  and      r7, r8, r7
+0xa6c75cbc:  e5867214  str      r7, [r6, #0x214]
+0xa6c75cc0:  e3a07001  mov      r7, #1
+0xa6c75cc4:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x0000000002eadc24
+0xa6c75cc8:  e1550004  cmp      r5, r4
+0xa6c75ccc:  1a000009  bne      #0xa6c75cf8
+0xa6c75cd0:  e320f000  nop      
+0xa6c75cd4:  e51ff0c0  ldr      pc, [pc, #-0xc0]
+0xa6c75cd8:  e30d4c28  movw     r4, #0xdc28
+0xa6c75cdc:  e34042ea  movt     r4, #0x2ea
+0xa6c75ce0:  e5864140  str      r4, [r6, #0x140]
+0xa6c75ce4:  e3a04000  mov      r4, #0
+0xa6c75ce8:  e5864144  str      r4, [r6, #0x144]
+0xa6c75cec:  e24f0f4d  sub      r0, pc, #0x134
+0xa6c75cf0:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75cf4:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c75cf8:  e320f000  nop      
+0xa6c75cfc:  e51ff0e4  ldr      pc, [pc, #-0xe4]
+0xa6c75d00:  e30d4c30  movw     r4, #0xdc30
+0xa6c75d04:  e34042ea  movt     r4, #0x2ea
+0xa6c75d08:  e5864140  str      r4, [r6, #0x140]
+0xa6c75d0c:  e3a04000  mov      r4, #0
+0xa6c75d10:  e5864144  str      r4, [r6, #0x144]
+0xa6c75d14:  e3050bc1  movw     r0, #0x5bc1
+0xa6c75d18:  e34a06c7  movt     r0, #0xa6c7
+0xa6c75d1c:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75d20:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c75d24:  e3050bc3  movw     r0, #0x5bc3
+0xa6c75d28:  e34a06c7  movt     r0, #0xa6c7
+0xa6c75d2c:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75d30:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+  -- tb slow paths + alignment
+0xa6c75d34:  e1a02007  mov      r2, r7
+0xa6c75d38:  e1a03005  mov      r3, r5
+0xa6c75d3c:  e1a00006  mov      r0, r6
+0xa6c75d40:  e3a0c030  mov      ip, #0x30
+0xa6c75d44:  e58dc000  str      ip, [sp]
+0xa6c75d48:  e58de004  str      lr, [sp, #4]
+0xa6c75d4c:  e30bc8b5  movw     ip, #0xb8b5
+0xa6c75d50:  e340c01b  movt     ip, #0x1b
+0xa6c75d54:  e12fff3c  blx      ip
+0xa6c75d58:  e1a08000  mov      r8, r0
+0xa6c75d5c:  e1a09001  mov      sb, r1
+0xa6c75d60:  eaffffc2  b        #0xa6c75c70
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000002eadc30 0000000000000000 0000000000000000
+ sub2_i32 x6_0,x6_1,x16_0,x16_1,$0x10,$0x0
+
+ ---- 0000000002eadc34 0000000000000000 0000000000000000
+ mov_i32 loc4,$0x0
+ mov_i32 loc5,$0x0
+ mov_i32 loc6,x6_0
+ mov_i32 loc7,x6_1
+ mov_i32 loc8,x14_0
+ mov_i32 loc9,x14_1
+ sub2_i32 loc12,loc13,loc6,loc7,loc8,loc9
+ mov_i32 ZF,loc12
+ mov_i32 NF,loc13
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc14,loc6,loc7,loc8,loc9,geu
+ mov_i32 loc15,$0x0
+ mov_i32 CF,loc14
+ xor_i32 loc14,loc12,loc6
+ xor_i32 loc15,loc13,loc7
+ xor_i32 loc16,loc6,loc8
+ xor_i32 loc17,loc7,loc9
+ and_i32 loc14,loc14,loc16
+ and_i32 loc15,loc15,loc17
+ mov_i32 VF,loc15
+ mov_i32 loc10,loc12
+ mov_i32 loc11,loc13
+ mov_i32 loc4,loc10
+ mov_i32 loc5,loc11
+
+ ---- 0000000002eadc38 0000000000000000 0000000000000000
+ neg_i32 loc18,CF
+ and_i32 loc18,loc18,ZF
+ mov_i32 loc19,loc18
+ sar_i32 loc20,loc19,$0x1f
+ setcond2_i32 x7_0,loc19,loc20,$0x0,$0x0,ne
+ mov_i32 x7_1,$0x0
+ mov_i32 x7_1,$0x0
+
+ ---- 0000000002eadc3c 0000000000000000 0000000000000000
+ mov_i32 loc24,$0x0
+ mov_i32 loc25,$0x0
+ mov_i32 loc26,x5_0
+ mov_i32 loc27,x5_1
+ mov_i32 loc28,x14_0
+ mov_i32 loc29,x14_1
+ sub2_i32 loc32,loc33,loc26,loc27,loc28,loc29
+ mov_i32 ZF,loc32
+ mov_i32 NF,loc33
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc34,loc26,loc27,loc28,loc29,geu
+ mov_i32 loc35,$0x0
+ mov_i32 CF,loc34
+ xor_i32 loc34,loc32,loc26
+ xor_i32 loc35,loc33,loc27
+ xor_i32 loc36,loc26,loc28
+ xor_i32 loc37,loc27,loc29
+ and_i32 loc34,loc34,loc36
+ and_i32 loc35,loc35,loc37
+ mov_i32 VF,loc35
+ mov_i32 loc30,loc32
+ mov_i32 loc31,loc33
+ mov_i32 loc24,loc30
+ mov_i32 loc25,loc31
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadc40 0000000000000000 0000000000000000
+ brcond_i32 CF,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadc44
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c75d80
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadc48
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c75d81
+ set_label $L0
+ exit_tb $0xa6c75d83
+
+OUT: [size=296]
+  -- guest addr 0x0000000002eadc30 + tb prologue
+0xa6c75e00:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c75e04:  e3540000  cmp      r4, #0
+0xa6c75e08:  ba000042  blt      #0xa6c75f18
+0xa6c75e0c:  e3a04000  mov      r4, #0
+0xa6c75e10:  e5464008  strb     r4, [r6, #-8]
+0xa6c75e14:  e59650c0  ldr      r5, [r6, #0xc0]
+0xa6c75e18:  e59670c4  ldr      r7, [r6, #0xc4]
+0xa6c75e1c:  e2555010  subs     r5, r5, #0x10
+0xa6c75e20:  e2c77000  sbc      r7, r7, #0
+0xa6c75e24:  e5865070  str      r5, [r6, #0x70]
+0xa6c75e28:  e5867074  str      r7, [r6, #0x74]
+  -- guest addr 0x0000000002eadc34
+0xa6c75e2c:  e59680b0  ldr      r8, [r6, #0xb0]
+0xa6c75e30:  e59690b4  ldr      sb, [r6, #0xb4]
+0xa6c75e34:  e055a008  subs     sl, r5, r8
+0xa6c75e38:  e0c70009  sbc      r0, r7, sb
+0xa6c75e3c:  e18aa000  orr      sl, sl, r0
+0xa6c75e40:  e1570009  cmp      r7, sb
+0xa6c75e44:  01550008  cmpeq    r5, r8
+0xa6c75e48:  23a05001  movhs    r5, #1
+0xa6c75e4c:  33a05000  movlo    r5, #0
+  -- guest addr 0x0000000002eadc38
+0xa6c75e50:  e2655000  rsb      r5, r5, #0
+0xa6c75e54:  e005500a  and      r5, r5, sl
+0xa6c75e58:  e1a07fc5  asr      r7, r5, #0x1f
+0xa6c75e5c:  e3570000  cmp      r7, #0
+0xa6c75e60:  03550000  cmpeq    r5, #0
+0xa6c75e64:  13a05001  movne    r5, #1
+0xa6c75e68:  03a05000  moveq    r5, #0
+0xa6c75e6c:  e5865078  str      r5, [r6, #0x78]
+0xa6c75e70:  e586407c  str      r4, [r6, #0x7c]
+  -- guest addr 0x0000000002eadc3c
+0xa6c75e74:  e5965068  ldr      r5, [r6, #0x68]
+0xa6c75e78:  e596706c  ldr      r7, [r6, #0x6c]
+0xa6c75e7c:  e055a008  subs     sl, r5, r8
+0xa6c75e80:  e0c70009  sbc      r0, r7, sb
+0xa6c75e84:  e5860218  str      r0, [r6, #0x218]
+0xa6c75e88:  e18aa000  orr      sl, sl, r0
+0xa6c75e8c:  e586a21c  str      sl, [r6, #0x21c]
+0xa6c75e90:  e1570009  cmp      r7, sb
+0xa6c75e94:  01550008  cmpeq    r5, r8
+0xa6c75e98:  23a05001  movhs    r5, #1
+0xa6c75e9c:  33a05000  movlo    r5, #0
+0xa6c75ea0:  e5865210  str      r5, [r6, #0x210]
+0xa6c75ea4:  e0208007  eor      r8, r0, r7
+0xa6c75ea8:  e0277009  eor      r7, r7, sb
+0xa6c75eac:  e0087007  and      r7, r8, r7
+0xa6c75eb0:  e5867214  str      r7, [r6, #0x214]
+0xa6c75eb4:  e3a07001  mov      r7, #1
+0xa6c75eb8:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x0000000002eadc40
+0xa6c75ebc:  e1550004  cmp      r5, r4
+0xa6c75ec0:  1a000009  bne      #0xa6c75eec
+0xa6c75ec4:  e320f000  nop      
+0xa6c75ec8:  e51ff0f4  ldr      pc, [pc, #-0xf4]
+0xa6c75ecc:  e30d4c44  movw     r4, #0xdc44
+0xa6c75ed0:  e34042ea  movt     r4, #0x2ea
+0xa6c75ed4:  e5864140  str      r4, [r6, #0x140]
+0xa6c75ed8:  e3a04000  mov      r4, #0
+0xa6c75edc:  e5864144  str      r4, [r6, #0x144]
+0xa6c75ee0:  e24f0f5a  sub      r0, pc, #0x168
+0xa6c75ee4:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75ee8:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c75eec:  e320f000  nop      
+0xa6c75ef0:  e51ff118  ldr      pc, [pc, #-0x118]
+0xa6c75ef4:  e30d4c48  movw     r4, #0xdc48
+0xa6c75ef8:  e34042ea  movt     r4, #0x2ea
+0xa6c75efc:  e5864140  str      r4, [r6, #0x140]
+0xa6c75f00:  e3a04000  mov      r4, #0
+0xa6c75f04:  e5864144  str      r4, [r6, #0x144]
+0xa6c75f08:  e3050d81  movw     r0, #0x5d81
+0xa6c75f0c:  e34a06c7  movt     r0, #0xa6c7
+0xa6c75f10:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75f14:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c75f18:  e3050d83  movw     r0, #0x5d83
+0xa6c75f1c:  e34a06c7  movt     r0, #0xa6c7
+0xa6c75f20:  e28ddfa1  add      sp, sp, #0x284
+0xa6c75f24:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadc44 0000000000000000 0000000000000000
+ mov_i32 loc2,x7_0
+ mov_i32 loc3,$0x0
+ brcond2_i32 loc2,loc3,$0x0,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadc48
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c75f40
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadc9c
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c75f41
+ set_label $L0
+ exit_tb $0xa6c75f43
+
+OUT: [size=124]
+  -- guest addr 0x0000000002eadc44 + tb prologue
+0xa6c75fc0:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c75fc4:  e3540000  cmp      r4, #0
+0xa6c75fc8:  ba000018  blt      #0xa6c76030
+0xa6c75fcc:  e3a04001  mov      r4, #1
+0xa6c75fd0:  e5464008  strb     r4, [r6, #-8]
+0xa6c75fd4:  e5964078  ldr      r4, [r6, #0x78]
+0xa6c75fd8:  e3540000  cmp      r4, #0
+0xa6c75fdc:  1a000009  bne      #0xa6c76008
+0xa6c75fe0:  e320f000  nop      
+0xa6c75fe4:  e51ff050  ldr      pc, [pc, #-0x50]
+0xa6c75fe8:  e30d4c48  movw     r4, #0xdc48
+0xa6c75fec:  e34042ea  movt     r4, #0x2ea
+0xa6c75ff0:  e5864140  str      r4, [r6, #0x140]
+0xa6c75ff4:  e3a04000  mov      r4, #0
+0xa6c75ff8:  e5864144  str      r4, [r6, #0x144]
+0xa6c75ffc:  e24f00c4  sub      r0, pc, #0xc4
+0xa6c76000:  e28ddfa1  add      sp, sp, #0x284
+0xa6c76004:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c76008:  e320f000  nop      
+0xa6c7600c:  e51ff074  ldr      pc, [pc, #-0x74]
+0xa6c76010:  e30d4c9c  movw     r4, #0xdc9c
+0xa6c76014:  e34042ea  movt     r4, #0x2ea
+0xa6c76018:  e5864140  str      r4, [r6, #0x140]
+0xa6c7601c:  e3a04000  mov      r4, #0
+0xa6c76020:  e5864144  str      r4, [r6, #0x144]
+0xa6c76024:  e24f00eb  sub      r0, pc, #0xeb
+0xa6c76028:  e28ddfa1  add      sp, sp, #0x284
+0xa6c7602c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c76030:  e24f00f5  sub      r0, pc, #0xf5
+0xa6c76034:  e28ddfa1  add      sp, sp, #0x284
+0xa6c76038:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000002eadc48 0000000000000000 0000000000001e2c
+ mov_i32 loc2,x5_0
+ mov_i32 loc3,x5_1
+ mov_i32 loc4,loc2
+ sextract_i32 loc5,loc3,$0x0,$0x18
+ and_i32 loc4,loc4,loc2
+ and_i32 loc5,loc5,loc3
+ qemu_ld_a64_i64 x5_0,x5_1,loc4,loc5,un+leq,0
+
+ ---- 0000000002eadc4c 0000000000000000 0000000000000000
+ mov_i32 loc6,$0x0
+ mov_i32 loc7,$0x0
+ mov_i32 loc8,x14_0
+ mov_i32 loc9,x14_1
+ mov_i32 loc10,x6_0
+ mov_i32 loc11,x6_1
+ sub2_i32 loc14,loc15,loc8,loc9,loc10,loc11
+ mov_i32 ZF,loc14
+ mov_i32 NF,loc15
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc16,loc8,loc9,loc10,loc11,geu
+ mov_i32 loc17,$0x0
+ mov_i32 CF,loc16
+ xor_i32 loc16,loc14,loc8
+ xor_i32 loc17,loc15,loc9
+ xor_i32 loc18,loc8,loc10
+ xor_i32 loc19,loc9,loc11
+ and_i32 loc16,loc16,loc18
+ and_i32 loc17,loc17,loc19
+ mov_i32 VF,loc17
+ mov_i32 loc12,loc14
+ mov_i32 loc13,loc15
+ mov_i32 loc6,loc12
+ mov_i32 loc7,loc13
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadc50 0000000000000000 0000000000000000
+ brcond_i32 CF,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadc54
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c76080
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadc5c
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c76081
+ set_label $L0
+ exit_tb $0xa6c76083
+
+OUT: [size=292]
+  -- guest addr 0x0000000002eadc48 + tb prologue
+0xa6c76100:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c76104:  e3540000  cmp      r4, #0
+0xa6c76108:  ba000035  blt      #0xa6c761e4
+0xa6c7610c:  e3a04000  mov      r4, #0
+0xa6c76110:  e5464008  strb     r4, [r6, #-8]
+0xa6c76114:  e596506c  ldr      r5, [r6, #0x6c]
+0xa6c76118:  e7b77055  sbfx     r7, r5, #0, #0x18
+0xa6c7611c:  e0075005  and      r5, r7, r5
+0xa6c76120:  e5967068  ldr      r7, [r6, #0x68]
+0xa6c76124:  e3170007  tst      r7, #7
+0xa6c76128:  1b000031  blne     #0xa6c761f4
+0xa6c7612c:  e18780db  ldrd     r8, sb, [r7, fp]
+0xa6c76130:  e5868068  str      r8, [r6, #0x68]
+0xa6c76134:  e586906c  str      sb, [r6, #0x6c]
+  -- guest addr 0x0000000002eadc4c
+0xa6c76138:  e59650b0  ldr      r5, [r6, #0xb0]
+0xa6c7613c:  e59670b4  ldr      r7, [r6, #0xb4]
+0xa6c76140:  e5968070  ldr      r8, [r6, #0x70]
+0xa6c76144:  e5969074  ldr      sb, [r6, #0x74]
+0xa6c76148:  e055a008  subs     sl, r5, r8
+0xa6c7614c:  e0c70009  sbc      r0, r7, sb
+0xa6c76150:  e5860218  str      r0, [r6, #0x218]
+0xa6c76154:  e18aa000  orr      sl, sl, r0
+0xa6c76158:  e586a21c  str      sl, [r6, #0x21c]
+0xa6c7615c:  e1570009  cmp      r7, sb
+0xa6c76160:  01550008  cmpeq    r5, r8
+0xa6c76164:  23a05001  movhs    r5, #1
+0xa6c76168:  33a05000  movlo    r5, #0
+0xa6c7616c:  e5865210  str      r5, [r6, #0x210]
+0xa6c76170:  e0208007  eor      r8, r0, r7
+0xa6c76174:  e0277009  eor      r7, r7, sb
+0xa6c76178:  e0087007  and      r7, r8, r7
+0xa6c7617c:  e5867214  str      r7, [r6, #0x214]
+0xa6c76180:  e3a07001  mov      r7, #1
+0xa6c76184:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x0000000002eadc50
+0xa6c76188:  e1550004  cmp      r5, r4
+0xa6c7618c:  1a000009  bne      #0xa6c761b8
+0xa6c76190:  e320f000  nop      
+0xa6c76194:  e51ff0c0  ldr      pc, [pc, #-0xc0]
+0xa6c76198:  e30d4c54  movw     r4, #0xdc54
+0xa6c7619c:  e34042ea  movt     r4, #0x2ea
+0xa6c761a0:  e5864140  str      r4, [r6, #0x140]
+0xa6c761a4:  e3a04000  mov      r4, #0
+0xa6c761a8:  e5864144  str      r4, [r6, #0x144]
+0xa6c761ac:  e24f0f4d  sub      r0, pc, #0x134
+0xa6c761b0:  e28ddfa1  add      sp, sp, #0x284
+0xa6c761b4:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c761b8:  e320f000  nop      
+0xa6c761bc:  e51ff0e4  ldr      pc, [pc, #-0xe4]
+0xa6c761c0:  e30d4c5c  movw     r4, #0xdc5c
+0xa6c761c4:  e34042ea  movt     r4, #0x2ea
+0xa6c761c8:  e5864140  str      r4, [r6, #0x140]
+0xa6c761cc:  e3a04000  mov      r4, #0
+0xa6c761d0:  e5864144  str      r4, [r6, #0x144]
+0xa6c761d4:  e3060081  movw     r0, #0x6081
+0xa6c761d8:  e34a06c7  movt     r0, #0xa6c7
+0xa6c761dc:  e28ddfa1  add      sp, sp, #0x284
+0xa6c761e0:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c761e4:  e3060083  movw     r0, #0x6083
+0xa6c761e8:  e34a06c7  movt     r0, #0xa6c7
+0xa6c761ec:  e28ddfa1  add      sp, sp, #0x284
+0xa6c761f0:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+  -- tb slow paths + alignment
+0xa6c761f4:  e1a02007  mov      r2, r7
+0xa6c761f8:  e1a03005  mov      r3, r5
+0xa6c761fc:  e1a00006  mov      r0, r6
+0xa6c76200:  e3a0c030  mov      ip, #0x30
+0xa6c76204:  e58dc000  str      ip, [sp]
+0xa6c76208:  e58de004  str      lr, [sp, #4]
+0xa6c7620c:  e30bc8b5  movw     ip, #0xb8b5
+0xa6c76210:  e340c01b  movt     ip, #0x1b
+0xa6c76214:  e12fff3c  blx      ip
+0xa6c76218:  e1a08000  mov      r8, r0
+0xa6c7621c:  e1a09001  mov      sb, r1
+0xa6c76220:  eaffffc2  b        #0xa6c76130
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000002eadc5c 0000000000000000 0000000000000000
+ sub2_i32 x7_0,x7_1,x16_0,x16_1,$0x8,$0x0
+
+ ---- 0000000002eadc60 0000000000000000 0000000000000000
+ mov_i32 loc4,$0x0
+ mov_i32 loc5,$0x0
+ mov_i32 loc6,x7_0
+ mov_i32 loc7,x7_1
+ mov_i32 loc8,x14_0
+ mov_i32 loc9,x14_1
+ sub2_i32 loc12,loc13,loc6,loc7,loc8,loc9
+ mov_i32 ZF,loc12
+ mov_i32 NF,loc13
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc14,loc6,loc7,loc8,loc9,geu
+ mov_i32 loc15,$0x0
+ mov_i32 CF,loc14
+ xor_i32 loc14,loc12,loc6
+ xor_i32 loc15,loc13,loc7
+ xor_i32 loc16,loc6,loc8
+ xor_i32 loc17,loc7,loc9
+ and_i32 loc14,loc14,loc16
+ and_i32 loc15,loc15,loc17
+ mov_i32 VF,loc15
+ mov_i32 loc10,loc12
+ mov_i32 loc11,loc13
+ mov_i32 loc4,loc10
+ mov_i32 loc5,loc11
+
+ ---- 0000000002eadc64 0000000000000000 0000000000000000
+ neg_i32 loc18,CF
+ and_i32 loc18,loc18,ZF
+ mov_i32 loc19,loc18
+ sar_i32 loc20,loc19,$0x1f
+ setcond2_i32 x19_0,loc19,loc20,$0x0,$0x0,ne
+ mov_i32 x19_1,$0x0
+ mov_i32 x19_1,$0x0
+
+ ---- 0000000002eadc68 0000000000000000 0000000000000000
+ mov_i32 loc24,$0x0
+ mov_i32 loc25,$0x0
+ mov_i32 loc26,x6_0
+ mov_i32 loc27,x6_1
+ mov_i32 loc28,x14_0
+ mov_i32 loc29,x14_1
+ sub2_i32 loc32,loc33,loc26,loc27,loc28,loc29
+ mov_i32 ZF,loc32
+ mov_i32 NF,loc33
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc34,loc26,loc27,loc28,loc29,geu
+ mov_i32 loc35,$0x0
+ mov_i32 CF,loc34
+ xor_i32 loc34,loc32,loc26
+ xor_i32 loc35,loc33,loc27
+ xor_i32 loc36,loc26,loc28
+ xor_i32 loc37,loc27,loc29
+ and_i32 loc34,loc34,loc36
+ and_i32 loc35,loc35,loc37
+ mov_i32 VF,loc35
+ mov_i32 loc30,loc32
+ mov_i32 loc31,loc33
+ mov_i32 loc24,loc30
+ mov_i32 loc25,loc31
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadc6c 0000000000000000 0000000000000000
+ brcond_i32 CF,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadc70
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c76240
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadc74
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c76241
+ set_label $L0
+ exit_tb $0xa6c76243
+
+OUT: [size=296]
+  -- guest addr 0x0000000002eadc5c + tb prologue
+0xa6c762c0:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c762c4:  e3540000  cmp      r4, #0
+0xa6c762c8:  ba000042  blt      #0xa6c763d8
+0xa6c762cc:  e3a04000  mov      r4, #0
+0xa6c762d0:  e5464008  strb     r4, [r6, #-8]
+0xa6c762d4:  e59650c0  ldr      r5, [r6, #0xc0]
+0xa6c762d8:  e59670c4  ldr      r7, [r6, #0xc4]
+0xa6c762dc:  e2555008  subs     r5, r5, #8
+0xa6c762e0:  e2c77000  sbc      r7, r7, #0
+0xa6c762e4:  e5865078  str      r5, [r6, #0x78]
+0xa6c762e8:  e586707c  str      r7, [r6, #0x7c]
+  -- guest addr 0x0000000002eadc60
+0xa6c762ec:  e59680b0  ldr      r8, [r6, #0xb0]
+0xa6c762f0:  e59690b4  ldr      sb, [r6, #0xb4]
+0xa6c762f4:  e055a008  subs     sl, r5, r8
+0xa6c762f8:  e0c70009  sbc      r0, r7, sb
+0xa6c762fc:  e18aa000  orr      sl, sl, r0
+0xa6c76300:  e1570009  cmp      r7, sb
+0xa6c76304:  01550008  cmpeq    r5, r8
+0xa6c76308:  23a05001  movhs    r5, #1
+0xa6c7630c:  33a05000  movlo    r5, #0
+  -- guest addr 0x0000000002eadc64
+0xa6c76310:  e2655000  rsb      r5, r5, #0
+0xa6c76314:  e005500a  and      r5, r5, sl
+0xa6c76318:  e1a07fc5  asr      r7, r5, #0x1f
+0xa6c7631c:  e3570000  cmp      r7, #0
+0xa6c76320:  03550000  cmpeq    r5, #0
+0xa6c76324:  13a05001  movne    r5, #1
+0xa6c76328:  03a05000  moveq    r5, #0
+0xa6c7632c:  e58650d8  str      r5, [r6, #0xd8]
+0xa6c76330:  e58640dc  str      r4, [r6, #0xdc]
+  -- guest addr 0x0000000002eadc68
+0xa6c76334:  e5965070  ldr      r5, [r6, #0x70]
+0xa6c76338:  e5967074  ldr      r7, [r6, #0x74]
+0xa6c7633c:  e055a008  subs     sl, r5, r8
+0xa6c76340:  e0c70009  sbc      r0, r7, sb
+0xa6c76344:  e5860218  str      r0, [r6, #0x218]
+0xa6c76348:  e18aa000  orr      sl, sl, r0
+0xa6c7634c:  e586a21c  str      sl, [r6, #0x21c]
+0xa6c76350:  e1570009  cmp      r7, sb
+0xa6c76354:  01550008  cmpeq    r5, r8
+0xa6c76358:  23a05001  movhs    r5, #1
+0xa6c7635c:  33a05000  movlo    r5, #0
+0xa6c76360:  e5865210  str      r5, [r6, #0x210]
+0xa6c76364:  e0208007  eor      r8, r0, r7
+0xa6c76368:  e0277009  eor      r7, r7, sb
+0xa6c7636c:  e0087007  and      r7, r8, r7
+0xa6c76370:  e5867214  str      r7, [r6, #0x214]
+0xa6c76374:  e3a07001  mov      r7, #1
+0xa6c76378:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x0000000002eadc6c
+0xa6c7637c:  e1550004  cmp      r5, r4
+0xa6c76380:  1a000009  bne      #0xa6c763ac
+0xa6c76384:  e320f000  nop      
+0xa6c76388:  e51ff0f4  ldr      pc, [pc, #-0xf4]
+0xa6c7638c:  e30d4c70  movw     r4, #0xdc70
+0xa6c76390:  e34042ea  movt     r4, #0x2ea
+0xa6c76394:  e5864140  str      r4, [r6, #0x140]
+0xa6c76398:  e3a04000  mov      r4, #0
+0xa6c7639c:  e5864144  str      r4, [r6, #0x144]
+0xa6c763a0:  e24f0f5a  sub      r0, pc, #0x168
+0xa6c763a4:  e28ddfa1  add      sp, sp, #0x284
+0xa6c763a8:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c763ac:  e320f000  nop      
+0xa6c763b0:  e51ff118  ldr      pc, [pc, #-0x118]
+0xa6c763b4:  e30d4c74  movw     r4, #0xdc74
+0xa6c763b8:  e34042ea  movt     r4, #0x2ea
+0xa6c763bc:  e5864140  str      r4, [r6, #0x140]
+0xa6c763c0:  e3a04000  mov      r4, #0
+0xa6c763c4:  e5864144  str      r4, [r6, #0x144]
+0xa6c763c8:  e3060241  movw     r0, #0x6241
+0xa6c763cc:  e34a06c7  movt     r0, #0xa6c7
+0xa6c763d0:  e28ddfa1  add      sp, sp, #0x284
+0xa6c763d4:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c763d8:  e3060243  movw     r0, #0x6243
+0xa6c763dc:  e34a06c7  movt     r0, #0xa6c7
+0xa6c763e0:  e28ddfa1  add      sp, sp, #0x284
+0xa6c763e4:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadc70 0000000000000000 0000000000000000
+ mov_i32 loc2,x19_0
+ mov_i32 loc3,$0x0
+ brcond2_i32 loc2,loc3,$0x0,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadc74
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c76400
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadc9c
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c76401
+ set_label $L0
+ exit_tb $0xa6c76403
+
+OUT: [size=124]
+  -- guest addr 0x0000000002eadc70 + tb prologue
+0xa6c76480:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c76484:  e3540000  cmp      r4, #0
+0xa6c76488:  ba000018  blt      #0xa6c764f0
+0xa6c7648c:  e3a04001  mov      r4, #1
+0xa6c76490:  e5464008  strb     r4, [r6, #-8]
+0xa6c76494:  e59640d8  ldr      r4, [r6, #0xd8]
+0xa6c76498:  e3540000  cmp      r4, #0
+0xa6c7649c:  1a000009  bne      #0xa6c764c8
+0xa6c764a0:  e320f000  nop      
+0xa6c764a4:  e51ff050  ldr      pc, [pc, #-0x50]
+0xa6c764a8:  e30d4c74  movw     r4, #0xdc74
+0xa6c764ac:  e34042ea  movt     r4, #0x2ea
+0xa6c764b0:  e5864140  str      r4, [r6, #0x140]
+0xa6c764b4:  e3a04000  mov      r4, #0
+0xa6c764b8:  e5864144  str      r4, [r6, #0x144]
+0xa6c764bc:  e24f00c4  sub      r0, pc, #0xc4
+0xa6c764c0:  e28ddfa1  add      sp, sp, #0x284
+0xa6c764c4:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c764c8:  e320f000  nop      
+0xa6c764cc:  e51ff074  ldr      pc, [pc, #-0x74]
+0xa6c764d0:  e30d4c9c  movw     r4, #0xdc9c
+0xa6c764d4:  e34042ea  movt     r4, #0x2ea
+0xa6c764d8:  e5864140  str      r4, [r6, #0x140]
+0xa6c764dc:  e3a04000  mov      r4, #0
+0xa6c764e0:  e5864144  str      r4, [r6, #0x144]
+0xa6c764e4:  e24f00eb  sub      r0, pc, #0xeb
+0xa6c764e8:  e28ddfa1  add      sp, sp, #0x284
+0xa6c764ec:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c764f0:  e24f00f5  sub      r0, pc, #0xf5
+0xa6c764f4:  e28ddfa1  add      sp, sp, #0x284
+0xa6c764f8:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000002eadc74 0000000000000000 0000000000001e34
+ mov_i32 loc2,x6_0
+ mov_i32 loc3,x6_1
+ mov_i32 loc4,loc2
+ sextract_i32 loc5,loc3,$0x0,$0x18
+ and_i32 loc4,loc4,loc2
+ and_i32 loc5,loc5,loc3
+ qemu_ld_a64_i64 x6_0,x6_1,loc4,loc5,un+leq,0
+
+ ---- 0000000002eadc78 0000000000000000 0000000000000000
+ mov_i32 loc6,$0x0
+ mov_i32 loc7,$0x0
+ mov_i32 loc8,x14_0
+ mov_i32 loc9,x14_1
+ mov_i32 loc10,x7_0
+ mov_i32 loc11,x7_1
+ sub2_i32 loc14,loc15,loc8,loc9,loc10,loc11
+ mov_i32 ZF,loc14
+ mov_i32 NF,loc15
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc16,loc8,loc9,loc10,loc11,geu
+ mov_i32 loc17,$0x0
+ mov_i32 CF,loc16
+ xor_i32 loc16,loc14,loc8
+ xor_i32 loc17,loc15,loc9
+ xor_i32 loc18,loc8,loc10
+ xor_i32 loc19,loc9,loc11
+ and_i32 loc16,loc16,loc18
+ and_i32 loc17,loc17,loc19
+ mov_i32 VF,loc17
+ mov_i32 loc12,loc14
+ mov_i32 loc13,loc15
+ mov_i32 loc6,loc12
+ mov_i32 loc7,loc13
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadc7c 0000000000000000 0000000000000000
+ brcond_i32 CF,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadc80
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c76540
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadc88
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c76541
+ set_label $L0
+ exit_tb $0xa6c76543
+
+OUT: [size=292]
+  -- guest addr 0x0000000002eadc74 + tb prologue
+0xa6c765c0:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c765c4:  e3540000  cmp      r4, #0
+0xa6c765c8:  ba000035  blt      #0xa6c766a4
+0xa6c765cc:  e3a04000  mov      r4, #0
+0xa6c765d0:  e5464008  strb     r4, [r6, #-8]
+0xa6c765d4:  e5965074  ldr      r5, [r6, #0x74]
+0xa6c765d8:  e7b77055  sbfx     r7, r5, #0, #0x18
+0xa6c765dc:  e0075005  and      r5, r7, r5
+0xa6c765e0:  e5967070  ldr      r7, [r6, #0x70]
+0xa6c765e4:  e3170007  tst      r7, #7
+0xa6c765e8:  1b000031  blne     #0xa6c766b4
+0xa6c765ec:  e18780db  ldrd     r8, sb, [r7, fp]
+0xa6c765f0:  e5868070  str      r8, [r6, #0x70]
+0xa6c765f4:  e5869074  str      sb, [r6, #0x74]
+  -- guest addr 0x0000000002eadc78
+0xa6c765f8:  e59650b0  ldr      r5, [r6, #0xb0]
+0xa6c765fc:  e59670b4  ldr      r7, [r6, #0xb4]
+0xa6c76600:  e5968078  ldr      r8, [r6, #0x78]
+0xa6c76604:  e596907c  ldr      sb, [r6, #0x7c]
+0xa6c76608:  e055a008  subs     sl, r5, r8
+0xa6c7660c:  e0c70009  sbc      r0, r7, sb
+0xa6c76610:  e5860218  str      r0, [r6, #0x218]
+0xa6c76614:  e18aa000  orr      sl, sl, r0
+0xa6c76618:  e586a21c  str      sl, [r6, #0x21c]
+0xa6c7661c:  e1570009  cmp      r7, sb
+0xa6c76620:  01550008  cmpeq    r5, r8
+0xa6c76624:  23a05001  movhs    r5, #1
+0xa6c76628:  33a05000  movlo    r5, #0
+0xa6c7662c:  e5865210  str      r5, [r6, #0x210]
+0xa6c76630:  e0208007  eor      r8, r0, r7
+0xa6c76634:  e0277009  eor      r7, r7, sb
+0xa6c76638:  e0087007  and      r7, r8, r7
+0xa6c7663c:  e5867214  str      r7, [r6, #0x214]
+0xa6c76640:  e3a07001  mov      r7, #1
+0xa6c76644:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x0000000002eadc7c
+0xa6c76648:  e1550004  cmp      r5, r4
+0xa6c7664c:  1a000009  bne      #0xa6c76678
+0xa6c76650:  e320f000  nop      
+0xa6c76654:  e51ff0c0  ldr      pc, [pc, #-0xc0]
+0xa6c76658:  e30d4c80  movw     r4, #0xdc80
+0xa6c7665c:  e34042ea  movt     r4, #0x2ea
+0xa6c76660:  e5864140  str      r4, [r6, #0x140]
+0xa6c76664:  e3a04000  mov      r4, #0
+0xa6c76668:  e5864144  str      r4, [r6, #0x144]
+0xa6c7666c:  e24f0f4d  sub      r0, pc, #0x134
+0xa6c76670:  e28ddfa1  add      sp, sp, #0x284
+0xa6c76674:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c76678:  e320f000  nop      
+0xa6c7667c:  e51ff0e4  ldr      pc, [pc, #-0xe4]
+0xa6c76680:  e30d4c88  movw     r4, #0xdc88
+0xa6c76684:  e34042ea  movt     r4, #0x2ea
+0xa6c76688:  e5864140  str      r4, [r6, #0x140]
+0xa6c7668c:  e3a04000  mov      r4, #0
+0xa6c76690:  e5864144  str      r4, [r6, #0x144]
+0xa6c76694:  e3060541  movw     r0, #0x6541
+0xa6c76698:  e34a06c7  movt     r0, #0xa6c7
+0xa6c7669c:  e28ddfa1  add      sp, sp, #0x284
+0xa6c766a0:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c766a4:  e3060543  movw     r0, #0x6543
+0xa6c766a8:  e34a06c7  movt     r0, #0xa6c7
+0xa6c766ac:  e28ddfa1  add      sp, sp, #0x284
+0xa6c766b0:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+  -- tb slow paths + alignment
+0xa6c766b4:  e1a02007  mov      r2, r7
+0xa6c766b8:  e1a03005  mov      r3, r5
+0xa6c766bc:  e1a00006  mov      r0, r6
+0xa6c766c0:  e3a0c030  mov      ip, #0x30
+0xa6c766c4:  e58dc000  str      ip, [sp]
+0xa6c766c8:  e58de004  str      lr, [sp, #4]
+0xa6c766cc:  e30bc8b5  movw     ip, #0xb8b5
+0xa6c766d0:  e340c01b  movt     ip, #0x1b
+0xa6c766d4:  e12fff3c  blx      ip
+0xa6c766d8:  e1a08000  mov      r8, r0
+0xa6c766dc:  e1a09001  mov      sb, r1
+0xa6c766e0:  eaffffc2  b        #0xa6c765f0
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000002eadc88 0000000000000000 0000000000000000
+ mov_i32 loc2,$0x0
+ mov_i32 loc3,$0x0
+ mov_i32 loc4,x16_0
+ mov_i32 loc5,x16_1
+ mov_i32 loc6,x14_0
+ mov_i32 loc7,x14_1
+ sub2_i32 loc10,loc11,loc4,loc5,loc6,loc7
+ mov_i32 ZF,loc10
+ mov_i32 NF,loc11
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc12,loc4,loc5,loc6,loc7,geu
+ mov_i32 loc13,$0x0
+ mov_i32 CF,loc12
+ xor_i32 loc12,loc10,loc4
+ xor_i32 loc13,loc11,loc5
+ xor_i32 loc14,loc4,loc6
+ xor_i32 loc15,loc5,loc7
+ and_i32 loc12,loc12,loc14
+ and_i32 loc13,loc13,loc15
+ mov_i32 VF,loc13
+ mov_i32 loc8,loc10
+ mov_i32 loc9,loc11
+ mov_i32 loc2,loc8
+ mov_i32 loc3,loc9
+
+ ---- 0000000002eadc8c 0000000000000000 0000000000000000
+ neg_i32 loc16,CF
+ and_i32 loc16,loc16,ZF
+ mov_i32 loc17,loc16
+ sar_i32 loc18,loc17,$0x1f
+ setcond2_i32 x19_0,loc17,loc18,$0x0,$0x0,ne
+ mov_i32 x19_1,$0x0
+ mov_i32 x19_1,$0x0
+
+ ---- 0000000002eadc90 0000000000000000 0000000000000000
+ mov_i32 loc22,$0x0
+ mov_i32 loc23,$0x0
+ mov_i32 loc24,x7_0
+ mov_i32 loc25,x7_1
+ mov_i32 loc26,x14_0
+ mov_i32 loc27,x14_1
+ sub2_i32 loc30,loc31,loc24,loc25,loc26,loc27
+ mov_i32 ZF,loc30
+ mov_i32 NF,loc31
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc32,loc24,loc25,loc26,loc27,geu
+ mov_i32 loc33,$0x0
+ mov_i32 CF,loc32
+ xor_i32 loc32,loc30,loc24
+ xor_i32 loc33,loc31,loc25
+ xor_i32 loc34,loc24,loc26
+ xor_i32 loc35,loc25,loc27
+ and_i32 loc32,loc32,loc34
+ and_i32 loc33,loc33,loc35
+ mov_i32 VF,loc33
+ mov_i32 loc28,loc30
+ mov_i32 loc29,loc31
+ mov_i32 loc22,loc28
+ mov_i32 loc23,loc29
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002eadc94 0000000000000000 0000000000000000
+ brcond_i32 CF,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2eadc98
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c76700
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x2eadb44
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa6c76701
+ set_label $L0
+ exit_tb $0xa6c76703
+
+OUT: [size=280]
+  -- guest addr 0x0000000002eadc88 + tb prologue
+0xa6c76780:  e516400c  ldr      r4, [r6, #-0xc]
+0xa6c76784:  e3540000  cmp      r4, #0
+0xa6c76788:  ba00003e  blt      #0xa6c76888
+0xa6c7678c:  e3a04000  mov      r4, #0
+0xa6c76790:  e5464008  strb     r4, [r6, #-8]
+0xa6c76794:  e59650c0  ldr      r5, [r6, #0xc0]
+0xa6c76798:  e59670c4  ldr      r7, [r6, #0xc4]
+0xa6c7679c:  e59680b0  ldr      r8, [r6, #0xb0]
+0xa6c767a0:  e59690b4  ldr      sb, [r6, #0xb4]
+0xa6c767a4:  e055a008  subs     sl, r5, r8
+0xa6c767a8:  e0c70009  sbc      r0, r7, sb
+0xa6c767ac:  e18aa000  orr      sl, sl, r0
+0xa6c767b0:  e1570009  cmp      r7, sb
+0xa6c767b4:  01550008  cmpeq    r5, r8
+0xa6c767b8:  23a05001  movhs    r5, #1
+0xa6c767bc:  33a05000  movlo    r5, #0
+  -- guest addr 0x0000000002eadc8c
+0xa6c767c0:  e2655000  rsb      r5, r5, #0
+0xa6c767c4:  e005500a  and      r5, r5, sl
+0xa6c767c8:  e1a07fc5  asr      r7, r5, #0x1f
+0xa6c767cc:  e3570000  cmp      r7, #0
+0xa6c767d0:  03550000  cmpeq    r5, #0
+0xa6c767d4:  13a05001  movne    r5, #1
+0xa6c767d8:  03a05000  moveq    r5, #0
+0xa6c767dc:  e58650d8  str      r5, [r6, #0xd8]
+0xa6c767e0:  e58640dc  str      r4, [r6, #0xdc]
+  -- guest addr 0x0000000002eadc90
+0xa6c767e4:  e5965078  ldr      r5, [r6, #0x78]
+0xa6c767e8:  e596707c  ldr      r7, [r6, #0x7c]
+0xa6c767ec:  e055a008  subs     sl, r5, r8
+0xa6c767f0:  e0c70009  sbc      r0, r7, sb
+0xa6c767f4:  e5860218  str      r0, [r6, #0x218]
+0xa6c767f8:  e18aa000  orr      sl, sl, r0
+0xa6c767fc:  e586a21c  str      sl, [r6, #0x21c]
+0xa6c76800:  e1570009  cmp      r7, sb
+0xa6c76804:  01550008  cmpeq    r5, r8
+0xa6c76808:  23a05001  movhs    r5, #1
+0xa6c7680c:  33a05000  movlo    r5, #0
+0xa6c76810:  e5865210  str      r5, [r6, #0x210]
+0xa6c76814:  e0208007  eor      r8, r0, r7
+0xa6c76818:  e0277009  eor      r7, r7, sb
+0xa6c7681c:  e0087007  and      r7, r8, r7
+0xa6c76820:  e5867214  str      r7, [r6, #0x214]
+0xa6c76824:  e3a07001  mov      r7, #1
+0xa6c76828:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x0000000002eadc94
+0xa6c7682c:  e1550004  cmp      r5, r4
+0xa6c76830:  1a000009  bne      #0xa6c7685c
+0xa6c76834:  e320f000  nop      
+0xa6c76838:  e51ff0e4  ldr      pc, [pc, #-0xe4]
+0xa6c7683c:  e30d4c98  movw     r4, #0xdc98
+0xa6c76840:  e34042ea  movt     r4, #0x2ea
+0xa6c76844:  e5864140  str      r4, [r6, #0x140]
+0xa6c76848:  e3a04000  mov      r4, #0
+0xa6c7684c:  e5864144  str      r4, [r6, #0x144]
+0xa6c76850:  e24f0f56  sub      r0, pc, #0x158
+0xa6c76854:  e28ddfa1  add      sp, sp, #0x284
+0xa6c76858:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c7685c:  e320f000  nop      
+0xa6c76860:  e51ff108  ldr      pc, [pc, #-0x108]
+0xa6c76864:  e30d4b44  movw     r4, #0xdb44
+0xa6c76868:  e34042ea  movt     r4, #0x2ea
+0xa6c7686c:  e5864140  str      r4, [r6, #0x140]
+0xa6c76870:  e3a04000  mov      r4, #0
+0xa6c76874:  e5864144  str      r4, [r6, #0x144]
+0xa6c76878:  e3060701  movw     r0, #0x6701
+0xa6c7687c:  e34a06c7  movt     r0, #0xa6c7
+0xa6c76880:  e28ddfa1  add      sp, sp, #0x284
+0xa6c76884:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa6c76888:  e3060703  movw     r0, #0x6703
+0xa6c7688c:  e34a06c7  movt     r0, #0xa6c7
+0xa6c76890:  e28ddfa1  add      sp, sp, #0x284
+0xa6c76894:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+Restarting code generation with smaller translation block (max 34 insns)
+Restarting code generation with smaller translation block (max 34 insns)
+Restarting code generation with smaller translation block (max 112 insns)
+Restarting code generation with smaller translation block (max 117 insns)
+Restarting code generation with smaller translation block (max 26 insns)
+Restarting code generation with smaller translation block (max 18 insns)
+Restarting code generation with smaller translation block (max 58 insns)
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000003a516c0 0000000000000000 0000000000000000
+ mov_i32 x17_0,x11_0
+ mov_i32 x17_1,$0x0
+
+ ---- 0000000003a516c4 0000000000000000 0000000000000000
+ mov_i32 loc2,$0x0
+ mov_i32 loc3,$0x0
+ mov_i32 loc4,x8_0
+ mov_i32 loc5,x8_1
+ mov_i32 loc6,x17_0
+ mov_i32 loc7,x17_1
+ sub2_i32 loc10,loc11,loc4,loc5,loc6,loc7
+ mov_i32 ZF,loc10
+ mov_i32 NF,loc11
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc12,loc4,loc5,loc6,loc7,geu
+ mov_i32 loc13,$0x0
+ mov_i32 CF,loc12
+ xor_i32 loc12,loc10,loc4
+ xor_i32 loc13,loc11,loc5
+ xor_i32 loc14,loc4,loc6
+ xor_i32 loc15,loc5,loc7
+ and_i32 loc12,loc12,loc14
+ and_i32 loc13,loc13,loc15
+ mov_i32 VF,loc13
+ mov_i32 loc8,loc10
+ mov_i32 loc9,loc11
+ mov_i32 loc2,loc8
+ mov_i32 loc3,loc9
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000003a516c8 0000000000000000 0000000000000000
+ neg_i32 loc16,CF
+ and_i32 loc16,loc16,ZF
+ brcond_i32 loc16,$0x0,eq,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x3a516cc
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cbb00
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x3a51af4
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cbb01
+ set_label $L0
+ exit_tb $0xa74cbb03
+
+OUT: [size=216]
+  -- guest addr 0x0000000003a516c0 + tb prologue
+0xa74cbb80:  e516400c  ldr      r4, [r6, #-0xc]
+0xa74cbb84:  e3540000  cmp      r4, #0
+0xa74cbb88:  ba00002e  blt      #0xa74cbc48
+0xa74cbb8c:  e3a04000  mov      r4, #0
+0xa74cbb90:  e5464008  strb     r4, [r6, #-8]
+0xa74cbb94:  e5965098  ldr      r5, [r6, #0x98]
+0xa74cbb98:  e58650c8  str      r5, [r6, #0xc8]
+0xa74cbb9c:  e58640cc  str      r4, [r6, #0xcc]
+  -- guest addr 0x0000000003a516c4
+0xa74cbba0:  e5967080  ldr      r7, [r6, #0x80]
+0xa74cbba4:  e5968084  ldr      r8, [r6, #0x84]
+0xa74cbba8:  e0579005  subs     sb, r7, r5
+0xa74cbbac:  e0c8a004  sbc      sl, r8, r4
+0xa74cbbb0:  e586a218  str      sl, [r6, #0x218]
+0xa74cbbb4:  e189900a  orr      sb, sb, sl
+0xa74cbbb8:  e586921c  str      sb, [r6, #0x21c]
+0xa74cbbbc:  e1580004  cmp      r8, r4
+0xa74cbbc0:  01570005  cmpeq    r7, r5
+0xa74cbbc4:  23a05001  movhs    r5, #1
+0xa74cbbc8:  33a05000  movlo    r5, #0
+0xa74cbbcc:  e5865210  str      r5, [r6, #0x210]
+0xa74cbbd0:  e02a7008  eor      r7, sl, r8
+0xa74cbbd4:  e0077008  and      r7, r7, r8
+0xa74cbbd8:  e5867214  str      r7, [r6, #0x214]
+0xa74cbbdc:  e3a07001  mov      r7, #1
+0xa74cbbe0:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x0000000003a516c8
+0xa74cbbe4:  e2655000  rsb      r5, r5, #0
+0xa74cbbe8:  e0055009  and      r5, r5, sb
+0xa74cbbec:  e1550004  cmp      r5, r4
+0xa74cbbf0:  0a000009  beq      #0xa74cbc1c
+0xa74cbbf4:  e320f000  nop      
+0xa74cbbf8:  e51ff0a4  ldr      pc, [pc, #-0xa4]
+0xa74cbbfc:  e30146cc  movw     r4, #0x16cc
+0xa74cbc00:  e34043a5  movt     r4, #0x3a5
+0xa74cbc04:  e5864140  str      r4, [r6, #0x140]
+0xa74cbc08:  e3a04000  mov      r4, #0
+0xa74cbc0c:  e5864144  str      r4, [r6, #0x144]
+0xa74cbc10:  e24f0f46  sub      r0, pc, #0x118
+0xa74cbc14:  e28ddfa1  add      sp, sp, #0x284
+0xa74cbc18:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cbc1c:  e320f000  nop      
+0xa74cbc20:  e51ff0c8  ldr      pc, [pc, #-0xc8]
+0xa74cbc24:  e3014af4  movw     r4, #0x1af4
+0xa74cbc28:  e34043a5  movt     r4, #0x3a5
+0xa74cbc2c:  e5864140  str      r4, [r6, #0x140]
+0xa74cbc30:  e3a04000  mov      r4, #0
+0xa74cbc34:  e5864144  str      r4, [r6, #0x144]
+0xa74cbc38:  e30b0b01  movw     r0, #0xbb01
+0xa74cbc3c:  e34a074c  movt     r0, #0xa74c
+0xa74cbc40:  e28ddfa1  add      sp, sp, #0x284
+0xa74cbc44:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cbc48:  e30b0b03  movw     r0, #0xbb03
+0xa74cbc4c:  e34a074c  movt     r0, #0xa74c
+0xa74cbc50:  e28ddfa1  add      sp, sp, #0x284
+0xa74cbc54:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000003a516cc 0000000000000000 0000000000000000
+ mov_i32 loc2,$0x0
+ mov_i32 loc3,$0x0
+ mov_i32 loc6,x16_0
+ mov_i32 loc7,$0x27
+ sub_i32 NF,loc6,loc7
+ mov_i32 ZF,NF
+ setcond_i32 CF,loc6,loc7,geu
+ xor_i32 VF,NF,loc6
+ xor_i32 loc8,loc6,loc7
+ and_i32 VF,VF,loc8
+ mov_i32 loc2,NF
+ mov_i32 loc3,$0x0
+ mov_i32 loc3,$0x0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000003a516d0 0000000000000000 0000000000000000
+ brcond_i32 ZF,$0x0,eq,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x3a516d4
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cbc80
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x3a516dc
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cbc81
+ set_label $L0
+ exit_tb $0xa74cbc83
+
+OUT: [size=188]
+  -- guest addr 0x0000000003a516cc + tb prologue
+0xa74cbd00:  e516400c  ldr      r4, [r6, #-0xc]
+0xa74cbd04:  e3540000  cmp      r4, #0
+0xa74cbd08:  ba000027  blt      #0xa74cbdac
+0xa74cbd0c:  e3a04000  mov      r4, #0
+0xa74cbd10:  e5464008  strb     r4, [r6, #-8]
+0xa74cbd14:  e59650c0  ldr      r5, [r6, #0xc0]
+0xa74cbd18:  e2457027  sub      r7, r5, #0x27
+0xa74cbd1c:  e5867218  str      r7, [r6, #0x218]
+0xa74cbd20:  e1a08007  mov      r8, r7
+0xa74cbd24:  e586821c  str      r8, [r6, #0x21c]
+0xa74cbd28:  e3550027  cmp      r5, #0x27
+0xa74cbd2c:  23a09001  movhs    sb, #1
+0xa74cbd30:  33a09000  movlo    sb, #0
+0xa74cbd34:  e5869210  str      sb, [r6, #0x210]
+0xa74cbd38:  e0277005  eor      r7, r7, r5
+0xa74cbd3c:  e2255027  eor      r5, r5, #0x27
+0xa74cbd40:  e0075005  and      r5, r7, r5
+0xa74cbd44:  e5865214  str      r5, [r6, #0x214]
+0xa74cbd48:  e3a05001  mov      r5, #1
+0xa74cbd4c:  e5465008  strb     r5, [r6, #-8]
+  -- guest addr 0x0000000003a516d0
+0xa74cbd50:  e1580004  cmp      r8, r4
+0xa74cbd54:  0a000009  beq      #0xa74cbd80
+0xa74cbd58:  e320f000  nop      
+0xa74cbd5c:  e51ff088  ldr      pc, [pc, #-0x88]
+0xa74cbd60:  e30146d4  movw     r4, #0x16d4
+0xa74cbd64:  e34043a5  movt     r4, #0x3a5
+0xa74cbd68:  e5864140  str      r4, [r6, #0x140]
+0xa74cbd6c:  e3a04000  mov      r4, #0
+0xa74cbd70:  e5864144  str      r4, [r6, #0x144]
+0xa74cbd74:  e24f00fc  sub      r0, pc, #0xfc
+0xa74cbd78:  e28ddfa1  add      sp, sp, #0x284
+0xa74cbd7c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cbd80:  e320f000  nop      
+0xa74cbd84:  e51ff0ac  ldr      pc, [pc, #-0xac]
+0xa74cbd88:  e30146dc  movw     r4, #0x16dc
+0xa74cbd8c:  e34043a5  movt     r4, #0x3a5
+0xa74cbd90:  e5864140  str      r4, [r6, #0x140]
+0xa74cbd94:  e3a04000  mov      r4, #0
+0xa74cbd98:  e5864144  str      r4, [r6, #0x144]
+0xa74cbd9c:  e30b0c81  movw     r0, #0xbc81
+0xa74cbda0:  e34a074c  movt     r0, #0xa74c
+0xa74cbda4:  e28ddfa1  add      sp, sp, #0x284
+0xa74cbda8:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cbdac:  e30b0c83  movw     r0, #0xbc83
+0xa74cbdb0:  e34a074c  movt     r0, #0xa74c
+0xa74cbdb4:  e28ddfa1  add      sp, sp, #0x284
+0xa74cbdb8:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000003a516d4 0000000000000000 0000000000000000
+ mov_i32 loc2,$0x0
+ mov_i32 loc3,$0x0
+ mov_i32 loc6,x16_0
+ mov_i32 loc7,$0x22
+ sub_i32 NF,loc6,loc7
+ mov_i32 ZF,NF
+ setcond_i32 CF,loc6,loc7,geu
+ xor_i32 VF,NF,loc6
+ xor_i32 loc8,loc6,loc7
+ and_i32 VF,VF,loc8
+ mov_i32 loc2,NF
+ mov_i32 loc3,$0x0
+ mov_i32 loc3,$0x0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000003a516d8 0000000000000000 0000000000000000
+ brcond_i32 ZF,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x3a516dc
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cbe00
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x3a51718
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cbe01
+ set_label $L0
+ exit_tb $0xa74cbe03
+
+OUT: [size=188]
+  -- guest addr 0x0000000003a516d4 + tb prologue
+0xa74cbe80:  e516400c  ldr      r4, [r6, #-0xc]
+0xa74cbe84:  e3540000  cmp      r4, #0
+0xa74cbe88:  ba000027  blt      #0xa74cbf2c
+0xa74cbe8c:  e3a04000  mov      r4, #0
+0xa74cbe90:  e5464008  strb     r4, [r6, #-8]
+0xa74cbe94:  e59650c0  ldr      r5, [r6, #0xc0]
+0xa74cbe98:  e2457022  sub      r7, r5, #0x22
+0xa74cbe9c:  e5867218  str      r7, [r6, #0x218]
+0xa74cbea0:  e1a08007  mov      r8, r7
+0xa74cbea4:  e586821c  str      r8, [r6, #0x21c]
+0xa74cbea8:  e3550022  cmp      r5, #0x22
+0xa74cbeac:  23a09001  movhs    sb, #1
+0xa74cbeb0:  33a09000  movlo    sb, #0
+0xa74cbeb4:  e5869210  str      sb, [r6, #0x210]
+0xa74cbeb8:  e0277005  eor      r7, r7, r5
+0xa74cbebc:  e2255022  eor      r5, r5, #0x22
+0xa74cbec0:  e0075005  and      r5, r7, r5
+0xa74cbec4:  e5865214  str      r5, [r6, #0x214]
+0xa74cbec8:  e3a05001  mov      r5, #1
+0xa74cbecc:  e5465008  strb     r5, [r6, #-8]
+  -- guest addr 0x0000000003a516d8
+0xa74cbed0:  e1580004  cmp      r8, r4
+0xa74cbed4:  1a000009  bne      #0xa74cbf00
+0xa74cbed8:  e320f000  nop      
+0xa74cbedc:  e51ff088  ldr      pc, [pc, #-0x88]
+0xa74cbee0:  e30146dc  movw     r4, #0x16dc
+0xa74cbee4:  e34043a5  movt     r4, #0x3a5
+0xa74cbee8:  e5864140  str      r4, [r6, #0x140]
+0xa74cbeec:  e3a04000  mov      r4, #0
+0xa74cbef0:  e5864144  str      r4, [r6, #0x144]
+0xa74cbef4:  e24f00fc  sub      r0, pc, #0xfc
+0xa74cbef8:  e28ddfa1  add      sp, sp, #0x284
+0xa74cbefc:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cbf00:  e320f000  nop      
+0xa74cbf04:  e51ff0ac  ldr      pc, [pc, #-0xac]
+0xa74cbf08:  e3014718  movw     r4, #0x1718
+0xa74cbf0c:  e34043a5  movt     r4, #0x3a5
+0xa74cbf10:  e5864140  str      r4, [r6, #0x140]
+0xa74cbf14:  e3a04000  mov      r4, #0
+0xa74cbf18:  e5864144  str      r4, [r6, #0x144]
+0xa74cbf1c:  e30b0e01  movw     r0, #0xbe01
+0xa74cbf20:  e34a074c  movt     r0, #0xa74c
+0xa74cbf24:  e28ddfa1  add      sp, sp, #0x284
+0xa74cbf28:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cbf2c:  e30b0e03  movw     r0, #0xbe03
+0xa74cbf30:  e34a074c  movt     r0, #0xa74c
+0xa74cbf34:  e28ddfa1  add      sp, sp, #0x284
+0xa74cbf38:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000003a51718 0000000000000000 0000000000000000
+ mov_i32 loc2,$0x0
+ mov_i32 loc3,$0x0
+ mov_i32 x19_0,loc2
+ mov_i32 x19_1,$0x0
+
+ ---- 0000000003a5171c 0000000000000000 0000000000000000
+ add2_i32 x11_0,x11_1,x11_0,x11_1,$0x1,$0x0
+ mov_i32 x11_1,$0x0
+
+ ---- 0000000003a51720 0000000000000000 0000000000000000
+ mov_i32 loc6,$0x0
+ mov_i32 loc7,$0x0
+ mov_i32 loc8,x11_0
+ mov_i32 loc9,$0x0
+ mov_i32 loc10,x28_0
+ mov_i32 loc11,$0x0
+ mov_i32 loc14,loc8
+ mov_i32 loc15,loc10
+ sub_i32 NF,loc14,loc15
+ mov_i32 ZF,NF
+ setcond_i32 CF,loc14,loc15,geu
+ xor_i32 VF,NF,loc14
+ xor_i32 loc16,loc14,loc15
+ and_i32 VF,VF,loc16
+ mov_i32 loc12,NF
+ mov_i32 loc13,$0x0
+ mov_i32 loc6,loc12
+ mov_i32 loc7,$0x0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000003a51724 0000000000000000 0000000000000000
+ brcond_i32 CF,$0x0,eq,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x3a51728
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cbf80
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x3a51688
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cbf81
+ set_label $L0
+ exit_tb $0xa74cbf83
+
+OUT: [size=208]
+  -- guest addr 0x0000000003a51718 + tb prologue
+0xa74cc000:  e516400c  ldr      r4, [r6, #-0xc]
+0xa74cc004:  e3540000  cmp      r4, #0
+0xa74cc008:  ba00002c  blt      #0xa74cc0c0
+0xa74cc00c:  e3a04000  mov      r4, #0
+0xa74cc010:  e5464008  strb     r4, [r6, #-8]
+0xa74cc014:  e58640d8  str      r4, [r6, #0xd8]
+0xa74cc018:  e58640dc  str      r4, [r6, #0xdc]
+  -- guest addr 0x0000000003a5171c
+0xa74cc01c:  e5965098  ldr      r5, [r6, #0x98]
+0xa74cc020:  e2855001  add      r5, r5, #1
+0xa74cc024:  e5865098  str      r5, [r6, #0x98]
+0xa74cc028:  e586409c  str      r4, [r6, #0x9c]
+  -- guest addr 0x0000000003a51720
+0xa74cc02c:  e5967120  ldr      r7, [r6, #0x120]
+0xa74cc030:  e0458007  sub      r8, r5, r7
+0xa74cc034:  e5868218  str      r8, [r6, #0x218]
+0xa74cc038:  e586821c  str      r8, [r6, #0x21c]
+0xa74cc03c:  e1550007  cmp      r5, r7
+0xa74cc040:  23a09001  movhs    sb, #1
+0xa74cc044:  33a09000  movlo    sb, #0
+0xa74cc048:  e5869210  str      sb, [r6, #0x210]
+0xa74cc04c:  e0288005  eor      r8, r8, r5
+0xa74cc050:  e0255007  eor      r5, r5, r7
+0xa74cc054:  e0085005  and      r5, r8, r5
+0xa74cc058:  e5865214  str      r5, [r6, #0x214]
+0xa74cc05c:  e3a05001  mov      r5, #1
+0xa74cc060:  e5465008  strb     r5, [r6, #-8]
+  -- guest addr 0x0000000003a51724
+0xa74cc064:  e1590004  cmp      sb, r4
+0xa74cc068:  0a000009  beq      #0xa74cc094
+0xa74cc06c:  e320f000  nop      
+0xa74cc070:  e51ff09c  ldr      pc, [pc, #-0x9c]
+0xa74cc074:  e3014728  movw     r4, #0x1728
+0xa74cc078:  e34043a5  movt     r4, #0x3a5
+0xa74cc07c:  e5864140  str      r4, [r6, #0x140]
+0xa74cc080:  e3a04000  mov      r4, #0
+0xa74cc084:  e5864144  str      r4, [r6, #0x144]
+0xa74cc088:  e24f0e11  sub      r0, pc, #0x110
+0xa74cc08c:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc090:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cc094:  e320f000  nop      
+0xa74cc098:  e51ff0c0  ldr      pc, [pc, #-0xc0]
+0xa74cc09c:  e3014688  movw     r4, #0x1688
+0xa74cc0a0:  e34043a5  movt     r4, #0x3a5
+0xa74cc0a4:  e5864140  str      r4, [r6, #0x140]
+0xa74cc0a8:  e3a04000  mov      r4, #0
+0xa74cc0ac:  e5864144  str      r4, [r6, #0x144]
+0xa74cc0b0:  e30b0f81  movw     r0, #0xbf81
+0xa74cc0b4:  e34a074c  movt     r0, #0xa74c
+0xa74cc0b8:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc0bc:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cc0c0:  e30b0f83  movw     r0, #0xbf83
+0xa74cc0c4:  e34a074c  movt     r0, #0xa74c
+0xa74cc0c8:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc0cc:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000003a51688 0000000000000000 0000000000001880
+ mov_i32 loc2,x0_0
+ mov_i32 loc3,x0_1
+ mov_i32 loc4,x11_0
+ mov_i32 loc5,x11_1
+ mov_i32 loc5,$0x0
+ add2_i32 loc2,loc3,loc2,loc3,loc4,loc5
+ mov_i32 loc6,loc2
+ sextract_i32 loc7,loc3,$0x0,$0x18
+ and_i32 loc6,loc6,loc2
+ and_i32 loc7,loc7,loc3
+ qemu_ld_a64_i32 x16_0,loc6,loc7,al+ub,0
+ mov_i32 x16_1,$0x0
+
+ ---- 0000000003a5168c 0000000000000000 0000000000000000
+ mov_i32 loc8,$0x0
+ mov_i32 loc9,$0x0
+ mov_i32 loc12,x9_0
+ mov_i32 loc13,$0x0
+ sub_i32 NF,loc12,loc13
+ mov_i32 ZF,NF
+ setcond_i32 CF,loc12,loc13,geu
+ xor_i32 VF,NF,loc12
+ xor_i32 loc14,loc12,loc13
+ and_i32 VF,VF,loc14
+ mov_i32 loc8,NF
+ mov_i32 loc9,$0x0
+ mov_i32 loc9,$0x0
+
+ ---- 0000000003a51690 0000000000000000 0000000000000000
+ mov_i32 loc15,ZF
+ sar_i32 loc16,loc15,$0x1f
+ setcond2_i32 x17_0,loc15,loc16,$0x0,$0x0,ne
+ mov_i32 x17_1,$0x0
+ mov_i32 x17_1,$0x0
+
+ ---- 0000000003a51694 0000000000000000 0000000000000000
+ mov_i32 loc18,ZF
+ sar_i32 loc19,loc18,$0x1f
+ mov_i32 loc20,x15_0
+ mov_i32 loc21,x15_1
+ setcond2_i32 tmp22,loc18,loc19,$0x0,$0x0,ne
+ movcond_i32 x18_0,tmp22,$0x0,x10_0,loc20,ne
+ movcond_i32 x18_1,tmp22,$0x0,x10_1,loc21,ne
+ mov_i32 x18_1,$0x0
+
+ ---- 0000000003a51698 0000000000000000 0000000000000000
+ mov_i32 loc23,x12_0
+ mov_i32 loc24,$0x0
+ or_i32 x17_0,x17_0,loc23
+ or_i32 x17_1,x17_1,loc24
+ mov_i32 x17_1,$0x0
+
+ ---- 0000000003a5169c 0000000000000000 0000000000000000
+ mov_i32 loc25,$0x0
+ mov_i32 loc26,$0x0
+ mov_i32 loc29,x16_0
+ mov_i32 loc30,$0xa
+ sub_i32 NF,loc29,loc30
+ mov_i32 ZF,NF
+ setcond_i32 CF,loc29,loc30,geu
+ xor_i32 VF,NF,loc29
+ xor_i32 loc31,loc29,loc30
+ and_i32 VF,VF,loc31
+ mov_i32 loc25,NF
+ mov_i32 loc26,$0x0
+ mov_i32 loc26,$0x0
+
+ ---- 0000000003a516a0 0000000000000000 0000000000000000
+ mov_i32 loc32,ZF
+ sar_i32 loc33,loc32,$0x1f
+ mov_i32 loc34,x18_0
+ mov_i32 loc35,x18_1
+ setcond2_i32 tmp22,loc32,loc33,$0x0,$0x0,ne
+ movcond_i32 x15_0,tmp22,$0x0,x15_0,loc34,ne
+ movcond_i32 x15_1,tmp22,$0x0,x15_1,loc35,ne
+ mov_i32 x15_1,$0x0
+
+ ---- 0000000003a516a4 0000000000000000 0000000000000000
+ mov_i32 loc36,ZF
+ sar_i32 loc37,loc36,$0x1f
+ mov_i32 loc38,x17_0
+ mov_i32 loc39,x17_1
+ setcond2_i32 tmp22,loc36,loc37,$0x0,$0x0,ne
+ movcond_i32 x12_0,tmp22,$0x0,x12_0,loc38,ne
+ movcond_i32 x12_1,tmp22,$0x0,x12_1,loc39,ne
+ mov_i32 x12_1,$0x0
+
+ ---- 0000000003a516a8 0000000000000000 0000000000000000
+ mov_i32 loc40,ZF
+ sar_i32 loc41,loc40,$0x1f
+ mov_i32 loc42,x11_0
+ mov_i32 loc43,x11_1
+ setcond2_i32 tmp22,loc40,loc41,$0x0,$0x0,ne
+ movcond_i32 x10_0,tmp22,$0x0,x10_0,loc42,ne
+ movcond_i32 x10_1,tmp22,$0x0,x10_1,loc43,ne
+ mov_i32 x10_1,$0x0
+
+ ---- 0000000003a516ac 0000000000000000 0000000000000000
+ mov_i32 loc44,ZF
+ sar_i32 loc45,loc44,$0x1f
+ mov_i32 loc46,$0x0
+ mov_i32 loc47,$0x0
+ mov_i32 loc48,x24_0
+ mov_i32 loc49,x24_1
+ add2_i32 loc48,loc49,loc48,loc49,$0x1,$0x0
+ setcond2_i32 tmp22,loc44,loc45,$0x0,$0x0,eq
+ movcond_i32 x24_0,tmp22,$0x0,loc46,loc48,ne
+ movcond_i32 x24_1,tmp22,$0x0,loc47,loc49,ne
+ mov_i32 x24_1,$0x0
+
+ ---- 0000000003a516b0 0000000000000000 0000000000000000
+ mov_i32 loc51,ZF
+ sar_i32 loc52,loc51,$0x1f
+ mov_i32 loc53,x9_0
+ mov_i32 loc54,x9_1
+ add2_i32 loc53,loc54,loc53,loc54,$0x1,$0x0
+ setcond2_i32 tmp22,loc51,loc52,$0x0,$0x0,ne
+ movcond_i32 x9_0,tmp22,$0x0,x9_0,loc53,ne
+ movcond_i32 x9_1,tmp22,$0x0,x9_1,loc54,ne
+ mov_i32 x9_1,$0x0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000003a516b4 0000000000000000 0000000000000000
+ and_i32 loc55,x19_0,$0x1
+ mov_i32 loc56,$0x0
+ brcond2_i32 loc55,loc56,$0x0,$0x0,eq,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x3a516b8
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cc100
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x3a516c0
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cc101
+ set_label $L0
+ exit_tb $0xa74cc103
+
+OUT: [size=508]
+  -- guest addr 0x0000000003a51688 + tb prologue
+0xa74cc180:  e516400c  ldr      r4, [r6, #-0xc]
+0xa74cc184:  e3540000  cmp      r4, #0
+0xa74cc188:  ba000077  blt      #0xa74cc36c
+0xa74cc18c:  e3a04000  mov      r4, #0
+0xa74cc190:  e5464008  strb     r4, [r6, #-8]
+0xa74cc194:  e5965040  ldr      r5, [r6, #0x40]
+0xa74cc198:  e5967044  ldr      r7, [r6, #0x44]
+0xa74cc19c:  e5968098  ldr      r8, [r6, #0x98]
+0xa74cc1a0:  e0955008  adds     r5, r5, r8
+0xa74cc1a4:  e0a77004  adc      r7, r7, r4
+0xa74cc1a8:  e7b79057  sbfx     sb, r7, #0, #0x18
+0xa74cc1ac:  e0097007  and      r7, sb, r7
+0xa74cc1b0:  e7d5500b  ldrb     r5, [r5, fp]
+0xa74cc1b4:  e58650c0  str      r5, [r6, #0xc0]
+0xa74cc1b8:  e58640c4  str      r4, [r6, #0xc4]
+  -- guest addr 0x0000000003a51690
+0xa74cc1bc:  e5967088  ldr      r7, [r6, #0x88]
+0xa74cc1c0:  e1a09fc7  asr      sb, r7, #0x1f
+0xa74cc1c4:  e3590000  cmp      sb, #0
+0xa74cc1c8:  03570000  cmpeq    r7, #0
+0xa74cc1cc:  13a09001  movne    sb, #1
+0xa74cc1d0:  03a09000  moveq    sb, #0
+0xa74cc1d4:  e58640cc  str      r4, [r6, #0xcc]
+  -- guest addr 0x0000000003a51694
+0xa74cc1d8:  e1a0afc7  asr      sl, r7, #0x1f
+0xa74cc1dc:  e35a0000  cmp      sl, #0
+0xa74cc1e0:  03570000  cmpeq    r7, #0
+0xa74cc1e4:  13a0a001  movne    sl, #1
+0xa74cc1e8:  03a0a000  moveq    sl, #0
+0xa74cc1ec:  e5960090  ldr      r0, [r6, #0x90]
+0xa74cc1f0:  e59610b8  ldr      r1, [r6, #0xb8]
+0xa74cc1f4:  e1a02001  mov      r2, r1
+0xa74cc1f8:  e15a0004  cmp      sl, r4
+0xa74cc1fc:  11a02000  movne    r2, r0
+0xa74cc200:  e58620d0  str      r2, [r6, #0xd0]
+0xa74cc204:  e58640d4  str      r4, [r6, #0xd4]
+  -- guest addr 0x0000000003a51698
+0xa74cc208:  e596a0a0  ldr      sl, [r6, #0xa0]
+0xa74cc20c:  e189900a  orr      sb, sb, sl
+0xa74cc210:  e58690c8  str      sb, [r6, #0xc8]
+  -- guest addr 0x0000000003a5169c
+0xa74cc214:  e245300a  sub      r3, r5, #0xa
+0xa74cc218:  e5863218  str      r3, [r6, #0x218]
+0xa74cc21c:  e586321c  str      r3, [r6, #0x21c]
+0xa74cc220:  e355000a  cmp      r5, #0xa
+0xa74cc224:  23a0e001  movhs    lr, #1
+0xa74cc228:  33a0e000  movlo    lr, #0
+0xa74cc22c:  e586e210  str      lr, [r6, #0x210]
+0xa74cc230:  e023e005  eor      lr, r3, r5
+0xa74cc234:  e225500a  eor      r5, r5, #0xa
+0xa74cc238:  e00e5005  and      r5, lr, r5
+0xa74cc23c:  e5865214  str      r5, [r6, #0x214]
+  -- guest addr 0x0000000003a516a0
+0xa74cc240:  e1a05fc3  asr      r5, r3, #0x1f
+0xa74cc244:  e3550000  cmp      r5, #0
+0xa74cc248:  03530000  cmpeq    r3, #0
+0xa74cc24c:  13a05001  movne    r5, #1
+0xa74cc250:  03a05000  moveq    r5, #0
+0xa74cc254:  e1550004  cmp      r5, r4
+0xa74cc258:  01a01002  moveq    r1, r2
+0xa74cc25c:  e58610b8  str      r1, [r6, #0xb8]
+0xa74cc260:  e58640bc  str      r4, [r6, #0xbc]
+  -- guest addr 0x0000000003a516a4
+0xa74cc264:  e1a05fc3  asr      r5, r3, #0x1f
+0xa74cc268:  e3550000  cmp      r5, #0
+0xa74cc26c:  03530000  cmpeq    r3, #0
+0xa74cc270:  13a05001  movne    r5, #1
+0xa74cc274:  03a05000  moveq    r5, #0
+0xa74cc278:  e1550004  cmp      r5, r4
+0xa74cc27c:  01a0a009  moveq    sl, sb
+0xa74cc280:  e586a0a0  str      sl, [r6, #0xa0]
+0xa74cc284:  e58640a4  str      r4, [r6, #0xa4]
+  -- guest addr 0x0000000003a516a8
+0xa74cc288:  e1a05fc3  asr      r5, r3, #0x1f
+0xa74cc28c:  e3550000  cmp      r5, #0
+0xa74cc290:  03530000  cmpeq    r3, #0
+0xa74cc294:  13a05001  movne    r5, #1
+0xa74cc298:  03a05000  moveq    r5, #0
+0xa74cc29c:  e1550004  cmp      r5, r4
+0xa74cc2a0:  01a00008  moveq    r0, r8
+0xa74cc2a4:  e5860090  str      r0, [r6, #0x90]
+0xa74cc2a8:  e5864094  str      r4, [r6, #0x94]
+  -- guest addr 0x0000000003a516ac
+0xa74cc2ac:  e1a05fc3  asr      r5, r3, #0x1f
+0xa74cc2b0:  e5968100  ldr      r8, [r6, #0x100]
+0xa74cc2b4:  e2888001  add      r8, r8, #1
+0xa74cc2b8:  e3550000  cmp      r5, #0
+0xa74cc2bc:  03530000  cmpeq    r3, #0
+0xa74cc2c0:  03a05001  moveq    r5, #1
+0xa74cc2c4:  13a05000  movne    r5, #0
+0xa74cc2c8:  e1550004  cmp      r5, r4
+0xa74cc2cc:  11a08004  movne    r8, r4
+0xa74cc2d0:  e5868100  str      r8, [r6, #0x100]
+0xa74cc2d4:  e5864104  str      r4, [r6, #0x104]
+  -- guest addr 0x0000000003a516b0
+0xa74cc2d8:  e1a05fc3  asr      r5, r3, #0x1f
+0xa74cc2dc:  e2878001  add      r8, r7, #1
+0xa74cc2e0:  e3550000  cmp      r5, #0
+0xa74cc2e4:  03530000  cmpeq    r3, #0
+0xa74cc2e8:  13a05001  movne    r5, #1
+0xa74cc2ec:  03a05000  moveq    r5, #0
+0xa74cc2f0:  e1550004  cmp      r5, r4
+0xa74cc2f4:  01a07008  moveq    r7, r8
+0xa74cc2f8:  e5867088  str      r7, [r6, #0x88]
+0xa74cc2fc:  e586408c  str      r4, [r6, #0x8c]
+0xa74cc300:  e3a05001  mov      r5, #1
+0xa74cc304:  e5465008  strb     r5, [r6, #-8]
+  -- guest addr 0x0000000003a516b4
+0xa74cc308:  e59670d8  ldr      r7, [r6, #0xd8]
+0xa74cc30c:  e0075005  and      r5, r7, r5
+0xa74cc310:  e1550004  cmp      r5, r4
+0xa74cc314:  0a000009  beq      #0xa74cc340
+0xa74cc318:  e320f000  nop      
+0xa74cc31c:  e51ff1c8  ldr      pc, [pc, #-0x1c8]
+0xa74cc320:  e30146b8  movw     r4, #0x16b8
+0xa74cc324:  e34043a5  movt     r4, #0x3a5
+0xa74cc328:  e5864140  str      r4, [r6, #0x140]
+0xa74cc32c:  e3a04000  mov      r4, #0
+0xa74cc330:  e5864144  str      r4, [r6, #0x144]
+0xa74cc334:  e24f0f8f  sub      r0, pc, #0x23c
+0xa74cc338:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc33c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cc340:  e320f000  nop      
+0xa74cc344:  e51ff1ec  ldr      pc, [pc, #-0x1ec]
+0xa74cc348:  e30146c0  movw     r4, #0x16c0
+0xa74cc34c:  e34043a5  movt     r4, #0x3a5
+0xa74cc350:  e5864140  str      r4, [r6, #0x140]
+0xa74cc354:  e3a04000  mov      r4, #0
+0xa74cc358:  e5864144  str      r4, [r6, #0x144]
+0xa74cc35c:  e30c0101  movw     r0, #0xc101
+0xa74cc360:  e34a074c  movt     r0, #0xa74c
+0xa74cc364:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc368:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cc36c:  e30c0103  movw     r0, #0xc103
+0xa74cc370:  e34a074c  movt     r0, #0xa74c
+0xa74cc374:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc378:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000003a516dc 0000000000000000 0000000000000000
+ add2_i32 x16_0,x16_1,x17_0,x17_1,$0xb,$0x0
+
+ ---- 0000000003a516e0 0000000000000000 0000000000000000
+ mov_i32 loc4,$0x0
+ mov_i32 loc5,$0x0
+ mov_i32 loc6,x16_0
+ mov_i32 loc7,x16_1
+ mov_i32 loc8,x8_0
+ mov_i32 loc9,x8_1
+ sub2_i32 loc12,loc13,loc6,loc7,loc8,loc9
+ mov_i32 ZF,loc12
+ mov_i32 NF,loc13
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc14,loc6,loc7,loc8,loc9,geu
+ mov_i32 loc15,$0x0
+ mov_i32 CF,loc14
+ xor_i32 loc14,loc12,loc6
+ xor_i32 loc15,loc13,loc7
+ xor_i32 loc16,loc6,loc8
+ xor_i32 loc17,loc7,loc9
+ and_i32 loc14,loc14,loc16
+ and_i32 loc15,loc15,loc17
+ mov_i32 VF,loc15
+ mov_i32 loc10,loc12
+ mov_i32 loc11,loc13
+ mov_i32 loc4,loc10
+ mov_i32 loc5,loc11
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000003a516e4 0000000000000000 0000000000000000
+ brcond_i32 CF,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x3a516e8
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cc3c0
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x3a51718
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cc3c1
+ set_label $L0
+ exit_tb $0xa74cc3c3
+
+OUT: [size=224]
+  -- guest addr 0x0000000003a516dc + tb prologue
+0xa74cc440:  e516400c  ldr      r4, [r6, #-0xc]
+0xa74cc444:  e3540000  cmp      r4, #0
+0xa74cc448:  ba000030  blt      #0xa74cc510
+0xa74cc44c:  e3a04000  mov      r4, #0
+0xa74cc450:  e5464008  strb     r4, [r6, #-8]
+0xa74cc454:  e59650c8  ldr      r5, [r6, #0xc8]
+0xa74cc458:  e59670cc  ldr      r7, [r6, #0xcc]
+0xa74cc45c:  e295500b  adds     r5, r5, #0xb
+0xa74cc460:  e2a77000  adc      r7, r7, #0
+0xa74cc464:  e58650c0  str      r5, [r6, #0xc0]
+0xa74cc468:  e58670c4  str      r7, [r6, #0xc4]
+  -- guest addr 0x0000000003a516e0
+0xa74cc46c:  e5968080  ldr      r8, [r6, #0x80]
+0xa74cc470:  e5969084  ldr      sb, [r6, #0x84]
+0xa74cc474:  e055a008  subs     sl, r5, r8
+0xa74cc478:  e0c70009  sbc      r0, r7, sb
+0xa74cc47c:  e5860218  str      r0, [r6, #0x218]
+0xa74cc480:  e18aa000  orr      sl, sl, r0
+0xa74cc484:  e586a21c  str      sl, [r6, #0x21c]
+0xa74cc488:  e1570009  cmp      r7, sb
+0xa74cc48c:  01550008  cmpeq    r5, r8
+0xa74cc490:  23a05001  movhs    r5, #1
+0xa74cc494:  33a05000  movlo    r5, #0
+0xa74cc498:  e5865210  str      r5, [r6, #0x210]
+0xa74cc49c:  e0208007  eor      r8, r0, r7
+0xa74cc4a0:  e0277009  eor      r7, r7, sb
+0xa74cc4a4:  e0087007  and      r7, r8, r7
+0xa74cc4a8:  e5867214  str      r7, [r6, #0x214]
+0xa74cc4ac:  e3a07001  mov      r7, #1
+0xa74cc4b0:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x0000000003a516e4
+0xa74cc4b4:  e1550004  cmp      r5, r4
+0xa74cc4b8:  1a000009  bne      #0xa74cc4e4
+0xa74cc4bc:  e320f000  nop      
+0xa74cc4c0:  e51ff0ac  ldr      pc, [pc, #-0xac]
+0xa74cc4c4:  e30146e8  movw     r4, #0x16e8
+0xa74cc4c8:  e34043a5  movt     r4, #0x3a5
+0xa74cc4cc:  e5864140  str      r4, [r6, #0x140]
+0xa74cc4d0:  e3a04000  mov      r4, #0
+0xa74cc4d4:  e5864144  str      r4, [r6, #0x144]
+0xa74cc4d8:  e24f0e12  sub      r0, pc, #0x120
+0xa74cc4dc:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc4e0:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cc4e4:  e320f000  nop      
+0xa74cc4e8:  e51ff0d0  ldr      pc, [pc, #-0xd0]
+0xa74cc4ec:  e3014718  movw     r4, #0x1718
+0xa74cc4f0:  e34043a5  movt     r4, #0x3a5
+0xa74cc4f4:  e5864140  str      r4, [r6, #0x140]
+0xa74cc4f8:  e3a04000  mov      r4, #0
+0xa74cc4fc:  e5864144  str      r4, [r6, #0x144]
+0xa74cc500:  e30c03c1  movw     r0, #0xc3c1
+0xa74cc504:  e34a074c  movt     r0, #0xa74c
+0xa74cc508:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc50c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cc510:  e30c03c3  movw     r0, #0xc3c3
+0xa74cc514:  e34a074c  movt     r0, #0xa74c
+0xa74cc518:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc51c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000003a516e8 0000000000000000 0000000000000000
+ add2_i32 x16_0,x16_1,x17_0,x17_1,$0x1,$0x0
+
+ ---- 0000000003a516ec 0000000000000000 0000000000000000
+ mov_i32 loc4,x0_0
+ mov_i32 loc5,x0_1
+ mov_i32 loc6,x16_0
+ mov_i32 loc7,x16_1
+ add2_i32 loc8,loc9,loc4,loc5,loc6,loc7
+ mov_i32 x16_0,loc8
+ mov_i32 x16_1,loc9
+
+ ---- 0000000003a516f0 0000000000000000 0000000000001e8c
+ mov_i32 loc10,x16_0
+ mov_i32 loc11,x16_1
+ mov_i32 loc12,loc10
+ sextract_i32 loc13,loc11,$0x0,$0x18
+ and_i32 loc12,loc12,loc10
+ and_i32 loc13,loc13,loc11
+ qemu_ld_a64_i64 x17_0,x17_1,loc12,loc13,un+leq,0
+
+ ---- 0000000003a516f4 0000000000000000 0000000000001a80
+ mov_i32 loc14,x16_0
+ mov_i32 loc15,x16_1
+ add2_i32 loc14,loc15,loc14,loc15,$0x8,$0x0
+ mov_i32 loc17,loc14
+ sextract_i32 loc18,loc15,$0x0,$0x18
+ and_i32 loc17,loc17,loc14
+ and_i32 loc18,loc18,loc15
+ qemu_ld_a64_i32 x16_0,loc17,loc18,un+leuw,0
+ mov_i32 x16_1,$0x0
+
+ ---- 0000000003a516f8 0000000000000000 0000000000000000
+ mov_i32 loc19,x13_0
+ mov_i32 loc20,x13_1
+ xor_i32 x17_0,x17_0,loc19
+ xor_i32 x17_1,x17_1,loc20
+
+ ---- 0000000003a516fc 0000000000000000 0000000000000000
+ mov_i32 loc21,x14_0
+ mov_i32 loc22,x14_1
+ xor_i32 x16_0,x16_0,loc21
+ xor_i32 x16_1,x16_1,loc22
+
+ ---- 0000000003a51700 0000000000000000 0000000000000000
+ mov_i32 loc23,x16_0
+ mov_i32 loc24,x16_1
+ or_i32 x16_0,x17_0,loc23
+ or_i32 x16_1,x17_1,loc24
+
+ ---- 0000000003a51704 0000000000000000 0000000000000000
+ mov_i32 loc25,$0x0
+ mov_i32 loc26,$0x0
+ sub2_i32 loc29,loc30,x16_0,x16_1,$0x0,$0x0
+ mov_i32 ZF,loc29
+ mov_i32 NF,loc30
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc31,x16_0,x16_1,$0x0,$0x0,geu
+ mov_i32 loc32,$0x0
+ mov_i32 CF,loc31
+ xor_i32 loc31,loc29,x16_0
+ xor_i32 loc32,loc30,x16_1
+ xor_i32 loc33,x16_0,$0x0
+ xor_i32 loc34,x16_1,$0x0
+ and_i32 loc31,loc31,loc33
+ and_i32 loc32,loc32,loc34
+ mov_i32 VF,loc32
+ mov_i32 loc25,loc29
+ mov_i32 loc26,loc30
+
+ ---- 0000000003a51708 0000000000000000 0000000000000000
+ add2_i32 x16_0,x16_1,x11_0,x11_1,$0xb,$0x0
+ mov_i32 x16_1,$0x0
+
+ ---- 0000000003a5170c 0000000000000000 0000000000000000
+ mov_i32 loc37,ZF
+ sar_i32 loc38,loc37,$0x1f
+ setcond2_i32 x19_0,loc37,loc38,$0x0,$0x0,eq
+ mov_i32 x19_1,$0x0
+ mov_i32 x19_1,$0x0
+
+ ---- 0000000003a51710 0000000000000000 0000000000000000
+ mov_i32 loc40,ZF
+ sar_i32 loc41,loc40,$0x1f
+ mov_i32 loc42,x16_0
+ mov_i32 loc43,x16_1
+ setcond2_i32 tmp44,loc40,loc41,$0x0,$0x0,ne
+ movcond_i32 x11_0,tmp44,$0x0,x11_0,loc42,ne
+ movcond_i32 x11_1,tmp44,$0x0,x11_1,loc43,ne
+ mov_i32 x11_1,$0x0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000003a51714 0000000000000000 0000000000000000
+ goto_tb $0x0
+ mov_i32 pc_0,$0x3a5171c
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cc540
+ set_label $L0
+ exit_tb $0xa74cc543
+
+OUT: [size=384]
+  -- guest addr 0x0000000003a516e8 + tb prologue
+0xa74cc5c0:  e516400c  ldr      r4, [r6, #-0xc]
+0xa74cc5c4:  e3540000  cmp      r4, #0
+0xa74cc5c8:  ba00004c  blt      #0xa74cc700
+0xa74cc5cc:  e3a04000  mov      r4, #0
+0xa74cc5d0:  e5464008  strb     r4, [r6, #-8]
+0xa74cc5d4:  e59650c8  ldr      r5, [r6, #0xc8]
+0xa74cc5d8:  e59670cc  ldr      r7, [r6, #0xcc]
+0xa74cc5dc:  e2955001  adds     r5, r5, #1
+0xa74cc5e0:  e2a77000  adc      r7, r7, #0
+  -- guest addr 0x0000000003a516ec
+0xa74cc5e4:  e5968040  ldr      r8, [r6, #0x40]
+0xa74cc5e8:  e5969044  ldr      sb, [r6, #0x44]
+0xa74cc5ec:  e0985005  adds     r5, r8, r5
+0xa74cc5f0:  e0a97007  adc      r7, sb, r7
+0xa74cc5f4:  e58650c0  str      r5, [r6, #0xc0]
+0xa74cc5f8:  e58670c4  str      r7, [r6, #0xc4]
+  -- guest addr 0x0000000003a516f0
+0xa74cc5fc:  e7b78057  sbfx     r8, r7, #0, #0x18
+0xa74cc600:  e0088007  and      r8, r8, r7
+0xa74cc604:  e3150007  tst      r5, #7
+0xa74cc608:  1b000040  blne     #0xa74cc710
+0xa74cc60c:  e18580db  ldrd     r8, sb, [r5, fp]
+0xa74cc610:  e58680c8  str      r8, [r6, #0xc8]
+0xa74cc614:  e58690cc  str      sb, [r6, #0xcc]
+  -- guest addr 0x0000000003a516f4
+0xa74cc618:  e2955008  adds     r5, r5, #8
+0xa74cc61c:  e0a77004  adc      r7, r7, r4
+0xa74cc620:  e7b7a057  sbfx     sl, r7, #0, #0x18
+0xa74cc624:  e00a7007  and      r7, sl, r7
+0xa74cc628:  e19550bb  ldrh     r5, [r5, fp]
+  -- guest addr 0x0000000003a516f8
+0xa74cc62c:  e59670a8  ldr      r7, [r6, #0xa8]
+0xa74cc630:  e0287007  eor      r7, r8, r7
+0xa74cc634:  e58670c8  str      r7, [r6, #0xc8]
+0xa74cc638:  e59680ac  ldr      r8, [r6, #0xac]
+0xa74cc63c:  e0298008  eor      r8, sb, r8
+0xa74cc640:  e58680cc  str      r8, [r6, #0xcc]
+  -- guest addr 0x0000000003a516fc
+0xa74cc644:  e59690b0  ldr      sb, [r6, #0xb0]
+0xa74cc648:  e0255009  eor      r5, r5, sb
+  -- guest addr 0x0000000003a51700
+0xa74cc64c:  e1855007  orr      r5, r5, r7
+0xa74cc650:  e59670b4  ldr      r7, [r6, #0xb4]
+0xa74cc654:  e1887007  orr      r7, r8, r7
+  -- guest addr 0x0000000003a51704
+0xa74cc658:  e0955004  adds     r5, r5, r4
+0xa74cc65c:  e0a78004  adc      r8, r7, r4
+0xa74cc660:  e5868218  str      r8, [r6, #0x218]
+0xa74cc664:  e1855008  orr      r5, r5, r8
+0xa74cc668:  e586521c  str      r5, [r6, #0x21c]
+0xa74cc66c:  e3a09001  mov      sb, #1
+0xa74cc670:  e5869210  str      sb, [r6, #0x210]
+0xa74cc674:  e0288007  eor      r8, r8, r7
+0xa74cc678:  e0087007  and      r7, r8, r7
+0xa74cc67c:  e5867214  str      r7, [r6, #0x214]
+  -- guest addr 0x0000000003a51708
+0xa74cc680:  e5967098  ldr      r7, [r6, #0x98]
+0xa74cc684:  e287800b  add      r8, r7, #0xb
+0xa74cc688:  e58680c0  str      r8, [r6, #0xc0]
+0xa74cc68c:  e58640c4  str      r4, [r6, #0xc4]
+  -- guest addr 0x0000000003a5170c
+0xa74cc690:  e1a09fc5  asr      sb, r5, #0x1f
+0xa74cc694:  e3590000  cmp      sb, #0
+0xa74cc698:  03550000  cmpeq    r5, #0
+0xa74cc69c:  03a09001  moveq    sb, #1
+0xa74cc6a0:  13a09000  movne    sb, #0
+0xa74cc6a4:  e58690d8  str      sb, [r6, #0xd8]
+0xa74cc6a8:  e58640dc  str      r4, [r6, #0xdc]
+  -- guest addr 0x0000000003a51710
+0xa74cc6ac:  e1a09fc5  asr      sb, r5, #0x1f
+0xa74cc6b0:  e3590000  cmp      sb, #0
+0xa74cc6b4:  03550000  cmpeq    r5, #0
+0xa74cc6b8:  13a05001  movne    r5, #1
+0xa74cc6bc:  03a05000  moveq    r5, #0
+0xa74cc6c0:  e1550004  cmp      r5, r4
+0xa74cc6c4:  01a07008  moveq    r7, r8
+0xa74cc6c8:  e5867098  str      r7, [r6, #0x98]
+0xa74cc6cc:  e586409c  str      r4, [r6, #0x9c]
+0xa74cc6d0:  e3a04001  mov      r4, #1
+0xa74cc6d4:  e5464008  strb     r4, [r6, #-8]
+  -- guest addr 0x0000000003a51714
+0xa74cc6d8:  e320f000  nop      
+0xa74cc6dc:  e51ff148  ldr      pc, [pc, #-0x148]
+0xa74cc6e0:  e301471c  movw     r4, #0x171c
+0xa74cc6e4:  e34043a5  movt     r4, #0x3a5
+0xa74cc6e8:  e5864140  str      r4, [r6, #0x140]
+0xa74cc6ec:  e3a04000  mov      r4, #0
+0xa74cc6f0:  e5864144  str      r4, [r6, #0x144]
+0xa74cc6f4:  e24f0f6f  sub      r0, pc, #0x1bc
+0xa74cc6f8:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc6fc:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cc700:  e30c0543  movw     r0, #0xc543
+0xa74cc704:  e34a074c  movt     r0, #0xa74c
+0xa74cc708:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc70c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+  -- tb slow paths + alignment
+0xa74cc710:  e1a02005  mov      r2, r5
+0xa74cc714:  e1a03008  mov      r3, r8
+0xa74cc718:  e1a00006  mov      r0, r6
+0xa74cc71c:  e3a0c030  mov      ip, #0x30
+0xa74cc720:  e58dc000  str      ip, [sp]
+0xa74cc724:  e58de004  str      lr, [sp, #4]
+0xa74cc728:  e30bc8b5  movw     ip, #0xb8b5
+0xa74cc72c:  e340c01b  movt     ip, #0x1b
+0xa74cc730:  e12fff3c  blx      ip
+0xa74cc734:  e1a08000  mov      r8, r0
+0xa74cc738:  e1a09001  mov      sb, r1
+0xa74cc73c:  eaffffb3  b        #0xa74cc610
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000003a5171c 0000000000000000 0000000000000000
+ add2_i32 x11_0,x11_1,x11_0,x11_1,$0x1,$0x0
+ mov_i32 x11_1,$0x0
+
+ ---- 0000000003a51720 0000000000000000 0000000000000000
+ mov_i32 loc4,$0x0
+ mov_i32 loc5,$0x0
+ mov_i32 loc6,x11_0
+ mov_i32 loc7,$0x0
+ mov_i32 loc8,x28_0
+ mov_i32 loc9,$0x0
+ mov_i32 loc12,loc6
+ mov_i32 loc13,loc8
+ sub_i32 NF,loc12,loc13
+ mov_i32 ZF,NF
+ setcond_i32 CF,loc12,loc13,geu
+ xor_i32 VF,NF,loc12
+ xor_i32 loc14,loc12,loc13
+ and_i32 VF,VF,loc14
+ mov_i32 loc10,NF
+ mov_i32 loc11,$0x0
+ mov_i32 loc4,loc10
+ mov_i32 loc5,$0x0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000003a51724 0000000000000000 0000000000000000
+ brcond_i32 CF,$0x0,eq,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x3a51728
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cc780
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x3a51688
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cc781
+ set_label $L0
+ exit_tb $0xa74cc783
+
+OUT: [size=200]
+  -- guest addr 0x0000000003a5171c + tb prologue
+0xa74cc800:  e516400c  ldr      r4, [r6, #-0xc]
+0xa74cc804:  e3540000  cmp      r4, #0
+0xa74cc808:  ba00002a  blt      #0xa74cc8b8
+0xa74cc80c:  e3a04000  mov      r4, #0
+0xa74cc810:  e5464008  strb     r4, [r6, #-8]
+0xa74cc814:  e5965098  ldr      r5, [r6, #0x98]
+0xa74cc818:  e2855001  add      r5, r5, #1
+0xa74cc81c:  e5865098  str      r5, [r6, #0x98]
+0xa74cc820:  e586409c  str      r4, [r6, #0x9c]
+  -- guest addr 0x0000000003a51720
+0xa74cc824:  e5967120  ldr      r7, [r6, #0x120]
+0xa74cc828:  e0458007  sub      r8, r5, r7
+0xa74cc82c:  e5868218  str      r8, [r6, #0x218]
+0xa74cc830:  e586821c  str      r8, [r6, #0x21c]
+0xa74cc834:  e1550007  cmp      r5, r7
+0xa74cc838:  23a09001  movhs    sb, #1
+0xa74cc83c:  33a09000  movlo    sb, #0
+0xa74cc840:  e5869210  str      sb, [r6, #0x210]
+0xa74cc844:  e0288005  eor      r8, r8, r5
+0xa74cc848:  e0255007  eor      r5, r5, r7
+0xa74cc84c:  e0085005  and      r5, r8, r5
+0xa74cc850:  e5865214  str      r5, [r6, #0x214]
+0xa74cc854:  e3a05001  mov      r5, #1
+0xa74cc858:  e5465008  strb     r5, [r6, #-8]
+  -- guest addr 0x0000000003a51724
+0xa74cc85c:  e1590004  cmp      sb, r4
+0xa74cc860:  0a000009  beq      #0xa74cc88c
+0xa74cc864:  e320f000  nop      
+0xa74cc868:  e51ff094  ldr      pc, [pc, #-0x94]
+0xa74cc86c:  e3014728  movw     r4, #0x1728
+0xa74cc870:  e34043a5  movt     r4, #0x3a5
+0xa74cc874:  e5864140  str      r4, [r6, #0x140]
+0xa74cc878:  e3a04000  mov      r4, #0
+0xa74cc87c:  e5864144  str      r4, [r6, #0x144]
+0xa74cc880:  e24f0f42  sub      r0, pc, #0x108
+0xa74cc884:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc888:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cc88c:  e320f000  nop      
+0xa74cc890:  e51ff0b8  ldr      pc, [pc, #-0xb8]
+0xa74cc894:  e3014688  movw     r4, #0x1688
+0xa74cc898:  e34043a5  movt     r4, #0x3a5
+0xa74cc89c:  e5864140  str      r4, [r6, #0x140]
+0xa74cc8a0:  e3a04000  mov      r4, #0
+0xa74cc8a4:  e5864144  str      r4, [r6, #0x144]
+0xa74cc8a8:  e30c0781  movw     r0, #0xc781
+0xa74cc8ac:  e34a074c  movt     r0, #0xa74c
+0xa74cc8b0:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc8b4:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cc8b8:  e30c0783  movw     r0, #0xc783
+0xa74cc8bc:  e34a074c  movt     r0, #0xa74c
+0xa74cc8c0:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc8c4:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000003a516b8 0000000000000000 0000000000000000
+ mov_i32 x19_0,$0x1
+ mov_i32 x19_1,$0x0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000003a516bc 0000000000000000 0000000000000000
+ goto_tb $0x0
+ mov_i32 pc_0,$0x3a5171c
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cc900
+ set_label $L0
+ exit_tb $0xa74cc903
+
+OUT: [size=92]
+  -- guest addr 0x0000000003a516b8 + tb prologue
+0xa74cc980:  e516400c  ldr      r4, [r6, #-0xc]
+0xa74cc984:  e3540000  cmp      r4, #0
+0xa74cc988:  ba000010  blt      #0xa74cc9d0
+0xa74cc98c:  e3a04000  mov      r4, #0
+0xa74cc990:  e5464008  strb     r4, [r6, #-8]
+0xa74cc994:  e3a05001  mov      r5, #1
+0xa74cc998:  e58650d8  str      r5, [r6, #0xd8]
+0xa74cc99c:  e58640dc  str      r4, [r6, #0xdc]
+0xa74cc9a0:  e3a04001  mov      r4, #1
+0xa74cc9a4:  e5464008  strb     r4, [r6, #-8]
+  -- guest addr 0x0000000003a516bc
+0xa74cc9a8:  e320f000  nop      
+0xa74cc9ac:  e51ff058  ldr      pc, [pc, #-0x58]
+0xa74cc9b0:  e301471c  movw     r4, #0x171c
+0xa74cc9b4:  e34043a5  movt     r4, #0x3a5
+0xa74cc9b8:  e5864140  str      r4, [r6, #0x140]
+0xa74cc9bc:  e3a04000  mov      r4, #0
+0xa74cc9c0:  e5864144  str      r4, [r6, #0x144]
+0xa74cc9c4:  e24f00cc  sub      r0, pc, #0xcc
+0xa74cc9c8:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc9cc:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74cc9d0:  e24f00d5  sub      r0, pc, #0xd5
+0xa74cc9d4:  e28ddfa1  add      sp, sp, #0x284
+0xa74cc9d8:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000003a51728 0000000000000000 0000000000000000
+ mov_i32 loc2,$0x0
+ mov_i32 loc3,$0x0
+ and_i32 loc2,x12_0,$0x1
+ mov_i32 loc3,$0x0
+ mov_i32 ZF,loc2
+ mov_i32 NF,ZF
+ mov_i32 CF,$0x0
+ mov_i32 VF,$0x0
+ mov_i32 loc3,$0x0
+
+ ---- 0000000003a5172c 0000000000000000 0000000000000000
+ sub2_i32 x12_0,x12_1,x28_0,x28_1,$0x1,$0x0
+ mov_i32 x12_1,$0x0
+
+ ---- 0000000003a51730 0000000000000000 0000000000000000
+ mov_i32 loc7,ZF
+ sar_i32 loc8,loc7,$0x1f
+ mov_i32 loc12,$0x0
+ mov_i32 loc13,$0x0
+ mov_i32 loc14,x15_0
+ mov_i32 loc15,x15_1
+ add2_i32 loc14,loc15,loc14,loc15,$0x1,$0x0
+ setcond2_i32 tmp16,loc7,loc8,$0x0,$0x0,eq
+ movcond_i32 x11_0,tmp16,$0x0,loc12,loc14,ne
+ movcond_i32 x11_1,tmp16,$0x0,loc13,loc15,ne
+ mov_i32 x11_1,$0x0
+
+ ---- 0000000003a51734 0000000000000000 0000000000000000
+ mov_i32 loc17,$0x0
+ mov_i32 loc18,$0x0
+ mov_i32 loc19,x8_0
+ mov_i32 loc20,x8_1
+ mov_i32 loc21,x12_0
+ mov_i32 loc22,x12_1
+ sub2_i32 loc25,loc26,loc19,loc20,loc21,loc22
+ mov_i32 ZF,loc25
+ mov_i32 NF,loc26
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc27,loc19,loc20,loc21,loc22,geu
+ mov_i32 loc28,$0x0
+ mov_i32 CF,loc27
+ xor_i32 loc27,loc25,loc19
+ xor_i32 loc28,loc26,loc20
+ xor_i32 loc29,loc19,loc21
+ xor_i32 loc30,loc20,loc22
+ and_i32 loc27,loc27,loc29
+ and_i32 loc28,loc28,loc30
+ mov_i32 VF,loc28
+ mov_i32 loc23,loc25
+ mov_i32 loc24,loc26
+ mov_i32 loc17,loc23
+ mov_i32 loc18,loc24
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000003a51738 0000000000000000 0000000000000000
+ neg_i32 loc31,CF
+ and_i32 loc31,loc31,ZF
+ brcond_i32 loc31,$0x0,eq,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x3a5173c
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cca00
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x3a51af4
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa74cca01
+ set_label $L0
+ exit_tb $0xa74cca03
+
+OUT: [size=256]
+  -- guest addr 0x0000000003a51728 + tb prologue
+0xa74cca80:  e516400c  ldr      r4, [r6, #-0xc]
+0xa74cca84:  e3540000  cmp      r4, #0
+0xa74cca88:  ba000038  blt      #0xa74ccb70
+0xa74cca8c:  e3a04000  mov      r4, #0
+0xa74cca90:  e5464008  strb     r4, [r6, #-8]
+0xa74cca94:  e59650a0  ldr      r5, [r6, #0xa0]
+0xa74cca98:  e2055001  and      r5, r5, #1
+  -- guest addr 0x0000000003a5172c
+0xa74cca9c:  e5967120  ldr      r7, [r6, #0x120]
+0xa74ccaa0:  e2477001  sub      r7, r7, #1
+0xa74ccaa4:  e58670a0  str      r7, [r6, #0xa0]
+0xa74ccaa8:  e58640a4  str      r4, [r6, #0xa4]
+  -- guest addr 0x0000000003a51730
+0xa74ccaac:  e59680b8  ldr      r8, [r6, #0xb8]
+0xa74ccab0:  e2888001  add      r8, r8, #1
+0xa74ccab4:  e2255001  eor      r5, r5, #1
+0xa74ccab8:  e1550004  cmp      r5, r4
+0xa74ccabc:  11a08004  movne    r8, r4
+0xa74ccac0:  e5868098  str      r8, [r6, #0x98]
+0xa74ccac4:  e586409c  str      r4, [r6, #0x9c]
+  -- guest addr 0x0000000003a51734
+0xa74ccac8:  e5965080  ldr      r5, [r6, #0x80]
+0xa74ccacc:  e5968084  ldr      r8, [r6, #0x84]
+0xa74ccad0:  e0559007  subs     sb, r5, r7
+0xa74ccad4:  e0c8a004  sbc      sl, r8, r4
+0xa74ccad8:  e586a218  str      sl, [r6, #0x218]
+0xa74ccadc:  e189900a  orr      sb, sb, sl
+0xa74ccae0:  e586921c  str      sb, [r6, #0x21c]
+0xa74ccae4:  e1580004  cmp      r8, r4
+0xa74ccae8:  01550007  cmpeq    r5, r7
+0xa74ccaec:  23a05001  movhs    r5, #1
+0xa74ccaf0:  33a05000  movlo    r5, #0
+0xa74ccaf4:  e5865210  str      r5, [r6, #0x210]
+0xa74ccaf8:  e02a7008  eor      r7, sl, r8
+0xa74ccafc:  e0077008  and      r7, r7, r8
+0xa74ccb00:  e5867214  str      r7, [r6, #0x214]
+0xa74ccb04:  e3a07001  mov      r7, #1
+0xa74ccb08:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x0000000003a51738
+0xa74ccb0c:  e2655000  rsb      r5, r5, #0
+0xa74ccb10:  e0055009  and      r5, r5, sb
+0xa74ccb14:  e1550004  cmp      r5, r4
+0xa74ccb18:  0a000009  beq      #0xa74ccb44
+0xa74ccb1c:  e320f000  nop      
+0xa74ccb20:  e51ff0cc  ldr      pc, [pc, #-0xcc]
+0xa74ccb24:  e301473c  movw     r4, #0x173c
+0xa74ccb28:  e34043a5  movt     r4, #0x3a5
+0xa74ccb2c:  e5864140  str      r4, [r6, #0x140]
+0xa74ccb30:  e3a04000  mov      r4, #0
+0xa74ccb34:  e5864144  str      r4, [r6, #0x144]
+0xa74ccb38:  e24f0d05  sub      r0, pc, #0x140
+0xa74ccb3c:  e28ddfa1  add      sp, sp, #0x284
+0xa74ccb40:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74ccb44:  e320f000  nop      
+0xa74ccb48:  e51ff0f0  ldr      pc, [pc, #-0xf0]
+0xa74ccb4c:  e3014af4  movw     r4, #0x1af4
+0xa74ccb50:  e34043a5  movt     r4, #0x3a5
+0xa74ccb54:  e5864140  str      r4, [r6, #0x140]
+0xa74ccb58:  e3a04000  mov      r4, #0
+0xa74ccb5c:  e5864144  str      r4, [r6, #0x144]
+0xa74ccb60:  e30c0a01  movw     r0, #0xca01
+0xa74ccb64:  e34a074c  movt     r0, #0xa74c
+0xa74ccb68:  e28ddfa1  add      sp, sp, #0x284
+0xa74ccb6c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa74ccb70:  e30c0a03  movw     r0, #0xca03
+0xa74ccb74:  e34a074c  movt     r0, #0xa74c
+0xa74ccb78:  e28ddfa1  add      sp, sp, #0x284
+0xa74ccb7c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+Restarting code generation with smaller translation block (max 116 insns)
+Restarting code generation with smaller translation block (max 116 insns)
+Restarting code generation with smaller translation block (max 116 insns)
+Restarting code generation with smaller translation block (max 116 insns)
+Restarting code generation with smaller translation block (max 116 insns)
+Restarting code generation with smaller translation block (max 116 insns)
+Restarting code generation with smaller translation block (max 116 insns)
+Restarting code generation with smaller translation block (max 106 insns)
+Restarting code generation with smaller translation block (max 116 insns)
+Restarting code generation with smaller translation block (max 116 insns)
+Restarting code generation with smaller translation block (max 116 insns)
+Restarting code generation with smaller translation block (max 17 insns)
+Restarting code generation with smaller translation block (max 8 insns)
+Restarting code generation with smaller translation block (max 16 insns)
+Restarting code generation with smaller translation block (max 16 insns)
+Restarting code generation with smaller translation block (max 16 insns)
+Restarting code generation with smaller translation block (max 16 insns)
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000002c7b780 0000000000000000 0000000000000000
+ mov_i32 loc2,sp_0
+ mov_i32 loc3,sp_1
+ add2_i32 loc2,loc3,loc2,loc3,$0xfffffff0,$0xffffffff
+ mov_i32 loc6,loc2
+ sextract_i32 loc7,loc3,$0x0,$0x18
+ and_i32 loc6,loc6,loc2
+ and_i32 loc7,loc7,loc3
+ mov_i32 loc8,x29_0
+ mov_i32 loc9,x29_1
+ mov_i32 loc10,lr_0
+ mov_i32 loc11,lr_1
+ qemu_st_a64_i64 loc8,loc9,loc6,loc7,pair+un+leq,0
+ add2_i32 tmp12,tmp13,loc6,loc7,$0x8,$0x0
+ qemu_st_a64_i64 loc10,loc11,tmp12,tmp13,pair+un+leq,0
+ mov_i32 sp_0,loc2
+ mov_i32 sp_1,loc3
+
+ ---- 0000000002c7b784 0000000000000000 0000000000000000
+ add2_i32 x29_0,x29_1,sp_0,sp_1,$0x0,$0x0
+
+ ---- 0000000002c7b788 0000000000000000 0000000000000000
+ mov_i32 x8_0,x0_0
+ mov_i32 x8_1,$0x0
+
+ ---- 0000000002c7b78c 0000000000000000 0000000000000000
+ mov_i32 loc17,x8_0
+ mov_i32 loc18,$0x0
+ xor_i32 x0_0,x8_0,loc17
+ xor_i32 x0_1,x8_1,loc18
+ mov_i32 x0_1,$0x0
+
+ ---- 0000000002c7b790 0000000000000000 0000000000000000
+ mov_i32 loc19,sp_0
+ mov_i32 loc20,sp_1
+ mov_i32 loc21,loc19
+ sextract_i32 loc22,loc20,$0x0,$0x18
+ and_i32 loc21,loc21,loc19
+ and_i32 loc22,loc22,loc20
+ qemu_ld_a64_i64 loc23,loc24,loc21,loc22,pair+un+leq,0
+ add2_i32 tmp12,tmp13,loc21,loc22,$0x8,$0x0
+ qemu_ld_a64_i64 loc25,loc26,tmp12,tmp13,pair+un+leq,0
+ mov_i32 x29_0,loc23
+ mov_i32 x29_1,loc24
+ mov_i32 lr_0,loc25
+ mov_i32 lr_1,loc26
+ add2_i32 loc19,loc20,loc19,loc20,$0x10,$0x0
+ mov_i32 sp_0,loc19
+ mov_i32 sp_1,loc20
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002c7b794 0000000000000000 0000000000000000
+ mov_i32 pc_0,lr_0
+ sextract_i32 pc_1,lr_1,$0x0,$0x18
+ and_i32 pc_0,pc_0,lr_0
+ and_i32 pc_1,pc_1,lr_1
+ mov_i32 loc28,pc_0
+ mov_i32 loc29,pc_1
+ shr_i32 loc30,loc28,$0xc
+ xor_i32 loc30,loc30,loc28
+ and_i32 loc30,loc30,$0xfff
+ shl_i32 loc30,loc30,$0x4
+ ld_i32 loc33,env,$0xfffffff0
+ mov_i32 loc34,loc30
+ add_i32 loc33,loc33,loc34
+ ld_i32 loc31,loc33,$0x8
+ brcond_i32 loc31,$0x0,eq,$L1
+ ld_i32 loc32,loc33,$0x10
+ brcond_i32 loc32,loc28,ne,$L1
+ ld_i32 loc32,loc33,$0x14
+ brcond_i32 loc32,loc29,ne,$L1
+ mov_i32 loc34,loc31
+ ld_i32 loc32,loc34,$0x10
+ brcond_i32 loc32,$0x1,ne,$L1
+ ld_i32 loc32,loc34,$0x8
+ brcond_i32 loc32,$0x80009101,ne,$L1
+ ld_i32 loc32,loc34,$0xc
+ brcond_i32 loc32,$0x0,ne,$L1
+ ld_i32 loc32,loc34,$0x14
+ brcond_i32 loc32,$0x8000,ne,$L1
+ ld_i32 loc35,loc34,$0x1c
+ goto_ptr loc35
+ set_label $L1
+ call lookup_tb_ptr,$0x6,$1,tmp42,env
+ goto_ptr tmp42
+ set_label $L0
+ exit_tb $0xa7a1d443
+
+OUT: [size=420]
+  -- guest addr 0x0000000002c7b780 + tb prologue
+0xa7a1d4c0:  e516400c  ldr      r4, [r6, #-0xc]
+0xa7a1d4c4:  e3540000  cmp      r4, #0
+0xa7a1d4c8:  ba000061  blt      #0xa7a1d654
+0xa7a1d4cc:  e3a04000  mov      r4, #0
+0xa7a1d4d0:  e5464008  strb     r4, [r6, #-8]
+0xa7a1d4d4:  e5965138  ldr      r5, [r6, #0x138]
+0xa7a1d4d8:  e596713c  ldr      r7, [r6, #0x13c]
+0xa7a1d4dc:  e2555010  subs     r5, r5, #0x10
+0xa7a1d4e0:  e2c77000  sbc      r7, r7, #0
+0xa7a1d4e4:  e1a08005  mov      r8, r5
+0xa7a1d4e8:  e7b79057  sbfx     sb, r7, #0, #0x18
+0xa7a1d4ec:  e0099007  and      sb, sb, r7
+0xa7a1d4f0:  e5960128  ldr      r0, [r6, #0x128]
+0xa7a1d4f4:  e596112c  ldr      r1, [r6, #0x12c]
+0xa7a1d4f8:  e088c00b  add      ip, r8, fp
+0xa7a1d4fc:  e58c0000  str      r0, [ip]
+0xa7a1d500:  e58c1004  str      r1, [ip, #4]
+0xa7a1d504:  e2988008  adds     r8, r8, #8
+0xa7a1d508:  e0a99004  adc      sb, sb, r4
+0xa7a1d50c:  e5960130  ldr      r0, [r6, #0x130]
+0xa7a1d510:  e5961134  ldr      r1, [r6, #0x134]
+0xa7a1d514:  e088c00b  add      ip, r8, fp
+0xa7a1d518:  e58c0000  str      r0, [ip]
+0xa7a1d51c:  e58c1004  str      r1, [ip, #4]
+0xa7a1d520:  e5865138  str      r5, [r6, #0x138]
+0xa7a1d524:  e586713c  str      r7, [r6, #0x13c]
+  -- guest addr 0x0000000002c7b784
+0xa7a1d528:  e2958000  adds     r8, r5, #0
+0xa7a1d52c:  e2a79000  adc      sb, r7, #0
+0xa7a1d530:  e5868128  str      r8, [r6, #0x128]
+0xa7a1d534:  e586912c  str      sb, [r6, #0x12c]
+  -- guest addr 0x0000000002c7b788
+0xa7a1d538:  e5968040  ldr      r8, [r6, #0x40]
+0xa7a1d53c:  e5868080  str      r8, [r6, #0x80]
+0xa7a1d540:  e5864084  str      r4, [r6, #0x84]
+  -- guest addr 0x0000000002c7b78c
+0xa7a1d544:  e5864040  str      r4, [r6, #0x40]
+0xa7a1d548:  e5864044  str      r4, [r6, #0x44]
+  -- guest addr 0x0000000002c7b790
+0xa7a1d54c:  e7b78057  sbfx     r8, r7, #0, #0x18
+0xa7a1d550:  e0088007  and      r8, r8, r7
+0xa7a1d554:  e085c00b  add      ip, r5, fp
+0xa7a1d558:  e59c0000  ldr      r0, [ip]
+0xa7a1d55c:  e59c1004  ldr      r1, [ip, #4]
+0xa7a1d560:  e295c008  adds     ip, r5, #8
+0xa7a1d564:  e0a89004  adc      sb, r8, r4
+0xa7a1d568:  e1a0800c  mov      r8, ip
+0xa7a1d56c:  e58d0080  str      r0, [sp, #0x80]
+0xa7a1d570:  e58d1084  str      r1, [sp, #0x84]
+0xa7a1d574:  e088c00b  add      ip, r8, fp
+0xa7a1d578:  e59c8000  ldr      r8, [ip]
+0xa7a1d57c:  e59c9004  ldr      sb, [ip, #4]
+0xa7a1d580:  e59da080  ldr      sl, [sp, #0x80]
+0xa7a1d584:  e586a128  str      sl, [r6, #0x128]
+0xa7a1d588:  e59da084  ldr      sl, [sp, #0x84]
+0xa7a1d58c:  e586a12c  str      sl, [r6, #0x12c]
+0xa7a1d590:  e5868130  str      r8, [r6, #0x130]
+0xa7a1d594:  e5869134  str      sb, [r6, #0x134]
+0xa7a1d598:  e2955010  adds     r5, r5, #0x10
+0xa7a1d59c:  e0a77004  adc      r7, r7, r4
+0xa7a1d5a0:  e5865138  str      r5, [r6, #0x138]
+0xa7a1d5a4:  e586713c  str      r7, [r6, #0x13c]
+0xa7a1d5a8:  e3a05001  mov      r5, #1
+0xa7a1d5ac:  e5465008  strb     r5, [r6, #-8]
+  -- guest addr 0x0000000002c7b794
+0xa7a1d5b0:  e5868140  str      r8, [r6, #0x140]
+0xa7a1d5b4:  e7b77059  sbfx     r7, sb, #0, #0x18
+0xa7a1d5b8:  e0077009  and      r7, r7, sb
+0xa7a1d5bc:  e5867144  str      r7, [r6, #0x144]
+0xa7a1d5c0:  e1a09628  lsr      sb, r8, #0xc
+0xa7a1d5c4:  e0299008  eor      sb, sb, r8
+0xa7a1d5c8:  e300afff  movw     sl, #0xfff
+0xa7a1d5cc:  e009900a  and      sb, sb, sl
+0xa7a1d5d0:  e1a09209  lsl      sb, sb, #4
+0xa7a1d5d4:  e516a010  ldr      sl, [r6, #-0x10]
+0xa7a1d5d8:  e08a9009  add      sb, sl, sb
+0xa7a1d5dc:  e599a008  ldr      sl, [sb, #8]
+0xa7a1d5e0:  e15a0004  cmp      sl, r4
+0xa7a1d5e4:  0a000015  beq      #0xa7a1d640
+0xa7a1d5e8:  e5990010  ldr      r0, [sb, #0x10]
+0xa7a1d5ec:  e1500008  cmp      r0, r8
+0xa7a1d5f0:  1a000012  bne      #0xa7a1d640
+0xa7a1d5f4:  e5998014  ldr      r8, [sb, #0x14]
+0xa7a1d5f8:  e1580007  cmp      r8, r7
+0xa7a1d5fc:  1a00000f  bne      #0xa7a1d640
+0xa7a1d600:  e59a7010  ldr      r7, [sl, #0x10]
+0xa7a1d604:  e1570005  cmp      r7, r5
+0xa7a1d608:  1a00000c  bne      #0xa7a1d640
+0xa7a1d60c:  e59a5008  ldr      r5, [sl, #8]
+0xa7a1d610:  e3097101  movw     r7, #0x9101
+0xa7a1d614:  e3487000  movt     r7, #0x8000
+0xa7a1d618:  e1550007  cmp      r5, r7
+0xa7a1d61c:  1a000007  bne      #0xa7a1d640
+0xa7a1d620:  e59a500c  ldr      r5, [sl, #0xc]
+0xa7a1d624:  e1550004  cmp      r5, r4
+0xa7a1d628:  1a000004  bne      #0xa7a1d640
+0xa7a1d62c:  e59a4014  ldr      r4, [sl, #0x14]
+0xa7a1d630:  e3540902  cmp      r4, #0x8000
+0xa7a1d634:  1a000001  bne      #0xa7a1d640
+0xa7a1d638:  e59a401c  ldr      r4, [sl, #0x1c]
+0xa7a1d63c:  e12fff14  bx       r4
+0xa7a1d640:  e1a00006  mov      r0, r6
+0xa7a1d644:  e301ca21  movw     ip, #0x1a21
+0xa7a1d648:  e340c01b  movt     ip, #0x1b
+0xa7a1d64c:  e12fff3c  blx      ip
+0xa7a1d650:  e12fff10  bx       r0
+0xa7a1d654:  e30d0443  movw     r0, #0xd443
+0xa7a1d658:  e34a07a1  movt     r0, #0xa7a1
+0xa7a1d65c:  e28ddfa1  add      sp, sp, #0x284
+0xa7a1d660:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000002c7b740 0000000000000000 0000000000000000
+ mov_i32 loc2,sp_0
+ mov_i32 loc3,sp_1
+ add2_i32 loc2,loc3,loc2,loc3,$0xffffffe0,$0xffffffff
+ mov_i32 loc6,loc2
+ sextract_i32 loc7,loc3,$0x0,$0x18
+ and_i32 loc6,loc6,loc2
+ and_i32 loc7,loc7,loc3
+ mov_i32 loc8,x29_0
+ mov_i32 loc9,x29_1
+ mov_i32 loc10,lr_0
+ mov_i32 loc11,lr_1
+ qemu_st_a64_i64 loc8,loc9,loc6,loc7,pair+un+leq,0
+ add2_i32 tmp12,tmp13,loc6,loc7,$0x8,$0x0
+ qemu_st_a64_i64 loc10,loc11,tmp12,tmp13,pair+un+leq,0
+ mov_i32 sp_0,loc2
+ mov_i32 sp_1,loc3
+
+ ---- 0000000002c7b744 0000000000000000 0000000000000000
+ mov_i32 loc15,sp_0
+ mov_i32 loc16,sp_1
+ add2_i32 loc15,loc16,loc15,loc16,$0x10,$0x0
+ mov_i32 loc18,loc15
+ sextract_i32 loc19,loc16,$0x0,$0x18
+ and_i32 loc18,loc18,loc15
+ and_i32 loc19,loc19,loc16
+ mov_i32 loc20,x20_0
+ mov_i32 loc21,x20_1
+ mov_i32 loc22,x19_0
+ mov_i32 loc23,x19_1
+ qemu_st_a64_i64 loc20,loc21,loc18,loc19,pair+un+leq,0
+ add2_i32 tmp12,tmp13,loc18,loc19,$0x8,$0x0
+ qemu_st_a64_i64 loc22,loc23,tmp12,tmp13,pair+un+leq,0
+
+ ---- 0000000002c7b748 0000000000000000 0000000000000000
+ add2_i32 x29_0,x29_1,sp_0,sp_1,$0x0,$0x0
+
+ ---- 0000000002c7b74c 0000000000000000 0000000000001ca0
+ mov_i32 loc26,x0_0
+ mov_i32 loc27,x0_1
+ mov_i32 loc28,loc26
+ sextract_i32 loc29,loc27,$0x0,$0x18
+ and_i32 loc28,loc28,loc26
+ and_i32 loc29,loc29,loc27
+ qemu_ld_a64_i32 x20_0,loc28,loc29,un+leul,0
+ mov_i32 x20_1,$0x0
+
+ ---- 0000000002c7b750 0000000000000000 0000000000000000
+ mov_i32 x19_0,x1_0
+ mov_i32 x19_1,x1_1
+
+ ---- 0000000002c7b754 0000000000000000 0000000000000000
+ mov_i32 x0_0,x20_0
+ mov_i32 x0_1,$0x0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002c7b758 0000000000000000 0000000000000000
+ mov_i32 lr_0,$0x2c7b75c
+ mov_i32 lr_1,$0x0
+ goto_tb $0x0
+ mov_i32 pc_0,$0x2c7b780
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa7a25cc0
+ set_label $L0
+ exit_tb $0xa7a25cc3
+
+OUT: [size=316]
+  -- guest addr 0x0000000002c7b740 + tb prologue
+0xa7a25d40:  e516400c  ldr      r4, [r6, #-0xc]
+0xa7a25d44:  e3540000  cmp      r4, #0
+0xa7a25d48:  ba000047  blt      #0xa7a25e6c
+0xa7a25d4c:  e3a04000  mov      r4, #0
+0xa7a25d50:  e5464008  strb     r4, [r6, #-8]
+0xa7a25d54:  e5965138  ldr      r5, [r6, #0x138]
+0xa7a25d58:  e596713c  ldr      r7, [r6, #0x13c]
+0xa7a25d5c:  e2555020  subs     r5, r5, #0x20
+0xa7a25d60:  e2c77000  sbc      r7, r7, #0
+0xa7a25d64:  e1a08005  mov      r8, r5
+0xa7a25d68:  e7b79057  sbfx     sb, r7, #0, #0x18
+0xa7a25d6c:  e0099007  and      sb, sb, r7
+0xa7a25d70:  e5960128  ldr      r0, [r6, #0x128]
+0xa7a25d74:  e596112c  ldr      r1, [r6, #0x12c]
+0xa7a25d78:  e088c00b  add      ip, r8, fp
+0xa7a25d7c:  e58c0000  str      r0, [ip]
+0xa7a25d80:  e58c1004  str      r1, [ip, #4]
+0xa7a25d84:  e2988008  adds     r8, r8, #8
+0xa7a25d88:  e0a99004  adc      sb, sb, r4
+0xa7a25d8c:  e5960130  ldr      r0, [r6, #0x130]
+0xa7a25d90:  e5961134  ldr      r1, [r6, #0x134]
+0xa7a25d94:  e088c00b  add      ip, r8, fp
+0xa7a25d98:  e58c0000  str      r0, [ip]
+0xa7a25d9c:  e58c1004  str      r1, [ip, #4]
+0xa7a25da0:  e5865138  str      r5, [r6, #0x138]
+0xa7a25da4:  e586713c  str      r7, [r6, #0x13c]
+  -- guest addr 0x0000000002c7b744
+0xa7a25da8:  e2958010  adds     r8, r5, #0x10
+0xa7a25dac:  e0a79004  adc      sb, r7, r4
+0xa7a25db0:  e7b7a059  sbfx     sl, sb, #0, #0x18
+0xa7a25db4:  e00a9009  and      sb, sl, sb
+0xa7a25db8:  e59600e0  ldr      r0, [r6, #0xe0]
+0xa7a25dbc:  e59610e4  ldr      r1, [r6, #0xe4]
+0xa7a25dc0:  e088c00b  add      ip, r8, fp
+0xa7a25dc4:  e58c0000  str      r0, [ip]
+0xa7a25dc8:  e58c1004  str      r1, [ip, #4]
+0xa7a25dcc:  e2988008  adds     r8, r8, #8
+0xa7a25dd0:  e0a99004  adc      sb, sb, r4
+0xa7a25dd4:  e59600d8  ldr      r0, [r6, #0xd8]
+0xa7a25dd8:  e59610dc  ldr      r1, [r6, #0xdc]
+0xa7a25ddc:  e088c00b  add      ip, r8, fp
+0xa7a25de0:  e58c0000  str      r0, [ip]
+0xa7a25de4:  e58c1004  str      r1, [ip, #4]
+  -- guest addr 0x0000000002c7b748
+0xa7a25de8:  e2955000  adds     r5, r5, #0
+0xa7a25dec:  e2a77000  adc      r7, r7, #0
+0xa7a25df0:  e5865128  str      r5, [r6, #0x128]
+0xa7a25df4:  e586712c  str      r7, [r6, #0x12c]
+  -- guest addr 0x0000000002c7b74c
+0xa7a25df8:  e5965044  ldr      r5, [r6, #0x44]
+0xa7a25dfc:  e7b77055  sbfx     r7, r5, #0, #0x18
+0xa7a25e00:  e0075005  and      r5, r7, r5
+0xa7a25e04:  e5967040  ldr      r7, [r6, #0x40]
+0xa7a25e08:  e797500b  ldr      r5, [r7, fp]
+0xa7a25e0c:  e58650e0  str      r5, [r6, #0xe0]
+0xa7a25e10:  e58640e4  str      r4, [r6, #0xe4]
+  -- guest addr 0x0000000002c7b750
+0xa7a25e14:  e5967048  ldr      r7, [r6, #0x48]
+0xa7a25e18:  e58670d8  str      r7, [r6, #0xd8]
+0xa7a25e1c:  e596704c  ldr      r7, [r6, #0x4c]
+0xa7a25e20:  e58670dc  str      r7, [r6, #0xdc]
+  -- guest addr 0x0000000002c7b754
+0xa7a25e24:  e5865040  str      r5, [r6, #0x40]
+0xa7a25e28:  e5864044  str      r4, [r6, #0x44]
+0xa7a25e2c:  e3a05001  mov      r5, #1
+0xa7a25e30:  e5465008  strb     r5, [r6, #-8]
+  -- guest addr 0x0000000002c7b758
+0xa7a25e34:  e30b575c  movw     r5, #0xb75c
+0xa7a25e38:  e34052c7  movt     r5, #0x2c7
+0xa7a25e3c:  e5865130  str      r5, [r6, #0x130]
+0xa7a25e40:  e5864134  str      r4, [r6, #0x134]
+0xa7a25e44:  e320f000  nop      
+0xa7a25e48:  e51ff134  ldr      pc, [pc, #-0x134]
+0xa7a25e4c:  e30b4780  movw     r4, #0xb780
+0xa7a25e50:  e34042c7  movt     r4, #0x2c7
+0xa7a25e54:  e5864140  str      r4, [r6, #0x140]
+0xa7a25e58:  e3a04000  mov      r4, #0
+0xa7a25e5c:  e5864144  str      r4, [r6, #0x144]
+0xa7a25e60:  e24f0f6a  sub      r0, pc, #0x1a8
+0xa7a25e64:  e28ddfa1  add      sp, sp, #0x284
+0xa7a25e68:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa7a25e6c:  e3050cc3  movw     r0, #0x5cc3
+0xa7a25e70:  e34a07a2  movt     r0, #0xa7a2
+0xa7a25e74:  e28ddfa1  add      sp, sp, #0x284
+0xa7a25e78:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 0000000002c7b75c 0000000000000000 0000000000001ca0
+ mov_i32 loc2,x19_0
+ mov_i32 loc3,x19_1
+ mov_i32 loc4,loc2
+ sextract_i32 loc5,loc3,$0x0,$0x18
+ and_i32 loc4,loc4,loc2
+ and_i32 loc5,loc5,loc3
+ qemu_st_a64_i32 x20_0,loc4,loc5,un+leul,0
+
+ ---- 0000000002c7b760 0000000000000000 0000000000000000
+ mov_i32 loc6,sp_0
+ mov_i32 loc7,sp_1
+ add2_i32 loc6,loc7,loc6,loc7,$0x10,$0x0
+ mov_i32 loc9,loc6
+ sextract_i32 loc10,loc7,$0x0,$0x18
+ and_i32 loc9,loc9,loc6
+ and_i32 loc10,loc10,loc7
+ qemu_ld_a64_i64 loc11,loc12,loc9,loc10,pair+un+leq,0
+ add2_i32 tmp15,tmp16,loc9,loc10,$0x8,$0x0
+ qemu_ld_a64_i64 loc13,loc14,tmp15,tmp16,pair+un+leq,0
+ mov_i32 x20_0,loc11
+ mov_i32 x20_1,loc12
+ mov_i32 x19_0,loc13
+ mov_i32 x19_1,loc14
+
+ ---- 0000000002c7b764 0000000000000000 0000000000000000
+ mov_i32 loc18,sp_0
+ mov_i32 loc19,sp_1
+ mov_i32 loc20,loc18
+ sextract_i32 loc21,loc19,$0x0,$0x18
+ and_i32 loc20,loc20,loc18
+ and_i32 loc21,loc21,loc19
+ qemu_ld_a64_i64 loc22,loc23,loc20,loc21,pair+un+leq,0
+ add2_i32 tmp15,tmp16,loc20,loc21,$0x8,$0x0
+ qemu_ld_a64_i64 loc24,loc25,tmp15,tmp16,pair+un+leq,0
+ mov_i32 x29_0,loc22
+ mov_i32 x29_1,loc23
+ mov_i32 lr_0,loc24
+ mov_i32 lr_1,loc25
+ add2_i32 loc18,loc19,loc18,loc19,$0x20,$0x0
+ mov_i32 sp_0,loc18
+ mov_i32 sp_1,loc19
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 0000000002c7b768 0000000000000000 0000000000000000
+ mov_i32 pc_0,lr_0
+ sextract_i32 pc_1,lr_1,$0x0,$0x18
+ and_i32 pc_0,pc_0,lr_0
+ and_i32 pc_1,pc_1,lr_1
+ mov_i32 loc27,pc_0
+ mov_i32 loc28,pc_1
+ shr_i32 loc29,loc27,$0xc
+ xor_i32 loc29,loc29,loc27
+ and_i32 loc29,loc29,$0xfff
+ shl_i32 loc29,loc29,$0x4
+ ld_i32 loc32,env,$0xfffffff0
+ mov_i32 loc33,loc29
+ add_i32 loc32,loc32,loc33
+ ld_i32 loc30,loc32,$0x8
+ brcond_i32 loc30,$0x0,eq,$L1
+ ld_i32 loc31,loc32,$0x10
+ brcond_i32 loc31,loc27,ne,$L1
+ ld_i32 loc31,loc32,$0x14
+ brcond_i32 loc31,loc28,ne,$L1
+ mov_i32 loc33,loc30
+ ld_i32 loc31,loc33,$0x10
+ brcond_i32 loc31,$0x1,ne,$L1
+ ld_i32 loc31,loc33,$0x8
+ brcond_i32 loc31,$0x80009101,ne,$L1
+ ld_i32 loc31,loc33,$0xc
+ brcond_i32 loc31,$0x0,ne,$L1
+ ld_i32 loc31,loc33,$0x14
+ brcond_i32 loc31,$0x8000,ne,$L1
+ ld_i32 loc34,loc33,$0x1c
+ goto_ptr loc34
+ set_label $L1
+ call lookup_tb_ptr,$0x6,$1,tmp41,env
+ goto_ptr tmp41
+ set_label $L0
+ exit_tb $0xa7a25ec3
+
+OUT: [size=412]
+  -- guest addr 0x0000000002c7b75c + tb prologue
+0xa7a25f40:  e516400c  ldr      r4, [r6, #-0xc]
+0xa7a25f44:  e3540000  cmp      r4, #0
+0xa7a25f48:  ba00005f  blt      #0xa7a260cc
+0xa7a25f4c:  e3a04000  mov      r4, #0
+0xa7a25f50:  e5464008  strb     r4, [r6, #-8]
+0xa7a25f54:  e59650dc  ldr      r5, [r6, #0xdc]
+0xa7a25f58:  e7b77055  sbfx     r7, r5, #0, #0x18
+0xa7a25f5c:  e0075005  and      r5, r7, r5
+0xa7a25f60:  e59670e0  ldr      r7, [r6, #0xe0]
+0xa7a25f64:  e59680d8  ldr      r8, [r6, #0xd8]
+0xa7a25f68:  e788700b  str      r7, [r8, fp]
+  -- guest addr 0x0000000002c7b760
+0xa7a25f6c:  e5965138  ldr      r5, [r6, #0x138]
+0xa7a25f70:  e596713c  ldr      r7, [r6, #0x13c]
+0xa7a25f74:  e2958010  adds     r8, r5, #0x10
+0xa7a25f78:  e0a79004  adc      sb, r7, r4
+0xa7a25f7c:  e7b7a059  sbfx     sl, sb, #0, #0x18
+0xa7a25f80:  e00a9009  and      sb, sl, sb
+0xa7a25f84:  e088c00b  add      ip, r8, fp
+0xa7a25f88:  e59c0000  ldr      r0, [ip]
+0xa7a25f8c:  e59c1004  ldr      r1, [ip, #4]
+0xa7a25f90:  e2988008  adds     r8, r8, #8
+0xa7a25f94:  e0a99004  adc      sb, sb, r4
+0xa7a25f98:  e58d0080  str      r0, [sp, #0x80]
+0xa7a25f9c:  e58d1084  str      r1, [sp, #0x84]
+0xa7a25fa0:  e088c00b  add      ip, r8, fp
+0xa7a25fa4:  e59c8000  ldr      r8, [ip]
+0xa7a25fa8:  e59c9004  ldr      sb, [ip, #4]
+0xa7a25fac:  e59da080  ldr      sl, [sp, #0x80]
+0xa7a25fb0:  e586a0e0  str      sl, [r6, #0xe0]
+0xa7a25fb4:  e59da084  ldr      sl, [sp, #0x84]
+0xa7a25fb8:  e586a0e4  str      sl, [r6, #0xe4]
+0xa7a25fbc:  e58680d8  str      r8, [r6, #0xd8]
+0xa7a25fc0:  e58690dc  str      sb, [r6, #0xdc]
+  -- guest addr 0x0000000002c7b764
+0xa7a25fc4:  e7b78057  sbfx     r8, r7, #0, #0x18
+0xa7a25fc8:  e0088007  and      r8, r8, r7
+0xa7a25fcc:  e085c00b  add      ip, r5, fp
+0xa7a25fd0:  e59c0000  ldr      r0, [ip]
+0xa7a25fd4:  e59c1004  ldr      r1, [ip, #4]
+0xa7a25fd8:  e295c008  adds     ip, r5, #8
+0xa7a25fdc:  e0a89004  adc      sb, r8, r4
+0xa7a25fe0:  e1a0800c  mov      r8, ip
+0xa7a25fe4:  e58d0090  str      r0, [sp, #0x90]
+0xa7a25fe8:  e58d1094  str      r1, [sp, #0x94]
+0xa7a25fec:  e088c00b  add      ip, r8, fp
+0xa7a25ff0:  e59c8000  ldr      r8, [ip]
+0xa7a25ff4:  e59c9004  ldr      sb, [ip, #4]
+0xa7a25ff8:  e59da090  ldr      sl, [sp, #0x90]
+0xa7a25ffc:  e586a128  str      sl, [r6, #0x128]
+0xa7a26000:  e59da094  ldr      sl, [sp, #0x94]
+0xa7a26004:  e586a12c  str      sl, [r6, #0x12c]
+0xa7a26008:  e5868130  str      r8, [r6, #0x130]
+0xa7a2600c:  e5869134  str      sb, [r6, #0x134]
+0xa7a26010:  e2955020  adds     r5, r5, #0x20
+0xa7a26014:  e0a77004  adc      r7, r7, r4
+0xa7a26018:  e5865138  str      r5, [r6, #0x138]
+0xa7a2601c:  e586713c  str      r7, [r6, #0x13c]
+0xa7a26020:  e3a05001  mov      r5, #1
+0xa7a26024:  e5465008  strb     r5, [r6, #-8]
+  -- guest addr 0x0000000002c7b768
+0xa7a26028:  e5868140  str      r8, [r6, #0x140]
+0xa7a2602c:  e7b77059  sbfx     r7, sb, #0, #0x18
+0xa7a26030:  e0077009  and      r7, r7, sb
+0xa7a26034:  e5867144  str      r7, [r6, #0x144]
+0xa7a26038:  e1a09628  lsr      sb, r8, #0xc
+0xa7a2603c:  e0299008  eor      sb, sb, r8
+0xa7a26040:  e300afff  movw     sl, #0xfff
+0xa7a26044:  e009900a  and      sb, sb, sl
+0xa7a26048:  e1a09209  lsl      sb, sb, #4
+0xa7a2604c:  e516a010  ldr      sl, [r6, #-0x10]
+0xa7a26050:  e08a9009  add      sb, sl, sb
+0xa7a26054:  e599a008  ldr      sl, [sb, #8]
+0xa7a26058:  e15a0004  cmp      sl, r4
+0xa7a2605c:  0a000015  beq      #0xa7a260b8
+0xa7a26060:  e5990010  ldr      r0, [sb, #0x10]
+0xa7a26064:  e1500008  cmp      r0, r8
+0xa7a26068:  1a000012  bne      #0xa7a260b8
+0xa7a2606c:  e5998014  ldr      r8, [sb, #0x14]
+0xa7a26070:  e1580007  cmp      r8, r7
+0xa7a26074:  1a00000f  bne      #0xa7a260b8
+0xa7a26078:  e59a7010  ldr      r7, [sl, #0x10]
+0xa7a2607c:  e1570005  cmp      r7, r5
+0xa7a26080:  1a00000c  bne      #0xa7a260b8
+0xa7a26084:  e59a5008  ldr      r5, [sl, #8]
+0xa7a26088:  e3097101  movw     r7, #0x9101
+0xa7a2608c:  e3487000  movt     r7, #0x8000
+0xa7a26090:  e1550007  cmp      r5, r7
+0xa7a26094:  1a000007  bne      #0xa7a260b8
+0xa7a26098:  e59a500c  ldr      r5, [sl, #0xc]
+0xa7a2609c:  e1550004  cmp      r5, r4
+0xa7a260a0:  1a000004  bne      #0xa7a260b8
+0xa7a260a4:  e59a4014  ldr      r4, [sl, #0x14]
+0xa7a260a8:  e3540902  cmp      r4, #0x8000
+0xa7a260ac:  1a000001  bne      #0xa7a260b8
+0xa7a260b0:  e59a401c  ldr      r4, [sl, #0x1c]
+0xa7a260b4:  e12fff14  bx       r4
+0xa7a260b8:  e1a00006  mov      r0, r6
+0xa7a260bc:  e301ca21  movw     ip, #0x1a21
+0xa7a260c0:  e340c01b  movt     ip, #0x1b
+0xa7a260c4:  e12fff3c  blx      ip
+0xa7a260c8:  e12fff10  bx       r0
+0xa7a260cc:  e3050ec3  movw     r0, #0x5ec3
+0xa7a260d0:  e34a07a2  movt     r0, #0xa7a2
+0xa7a260d4:  e28ddfa1  add      sp, sp, #0x284
+0xa7a260d8:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+Restarting code generation with smaller translation block (max 41 insns)
+Restarting code generation with smaller translation block (max 53 insns)
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 000000000425b3e0 0000000000000000 0000000000001c40
+ mov_i32 loc2,x22_0
+ mov_i32 loc3,x22_1
+ add2_i32 loc2,loc3,loc2,loc3,$0x8,$0x0
+ mov_i32 loc5,loc2
+ sextract_i32 loc6,loc3,$0x0,$0x18
+ and_i32 loc5,loc5,loc2
+ and_i32 loc6,loc6,loc3
+ qemu_ld_a64_i32 x8_0,loc5,loc6,un+leul,0
+ mov_i32 x8_1,$0x0
+
+ ---- 000000000425b3e4 0000000000000000 0000000000001e04
+ mov_i32 loc7,sp_0
+ mov_i32 loc8,sp_1
+ add2_i32 loc7,loc8,loc7,loc8,$0x10,$0x0
+ mov_i32 loc10,loc7
+ sextract_i32 loc11,loc8,$0x0,$0x18
+ and_i32 loc10,loc10,loc7
+ and_i32 loc11,loc11,loc8
+ qemu_st_a64_i64 x0_0,x0_1,loc10,loc11,un+leq,0
+
+ ---- 000000000425b3e8 0000000000000000 0000000000000000
+ mov_i32 loc12,sp_0
+ mov_i32 loc13,sp_1
+ add2_i32 loc12,loc13,loc12,loc13,$0x18,$0x0
+ mov_i32 loc15,loc12
+ sextract_i32 loc16,loc13,$0x0,$0x18
+ and_i32 loc15,loc15,loc12
+ and_i32 loc16,loc16,loc13
+ mov_i32 loc18,x21_0
+ mov_i32 loc17,x21_0
+ qemu_st_a64_i64 loc17,loc18,loc15,loc16,pair+un+leq,0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 000000000425b3ec 0000000000000000 0000000000000000
+ mov_i32 loc19,x8_0
+ mov_i32 loc20,$0x0
+ brcond2_i32 loc19,loc20,$0x0,$0x0,eq,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x425b3f0
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa7d8fa00
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x425b408
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa7d8fa01
+ set_label $L0
+ exit_tb $0xa7d8fa03
+
+OUT: [size=292]
+  -- guest addr 0x000000000425b3e0 + tb prologue
+0xa7d8fa80:  e516400c  ldr      r4, [r6, #-0xc]
+0xa7d8fa84:  e3540000  cmp      r4, #0
+0xa7d8fa88:  ba000037  blt      #0xa7d8fb6c
+0xa7d8fa8c:  e3a04000  mov      r4, #0
+0xa7d8fa90:  e5464008  strb     r4, [r6, #-8]
+0xa7d8fa94:  e59650f0  ldr      r5, [r6, #0xf0]
+0xa7d8fa98:  e59670f4  ldr      r7, [r6, #0xf4]
+0xa7d8fa9c:  e2955008  adds     r5, r5, #8
+0xa7d8faa0:  e0a77004  adc      r7, r7, r4
+0xa7d8faa4:  e7b78057  sbfx     r8, r7, #0, #0x18
+0xa7d8faa8:  e0087007  and      r7, r8, r7
+0xa7d8faac:  e795500b  ldr      r5, [r5, fp]
+0xa7d8fab0:  e5865080  str      r5, [r6, #0x80]
+0xa7d8fab4:  e5864084  str      r4, [r6, #0x84]
+  -- guest addr 0x000000000425b3e4
+0xa7d8fab8:  e5967138  ldr      r7, [r6, #0x138]
+0xa7d8fabc:  e596813c  ldr      r8, [r6, #0x13c]
+0xa7d8fac0:  e2979010  adds     sb, r7, #0x10
+0xa7d8fac4:  e0a8a004  adc      sl, r8, r4
+0xa7d8fac8:  e7b7005a  sbfx     r0, sl, #0, #0x18
+0xa7d8facc:  e000a00a  and      sl, r0, sl
+0xa7d8fad0:  e5960040  ldr      r0, [r6, #0x40]
+0xa7d8fad4:  e5961044  ldr      r1, [r6, #0x44]
+0xa7d8fad8:  e3190007  tst      sb, #7
+0xa7d8fadc:  018900fb  strdeq   r0, r1, [sb, fp]
+0xa7d8fae0:  1b000025  blne     #0xa7d8fb7c
+  -- guest addr 0x000000000425b3e8
+0xa7d8fae4:  e2977018  adds     r7, r7, #0x18
+0xa7d8fae8:  e0a88004  adc      r8, r8, r4
+0xa7d8faec:  e7b79058  sbfx     sb, r8, #0, #0x18
+0xa7d8faf0:  e0098008  and      r8, sb, r8
+0xa7d8faf4:  e59600e8  ldr      r0, [r6, #0xe8]
+0xa7d8faf8:  e1a01000  mov      r1, r0
+0xa7d8fafc:  e087c00b  add      ip, r7, fp
+0xa7d8fb00:  e58c0000  str      r0, [ip]
+0xa7d8fb04:  e58c1004  str      r1, [ip, #4]
+0xa7d8fb08:  e3a07001  mov      r7, #1
+0xa7d8fb0c:  e5467008  strb     r7, [r6, #-8]
+  -- guest addr 0x000000000425b3ec
+0xa7d8fb10:  e1550004  cmp      r5, r4
+0xa7d8fb14:  0a000009  beq      #0xa7d8fb40
+0xa7d8fb18:  e320f000  nop      
+0xa7d8fb1c:  e51ff0c8  ldr      pc, [pc, #-0xc8]
+0xa7d8fb20:  e30b43f0  movw     r4, #0xb3f0
+0xa7d8fb24:  e3404425  movt     r4, #0x425
+0xa7d8fb28:  e5864140  str      r4, [r6, #0x140]
+0xa7d8fb2c:  e3a04000  mov      r4, #0
+0xa7d8fb30:  e5864144  str      r4, [r6, #0x144]
+0xa7d8fb34:  e24f0f4f  sub      r0, pc, #0x13c
+0xa7d8fb38:  e28ddfa1  add      sp, sp, #0x284
+0xa7d8fb3c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa7d8fb40:  e320f000  nop      
+0xa7d8fb44:  e51ff0ec  ldr      pc, [pc, #-0xec]
+0xa7d8fb48:  e30b4408  movw     r4, #0xb408
+0xa7d8fb4c:  e3404425  movt     r4, #0x425
+0xa7d8fb50:  e5864140  str      r4, [r6, #0x140]
+0xa7d8fb54:  e3a04000  mov      r4, #0
+0xa7d8fb58:  e5864144  str      r4, [r6, #0x144]
+0xa7d8fb5c:  e30f0a01  movw     r0, #0xfa01
+0xa7d8fb60:  e34a07d8  movt     r0, #0xa7d8
+0xa7d8fb64:  e28ddfa1  add      sp, sp, #0x284
+0xa7d8fb68:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa7d8fb6c:  e30f0a03  movw     r0, #0xfa03
+0xa7d8fb70:  e34a07d8  movt     r0, #0xa7d8
+0xa7d8fb74:  e28ddfa1  add      sp, sp, #0x284
+0xa7d8fb78:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+  -- tb slow paths + alignment
+0xa7d8fb7c:  e58d1004  str      r1, [sp, #4]
+0xa7d8fb80:  e58d0000  str      r0, [sp]
+0xa7d8fb84:  e1a02009  mov      r2, sb
+0xa7d8fb88:  e1a0300a  mov      r3, sl
+0xa7d8fb8c:  e1a00006  mov      r0, r6
+0xa7d8fb90:  e3a0c030  mov      ip, #0x30
+0xa7d8fb94:  e58dc008  str      ip, [sp, #8]
+0xa7d8fb98:  e58de00c  str      lr, [sp, #0xc]
+0xa7d8fb9c:  e51ff004  ldr      pc, [pc, #-4]
+  data: [size=4]
+0xa7d8fba0:  .long  0x001bbbfd
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 000000000425b3f0 0000000000000000 0000000000001e4c
+ mov_i32 loc2,x22_0
+ mov_i32 loc3,x22_1
+ mov_i32 loc4,loc2
+ sextract_i32 loc5,loc3,$0x0,$0x18
+ and_i32 loc4,loc4,loc2
+ and_i32 loc5,loc5,loc3
+ qemu_ld_a64_i64 x9_0,x9_1,loc4,loc5,un+leq,0
+
+ ---- 000000000425b3f4 0000000000000000 0000000000000000
+ mov_i32 loc6,x22_0
+ mov_i32 loc7,x22_1
+ mov_i32 loc8,x9_0
+ mov_i32 loc9,x9_1
+ add2_i32 loc10,loc11,loc6,loc7,loc8,loc9
+ mov_i32 x9_0,loc10
+ mov_i32 x9_1,loc11
+
+ ---- 000000000425b3f8 0000000000000000 0000000000000000
+ mov_i32 loc12,x9_0
+ mov_i32 loc13,x9_1
+ mov_i32 loc14,loc12
+ sextract_i32 loc15,loc13,$0x0,$0x18
+ and_i32 loc14,loc14,loc12
+ and_i32 loc15,loc15,loc13
+ qemu_ld_a64_i32 x10_0,loc14,loc15,al+ub,0
+ mov_i32 x10_1,$0x0
+ add2_i32 loc12,loc13,loc12,loc13,$0x1,$0x0
+ mov_i32 x9_0,loc12
+ mov_i32 x9_1,loc13
+
+ ---- 000000000425b3fc 0000000000000000 0000000000000000
+ mov_i32 loc17,x0_0
+ mov_i32 loc18,x0_1
+ mov_i32 loc19,loc17
+ sextract_i32 loc20,loc18,$0x0,$0x18
+ and_i32 loc19,loc19,loc17
+ and_i32 loc20,loc20,loc18
+ qemu_st_a64_i32 x10_0,loc19,loc20,al+ub,0
+ add2_i32 loc17,loc18,loc17,loc18,$0x1,$0x0
+ mov_i32 x0_0,loc17
+ mov_i32 x0_1,loc18
+
+ ---- 000000000425b400 0000000000000000 0000000000000000
+ sub2_i32 loc23,loc24,x8_0,x8_1,$0x1,$0x0
+ mov_i32 ZF,loc23
+ mov_i32 NF,loc24
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc25,x8_0,x8_1,$0x1,$0x0,geu
+ mov_i32 loc26,$0x0
+ mov_i32 CF,loc25
+ xor_i32 loc25,loc23,x8_0
+ xor_i32 loc26,loc24,x8_1
+ xor_i32 loc27,x8_0,$0x1
+ xor_i32 loc28,x8_1,$0x0
+ and_i32 loc25,loc25,loc27
+ and_i32 loc26,loc26,loc28
+ mov_i32 VF,loc26
+ mov_i32 x8_0,loc23
+ mov_i32 x8_1,loc24
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 000000000425b404 0000000000000000 0000000000000000
+ brcond_i32 ZF,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x425b408
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa7d8fbc0
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x425b3f8
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa7d8fbc1
+ set_label $L0
+ exit_tb $0xa7d8fbc3
+
+OUT: [size=372]
+  -- guest addr 0x000000000425b3f0 + tb prologue
+0xa7d8fc40:  e516400c  ldr      r4, [r6, #-0xc]
+0xa7d8fc44:  e3540000  cmp      r4, #0
+0xa7d8fc48:  ba00004b  blt      #0xa7d8fd7c
+0xa7d8fc4c:  e3a04000  mov      r4, #0
+0xa7d8fc50:  e5464008  strb     r4, [r6, #-8]
+0xa7d8fc54:  e59650f4  ldr      r5, [r6, #0xf4]
+0xa7d8fc58:  e7b77055  sbfx     r7, r5, #0, #0x18
+0xa7d8fc5c:  e0077005  and      r7, r7, r5
+0xa7d8fc60:  e59680f0  ldr      r8, [r6, #0xf0]
+0xa7d8fc64:  e3180007  tst      r8, #7
+0xa7d8fc68:  1b000047  blne     #0xa7d8fd8c
+0xa7d8fc6c:  e18800db  ldrd     r0, r1, [r8, fp]
+  -- guest addr 0x000000000425b3f4
+0xa7d8fc70:  e098c000  adds     ip, r8, r0
+0xa7d8fc74:  e0a57001  adc      r7, r5, r1
+0xa7d8fc78:  e1a0500c  mov      r5, ip
+0xa7d8fc7c:  e5865088  str      r5, [r6, #0x88]
+0xa7d8fc80:  e586708c  str      r7, [r6, #0x8c]
+  -- guest addr 0x000000000425b3f8
+0xa7d8fc84:  e7b78057  sbfx     r8, r7, #0, #0x18
+0xa7d8fc88:  e0088007  and      r8, r8, r7
+0xa7d8fc8c:  e7d5800b  ldrb     r8, [r5, fp]
+0xa7d8fc90:  e5868090  str      r8, [r6, #0x90]
+0xa7d8fc94:  e5864094  str      r4, [r6, #0x94]
+0xa7d8fc98:  e2955001  adds     r5, r5, #1
+0xa7d8fc9c:  e0a77004  adc      r7, r7, r4
+0xa7d8fca0:  e5865088  str      r5, [r6, #0x88]
+0xa7d8fca4:  e586708c  str      r7, [r6, #0x8c]
+  -- guest addr 0x000000000425b3fc
+0xa7d8fca8:  e5965044  ldr      r5, [r6, #0x44]
+0xa7d8fcac:  e7b77055  sbfx     r7, r5, #0, #0x18
+0xa7d8fcb0:  e0077005  and      r7, r7, r5
+0xa7d8fcb4:  e5969040  ldr      sb, [r6, #0x40]
+0xa7d8fcb8:  e7c9800b  strb     r8, [sb, fp]
+0xa7d8fcbc:  e299c001  adds     ip, sb, #1
+0xa7d8fcc0:  e0a57004  adc      r7, r5, r4
+0xa7d8fcc4:  e1a0500c  mov      r5, ip
+0xa7d8fcc8:  e5865040  str      r5, [r6, #0x40]
+0xa7d8fccc:  e5867044  str      r7, [r6, #0x44]
+  -- guest addr 0x000000000425b400
+0xa7d8fcd0:  e5965080  ldr      r5, [r6, #0x80]
+0xa7d8fcd4:  e5967084  ldr      r7, [r6, #0x84]
+0xa7d8fcd8:  e2558001  subs     r8, r5, #1
+0xa7d8fcdc:  e2c79000  sbc      sb, r7, #0
+0xa7d8fce0:  e1a0a008  mov      sl, r8
+0xa7d8fce4:  e5869218  str      sb, [r6, #0x218]
+0xa7d8fce8:  e18aa009  orr      sl, sl, sb
+0xa7d8fcec:  e586a21c  str      sl, [r6, #0x21c]
+0xa7d8fcf0:  e3570000  cmp      r7, #0
+0xa7d8fcf4:  03550001  cmpeq    r5, #1
+0xa7d8fcf8:  23a05001  movhs    r5, #1
+0xa7d8fcfc:  33a05000  movlo    r5, #0
+0xa7d8fd00:  e5865210  str      r5, [r6, #0x210]
+0xa7d8fd04:  e0295007  eor      r5, sb, r7
+0xa7d8fd08:  e0055007  and      r5, r5, r7
+0xa7d8fd0c:  e5865214  str      r5, [r6, #0x214]
+0xa7d8fd10:  e5868080  str      r8, [r6, #0x80]
+0xa7d8fd14:  e5869084  str      sb, [r6, #0x84]
+0xa7d8fd18:  e3a05001  mov      r5, #1
+0xa7d8fd1c:  e5465008  strb     r5, [r6, #-8]
+  -- guest addr 0x000000000425b404
+0xa7d8fd20:  e15a0004  cmp      sl, r4
+0xa7d8fd24:  1a000009  bne      #0xa7d8fd50
+0xa7d8fd28:  e320f000  nop      
+0xa7d8fd2c:  e51ff118  ldr      pc, [pc, #-0x118]
+0xa7d8fd30:  e30b4408  movw     r4, #0xb408
+0xa7d8fd34:  e3404425  movt     r4, #0x425
+0xa7d8fd38:  e5864140  str      r4, [r6, #0x140]
+0xa7d8fd3c:  e3a04000  mov      r4, #0
+0xa7d8fd40:  e5864144  str      r4, [r6, #0x144]
+0xa7d8fd44:  e24f0f63  sub      r0, pc, #0x18c
+0xa7d8fd48:  e28ddfa1  add      sp, sp, #0x284
+0xa7d8fd4c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa7d8fd50:  e320f000  nop      
+0xa7d8fd54:  e51ff13c  ldr      pc, [pc, #-0x13c]
+0xa7d8fd58:  e30b43f8  movw     r4, #0xb3f8
+0xa7d8fd5c:  e3404425  movt     r4, #0x425
+0xa7d8fd60:  e5864140  str      r4, [r6, #0x140]
+0xa7d8fd64:  e3a04000  mov      r4, #0
+0xa7d8fd68:  e5864144  str      r4, [r6, #0x144]
+0xa7d8fd6c:  e30f0bc1  movw     r0, #0xfbc1
+0xa7d8fd70:  e34a07d8  movt     r0, #0xa7d8
+0xa7d8fd74:  e28ddfa1  add      sp, sp, #0x284
+0xa7d8fd78:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa7d8fd7c:  e30f0bc3  movw     r0, #0xfbc3
+0xa7d8fd80:  e34a07d8  movt     r0, #0xa7d8
+0xa7d8fd84:  e28ddfa1  add      sp, sp, #0x284
+0xa7d8fd88:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+  -- tb slow paths + alignment
+0xa7d8fd8c:  e1a02008  mov      r2, r8
+0xa7d8fd90:  e1a03007  mov      r3, r7
+0xa7d8fd94:  e1a00006  mov      r0, r6
+0xa7d8fd98:  e3a0c030  mov      ip, #0x30
+0xa7d8fd9c:  e58dc000  str      ip, [sp]
+0xa7d8fda0:  e58de004  str      lr, [sp, #4]
+0xa7d8fda4:  e30bc8b5  movw     ip, #0xb8b5
+0xa7d8fda8:  e340c01b  movt     ip, #0x1b
+0xa7d8fdac:  e12fff3c  blx      ip
+0xa7d8fdb0:  eaffffae  b        #0xa7d8fc70
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 000000000425b3f8 0000000000000000 0000000000000000
+ mov_i32 loc2,x9_0
+ mov_i32 loc3,x9_1
+ mov_i32 loc4,loc2
+ sextract_i32 loc5,loc3,$0x0,$0x18
+ and_i32 loc4,loc4,loc2
+ and_i32 loc5,loc5,loc3
+ qemu_ld_a64_i32 x10_0,loc4,loc5,al+ub,0
+ mov_i32 x10_1,$0x0
+ add2_i32 loc2,loc3,loc2,loc3,$0x1,$0x0
+ mov_i32 x9_0,loc2
+ mov_i32 x9_1,loc3
+
+ ---- 000000000425b3fc 0000000000000000 0000000000000000
+ mov_i32 loc7,x0_0
+ mov_i32 loc8,x0_1
+ mov_i32 loc9,loc7
+ sextract_i32 loc10,loc8,$0x0,$0x18
+ and_i32 loc9,loc9,loc7
+ and_i32 loc10,loc10,loc8
+ qemu_st_a64_i32 x10_0,loc9,loc10,al+ub,0
+ add2_i32 loc7,loc8,loc7,loc8,$0x1,$0x0
+ mov_i32 x0_0,loc7
+ mov_i32 x0_1,loc8
+
+ ---- 000000000425b400 0000000000000000 0000000000000000
+ sub2_i32 loc13,loc14,x8_0,x8_1,$0x1,$0x0
+ mov_i32 ZF,loc13
+ mov_i32 NF,loc14
+ or_i32 ZF,ZF,NF
+ setcond2_i32 loc15,x8_0,x8_1,$0x1,$0x0,geu
+ mov_i32 loc16,$0x0
+ mov_i32 CF,loc15
+ xor_i32 loc15,loc13,x8_0
+ xor_i32 loc16,loc14,x8_1
+ xor_i32 loc17,x8_0,$0x1
+ xor_i32 loc18,x8_1,$0x0
+ and_i32 loc15,loc15,loc17
+ and_i32 loc16,loc16,loc18
+ mov_i32 VF,loc16
+ mov_i32 x8_0,loc13
+ mov_i32 x8_1,loc14
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 000000000425b404 0000000000000000 0000000000000000
+ brcond_i32 ZF,$0x0,ne,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x425b408
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa7d8fe00
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x425b3f8
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa7d8fe01
+ set_label $L0
+ exit_tb $0xa7d8fe03
+
+OUT: [size=296]
+  -- guest addr 0x000000000425b3f8 + tb prologue
+0xa7d8fe80:  e516400c  ldr      r4, [r6, #-0xc]
+0xa7d8fe84:  e3540000  cmp      r4, #0
+0xa7d8fe88:  ba000042  blt      #0xa7d8ff98
+0xa7d8fe8c:  e3a04000  mov      r4, #0
+0xa7d8fe90:  e5464008  strb     r4, [r6, #-8]
+0xa7d8fe94:  e596508c  ldr      r5, [r6, #0x8c]
+0xa7d8fe98:  e7b77055  sbfx     r7, r5, #0, #0x18
+0xa7d8fe9c:  e0077005  and      r7, r7, r5
+0xa7d8fea0:  e5968088  ldr      r8, [r6, #0x88]
+0xa7d8fea4:  e7d8700b  ldrb     r7, [r8, fp]
+0xa7d8fea8:  e5867090  str      r7, [r6, #0x90]
+0xa7d8feac:  e5864094  str      r4, [r6, #0x94]
+0xa7d8feb0:  e298c001  adds     ip, r8, #1
+0xa7d8feb4:  e0a58004  adc      r8, r5, r4
+0xa7d8feb8:  e1a0500c  mov      r5, ip
+0xa7d8febc:  e5865088  str      r5, [r6, #0x88]
+0xa7d8fec0:  e586808c  str      r8, [r6, #0x8c]
+  -- guest addr 0x000000000425b3fc
+0xa7d8fec4:  e5965044  ldr      r5, [r6, #0x44]
+0xa7d8fec8:  e7b78055  sbfx     r8, r5, #0, #0x18
+0xa7d8fecc:  e0088005  and      r8, r8, r5
+0xa7d8fed0:  e5969040  ldr      sb, [r6, #0x40]
+0xa7d8fed4:  e7c9700b  strb     r7, [sb, fp]
+0xa7d8fed8:  e299c001  adds     ip, sb, #1
+0xa7d8fedc:  e0a57004  adc      r7, r5, r4
+0xa7d8fee0:  e1a0500c  mov      r5, ip
+0xa7d8fee4:  e5865040  str      r5, [r6, #0x40]
+0xa7d8fee8:  e5867044  str      r7, [r6, #0x44]
+  -- guest addr 0x000000000425b400
+0xa7d8feec:  e5965080  ldr      r5, [r6, #0x80]
+0xa7d8fef0:  e5967084  ldr      r7, [r6, #0x84]
+0xa7d8fef4:  e2558001  subs     r8, r5, #1
+0xa7d8fef8:  e2c79000  sbc      sb, r7, #0
+0xa7d8fefc:  e1a0a008  mov      sl, r8
+0xa7d8ff00:  e5869218  str      sb, [r6, #0x218]
+0xa7d8ff04:  e18aa009  orr      sl, sl, sb
+0xa7d8ff08:  e586a21c  str      sl, [r6, #0x21c]
+0xa7d8ff0c:  e3570000  cmp      r7, #0
+0xa7d8ff10:  03550001  cmpeq    r5, #1
+0xa7d8ff14:  23a05001  movhs    r5, #1
+0xa7d8ff18:  33a05000  movlo    r5, #0
+0xa7d8ff1c:  e5865210  str      r5, [r6, #0x210]
+0xa7d8ff20:  e0295007  eor      r5, sb, r7
+0xa7d8ff24:  e0055007  and      r5, r5, r7
+0xa7d8ff28:  e5865214  str      r5, [r6, #0x214]
+0xa7d8ff2c:  e5868080  str      r8, [r6, #0x80]
+0xa7d8ff30:  e5869084  str      sb, [r6, #0x84]
+0xa7d8ff34:  e3a05001  mov      r5, #1
+0xa7d8ff38:  e5465008  strb     r5, [r6, #-8]
+  -- guest addr 0x000000000425b404
+0xa7d8ff3c:  e15a0004  cmp      sl, r4
+0xa7d8ff40:  1a000009  bne      #0xa7d8ff6c
+0xa7d8ff44:  e320f000  nop      
+0xa7d8ff48:  e51ff0f4  ldr      pc, [pc, #-0xf4]
+0xa7d8ff4c:  e30b4408  movw     r4, #0xb408
+0xa7d8ff50:  e3404425  movt     r4, #0x425
+0xa7d8ff54:  e5864140  str      r4, [r6, #0x140]
+0xa7d8ff58:  e3a04000  mov      r4, #0
+0xa7d8ff5c:  e5864144  str      r4, [r6, #0x144]
+0xa7d8ff60:  e24f0f5a  sub      r0, pc, #0x168
+0xa7d8ff64:  e28ddfa1  add      sp, sp, #0x284
+0xa7d8ff68:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa7d8ff6c:  e320f000  nop      
+0xa7d8ff70:  e51ff118  ldr      pc, [pc, #-0x118]
+0xa7d8ff74:  e30b43f8  movw     r4, #0xb3f8
+0xa7d8ff78:  e3404425  movt     r4, #0x425
+0xa7d8ff7c:  e5864140  str      r4, [r6, #0x140]
+0xa7d8ff80:  e3a04000  mov      r4, #0
+0xa7d8ff84:  e5864144  str      r4, [r6, #0x144]
+0xa7d8ff88:  e30f0e01  movw     r0, #0xfe01
+0xa7d8ff8c:  e34a07d8  movt     r0, #0xa7d8
+0xa7d8ff90:  e28ddfa1  add      sp, sp, #0x284
+0xa7d8ff94:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa7d8ff98:  e30f0e03  movw     r0, #0xfe03
+0xa7d8ff9c:  e34a07d8  movt     r0, #0xa7d8
+0xa7d8ffa0:  e28ddfa1  add      sp, sp, #0x284
+0xa7d8ffa4:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 000000000425b408 0000000000000000 0000000000000000
+ mov_i32 x0_0,$0x10
+ mov_i32 x0_1,$0x0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 000000000425b40c 0000000000000000 0000000000000000
+ mov_i32 lr_0,$0x425b410
+ mov_i32 lr_1,$0x0
+ mov_i32 pc_0,$0x2c51540
+ mov_i32 pc_1,$0x0
+ call lookup_tb_ptr,$0x6,$1,tmp5,env
+ goto_ptr tmp5
+ set_label $L0
+ exit_tb $0xa7d8ffc3
+
+OUT: [size=104]
+  -- guest addr 0x000000000425b408 + tb prologue
+0xa7d90040:  e516400c  ldr      r4, [r6, #-0xc]
+0xa7d90044:  e3540000  cmp      r4, #0
+0xa7d90048:  ba000013  blt      #0xa7d9009c
+0xa7d9004c:  e3a04000  mov      r4, #0
+0xa7d90050:  e5464008  strb     r4, [r6, #-8]
+0xa7d90054:  e3a05010  mov      r5, #0x10
+0xa7d90058:  e5865040  str      r5, [r6, #0x40]
+0xa7d9005c:  e5864044  str      r4, [r6, #0x44]
+0xa7d90060:  e3a05001  mov      r5, #1
+0xa7d90064:  e5465008  strb     r5, [r6, #-8]
+  -- guest addr 0x000000000425b40c
+0xa7d90068:  e30b5410  movw     r5, #0xb410
+0xa7d9006c:  e3405425  movt     r5, #0x425
+0xa7d90070:  e5865130  str      r5, [r6, #0x130]
+0xa7d90074:  e5864134  str      r4, [r6, #0x134]
+0xa7d90078:  e3015540  movw     r5, #0x1540
+0xa7d9007c:  e34052c5  movt     r5, #0x2c5
+0xa7d90080:  e5865140  str      r5, [r6, #0x140]
+0xa7d90084:  e5864144  str      r4, [r6, #0x144]
+0xa7d90088:  e1a00006  mov      r0, r6
+0xa7d9008c:  e301ca21  movw     ip, #0x1a21
+0xa7d90090:  e340c01b  movt     ip, #0x1b
+0xa7d90094:  e12fff3c  blx      ip
+0xa7d90098:  e12fff10  bx       r0
+0xa7d9009c:  e24f00e1  sub      r0, pc, #0xe1
+0xa7d900a0:  e28ddfa1  add      sp, sp, #0x284
+0xa7d900a4:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 000000000425b410 0000000000000000 0000000000000000
+ mov_i32 loc2,x0_0
+ mov_i32 loc3,x0_1
+ brcond2_i32 loc2,loc3,$0x0,$0x0,eq,$L1
+ goto_tb $0x0
+ mov_i32 pc_0,$0x425b414
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa7d900c0
+ set_label $L1
+ goto_tb $0x1
+ mov_i32 pc_0,$0x425b488
+ mov_i32 pc_1,$0x0
+ exit_tb $0xa7d900c1
+ set_label $L0
+ exit_tb $0xa7d900c3
+
+OUT: [size=132]
+  -- guest addr 0x000000000425b410 + tb prologue
+0xa7d90140:  e516400c  ldr      r4, [r6, #-0xc]
+0xa7d90144:  e3540000  cmp      r4, #0
+0xa7d90148:  ba00001a  blt      #0xa7d901b8
+0xa7d9014c:  e3a04001  mov      r4, #1
+0xa7d90150:  e5464008  strb     r4, [r6, #-8]
+0xa7d90154:  e5964040  ldr      r4, [r6, #0x40]
+0xa7d90158:  e5965044  ldr      r5, [r6, #0x44]
+0xa7d9015c:  e3550000  cmp      r5, #0
+0xa7d90160:  03540000  cmpeq    r4, #0
+0xa7d90164:  0a000009  beq      #0xa7d90190
+0xa7d90168:  e320f000  nop      
+0xa7d9016c:  e51ff058  ldr      pc, [pc, #-0x58]
+0xa7d90170:  e30b4414  movw     r4, #0xb414
+0xa7d90174:  e3404425  movt     r4, #0x425
+0xa7d90178:  e5864140  str      r4, [r6, #0x140]
+0xa7d9017c:  e3a04000  mov      r4, #0
+0xa7d90180:  e5864144  str      r4, [r6, #0x144]
+0xa7d90184:  e24f00cc  sub      r0, pc, #0xcc
+0xa7d90188:  e28ddfa1  add      sp, sp, #0x284
+0xa7d9018c:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa7d90190:  e320f000  nop      
+0xa7d90194:  e51ff07c  ldr      pc, [pc, #-0x7c]
+0xa7d90198:  e30b4488  movw     r4, #0xb488
+0xa7d9019c:  e3404425  movt     r4, #0x425
+0xa7d901a0:  e5864140  str      r4, [r6, #0x140]
+0xa7d901a4:  e3a04000  mov      r4, #0
+0xa7d901a8:  e5864144  str      r4, [r6, #0x144]
+0xa7d901ac:  e24f00f3  sub      r0, pc, #0xf3
+0xa7d901b0:  e28ddfa1  add      sp, sp, #0x284
+0xa7d901b4:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+0xa7d901b8:  e24f00fd  sub      r0, pc, #0xfd
+0xa7d901bc:  e28ddfa1  add      sp, sp, #0x284
+0xa7d901c0:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+
+OP:
+ ld_i32 loc0,env,$0xfffffff4
+ brcond_i32 loc0,$0x0,lt,$L0
+ st8_i32 $0x0,env,$0xfffffff8
+
+ ---- 000000000425b414 0000000000000000 0000000000000000
+ add2_i32 x1_0,x1_1,sp_0,sp_1,$0x10,$0x0
+
+ ---- 000000000425b418 0000000000000000 0000000000000000
+ mov_i32 x21_0,x0_0
+ mov_i32 x21_1,x0_1
+
+ ---- 000000000425b41c 0000000000000000 0000000000001efc
+ mov_i32 loc4,x0_0
+ mov_i32 loc5,x0_1
+ add2_i32 loc4,loc5,loc4,loc5,$0x8,$0x0
+ mov_i32 loc7,loc4
+ sextract_i32 loc8,loc5,$0x0,$0x18
+ and_i32 loc7,loc7,loc4
+ and_i32 loc8,loc8,loc5
+ mov_i32 loc9,$0x0
+ mov_i32 loc10,$0x0
+ qemu_st_a64_i64 loc9,loc10,loc7,loc8,un+leq,0
+
+ ---- 000000000425b420 0000000000000000 0000000000001efc
+ mov_i32 loc11,x0_0
+ mov_i32 loc12,x0_1
+ mov_i32 loc13,loc11
+ sextract_i32 loc14,loc12,$0x0,$0x18
+ and_i32 loc13,loc13,loc11
+ and_i32 loc14,loc14,loc12
+ mov_i32 loc15,$0x0
+ mov_i32 loc16,$0x0
+ qemu_st_a64_i64 loc15,loc16,loc13,loc14,un+leq,0
+ st8_i32 $0x1,env,$0xfffffff8
+
+ ---- 000000000425b424 0000000000000000 0000000000000000
+ mov_i32 lr_0,$0x425b428
+ mov_i32 lr_1,$0x0
+ mov_i32 pc_0,$0x39fd7cc
+ mov_i32 pc_1,$0x0
+ call lookup_tb_ptr,$0x6,$1,tmp19,env
+ goto_ptr tmp19
+ set_label $L0
+ exit_tb $0xa7d90203
+
+OUT: [size=280]
+  -- guest addr 0x000000000425b414 + tb prologue
+0xa7d90280:  e516400c  ldr      r4, [r6, #-0xc]
+0xa7d90284:  e3540000  cmp      r4, #0
+0xa7d90288:  ba00002b  blt      #0xa7d9033c
+0xa7d9028c:  e3a04000  mov      r4, #0
+0xa7d90290:  e5464008  strb     r4, [r6, #-8]
+0xa7d90294:  e5965138  ldr      r5, [r6, #0x138]
+0xa7d90298:  e596713c  ldr      r7, [r6, #0x13c]
+0xa7d9029c:  e2955010  adds     r5, r5, #0x10
+0xa7d902a0:  e2a77000  adc      r7, r7, #0
+0xa7d902a4:  e5865048  str      r5, [r6, #0x48]
+0xa7d902a8:  e586704c  str      r7, [r6, #0x4c]
+  -- guest addr 0x000000000425b418
+0xa7d902ac:  e5965040  ldr      r5, [r6, #0x40]
+0xa7d902b0:  e1a07005  mov      r7, r5
+0xa7d902b4:  e58670e8  str      r7, [r6, #0xe8]
+0xa7d902b8:  e5968044  ldr      r8, [r6, #0x44]
+0xa7d902bc:  e58680ec  str      r8, [r6, #0xec]
+  -- guest addr 0x000000000425b41c
+0xa7d902c0:  e2977008  adds     r7, r7, #8
+0xa7d902c4:  e0a89004  adc      sb, r8, r4
+0xa7d902c8:  e7b7a059  sbfx     sl, sb, #0, #0x18
+0xa7d902cc:  e00a9009  and      sb, sl, sb
+0xa7d902d0:  e1a00004  mov      r0, r4
+0xa7d902d4:  e1a01004  mov      r1, r4
+0xa7d902d8:  e3170007  tst      r7, #7
+0xa7d902dc:  018700fb  strdeq   r0, r1, [r7, fp]
+0xa7d902e0:  1b000019  blne     #0xa7d9034c
+  -- guest addr 0x000000000425b420
+0xa7d902e4:  e7b77058  sbfx     r7, r8, #0, #0x18
+0xa7d902e8:  e0077008  and      r7, r7, r8
+0xa7d902ec:  e1a08004  mov      r8, r4
+0xa7d902f0:  e1a09004  mov      sb, r4
+0xa7d902f4:  e3150007  tst      r5, #7
+0xa7d902f8:  018580fb  strdeq   r8, sb, [r5, fp]
+0xa7d902fc:  1b00001b  blne     #0xa7d90370
+0xa7d90300:  e3a05001  mov      r5, #1
+0xa7d90304:  e5465008  strb     r5, [r6, #-8]
+  -- guest addr 0x000000000425b424
+0xa7d90308:  e30b5428  movw     r5, #0xb428
+0xa7d9030c:  e3405425  movt     r5, #0x425
+0xa7d90310:  e5865130  str      r5, [r6, #0x130]
+0xa7d90314:  e5864134  str      r4, [r6, #0x134]
+0xa7d90318:  e30d57cc  movw     r5, #0xd7cc
+0xa7d9031c:  e340539f  movt     r5, #0x39f
+0xa7d90320:  e5865140  str      r5, [r6, #0x140]
+0xa7d90324:  e5864144  str      r4, [r6, #0x144]
+0xa7d90328:  e1a00006  mov      r0, r6
+0xa7d9032c:  e301ca21  movw     ip, #0x1a21
+0xa7d90330:  e340c01b  movt     ip, #0x1b
+0xa7d90334:  e12fff3c  blx      ip
+0xa7d90338:  e12fff10  bx       r0
+0xa7d9033c:  e3000203  movw     r0, #0x203
+0xa7d90340:  e34a07d9  movt     r0, #0xa7d9
+0xa7d90344:  e28ddfa1  add      sp, sp, #0x284
+0xa7d90348:  e8bd8ff0  pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+  -- tb slow paths + alignment
+0xa7d9034c:  e58d1004  str      r1, [sp, #4]
+0xa7d90350:  e58d0000  str      r0, [sp]
+0xa7d90354:  e1a02007  mov      r2, r7
+0xa7d90358:  e1a03009  mov      r3, sb
+0xa7d9035c:  e1a00006  mov      r0, r6
+0xa7d90360:  e3a0c030  mov      ip, #0x30
+0xa7d90364:  e58dc008  str      ip, [sp, #8]
+0xa7d90368:  e58de00c  str      lr, [sp, #0xc]
+0xa7d9036c:  e59ff020  ldr      pc, [pc, #0x20]
+0xa7d90370:  e58d9004  str      sb, [sp, #4]
+0xa7d90374:  e58d8000  str      r8, [sp]
+0xa7d90378:  e1a02005  mov      r2, r5
+0xa7d9037c:  e1a03007  mov      r3, r7
+0xa7d90380:  e1a00006  mov      r0, r6
+0xa7d90384:  e3a0c030  mov      ip, #0x30
+0xa7d90388:  e58dc008  str      ip, [sp, #8]
+0xa7d9038c:  e58de00c  str      lr, [sp, #0xc]
+0xa7d90390:  e51ff004  ldr      pc, [pc, #-4]
+  data: [size=4]
+0xa7d90394:  .long  0x001bbbfd
+
+Restarting code generation with smaller translation block (max 53 insns)
+Restarting code generation with smaller translation block (max 53 insns)
+Restarting code generation with smaller translation block (max 30 insns)
+Restarting code generation with smaller translation block (max 24 insns)
+Restarting code generation with smaller translation block (max 26 insns)
+Restarting code generation with smaller translation block (max 23 insns)
+Restarting code generation with smaller translation block (max 22 insns)
+Restarting code generation with smaller translation block (max 23 insns)
+Restarting code generation with smaller translation block (max 25 insns)
+Restarting code generation with smaller translation block (max 25 insns)
+Restarting code generation with smaller translation block (max 25 insns)
+Restarting code generation with smaller translation block (max 25 insns)
+Restarting code generation with smaller translation block (max 26 insns)
+Restarting code generation with smaller translation block (max 25 insns)
+Restarting code generation with smaller translation block (max 23 insns)
+Restarting code generation with smaller translation block (max 24 insns)
+Restarting code generation with smaller translation block (max 27 insns)
+Restarting code generation with smaller translation block (max 22 insns)
+Restarting code generation with smaller translation block (max 23 insns)
+Restarting code generation with smaller translation block (max 26 insns)
+Restarting code generation with smaller translation block (max 34 insns)
+Restarting code generation with smaller translation block (max 142 insns)
+Restarting code generation with smaller translation block (max 148 insns)
+Restarting code generation with smaller translation block (max 149 insns)
+Restarting code generation with smaller translation block (max 144 insns)
+Restarting code generation with smaller translation block (max 138 insns)
+Restarting code generation with smaller translation block (max 117 insns)
+Restarting code generation with smaller translation block (max 142 insns)
+Restarting code generation with smaller translation block (max 141 insns)
+Restarting code generation with smaller translation block (max 138 insns)
+Restarting code generation with smaller translation block (max 139 insns)
+Restarting code generation with smaller translation block (max 140 insns)
+Restarting code generation with smaller translation block (max 150 insns)
+Restarting code generation with smaller translation block (max 117 insns)

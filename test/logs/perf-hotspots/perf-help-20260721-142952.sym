@@ -1,0 +1,83 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 17K of event 'cycles:P'
+# Event count (approx.): 80968366645
+#
+# Overhead  Shared Object      Symbol                                         
+# ........  .................  ...............................................
+#
+     4.81%  qemu-aarch64       [.] tb_lookup
+     4.40%  qemu-aarch64       [.] helper_lookup_tb_ptr
+     3.97%  qemu-aarch64       [.] liveness_pass_1
+     2.57%  qemu-aarch64       [.] tcg_gen_code
+     1.54%  qemu-aarch64       [.] cpu_get_tb_cpu_state
+     1.38%  qemu-aarch64       [.] tcg_optimize
+     1.31%  qemu-aarch64       [.] __vfprintf_internal
+     1.07%  qemu-aarch64       [.] memset
+     0.95%  qemu-aarch64       [.] init_ts_info
+     0.66%  qemu-aarch64       [.] helper_shl_i64
+     0.60%  qemu-aarch64       [.] la_cross_call
+     0.52%  qemu-aarch64       [.] tb_lookup_cmp
+     0.52%  qemu-aarch64       [.] qht_lookup_custom
+     0.51%  qemu-aarch64       [.] tcg_reg_alloc
+     0.50%  qemu-aarch64       [.] liveness_pass_0
+     0.41%  qemu-aarch64       [.] __aeabi_uidiv
+     0.36%  qemu-aarch64       [.] tcg_emit_op
+     0.36%  qemu-aarch64       [.] tcg_op_alloc
+     0.34%  qemu-aarch64       [.] _int_malloc
+     0.34%  qemu-aarch64       [.] interval_tree_insert
+     0.33%  qemu-aarch64       [.] _int_free
+     0.32%  qemu-aarch64       [.] interval_tree_subtree_search
+     0.29%  qemu-aarch64       [.] disas_a64
+     0.28%  qemu-aarch64       [.] tb_gen_code
+     0.26%  qemu-aarch64       [.] __memcpy_neon
+     0.25%  qemu-aarch64       [.] helper_atomic_fetch_addl_le
+     0.24%  qemu-aarch64       [.] temp_free_or_dead
+     0.23%  qemu-aarch64       [.] helper_atomic_cmpxchgb
+     0.22%  qemu-aarch64       [.] reset_ts
+     0.22%  qemu-aarch64       [.] _IO_new_file_xsputn
+     0.21%  qemu-aarch64       [.] tcg_out_op
+     0.21%  qemu-aarch64       [.] tcg_opt_gen_mov
+     0.20%  qemu-aarch64       [.] temp_load
+     0.20%  qemu-aarch64       [.] aarch64_tr_translate_insn
+     0.20%  qemu-aarch64       [.] reachable_code_pass
+     0.19%  qemu-aarch64       [.] interval_tree_iter_first
+     0.19%  [JIT] tid 13515    [.] guest-0x194c67c
+     0.18%  qemu-aarch64       [.] finish_folding
+     0.17%  qemu-aarch64       [.] tcg_out_movi32.constprop.0
+     0.17%  qemu-aarch64       [.] g_hash_table_lookup
+     0.16%  [JIT] tid 13515    [.] guest-0x2c7b768
+     0.16%  qemu-aarch64       [.] tcg_temp_new_internal
+     0.16%  qemu-aarch64       [.] __libc_calloc
+     0.15%  qemu-aarch64       [.] __strchrnul
+     0.15%  qemu-aarch64       [.] translator_loop
+     0.15%  qemu-aarch64       [.] required_atomicity
+     0.15%  qemu-aarch64       [.] atomic_mmu_lookup
+     0.14%  qemu-aarch64       [.] tcg_reg_alloc_bb_end.constprop.0
+     0.14%  qemu-aarch64       [.] q_tree_insert_internal.isra.0
+     0.14%  qemu-aarch64       [.] _IO_default_xsputn
+     0.13%  [JIT] tid 13515    [.] guest-0x2c7b740
+     0.13%  qemu-aarch64       [.] tcg_constant_internal
+     0.13%  qemu-aarch64       [.] mulu64
+     0.13%  qemu-aarch64       [.] assert_hflags_rebuild_correctly
+     0.13%  [JIT] tid 13515    [.] guest-0x2c7b780
+     0.13%  qemu-aarch64       [.] get_page_addr_code_hostp
+     0.12%  qemu-aarch64       [.] g_hash_table_insert_node
+     0.12%  [JIT] tid 13515    [.] guest-0x2c7b794
+     0.12%  qemu-aarch64       [.] _itoa
+     0.12%  [kernel.kallsyms]  [k] vector_swi
+     0.11%  [JIT] tid 13515    [.] guest-0x408ee5c
+     0.11%  [kernel.kallsyms]  [k] memset
+     0.11%  [JIT] tid 13515    [.] guest-0x194c38c
+     0.11%  qemu-aarch64       [.] tb_tc_cmp
+     0.10%  qemu-aarch64       [.] helper_muluh_i64
+     0.10%  [kernel.kallsyms]  [k] arm_syscall
+     0.10%  qemu-aarch64       [.] cpu_exec_loop.constprop.0
+
+
+#
+# (Tip: Search options using a keyword: perf report -h <keyword>)
+#

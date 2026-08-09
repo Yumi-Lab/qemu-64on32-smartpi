@@ -1,0 +1,12 @@
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (5424499e5bb3f6645088008582ab7f5ac61086132e24a0216fb3a1028a3fc9f8)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 43C
+[run-claude-pad] Lancement: claude --version (mode=version, timeout=600s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=42C rss=26MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=15 out_bytes=22 peak_temp_c=42 min_temp_c=42 temp_before_c=43
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+2.1.214 (Claude Code)
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /home/pi/qemu-fork-test/claude-version-20260721-131735.out / /home/pi/qemu-fork-test/claude-version-20260721-131735.err

@@ -1,0 +1,45 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 11K of event 'cycles:P'
+# Event count (approx.): 163736336206
+#
+# Overhead  Shared Object        Symbol                               
+# ........  ...................  .....................................
+#
+    24.26%  qemu-aarch64         [.] helper_atomic_fetch_addq_le
+    10.65%  qemu-aarch64         [.] atomic_mmu_lookup
+    10.33%  [JIT] tid 4379       [.] guest-0x400af4
+     8.61%  [JIT] tid 4379       [.] guest-0x41de6c
+     6.33%  [JIT] tid 4379       [.] guest-0x400a34
+     5.82%  [JIT] tid 4379       [.] guest-0x400af0
+     4.53%  [JIT] tid 4379       [.] guest-0x400a18
+     4.28%  [JIT] tid 4379       [.] guest-0x41ddfc
+     3.32%  [JIT] tid 4379       [.] guest-0x41de44
+     2.70%  [JIT] tid 4379       [.] guest-0x40116c
+     2.62%  [JIT] tid 4379       [.] guest-0x41de48
+     2.20%  [JIT] tid 4379       [.] guest-0x401168
+     2.18%  [JIT] tid 4379       [.] guest-0x41ddd0
+     1.81%  [JIT] tid 4379       [.] guest-0x41de50
+     1.28%  [JIT] tid 4379       [.] guest-0x41ddf8
+     1.21%  [JIT] tid 4379       [.] guest-0x400a30
+     1.20%  [JIT] tid 4379       [.] guest-0x400a48
+     0.79%  [JIT] tid 4379       [.] guest-0x400a28
+     0.78%  [JIT] tid 4379       [.] guest-0x41de4c
+     0.73%  [JIT] tid 4379       [.] guest-0x41ddf4
+     0.63%  [JIT] tid 4379       [.] guest-0x400a50
+     0.61%  [JIT] tid 4379       [.] guest-0x400a38
+     0.56%  [JIT] tid 4379       [.] guest-0x400a2c
+     0.54%  [JIT] tid 4379       [.] guest-0x41de68
+     0.53%  [JIT] tid 4379       [.] guest-0x41de1c
+     0.50%  [JIT] tid 4379       [.] guest-0x400a4c
+     0.28%  [JIT] tid 4379       [.] guest-0x400a14
+     0.27%  [JIT] tid 4379       [.] guest-0x41de5c
+     0.15%  [kernel.kallsyms]    [k] finish_task_switch
+
+
+#
+# (Tip: To show assembler sample context control flow use perf record -b / perf report --samples 10 and then browse context)
+#

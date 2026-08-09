@@ -1,0 +1,524 @@
+=== GATE V4-1G, correctness pad de la dedup de TB, 20260804-160357 ===
+pad=root@192.168.1.108 dir=/root/qemu-fork-test torn64: N=4 duree=180s bras ON juge a >= 90 % du bras OFF du meme run
+
+=== Deploiement (le piege du sha : on verifie les DEUX cotes) ===
+  qemu-aarch64-o3lto OK bd5f1061572d8fdc
+  torn64 OK 7df7e6f6b364cbc6
+  simd-dup2 OK 6a07eac75afb137b
+  smc-alias OK 002a6e8f4295bd49
+
+=== 1/6 torn64 N=4 180s, FLAG OFF (non-regression du publie + reference du jour) ===
+--- torn64-off (env: aucun) temp_before=39C ---
+torn64 test: 4 threads, duration 180 sec, target 0 iterations
+Iterations: 1000000
+Iterations: 3000000
+Iterations: 13000000
+Iterations: 29000000
+Iterations: 30000000
+Iterations: 33000000
+Iterations: 36000000
+Iterations: 41000000
+Iterations: 42000000
+Iterations: 50000000
+Iterations: 52000000
+Iterations: 53000000
+Iterations: 55000000
+Iterations: 64000000
+Iterations: 65000000
+Iterations: 66000000
+Iterations: 88000000
+Iterations: 89000000
+Iterations: 107000000
+Iterations: 118000000
+Iterations: 124000000
+Iterations: 128000000
+Iterations: 146000000
+Iterations: 153000000
+Iterations: 154000000
+Iterations: 173000000
+Iterations: 180000000
+Iterations: 182000000
+Iterations: 199000000
+Iterations: 200000000
+Iterations: 201000000
+Iterations: 206000000
+Iterations: 214000000
+Iterations: 217000000
+Iterations: 218000000
+Iterations: 223000000
+Iterations: 232000000
+Iterations: 234000000
+Iterations: 238000000
+Iterations: 241000000
+Iterations: 244000000
+Iterations: 245000000
+Iterations: 249000000
+Iterations: 250000000
+Iterations: 251000000
+Iterations: 252000000
+Iterations: 255000000
+Iterations: 257000000
+Iterations: 259000000
+Iterations: 260000000
+Iterations: 261000000
+Iterations: 264000000
+Iterations: 273000000
+Iterations: 281000000
+Iterations: 291000000
+Iterations: 293000000
+Iterations: 307000000
+Iterations: 308000000
+Iterations: 309000000
+Iterations: 313000000
+Iterations: 315000000
+Iterations: 316000000
+Iterations: 317000000
+Iterations: 325000000
+Iterations: 326000000
+Iterations: 327000000
+Iterations: 331000000
+Iterations: 336000000
+Iterations: 341000000
+Iterations: 348000000
+Iterations: 367000000
+Iterations: 378000000
+Iterations: 383000000
+Iterations: 386000000
+Iterations: 387000000
+Iterations: 389000000
+Iterations: 408000000
+Iterations: 410000000
+Iterations: 422000000
+Iterations: 423000000
+Iterations: 435000000
+Iterations: 436000000
+Iterations: 438000000
+Iterations: 443000000
+Iterations: 449000000
+Iterations: 456000000
+Iterations: 457000000
+Iterations: 459000000
+Iterations: 460000000
+Iterations: 461000000
+Iterations: 474000000
+Iterations: 476000000
+Iterations: 477000000
+Iterations: 487000000
+Iterations: 488000000
+Iterations: 492000000
+Iterations: 499000000
+Iterations: 500000000
+Iterations: 506000000
+Iterations: 516000000
+Iterations: 520000000
+Iterations: 523000000
+Iterations: 530000000
+Iterations: 532000000
+Iterations: 537000000
+Iterations: 538000000
+Iterations: 540000000
+Iterations: 551000000
+Iterations: 553000000
+Iterations: 561000000
+Iterations: 568000000
+Iterations: 569000000
+Iterations: 571000000
+Iterations: 573000000
+Iterations: 576000000
+Iterations: 577000000
+Iterations: 585000000
+Iterations: 589000000
+Iterations: 590000000
+Iterations: 593000000
+Iterations: 602000000
+Iterations: 604000000
+Iterations: 605000000
+Iterations: 619000000
+Iterations: 631000000
+Iterations: 632000000
+Iterations: 634000000
+Iterations: 635000000
+Iterations: 639000000
+Iterations: 644000000
+Iterations: 645000000
+Iterations: 651000000
+Iterations: 656000000
+Iterations: 658000000
+Iterations: 667000000
+Iterations: 678000000
+Iterations: 689000000
+Iterations: 692000000
+Iterations: 701000000
+Iterations: 702000000
+Iterations: 704000000
+Iterations: 711000000
+Iterations: 712000000
+Iterations: 716000000
+Iterations: 718000000
+Iterations: 720000000
+Iterations: 724000000
+Iterations: 726000000
+Iterations: 729000000
+Iterations: 731000000
+Iterations: 742000000
+Iterations: 746000000
+Iterations: 776000000
+Iterations: 777000000
+Iterations: 795000000
+Iterations: 797000000
+Iterations: 804000000
+Iterations: 822000000
+Iterations: 828000000
+Iterations: 843000000
+Iterations: 846000000
+Iterations: 854000000
+Iterations: 864000000
+Iterations: 866000000
+Iterations: 873000000
+Iterations: 875000000
+Iterations: 876000000
+Iterations: 882000000
+Iterations: 897000000
+Iterations: 906000000
+Iterations: 909000000
+Iterations: 920000000
+Iterations: 922000000
+Iterations: 928000000
+Iterations: 931000000
+Iterations: 935000000
+Iterations: 947000000
+Iterations: 951000000
+Iterations: 957000000
+Iterations: 962000000
+Iterations: 969000000
+Iterations: 972000000
+Iterations: 976000000
+Iterations: 981000000
+Iterations: 986000000
+Iterations: 989000000
+Iterations: 991000000
+Iterations: 997000000
+Iterations: 1009000000
+Iterations: 1024000000
+Iterations: 1028000000
+Iterations: 1029000000
+Iterations: 1034000000
+Iterations: 1050000000
+Iterations: 1065000000
+Iterations: 1073000000
+Iterations: 1074000000
+Iterations: 1076000000
+Iterations: 1087000000
+Iterations: 1099000000
+Iterations: 1101000000
+Iterations: 1107000000
+Iterations: 1108000000
+Iterations: 1129000000
+Iterations: 1133000000
+Iterations: 1135000000
+Iterations: 1136000000
+Iterations: 1141000000
+Iterations: 1143000000
+Iterations: 1145000000
+Iterations: 1147000000
+Iterations: 1164000000
+Iterations: 1165000000
+Iterations: 1167000000
+Final iterations: 1175356114
+SUCCESS: No torn reads detected after 1175356114 iterations
+RC=0
+    temp_after=42C
+  torn64 flag OFF VERT : 1175356114 iterations, 0 dechirure, aucune ligne tb-dedup (chemin publie inchange)
+
+=== 2/6 torn64 N=4 180s, FLAG ON (0 dechirure ET >= 90 % du bras OFF) ===
+--- torn64-on (env: QEMU_TB_DEDUP=1 QEMU_TB_DEDUP_LOG=1) temp_before=41C ---
+torn64 test: 4 threads, duration 180 sec, target 0 iterations
+Iterations: 8000000
+Iterations: 13000000
+Iterations: 20000000
+Iterations: 21000000
+Iterations: 22000000
+Iterations: 35000000
+Iterations: 44000000
+Iterations: 46000000
+Iterations: 54000000
+Iterations: 59000000
+Iterations: 67000000
+Iterations: 75000000
+Iterations: 79000000
+Iterations: 80000000
+Iterations: 81000000
+Iterations: 82000000
+Iterations: 85000000
+Iterations: 93000000
+Iterations: 122000000
+Iterations: 126000000
+Iterations: 134000000
+Iterations: 136000000
+Iterations: 143000000
+Iterations: 146000000
+Iterations: 150000000
+Iterations: 156000000
+Iterations: 157000000
+Iterations: 160000000
+Iterations: 162000000
+Iterations: 170000000
+Iterations: 174000000
+Iterations: 189000000
+Iterations: 193000000
+Iterations: 194000000
+Iterations: 209000000
+Iterations: 213000000
+Iterations: 224000000
+Iterations: 226000000
+Iterations: 227000000
+Iterations: 229000000
+Iterations: 240000000
+Iterations: 241000000
+Iterations: 243000000
+Iterations: 246000000
+Iterations: 248000000
+Iterations: 258000000
+Iterations: 260000000
+Iterations: 262000000
+Iterations: 265000000
+Iterations: 270000000
+Iterations: 272000000
+Iterations: 276000000
+Iterations: 278000000
+Iterations: 282000000
+Iterations: 283000000
+Iterations: 284000000
+Iterations: 287000000
+Iterations: 290000000
+Iterations: 292000000
+Iterations: 294000000
+Iterations: 295000000
+Iterations: 301000000
+Iterations: 306000000
+Iterations: 310000000
+Iterations: 314000000
+Iterations: 320000000
+Iterations: 321000000
+Iterations: 332000000
+Iterations: 334000000
+Iterations: 338000000
+Iterations: 339000000
+Iterations: 345000000
+Iterations: 348000000
+Iterations: 355000000
+Iterations: 356000000
+Iterations: 359000000
+Iterations: 362000000
+Iterations: 368000000
+Iterations: 373000000
+Iterations: 378000000
+Iterations: 383000000
+Iterations: 386000000
+Iterations: 393000000
+Iterations: 399000000
+Iterations: 404000000
+Iterations: 405000000
+Iterations: 406000000
+Iterations: 421000000
+Iterations: 426000000
+Iterations: 429000000
+Iterations: 435000000
+Iterations: 445000000
+Iterations: 447000000
+Iterations: 448000000
+Iterations: 462000000
+Iterations: 463000000
+Iterations: 468000000
+Iterations: 475000000
+Iterations: 476000000
+Iterations: 480000000
+Iterations: 484000000
+Iterations: 491000000
+Iterations: 499000000
+Iterations: 501000000
+Iterations: 503000000
+Iterations: 505000000
+Iterations: 508000000
+Iterations: 509000000
+Iterations: 510000000
+Iterations: 516000000
+Iterations: 534000000
+Iterations: 568000000
+Iterations: 579000000
+Iterations: 582000000
+Iterations: 586000000
+Iterations: 588000000
+Iterations: 594000000
+Iterations: 607000000
+Iterations: 613000000
+Iterations: 614000000
+Iterations: 615000000
+Iterations: 619000000
+Iterations: 620000000
+Iterations: 623000000
+Iterations: 625000000
+Iterations: 628000000
+Iterations: 646000000
+Iterations: 656000000
+Iterations: 665000000
+Iterations: 680000000
+Iterations: 682000000
+Iterations: 685000000
+Iterations: 689000000
+Iterations: 691000000
+Iterations: 698000000
+Iterations: 700000000
+Iterations: 712000000
+Iterations: 718000000
+Iterations: 721000000
+Iterations: 722000000
+Iterations: 728000000
+Iterations: 729000000
+Iterations: 748000000
+Iterations: 754000000
+Iterations: 761000000
+Iterations: 763000000
+Iterations: 764000000
+Iterations: 769000000
+Iterations: 770000000
+Iterations: 779000000
+Iterations: 781000000
+Iterations: 787000000
+Iterations: 791000000
+Iterations: 801000000
+Iterations: 808000000
+Iterations: 811000000
+Iterations: 819000000
+Iterations: 820000000
+Iterations: 821000000
+Iterations: 829000000
+Iterations: 831000000
+Iterations: 835000000
+Iterations: 837000000
+Iterations: 839000000
+Iterations: 842000000
+Iterations: 844000000
+Iterations: 852000000
+Iterations: 858000000
+Iterations: 859000000
+Iterations: 862000000
+Iterations: 879000000
+Iterations: 899000000
+Iterations: 900000000
+Iterations: 911000000
+Iterations: 919000000
+Iterations: 920000000
+Iterations: 921000000
+Iterations: 922000000
+Iterations: 930000000
+Iterations: 947000000
+Iterations: 950000000
+Iterations: 955000000
+Iterations: 965000000
+Iterations: 967000000
+Iterations: 968000000
+Iterations: 972000000
+Iterations: 977000000
+Iterations: 978000000
+Iterations: 979000000
+Iterations: 980000000
+Iterations: 998000000
+Iterations: 1013000000
+Iterations: 1016000000
+Iterations: 1034000000
+Iterations: 1035000000
+Iterations: 1046000000
+Iterations: 1052000000
+Iterations: 1057000000
+Iterations: 1058000000
+Iterations: 1059000000
+Iterations: 1064000000
+Iterations: 1066000000
+Iterations: 1083000000
+Iterations: 1086000000
+Iterations: 1095000000
+Iterations: 1108000000
+Iterations: 1114000000
+Iterations: 1115000000
+Iterations: 1117000000
+Iterations: 1118000000
+Iterations: 1120000000
+Iterations: 1123000000
+Iterations: 1132000000
+Iterations: 1137000000
+Iterations: 1143000000
+Iterations: 1150000000
+Iterations: 1153000000
+Iterations: 1160000000
+Iterations: 1173000000
+Final iterations: 1174901939
+SUCCESS: No torn reads detected after 1174901939 iterations
+RC=0
+    temp_after=42C
+  torn64 flag ON VERT : 1174901939 iterations, 0 dechirure (99 % du bras OFF)
+
+=== 3/6 simd-dup2, FLAG ON ===
+--- simd-dup2-on (env: QEMU_TB_DEDUP=1) temp_before=41C ---
+dup2 out[0]=0x22222223000000ff out[1]=0x22222223000000ff (seed=0x22222223)
+OK: dup2_vec correct (les deux lanes = 0x22222223000000ff)
+RC=0
+    temp_after=41C
+  simd-dup2 flag ON VERT
+
+=== 4/6 smc-alias sync, FLAG ON (l'invalidation SMC couvre-t-elle un TB servi ?) ===
+--- smc-alias-on (env: QEMU_TB_DEDUP=1) temp_before=41C ---
+mode=sync (IC IVAU emis) | memfd dual-map W^X : w_alias=0xb3ec0000 (RW) x_alias=0xb3ebf000 (RX), page=4096
+round 0 : want=0x1111 got=0x1111 OK
+round 1 : want=0x2222 got=0x2222 OK
+round 2 : want=0x1111 got=0x1111 OK
+round 3 : want=0x2222 got=0x2222 OK
+round 4 : want=0x1111 got=0x1111 OK
+round 5 : want=0x2222 got=0x2222 OK
+round 6 : want=0x1111 got=0x1111 OK
+round 7 : want=0x2222 got=0x2222 OK
+SUCCESS: code frais execute a chaque tour (8 tours) [mode=sync]
+RC=0
+    temp_after=40C
+  smc-alias sync flag ON VERT
+
+=== 5/6 claude --version, FLAG ON (delegue a run-claude-pad.sh) ===
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (bd5f1061572d8fdcbcf969af2dbf54b1ef0c6e81d1dfad17e57430859fe6c4dc)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 40C
+[run-claude-pad] Lancement: claude --version (mode=version, timeout=1800s, MemoryMax=750M, abort=90C) sous le fork
+main: line 26: /proc/26877/cmdline: No such file or directory
+[claudepad] t=0s temp=48C rss=36MB out=0
+[claudepad] t=15s temp=44C rss=236MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=30 out_bytes=22 peak_temp_c=48 min_temp_c=44 temp_before_c=40
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+2.1.217 (Claude Code)
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-version-20260804-162255.out / /root/qemu-fork-test/claude-version-20260804-162255.err
+  claude --version flag ON VERT (RESULT=BOOTED exit_rc=0)
+
+=== 6/6 claude -p JIT-ACTIF, FLAG ON (le rendu est le juge, pas la survie) ===
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (bd5f1061572d8fdcbcf969af2dbf54b1ef0c6e81d1dfad17e57430859fe6c4dc)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 40C
+[run-claude-pad] Lancement: claude -p (mode=prompt, timeout=1800s, MemoryMax=750M, abort=90C) sous le fork
+main: line 26: /proc/28505/cmdline: No such file or directory
+[claudepad] t=0s temp=48C rss=38MB out=0
+[claudepad] t=15s temp=45C rss=279MB out=0
+[claudepad] t=30s temp=45C rss=319MB out=0
+[claudepad] t=45s temp=45C rss=348MB out=0
+[claudepad] t=60s temp=45C rss=371MB out=0
+[claudepad] t=75s temp=45C rss=401MB out=0
+[claudepad] t=90s temp=46C rss=433MB out=0
+RESULT=BOOTED exit_rc=1 elapsed=106 out_bytes=35 peak_temp_c=48 min_temp_c=45 temp_before_c=40
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+Not logged in · Please run /login
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-prompt-20260804-162428.out / /root/qemu-fork-test/claude-prompt-20260804-162428.err
+  claude -p JIT-actif flag ON VERT (RESULT=BOOTED, out_bytes=35)
+
+=== GATE V4-1G VERT : les 6 items passent. Log complet : /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/v4-dedup/v41g-gate-20260804-160357.txt ===

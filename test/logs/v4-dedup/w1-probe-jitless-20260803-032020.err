@@ -1,0 +1,7 @@
+tb-dedup-probe: size mismatch pc=0x436a3d0 cold_size=124 served_size=112 pc_delta=20374488 tb_delta=1124352
+tb-dedup-probe: size mismatch pc=0x1ae4d10 cold_size=208 served_size=192 pc_delta=-4840 tb_delta=7727360
+tb-dedup-probe: size mismatch pc=0x30456c0 cold_size=124 served_size=112 pc_delta=300744 tb_delta=32543040
+tb-dedup-probe: size mismatch pc=0x2ffdb78 cold_size=124 served_size=112 pc_delta=7040 tb_delta=33348288
+qemu: uncaught target signal 6 (Aborted) - core dumped
+tb-dedup: tbs=107897 with_reloc=107897 reloc_words=432874 overflow=0 bad_readback=0
+tb-dedup-index: seen=107897 templates=107863 hits=34 collisions=0 evictions=0 installs=26420 install_aborts=0 probe_ok=30 probe_mismatch=4 probe_size_mismatch=4 probe_skip=107863 pre_ok=0 pre_wrong=0 pre_none=107247 served=26386 serve_declined=0 serve_none=107897

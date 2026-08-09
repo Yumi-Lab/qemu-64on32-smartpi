@@ -1,0 +1,23 @@
+X0 dispatch recon : compteurs execution-weighted (QEMU_TB_EXEC_PROFILE), medianes n=3
+binaire deploye (yumi-64on32), combo standard, boot a froid (cache desactive par le profil)
+
+--- BILAN version (medianes n=3) ---
+tb executions (weighted)   : 68,871,841
+goto_ptr helper calls      : 6,343,374   (no TB / new translate 33,249)
+main loop lookups          : 99,469
+jmp cache HITS             : 6,212,255
+jmp cache MISS (htable hit): 112,433
+chemin HIT  (% des lookups): 98.22%
+chemin MISS (% des lookups): 1.78%
+entrees: chained 90.7%  goto_ptr lookup 9.2%  main loop 0.1%
+
+--- BILAN help (medianes n=3) ---
+tb executions (weighted)   : 256,697,569
+goto_ptr helper calls      : 26,447,380   (no TB / new translate 64,816)
+main loop lookups          : 220,368
+jmp cache HITS             : 25,138,126
+jmp cache MISS (htable hit): 1,289,454
+chemin HIT  (% des lookups): 95.12%
+chemin MISS (% des lookups): 4.88%
+entrees: chained 89.6%  goto_ptr lookup 10.3%  main loop 0.1%
+

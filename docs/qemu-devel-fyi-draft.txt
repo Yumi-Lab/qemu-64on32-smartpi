@@ -1,0 +1,56 @@
+To: qemu-devel@nongnu.org
+Subject: FYI: maintained aarch64-on-armv7 linux-user fork of 9.2 (64-on-32), with two findings that may still be relevant
+
+Hello,
+
+64-on-32 support in linux-user was removed in 10.0/11.0, for good
+reasons ("in user mode atomicity was simply broken"). We still need to
+run modern aarch64 userspace, including heavily threaded
+JavaScriptCore/Bun-based binaries, on armv7 boards (Allwinner H3,
+Cortex-A7 with LPAE), so we forked v9.2.4 and fixed the pieces we
+needed. Sharing as an FYI for anyone who still needs 64-on-32, and
+because two of the findings may still have some upstream relevance.
+
+The fork (16 patches on v9.2.4, prebuilt static armv7 binary in the
+release): https://github.com/Yumi-Lab/qemu-64on32-smartpi
+
+What it fixes or changes, briefly:
+- 64-bit atomicity on the fast path: aligned MO_64 guest accesses are
+  guaranteed to be emitted as LDRD/STRD register pairs (single-copy
+  atomic on LPAE cores per ARM ARM A3.5.3), with misaligned accesses
+  routed to the slow-path helpers (patches 0001/0002). Validated with a
+  dedicated tearing test (1.3e9 iterations across 4 threads, zero torn
+  reads) and hours-long sessions of real multi-threaded JIT runtimes.
+- termios2 ioctl family (TCGETS2 and friends) backported from 11.0.
+- Configurable translation cache size, an optional persistent
+  translation cache, and a few execution-weighted profiling knobs.
+
+Finding 1, FEAT_LSE2 in the default `max` cpu vs hosts without 16-byte
+atomics: under LSE2, every 16-byte-aligned LDP/STP (which includes most
+function prologues) requires 16-byte single-copy atomicity. On a host
+that cannot provide it, this degrades into stop-the-world EXCP_ATOMIC
+steps. On our workload we measured about 17 million such steps in a
+single CLI boot, with 18.6% of TB entries going through the slow path;
+not advertising LSE2 in user-mode on such hosts (patch 0011) yielded an
+8.2x wall-clock improvement on the same workload. 32-bit hosts are gone
+upstream, but if any supported configuration can still end up without
+16-byte host atomics, `-cpu max` guests may hit the same cliff running
+perfectly ordinary code; it might deserve a doc note or host-side
+gating. Apologies if current master already handles this better.
+
+Finding 2, in common TCG code: INDEX_op_dup2_vec with exactly one
+constant input falls through to the generic path, where temp_load()
+tries to materialize the 32-bit scalar constant into a vector register
+and tcg_out_movi() asserts. The chain lives in the common register
+allocator rather than in a backend (we hit it through JSC SIMD codegen
+emitting DUP Vd.2D from a mixed constant/register pair). Any vector
+backend with TCG_TARGET_REG_BITS==32 should be able to reproduce. Our
+fix is patch 0004 in the series; happy to rebase it on master if a
+32-bit vector host is still a supported configuration.
+
+We are not proposing the 64-on-32 work itself for upstream: the code it
+patches is gone and the removal rationale stands. This is just a
+pointer for people who still need it, plus the two notes above.
+
+Thanks for QEMU,
+Nicolas Michaut, Yumi Lab

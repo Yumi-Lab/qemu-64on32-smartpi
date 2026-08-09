@@ -1,0 +1,41 @@
+# Z0 (d) : syscalls d'horloge par seconde, regime JIT-ACTIF reel
+# Workload : claude --help, BUN_JSC_useJIT=1 (JIT invite ACTIF), combo produit,
+#            2 coeurs, QEMU_STRACE=1, MemoryMax 750M. qemu fork sha a599c9fe (recon-jit).
+# NB : QEMU_STRACE dilate le temps mural (46 s timeout, run non termine) ; la fenetre
+#      de reference est prise sur l'horloge MONOTONIC de l'INVITE lui-meme (tracer-invariante).
+#
+# Fenetre invite (premier..dernier CLOCK_MONOTONIC observes dans la trace) :
+#   premier tv_sec=5506 tv_nsec=828227612 ; dernier tv_sec=5546 tv_nsec=477143173
+#   -> 39,65 s
+#
+# clock_gettime : 3388 total = 85,5 /s
+#   CLOCK_MONOTONIC          882 = 22,2 /s
+#   CLOCK_MONOTONIC_COARSE  2384 = 60,1 /s
+#   CLOCK_REALTIME           122 =  3,1 /s
+#   (aucun gettimeofday, clock_nanosleep, nanosleep, clock_getres dans la trace)
+#   clock_gettime = 33,1 % des lignes de syscall (2e syscall derriere mremap)
+#
+# Lecture pour le gate Z0, voie 8b (para-vDSO horloge) :
+#   La frequence est modeste (85,5 appels/s) et le COUT HOTE deja mesure a (a) est
+#   0,01 % des cycles (__clock_gettime). 85 syscalls/s a ~qq us hote chacun = temps
+#   hote negligeable. (d) CONFIRME (a) : voie 8b FERMEE (tres loin des 3 % du gate).
+
+=== comptages bruts (grep sur la trace pad) ===
+--- total lines / syscall lines ---
+10391
+10226
+--- clock_gettime total ---
+3387
+--- clock_gettime by clockid ---
+    882 clock_gettime(CLOCK_MONOTONIC
+   2384 clock_gettime(CLOCK_MONOTONIC_COARSE
+    122 clock_gettime(CLOCK_REALTIME
+--- top 8 syscalls ---
+   6146 mremap
+   3249 clock_gettime
+    248 futex
+    199 madvise
+    104 sched_yield
+     35 pread64
+     30 openat
+     23 read

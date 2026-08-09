@@ -1,0 +1,32 @@
+=== torn64 ABAB (N=4, 180s x 3 par bras) ===
+  torn64 ON  run 1: 1275365966 it
+  torn64 OFF run 1: 1307110834 it
+  torn64 ON  run 2: 1275268195 it
+  torn64 OFF run 2: 1304671270 it
+  torn64 ON  run 3: 1271989543 it
+  torn64 OFF run 3: 1305214765 it
+torn64 mediane: ON=1275268195 OFF=1305214765
+=== claude --version ABAB (combo, x3 par bras) ===
+  version ON  run 1: 30s
+  version OFF run 1: 15s
+  version ON  run 2: 15s
+  version OFF run 2: 15s
+  version ON  run 3: 15s
+  version OFF run 3: 15s
+version mediane: ON=15 OFF=15
+=== claude --help ABAB (combo, x3 par bras) ===
+  help ON  run 1: 60s
+  help OFF run 1: 60s
+  help ON  run 2: 60s
+  help OFF run 2: 60s
+  help ON  run 3: 61s
+  help OFF run 3: 60s
+help mediane: ON=60 OFF=60
+=== preuve de mecanisme : profil NZCV (execution weighted), 1 run --version par bras ===
+profil ON : 
+profil OFF: 
+torn64 mediane it/180s: ON=1275268195 OFF=1305214765
+version mediane elapsed s: ON=15 OFF=15
+help mediane elapsed s: ON=60 OFF=60
+profil ON : 
+profil OFF: 

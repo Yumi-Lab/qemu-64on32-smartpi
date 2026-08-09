@@ -1,0 +1,3 @@
+torn64 mediane it/120s: ON=872587918 OFF=872408141
+version mediane elapsed s: ON=15 OFF=15
+help mediane elapsed s: ON=61 OFF=60

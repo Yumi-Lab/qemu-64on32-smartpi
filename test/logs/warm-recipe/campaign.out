@@ -1,0 +1,20 @@
+############ mode=version ############
+=== COLD (version) : 3 runs, combo standard sans cache ===
+  cold run 1: RESULT=BOOTED elapsed=15s
+  cold run 2: RESULT=BOOTED elapsed=15s
+  cold run 3: RESULT=BOOTED elapsed=15s
+=== COLD-SAVE (version) : amorce /home/pi/qemu-fork-test/tbcache-version.bin ===
+  cold-save: RESULT=BOOTED elapsed=15s (saved 84375 TBs, 39460 KiB of translated code)
+=== WARM (version) : 3 runs, cache recharge + setarch -R ===
+  warm run 1: RESULT=BOOTED elapsed=15s cache=[reloaded 84006/84375 TBs]
+  warm run 2: RESULT=BOOTED elapsed=15s cache=[reloaded 85112/85626 TBs]
+  warm run 3: RESULT=BOOTED elapsed=15s cache=[reloaded 85074/85520 TBs]
+--- BILAN version ---
+cold mediane   : 15s (n=3, out_bytes=22)
+warm mediane   : 15s (n=3, out_bytes=22)
+cache warm     : reloaded 85074/85520 TBs
+delta warm/cold: 0.0%
+############ mode=help ############
+=== COLD (help) : 3 runs, combo standard sans cache ===
+  cold run 1: RESULT=BOOTED elapsed=60s
+  cold run 2: RESULT=BOOTED elapsed=61s

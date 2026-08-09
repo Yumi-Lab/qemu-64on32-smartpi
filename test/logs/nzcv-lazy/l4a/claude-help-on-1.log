@@ -1,0 +1,45 @@
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (3364d5558b952162a3f43593ff643f2400b0cbf3b0cf38ef6f1fb2c3704872bb)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 45C
+[run-claude-pad] Lancement: claude --help (mode=help, timeout=2400s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=43C rss=26MB out=0
+[claudepad] t=15s temp=41C rss=254MB out=0
+[claudepad] t=30s temp=41C rss=290MB out=0
+[claudepad] t=45s temp=42C rss=307MB out=0
+[claudepad] t=60s temp=41C rss=327MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=75 out_bytes=16036 peak_temp_c=43 min_temp_c=41 temp_before_c=45
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+  -v, --version                         Output the version number
+  -w, --worktree [name]                 Create a new git worktree for this
+                                        session (optionally specify a name)
+
+Commands:
+  agents [options]                      Manage background agents
+  auth                                  Manage authentication
+  auto-mode                             Inspect or reset auto mode classifier
+                                        configuration
+  doctor                                Check the health of your Claude Code
+                                        installation. Reads settings files in
+                                        the current directory without a trust
+                                        prompt. For a full checkup that can also
+                                        fix issues, run /doctor in a session.
+  gateway [options]                     Run the enterprise auth/telemetry
+                                        gateway
+  install [options] [target]            Install Claude Code native build. Use
+                                        [target] to specify version (stable,
+                                        latest, or specific version)
+  mcp                                   Configure and manage MCP servers
+  plugin|plugins                        Manage Claude Code plugins
+  project                               Manage Claude Code project state
+  setup-token                           Set up a long-lived authentication token
+                                        (requires Claude subscription)
+  ultrareview [options] [target]        Run a cloud-hosted multi-agent code
+                                        review of the current branch (or a PR
+                                        number / base branch) and print the
+                                        findings
+  update|upgrade                        Check for updates and install if
+                                        available
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /home/pi/qemu-fork-test/claude-help-20260721-093606.out / /home/pi/qemu-fork-test/claude-help-20260721-093606.err

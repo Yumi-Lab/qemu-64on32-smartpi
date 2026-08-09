@@ -4,7 +4,10 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TEST_DIR="$REPO_ROOT/test"
 BUILD_OUT="$REPO_ROOT/build-out"
-QEMU_BIN="qemu-aarch64"
+# Binaire qemu utilise cote pad (doit exister dans build-out/). Surchargeable
+# par l'environnement (ex. QEMU_BIN=qemu-aarch64-serstats), comme QEMU_OPTS et
+# QEMU_ENV ci-dessous ; defaut : le binaire de production.
+QEMU_BIN="${QEMU_BIN:-qemu-aarch64}"
 
 # Options passees a qemu lui-meme (ex. QEMU_OPTS="-cpu cortex-a53" pour un
 # invite pre-LSE2). Vide par defaut : comportement identique a l'existant.
@@ -66,8 +69,26 @@ echo "[run-pad.sh] Deploying $QEMU_BIN and $BINARY to pad..."
 
 pad_retry $PAD_SSH "mkdir -p $PAD_DIR"
 
-pad_retry $PAD_SCP "$BUILD_OUT/$QEMU_BIN" "$PAD_USER@$PAD_HOST:$PAD_DIR/$QEMU_BIN"
-pad_retry $PAD_SCP "$BUILD_OUT/$BINARY" "$PAD_USER@$PAD_HOST:$PAD_DIR/$BINARY"
+# L'image DietPi du pad n'a ni scp ni sftp-server (cf. test/pad.env) : scp
+# echouerait sur "/usr/lib/sftp-server: No such file or directory", que le
+# retry ci-dessus maquillait en "throttle sshd". On pousse via un `cat >`.
+pad_put() {
+    $PAD_SSH "cat > $2" < "$1"
+}
+
+# QEMU_BIN pese ~35 Mo (contre <1 Mo pour les guests de test) : sur le saut
+# mac-maison, son transfert domine le temps total (~30 min mesures). Une
+# meme session de tests rejoue souvent plusieurs guests sur le MEME binaire
+# qemu inchange -> on saute la retransmission si le sha256 distant colle deja
+# au sha256 local (guests toujours retransferes, cout negligeable).
+LOCAL_QEMU_SHA=$(shasum -a 256 "$BUILD_OUT/$QEMU_BIN" | cut -d' ' -f1)
+REMOTE_QEMU_SHA=$(pad_capture $PAD_SSH "sha256sum $PAD_DIR/$QEMU_BIN 2>/dev/null | cut -d' ' -f1")
+if [ "$REMOTE_QEMU_SHA" = "$LOCAL_QEMU_SHA" ]; then
+    echo "[run-pad.sh] $QEMU_BIN deja present sur le pad (sha256 identique), transfert saute"
+else
+    pad_retry pad_put "$BUILD_OUT/$QEMU_BIN" "$PAD_DIR/$QEMU_BIN"
+fi
+pad_retry pad_put "$BUILD_OUT/$BINARY" "$PAD_DIR/$BINARY"
 pad_retry $PAD_SSH "chmod +x $PAD_DIR/$QEMU_BIN $PAD_DIR/$BINARY"
 
 echo "[run-pad.sh] Checking temperature before run..."

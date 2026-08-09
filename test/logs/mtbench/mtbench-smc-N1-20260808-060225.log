@@ -1,0 +1,18 @@
+[run-pad.sh] Deploying qemu-aarch64-serstats and mtbench to pad...
+[run-pad.sh] Checking temperature before run...
+Temperature before: 39C
+[run-pad.sh] Checking if qemu is already running...
+[run-pad.sh] Running test: mtbench smc 1 60 (sous qemu-aarch64-serstats )
+Running as unit: run-p25989-i609771.scope; invocation ID: 0f9bd87faf5e4f2ea8ab2f8f7c82e3d0
+mtbench: workload=smc threads=1 duration=60s
+RESULT workload=smc N=1 seconds=60 wall_ms=60077 total_ops=565651 ops_per_sec=9415 per_thread=565651
+SUCCESS: smc N=1 -> 9415 ops/s
+[tcg] serial stats (QEMU_SERIAL_STATS):
+[tcg]   cpu_exec_step_atomic entries: 0
+[tcg]   tb_flush count: 7
+[tcg]   TB inval guest store (SMC): 0
+[tcg]   TB inval IC IVAU (cache-maint): 565651
+[tcg]     time: 1233 ms total, 2.2 us mean, 2.048% of wall (includes lock wait)
+[tcg]   mmap lock: 1133189 acquisitions, 21 contended (0.00%)
+[run-pad.sh] Checking temperature after run...
+Temperature after: 41C

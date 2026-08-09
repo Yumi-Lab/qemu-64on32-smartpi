@@ -1,0 +1,20 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 11K of event 'cycles:P'
+# Event count (approx.): 163736336206
+#
+# Overhead  Shared Object      
+# ........  ...................
+#
+    64.73%  [JIT] tid 4379     
+    35.05%  qemu-aarch64       
+     0.21%  [kernel.kallsyms]  
+     0.01%  ld-linux-armhf.so.3
+
+
+#
+# (Tip: To show inline functions in call traces add --inline to perf report)
+#

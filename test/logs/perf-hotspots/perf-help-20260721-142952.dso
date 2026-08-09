@@ -1,0 +1,20 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 17K of event 'cycles:P'
+# Event count (approx.): 80968366645
+#
+# Overhead  Shared Object    
+# ........  .................
+#
+    57.56%  [JIT] tid 13515  
+    40.40%  qemu-aarch64     
+     2.02%  [kernel.kallsyms]
+     0.02%  [vdso]           
+
+
+#
+# (Tip: If call chains don't work try perf record --call-graph dwarf or --call-graph lbr)
+#

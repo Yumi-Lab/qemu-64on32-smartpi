@@ -1,0 +1,19 @@
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (c624260cf626765a0b0adaaf0ee6fe970f674db509d798924496f8800e925ebf)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 49C
+[run-claude-pad] Lancement: claude -p (mode=prompt, timeout=1800s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=50C rss=24MB out=0
+[claudepad] t=15s temp=50C rss=261MB out=0
+[claudepad] t=30s temp=50C rss=302MB out=0
+[claudepad] t=45s temp=50C rss=332MB out=0
+[claudepad] t=60s temp=50C rss=357MB out=0
+[claudepad] t=76s temp=51C rss=379MB out=0
+[claudepad] t=91s temp=51C rss=408MB out=0
+RESULT=BOOTED exit_rc=1 elapsed=106 out_bytes=35 peak_temp_c=51 min_temp_c=50 temp_before_c=49
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+Not logged in · Please run /login
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-prompt-20260802-122544.out / /root/qemu-fork-test/claude-prompt-20260802-122544.err
+DONE exit=0

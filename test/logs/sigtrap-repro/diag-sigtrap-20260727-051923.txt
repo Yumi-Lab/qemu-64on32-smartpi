@@ -1,0 +1,40 @@
+=== DIAG SIGTRAP claude-native, 20260727-051923 ===
+pad=root@192.168.1.108 dir=/root/qemu-fork-test timeout=300s
+  qemu-aarch64 sha=6474f4f373f7a320 (identique des deux cotes)
+  claude-native sha=a8cd2a626d7d0b5f (identique des deux cotes)
+
+[1/3] REPRO du SIGTRAP sous le build courant
+--- repro build courant (qemu=qemu-aarch64 env=aucun) temp_before=47C ---
+qemu: uncaught target signal 5 (Trace/breakpoint trap) - core dumped
+RC=133
+    temp_after=47C
+  rc=133 (133 = SIGTRAP, le blocage est reproduit)
+
+[2/3] BISECTION : le meme run sous le build ANTERIEUR a V4-1
+--- bisection baseline pre-V4-1 (qemu=qemu-baseline env=aucun) temp_before=48C ---
+qemu: uncaught target signal 5 (Trace/breakpoint trap) - core dumped
+RC=133
+    temp_after=48C
+  baseline rc=133
+
+[3/3] CAUSE : espace d'adressage hote au moment du trap + dernier syscall
+--- probe VmSize + strace, temp_before=48C ---
+RC=133
+=== dernier VmSize avant le trap ===
+VmSize: 301744 kB VmRSS: 5632 kB maps=32
+VmSize: 2315336 kB VmRSS: 21148 kB maps=45
+=== dernier syscall avant le trap ===
+1833 mmap(NULL,6659580,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE,6659580,0x659dfc) = -1 errno=12 (Cannot allocate memory)
+--- SIGTRAP {si_signo=SIGTRAP, si_code=1, si_addr=0x00000000048b3ba0} ---
+qemu: uncaught target signal 5 (Trace/breakpoint trap) - core dumped
+    temp_after=47C
+
+=== VERDICT ===
+  build courant     : rc=133
+  baseline pre-V4-1 : rc=133
+  VA hote totale mappee au dernier echantillon : 2261 Mo
+  => le baseline ANTERIEUR a V4-1 echoue a l'identique : V4-1 est HORS DE CAUSE.
+  => dernier syscall = mmap ENOMEM : l'espace d'adressage hote 32 bits est sature.
+     Le SIGTRAP est le gestionnaire OOM du runtime invite (brk), pas une faute TCG.
+
+Log complet : /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/sigtrap-repro/diag-sigtrap-20260727-051923.txt

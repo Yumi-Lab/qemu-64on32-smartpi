@@ -1,0 +1,22 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 6K of event 'cycles:P'
+# Event count (approx.): 17971801795
+#
+# Overhead  Shared Object      
+# ........  ...................
+#
+    61.40%  qemu-aarch64       
+    34.10%  [JIT] tid 8991     
+     4.47%  [kernel.kallsyms]  
+     0.02%  [vdso]             
+     0.01%  ld-linux-armhf.so.3
+     0.00%  libc.so.6          
+
+
+#
+# (Tip: To not accumulate CPU time of children symbols add --no-children)
+#

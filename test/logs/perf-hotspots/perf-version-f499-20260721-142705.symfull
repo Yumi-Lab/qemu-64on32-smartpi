@@ -1,0 +1,2509 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 6K of event 'cycles:P'
+# Event count (approx.): 17971801795
+#
+# Overhead  Shared Object        Symbol                                         
+# ........  ...................  ...............................................
+#
+     8.09%  qemu-aarch64         [.] liveness_pass_1
+     5.08%  qemu-aarch64         [.] tcg_gen_code
+     3.63%  qemu-aarch64         [.] tb_lookup
+     3.47%  qemu-aarch64         [.] helper_lookup_tb_ptr
+     2.98%  qemu-aarch64         [.] tcg_optimize
+     2.65%  qemu-aarch64         [.] __vfprintf_internal
+     2.09%  qemu-aarch64         [.] init_ts_info
+     1.76%  qemu-aarch64         [.] memset
+     1.20%  qemu-aarch64         [.] cpu_get_tb_cpu_state
+     1.14%  qemu-aarch64         [.] liveness_pass_0
+     0.97%  qemu-aarch64         [.] tcg_reg_alloc
+     0.91%  qemu-aarch64         [.] la_cross_call
+     0.86%  qemu-aarch64         [.] _int_malloc
+     0.77%  qemu-aarch64         [.] tcg_op_alloc
+     0.63%  qemu-aarch64         [.] tcg_emit_op
+     0.62%  qemu-aarch64         [.] __aeabi_uidiv
+     0.57%  qemu-aarch64         [.] helper_atomic_fetch_addl_le
+     0.53%  qemu-aarch64         [.] temp_free_or_dead
+     0.51%  qemu-aarch64         [.] qht_lookup_custom
+     0.50%  qemu-aarch64         [.] g_hash_table_lookup
+     0.50%  qemu-aarch64         [.] __memcpy_neon
+     0.49%  qemu-aarch64         [.] reset_ts
+     0.47%  qemu-aarch64         [.] helper_shl_i64
+     0.47%  qemu-aarch64         [.] tcg_out_op
+     0.47%  qemu-aarch64         [.] mulu64
+     0.46%  qemu-aarch64         [.] _IO_new_file_xsputn
+     0.46%  qemu-aarch64         [.] interval_tree_insert
+     0.46%  qemu-aarch64         [.] tb_gen_code
+     0.46%  qemu-aarch64         [.] __strchrnul
+     0.46%  qemu-aarch64         [.] finish_folding
+     0.45%  qemu-aarch64         [.] helper_muluh_i64
+     0.43%  qemu-aarch64         [.] reachable_code_pass
+     0.41%  qemu-aarch64         [.] tcg_constant_internal
+     0.41%  qemu-aarch64         [.] _IO_default_xsputn
+     0.40%  qemu-aarch64         [.] aarch64_tr_translate_insn
+     0.40%  qemu-aarch64         [.] tcg_out_movi32.constprop.0
+     0.40%  qemu-aarch64         [.] _int_free
+     0.39%  qemu-aarch64         [.] temp_load
+     0.36%  qemu-aarch64         [.] tcg_opt_gen_mov
+     0.36%  qemu-aarch64         [.] tcg_temp_new_internal
+     0.32%  qemu-aarch64         [.] g_hash_table_insert
+     0.32%  qemu-aarch64         [.] disas_a64
+     0.32%  qemu-aarch64         [.] _itoa
+     0.30%  qemu-aarch64         [.] tcg_reg_alloc_bb_end.constprop.0
+     0.28%  qemu-aarch64         [.] fold_and
+     0.26%  qemu-aarch64         [.] tcg_reg_alloc_pair
+     0.25%  [kernel.kallsyms]    [k] 0xc0a734e4
+     0.24%  qemu-aarch64         [.] q_tree_insert_internal.isra.0
+     0.23%  qemu-aarch64         [.] g_hash_table_insert_node
+     0.21%  qemu-aarch64         [.] temp_sync
+     0.20%  [JIT] tid 8991       [.] 0xa78bf87c
+     0.20%  qemu-aarch64         [.] __libc_calloc
+     0.20%  qemu-aarch64         [.] _itoa_word
+     0.20%  qemu-aarch64         [.] g_hash_table_resize
+     0.20%  qemu-aarch64         [.] strlen
+     0.19%  [JIT] tid 8991       [.] 0xa78b7ac0
+     0.18%  qemu-aarch64         [.] interval_tree_subtree_search
+     0.17%  qemu-aarch64         [.] pretty_symbol
+     0.17%  qemu-aarch64         [.] tcg_out_st
+     0.16%  qemu-aarch64         [.] setjmp_gen_code.constprop.0
+     0.15%  qemu-aarch64         [.] perf_report_code
+     0.15%  qemu-aarch64         [.] translator_loop
+     0.14%  qemu-aarch64         [.] cpu_ldq_mmu
+     0.14%  qemu-aarch64         [.] tcg_constant_i32
+     0.14%  qemu-aarch64         [.] tcg_op_remove
+     0.14%  qemu-aarch64         [.] trans_LDR_i
+     0.14%  qemu-aarch64         [.] tb_tc_cmp
+     0.14%  qemu-aarch64         [.] tcg_out_st32.constprop.0
+     0.14%  qemu-aarch64         [.] __vsnprintf_internal
+     0.14%  qemu-aarch64         [.] get_page_addr_code_hostp
+     0.13%  [kernel.kallsyms]    [k] 0xc0a4ccb2
+     0.12%  qemu-aarch64         [.] required_atomicity
+     0.12%  qemu-aarch64         [.] tcg_out_qemu_ld
+     0.12%  qemu-aarch64         [.] __fprintf_chk
+     0.12%  qemu-aarch64         [.] cpu_exec_loop.constprop.0
+     0.12%  qemu-aarch64         [.] __clrsbdi2
+     0.12%  qemu-aarch64         [.] interval_tree_iter_first
+     0.12%  qemu-aarch64         [.] _IO_str_init_static_internal
+     0.12%  qemu-aarch64         [.] __clear_cache
+     0.12%  qemu-aarch64         [.] tcg_func_start
+     0.11%  qemu-aarch64         [.] remove_mem_copy_in
+     0.11%  qemu-aarch64         [.] interval_tree_remove
+     0.11%  [JIT] tid 8991       [.] 0xa78b7440
+     0.11%  qemu-aarch64         [.] realloc
+     0.11%  qemu-aarch64         [.] _init
+     0.11%  qemu-aarch64         [.] __aeabi_uidivmod
+     0.11%  qemu-aarch64         [.] patch_reloc
+     0.11%  qemu-aarch64         [.] atomic_mmu_lookup
+     0.11%  [kernel.kallsyms]    [k] 0xc011ef12
+     0.11%  qemu-aarch64         [.] tcg_out_ld32u.constprop.0
+     0.11%  qemu-aarch64         [.] __libc_cleanup_pop_restore
+     0.11%  qemu-aarch64         [.] flush_idcache_range
+     0.11%  qemu-aarch64         [.] tcg_out_movext
+     0.11%  qemu-aarch64         [.] prepare_host_addr
+     0.11%  qemu-aarch64         [.] tb_link_page
+     0.11%  qemu-aarch64         [.] aarch64_tr_insn_start
+     0.11%  qemu-aarch64         [.] assert_hflags_rebuild_correctly
+     0.10%  [kernel.kallsyms]    [k] 0xc0a73bc0
+     0.09%  [JIT] tid 8991       [.] 0xa7953464
+     0.09%  qemu-aarch64         [.] translator_ld
+     0.09%  [JIT] tid 8991       [.] 0xa73b8694
+     0.09%  qemu-aarch64         [.] tcg_out_dat_rIN.constprop.0
+     0.09%  qemu-aarch64         [.] aarch64_tr_init_disas_context
+     0.09%  qemu-aarch64         [.] tcg_gen_mov_i64
+     0.09%  [JIT] tid 8991       [.] 0xa6bce740
+     0.09%  qemu-aarch64         [.] tb_lookup_cmp
+     0.09%  qemu-aarch64         [.] tcg_out_cmp
+     0.09%  qemu-aarch64         [.] tcg_out_helper_load_slots.constprop.0
+     0.09%  qemu-aarch64         [.] __libc_cleanup_push_defer
+     0.09%  qemu-aarch64         [.] translator_ldl
+     0.09%  qemu-aarch64         [.] __pthread_mutex_unlock_usercnt
+     0.09%  qemu-aarch64         [.] tcg_out_dat_rIK
+     0.09%  [JIT] tid 8991       [.] 0xa795061c
+     0.08%  [JIT] tid 8991       [.] 0xa79a817c
+     0.08%  [kernel.kallsyms]    [k] 0xc0a4ccae
+     0.08%  qemu-aarch64         [.] free
+     0.08%  qemu-aarch64         [.] fold_tcg_st.constprop.0
+     0.08%  [JIT] tid 8991       [.] 0xa794eac4
+     0.08%  qemu-aarch64         [.] __pthread_mutex_lock
+     0.08%  [JIT] tid 8991       [.] 0xa70477dc
+     0.08%  [JIT] tid 8991       [.] 0xa73b7d5c
+     0.08%  [JIT] tid 8991       [.] 0xa6ca9fb8
+     0.08%  qemu-aarch64         [.] malloc
+     0.08%  qemu-aarch64         [.] do_constant_folding_cond1.constprop.0
+     0.08%  qemu-aarch64         [.] __snprintf_chk
+     0.08%  [JIT] tid 8991       [.] 0xa7047800
+     0.08%  qemu-aarch64         [.] helper_atomic_cmpxchgb
+     0.08%  qemu-aarch64         [.] g_int64_hash
+     0.08%  qemu-aarch64         [.] disas_sve
+     0.07%  qemu-aarch64         [.] tcg_gen_callN
+     0.07%  [kernel.kallsyms]    [k] 0xc0a4ccaa
+     0.07%  [JIT] tid 8991       [.] 0xa79493f4
+     0.07%  qemu-aarch64         [.] tcg_gen_op3
+     0.06%  qemu-aarch64         [.] qht_insert__locked
+     0.06%  [JIT] tid 8991       [.] 0xa73b9274
+     0.06%  qemu-aarch64         [.] disas_logic_reg
+     0.06%  [kernel.kallsyms]    [k] 0xc0100202
+     0.06%  qemu-aarch64         [.] page_get_flags
+     0.06%  [kernel.kallsyms]    [k] 0xc02ad794
+     0.06%  qemu-aarch64         [.] g_int64_equal
+     0.06%  qemu-aarch64         [.] fold_addsub2
+     0.06%  [JIT] tid 8991       [.] 0xa79e13f8
+     0.06%  [JIT] tid 8991       [.] 0xa79cbdb0
+     0.06%  qemu-aarch64         [.] qemu_mutex_unlock_impl
+     0.06%  [JIT] tid 8991       [.] 0xa79670b0
+     0.06%  qemu-aarch64         [.] tcg_temp_new_i64
+     0.06%  [JIT] tid 8991       [.] 0xa70426c8
+     0.06%  qemu-aarch64         [.] _IO_setb
+     0.06%  qemu-aarch64         [.] tcg_gen_op4
+     0.06%  [JIT] tid 8991       [.] 0xa6634004
+     0.06%  qemu-aarch64         [.] tcg_gen_op2
+     0.06%  [kernel.kallsyms]    [k] 0xc02972ec
+     0.06%  qemu-aarch64         [.] malloc_consolidate
+     0.06%  [JIT] tid 8991       [.] 0xa78ba70c
+     0.06%  qemu-aarch64         [.] _IO_no_init
+     0.06%  qemu-aarch64         [.] g_hash_table_remove_all
+     0.05%  [JIT] tid 8991       [.] 0xa6651400
+     0.05%  qemu-aarch64         [.] op_addr_ldst_imm_pre
+     0.05%  qemu-aarch64         [.] gen_top_byte_ignore
+     0.05%  qemu-aarch64         [.] tcg_out_ld
+     0.05%  qemu-aarch64         [.] do_constant_folding_cond2.constprop.0
+     0.05%  [JIT] tid 8991       [.] 0xa6caa9c0
+     0.05%  qemu-aarch64         [.] gen_intermediate_code
+     0.05%  qemu-aarch64         [.] page_protect
+     0.05%  [JIT] tid 8991       [.] 0xa796ac78
+     0.05%  [JIT] tid 8991       [.] 0xa6c71628
+     0.05%  [JIT] tid 8991       [.] 0xa78bc30c
+     0.05%  qemu-aarch64         [.] cpu_tb_exec
+     0.05%  [JIT] tid 8991       [.] 0xa79ca9f0
+     0.05%  qemu-aarch64         [.] tcg_gen_sextract_i64
+     0.05%  [JIT] tid 8991       [.] 0xa78b9200
+     0.05%  qemu-aarch64         [.] do_constant_folding_cond
+     0.05%  [JIT] tid 8991       [.] 0xa6fe0f40
+     0.05%  [JIT] tid 8991       [.] 0xa78d7df8
+     0.05%  qemu-aarch64         [.] tcg_out_qemu_st
+     0.05%  [kernel.kallsyms]    [k] 0xc011f46e
+     0.05%  qemu-aarch64         [.] _int_realloc
+     0.05%  [JIT] tid 8991       [.] 0xa665a1f0
+     0.05%  [JIT] tid 8991       [.] 0xa79aa15c
+     0.05%  qemu-aarch64         [.] find_mem_copy_for.constprop.0
+     0.05%  qemu-aarch64         [.] record_mem_copy
+     0.05%  qemu-aarch64         [.] fold_masks
+     0.05%  qemu-aarch64         [.] arm_mmu_idx_to_el
+     0.05%  [JIT] tid 8991       [.] 0xa6c3bf74
+     0.05%  qemu-aarch64         [.] fold_const2
+     0.05%  [JIT] tid 8991       [.] 0xa6fe0a30
+     0.05%  qemu-aarch64         [.] cpu_mmu_lookup
+     0.05%  [JIT] tid 8991       [.] 0xa78b7040
+     0.05%  qemu-aarch64         [.] qemu_mutex_lock_impl
+     0.05%  qemu-aarch64         [.] tcg_gen_and_i64
+     0.04%  qemu-aarch64         [.] do_gpr_ld_memidx
+     0.04%  [JIT] tid 8991       [.] 0xa78dcd80
+     0.03%  [kernel.kallsyms]    [k] 0xc0308a24
+     0.03%  [JIT] tid 8991       [.] 0xa7955c40
+     0.03%  qemu-aarch64         [.] qht_map_lock_buckets
+     0.03%  [JIT] tid 8991       [.] 0xa6c682e0
+     0.03%  qemu-aarch64         [.] qht_do_resize_reset
+     0.03%  [JIT] tid 8991       [.] 0xa78b6f80
+     0.03%  [kernel.kallsyms]    [k] 0xc02c79f2
+     0.03%  qemu-aarch64         [.] memcmp
+     0.03%  [JIT] tid 8991       [.] 0xa6bce920
+     0.03%  [JIT] tid 8991       [.] 0xa6611340
+     0.03%  qemu-aarch64         [.] __sigsetjmp
+     0.03%  [kernel.kallsyms]    [k] 0xc011eea8
+     0.03%  qemu-aarch64         [.] tcg_gen_op1
+     0.03%  [JIT] tid 8991       [.] 0xa6ca9f04
+     0.03%  qemu-aarch64         [.] tcg_gen_sextract_i32
+     0.03%  [kernel.kallsyms]    [k] 0xc0a4abb0
+     0.03%  [JIT] tid 8991       [.] 0xa78db3c0
+     0.03%  qemu-aarch64         [.] tcg_temp_new_i32
+     0.03%  [JIT] tid 8991       [.] 0xa79a9c68
+     0.03%  qemu-aarch64         [.] gen_goto_tb
+     0.03%  qemu-aarch64         [.] alloc_perturb
+     0.03%  [JIT] tid 8991       [.] 0xa7976000
+     0.03%  [JIT] tid 8991       [.] 0xa6ca8ac4
+     0.03%  qemu-aarch64         [.] tcg_gen_goto_tb
+     0.03%  [JIT] tid 8991       [.] 0xa665a31c
+     0.03%  [JIT] tid 8991       [.] 0xa6ca9f2c
+     0.03%  [JIT] tid 8991       [.] 0xa7067dc0
+     0.03%  [JIT] tid 8991       [.] 0xa6bce930
+     0.03%  [JIT] tid 8991       [.] 0xa6ca9a64
+     0.03%  [JIT] tid 8991       [.] 0xa78b48e0
+     0.03%  [kernel.kallsyms]    [k] 0xc02ce43e
+     0.03%  [JIT] tid 8991       [.] 0xa6c66248
+     0.03%  [JIT] tid 8991       [.] 0xa6ca8b64
+     0.03%  [kernel.kallsyms]    [k] 0xc0100216
+     0.03%  [JIT] tid 8991       [.] 0xa7a38c40
+     0.03%  [JIT] tid 8991       [.] 0xa6caa880
+     0.03%  [JIT] tid 8991       [.] 0xa6c2ec80
+     0.03%  [JIT] tid 8991       [.] 0xa78b4a44
+     0.03%  qemu-aarch64         [.] helper_ldq_mmu
+     0.03%  [kernel.kallsyms]    [k] 0xc02e66b4
+     0.03%  [JIT] tid 8991       [.] 0xa6ca9638
+     0.03%  [kernel.kallsyms]    [k] 0xc0308ada
+     0.03%  qemu-aarch64         [.] tcg_out_qemu_st_direct.isra.0
+     0.03%  [JIT] tid 8991       [.] 0xa78d2b04
+     0.03%  [JIT] tid 8991       [.] 0xa6caa788
+     0.03%  [JIT] tid 8991       [.] 0xa6bce744
+     0.03%  [JIT] tid 8991       [.] 0xa6bce898
+     0.03%  [kernel.kallsyms]    [k] 0xc0a68dcc
+     0.03%  [JIT] tid 8991       [.] 0xa7aa7400
+     0.03%  [JIT] tid 8991       [.] 0xa696bef0
+     0.03%  [JIT] tid 8991       [.] 0xa703bd00
+     0.03%  [JIT] tid 8991       [.] 0xa79a7480
+     0.03%  [JIT] tid 8991       [.] 0xa78bbc60
+     0.03%  qemu-aarch64         [.] get_a64_user_mem_index
+     0.03%  qemu-aarch64         [.] do_constant_folding_2
+     0.03%  [JIT] tid 8991       [.] 0xa78b48c0
+     0.03%  [JIT] tid 8991       [.] 0xa79a832c
+     0.03%  [JIT] tid 8991       [.] 0xa6ca9740
+     0.03%  [JIT] tid 8991       [.] 0xa6bce90c
+     0.03%  qemu-aarch64         [.] tcg_gen_mov_i32
+     0.03%  [JIT] tid 8991       [.] 0xa7967278
+     0.03%  [kernel.kallsyms]    [k] 0xc0a6ddc6
+     0.03%  [JIT] tid 8991       [.] 0xa78b9258
+     0.03%  [JIT] tid 8991       [.] 0xa6fe51e0
+     0.03%  [JIT] tid 8991       [.] 0xa7a3c300
+     0.03%  [kernel.kallsyms]    [k] 0xc0345386
+     0.03%  [JIT] tid 8991       [.] 0xa7ab6540
+     0.03%  [JIT] tid 8991       [.] 0xa7048d00
+     0.03%  [JIT] tid 8991       [.] 0xa6c6a6c0
+     0.03%  [kernel.kallsyms]    [k] 0xc011ce6c
+     0.03%  [kernel.kallsyms]    [k] 0xc0a73aa6
+     0.03%  qemu-aarch64         [.] tcg_gen_brcondi_i32
+     0.03%  [kernel.kallsyms]    [k] 0xc0a73478
+     0.03%  qemu-aarch64         [.] tcg_reg_alloc_do_movi
+     0.03%  [JIT] tid 8991       [.] 0xa6bce8c0
+     0.03%  [JIT] tid 8991       [.] 0xa78bc280
+     0.03%  [JIT] tid 8991       [.] 0xa7967abc
+     0.03%  [JIT] tid 8991       [.] 0xa72afbb0
+     0.03%  [JIT] tid 8991       [.] 0xa7967840
+     0.03%  qemu-aarch64         [.] gen_new_label
+     0.03%  [JIT] tid 8991       [.] 0xa73d1e60
+     0.03%  [JIT] tid 8991       [.] 0xa78b82ac
+     0.03%  [JIT] tid 8991       [.] 0xa6656c20
+     0.03%  [JIT] tid 8991       [.] 0xa6feab44
+     0.03%  [JIT] tid 8991       [.] 0xa6c66684
+     0.03%  [JIT] tid 8991       [.] 0xa6962280
+     0.03%  [JIT] tid 8991       [.] 0xa79520f4
+     0.03%  [JIT] tid 8991       [.] 0xa6c116c0
+     0.03%  qemu-aarch64         [.] unlink_chunk.constprop.0
+     0.03%  [JIT] tid 8991       [.] 0xa78c7488
+     0.03%  [JIT] tid 8991       [.] 0xa70e2380
+     0.03%  [JIT] tid 8991       [.] 0xa7952094
+     0.03%  qemu-aarch64         [.] parts64_round_to_int_normal
+     0.03%  qemu-aarch64         [.] g_malloc0_n
+     0.03%  qemu-aarch64         [.] tcg_out_cmp2
+     0.03%  [JIT] tid 8991       [.] 0xa78c743c
+     0.03%  qemu-aarch64         [.] trans_STR_i
+     0.03%  [JIT] tid 8991       [.] 0xa78d54e0
+     0.03%  [JIT] tid 8991       [.] 0xa78c7428
+     0.03%  [kernel.kallsyms]    [k] 0xc011db1e
+     0.03%  [JIT] tid 8991       [.] 0xa6fe3d00
+     0.03%  [JIT] tid 8991       [.] 0xa701bb20
+     0.03%  qemu-aarch64         [.] qht_insert
+     0.03%  [JIT] tid 8991       [.] 0xa6bce758
+     0.03%  [JIT] tid 8991       [.] 0xa78db800
+     0.03%  [JIT] tid 8991       [.] 0xa73d15c0
+     0.03%  qemu-aarch64         [.] tcg_tb_alloc
+     0.03%  [JIT] tid 8991       [.] 0xa6feb18c
+     0.03%  qemu-aarch64         [.] mmap_unlock
+     0.03%  [JIT] tid 8991       [.] 0xa7950444
+     0.03%  qemu-aarch64         [.] tcg_gen_movi_i64
+     0.03%  [kernel.kallsyms]    [k] 0xc01155dc
+     0.03%  [JIT] tid 8991       [.] 0xa6c6cfc0
+     0.03%  [kernel.kallsyms]    [k] 0xc011eee4
+     0.03%  qemu-aarch64         [.] fold_setcond_zmask
+     0.03%  qemu-aarch64         [.] tcg_gen_brcond_i32
+     0.03%  [JIT] tid 8991       [.] 0xa78c74a8
+     0.03%  [JIT] tid 8991       [.] 0xa6c6e2f0
+     0.03%  [JIT] tid 8991       [.] 0xa6caa100
+     0.03%  [JIT] tid 8991       [.] 0xa78f8388
+     0.03%  qemu-aarch64         [.] aarch64_tr_tb_stop
+     0.03%  qemu-aarch64         [.] __flockfile
+     0.03%  [JIT] tid 8991       [.] 0xa7ae4940
+     0.03%  [kernel.kallsyms]    [k] 0xc02cb2a6
+     0.03%  [JIT] tid 8991       [.] 0xa6ca8b08
+     0.03%  [JIT] tid 8991       [.] 0xa6c2e080
+     0.03%  [JIT] tid 8991       [.] 0xa7a237c0
+     0.03%  [kernel.kallsyms]    [k] 0xc02e7eb0
+     0.03%  [JIT] tid 8991       [.] 0xa79e1254
+     0.03%  [JIT] tid 8991       [.] 0xa7908740
+     0.03%  [JIT] tid 8991       [.] 0xa7048a00
+     0.03%  qemu-aarch64         [.] uint64_to_float64_scalbn
+     0.03%  qemu-aarch64         [.] tcg_cflags_has
+     0.03%  [JIT] tid 8991       [.] 0xa705fca0
+     0.03%  [JIT] tid 8991       [.] 0xa798d234
+     0.03%  [JIT] tid 8991       [.] 0xa6febfc0
+     0.03%  [kernel.kallsyms]    [k] 0xc010021a
+     0.03%  [JIT] tid 8991       [.] 0xa6ca9f30
+     0.03%  [kernel.kallsyms]    [k] 0xc02c7a60
+     0.03%  qemu-aarch64         [.] read_cpu_reg
+     0.03%  [JIT] tid 8991       [.] 0xa78bf7a0
+     0.03%  [JIT] tid 8991       [.] 0xa7067780
+     0.03%  qemu-aarch64         [.] tcg_out_movext2
+     0.03%  [JIT] tid 8991       [.] 0xa7a1a32c
+     0.03%  qemu-aarch64         [.] tcg_gen_exit_tb
+     0.03%  qemu-aarch64         [.] tcg_out_qemu_ld_direct.isra.0
+     0.03%  qemu-aarch64         [.] temp_allocate_frame
+     0.03%  qemu-aarch64         [.] g_try_malloc0
+     0.03%  [JIT] tid 8991       [.] 0xa7a22f40
+     0.03%  [JIT] tid 8991       [.] 0xa78c7464
+     0.03%  [JIT] tid 8991       [.] 0xa7067c00
+     0.03%  [JIT] tid 8991       [.] 0xa7951b84
+     0.03%  [JIT] tid 8991       [.] 0xa78b9204
+     0.03%  qemu-aarch64         [.] __getpagesize
+     0.03%  [JIT] tid 8991       [.] 0xa6ff0480
+     0.03%  [JIT] tid 8991       [.] 0xa78b4c14
+     0.03%  [kernel.kallsyms]    [k] 0xc05b16ec
+     0.03%  [kernel.kallsyms]    [k] 0xc02c7c1c
+     0.03%  [kernel.kallsyms]    [k] 0xc02b461c
+     0.03%  [JIT] tid 8991       [.] 0xa79a6060
+     0.03%  qemu-aarch64         [.] trans_STP.constprop.0
+     0.03%  [JIT] tid 8991       [.] 0xa7907c00
+     0.03%  [JIT] tid 8991       [.] 0xa78b6fcc
+     0.03%  [kernel.kallsyms]    [k] 0xc02c7c32
+     0.03%  [JIT] tid 8991       [.] 0xa6656d9c
+     0.03%  [JIT] tid 8991       [.] 0xa78d65d8
+     0.03%  [JIT] tid 8991       [.] 0xa798c7d8
+     0.03%  [JIT] tid 8991       [.] 0xa6656300
+     0.03%  [JIT] tid 8991       [.] 0xa78c7de0
+     0.03%  [JIT] tid 8991       [.] 0xa664d500
+     0.02%  [JIT] tid 8991       [.] 0xa78d6428
+     0.02%  [JIT] tid 8991       [.] 0xa78b4bc0
+     0.02%  [JIT] tid 8991       [.] 0xa6614830
+     0.02%  [kernel.kallsyms]    [k] 0xc01ce380
+     0.02%  [kernel.kallsyms]    [k] 0xc02e8f9a
+     0.02%  qemu-aarch64         [.] g_markup_vprintf_escaped
+     0.02%  [JIT] tid 8991       [.] 0xa79a76c4
+     0.02%  [kernel.kallsyms]    [k] 0xc02f5e80
+     0.02%  [JIT] tid 8991       [.] 0xa746fdc4
+     0.02%  [JIT] tid 8991       [.] 0xa79803d8
+     0.02%  [JIT] tid 8991       [.] 0xa6c68320
+     0.02%  qemu-aarch64         [.] qht_map_reset__all_locked
+     0.02%  [JIT] tid 8991       [.] 0xa78b7b44
+     0.02%  [JIT] tid 8991       [.] 0xa7951b20
+     0.02%  [JIT] tid 8991       [.] 0xa78bbfcc
+     0.02%  [JIT] tid 8991       [.] 0xa6c68f40
+     0.02%  [JIT] tid 8991       [.] 0xa78d2ce0
+     0.02%  [JIT] tid 8991       [.] 0xa6c6a160
+     0.02%  [JIT] tid 8991       [.] 0xa78bc778
+     0.02%  [kernel.kallsyms]    [k] 0xc011f52c
+     0.02%  [JIT] tid 8991       [.] 0xa78c7dc0
+     0.02%  [JIT] tid 8991       [.] 0xa6c6a884
+     0.02%  [JIT] tid 8991       [.] 0xa6c6bba8
+     0.02%  [JIT] tid 8991       [.] 0xa6bce770
+     0.02%  [kernel.kallsyms]    [k] 0xc02aca28
+     0.02%  [JIT] tid 8991       [.] 0xa78bbc40
+     0.02%  [kernel.kallsyms]    [k] 0xc0a4abaa
+     0.02%  [JIT] tid 8991       [.] 0xa6c6de8c
+     0.02%  [JIT] tid 8991       [.] 0xa6c7267c
+     0.02%  [JIT] tid 8991       [.] 0xa6c6ad4c
+     0.02%  [JIT] tid 8991       [.] 0xa6c71284
+     0.02%  [JIT] tid 8991       [.] 0xa6c66040
+     0.02%  [JIT] tid 8991       [.] 0xa795324c
+     0.02%  [kernel.kallsyms]    [k] 0xc02a3fbc
+     0.02%  [JIT] tid 8991       [.] 0xa6941a00
+     0.02%  [JIT] tid 8991       [.] 0xa79aa138
+     0.02%  [JIT] tid 8991       [.] 0xa6a65adc
+     0.02%  [kernel.kallsyms]    [k] 0xc0a552fa
+     0.02%  [JIT] tid 8991       [.] 0xa79f5240
+     0.02%  [kernel.kallsyms]    [k] 0xc0a55316
+     0.02%  [JIT] tid 8991       [.] 0xa6c6ba40
+     0.02%  [kernel.kallsyms]    [k] 0xc02d71ca
+     0.02%  [JIT] tid 8991       [.] 0xa6ff1700
+     0.02%  [JIT] tid 8991       [.] 0xa78ba684
+     0.02%  [JIT] tid 8991       [.] 0xa7aaa0e0
+     0.02%  [JIT] tid 8991       [.] 0xa7a930a8
+     0.02%  [JIT] tid 8991       [.] 0xa6c6d0c4
+     0.02%  [JIT] tid 8991       [.] 0xa66340ec
+     0.02%  [JIT] tid 8991       [.] 0xa75bb0d0
+     0.02%  qemu-aarch64         [.] tcg_gen_ld_i64
+     0.02%  [JIT] tid 8991       [.] 0xa7a989a8
+     0.02%  [kernel.kallsyms]    [k] 0xc030b498
+     0.02%  [JIT] tid 8991       [.] 0xa78bf7ec
+     0.02%  [kernel.kallsyms]    [k] 0xc04c25c0
+     0.02%  [JIT] tid 8991       [.] 0xa7aae2e0
+     0.02%  [JIT] tid 8991       [.] 0xa79ece8c
+     0.02%  [kernel.kallsyms]    [k] 0xc01ce388
+     0.02%  qemu-aarch64         [.] gen_ldst_i64
+     0.02%  qemu-aarch64         [.] g_realloc_n
+     0.02%  [JIT] tid 8991       [.] 0xa7937da0
+     0.02%  [JIT] tid 8991       [.] 0xa7aafdc0
+     0.02%  qemu-aarch64         [.] helper_shr_i64
+     0.02%  [kernel.kallsyms]    [k] 0xc011eeb6
+     0.02%  [JIT] tid 8991       [.] 0xa6986100
+     0.02%  [JIT] tid 8991       [.] 0xa73b9200
+     0.02%  [JIT] tid 8991       [.] 0xa79a5ea8
+     0.02%  [JIT] tid 8991       [.] 0xa7506ecc
+     0.02%  [JIT] tid 8991       [.] 0xa7953204
+     0.02%  [vdso]               [.] 0x00000680
+     0.02%  [kernel.kallsyms]    [k] 0xc02c7a66
+     0.02%  qemu-aarch64         [.] gen_set_label
+     0.02%  [JIT] tid 8991       [.] 0xa79ec700
+     0.02%  qemu-aarch64         [.] tcg_gen_ld_i32
+     0.02%  [JIT] tid 8991       [.] 0xa6c6b640
+     0.02%  [JIT] tid 8991       [.] 0xa73b8bc4
+     0.02%  [JIT] tid 8991       [.] 0xa7a86de0
+     0.02%  [JIT] tid 8991       [.] 0xa6c718f8
+     0.02%  [JIT] tid 8991       [.] 0xa79f12dc
+     0.02%  [JIT] tid 8991       [.] 0xa798a790
+     0.02%  [JIT] tid 8991       [.] 0xa66112c8
+     0.02%  [JIT] tid 8991       [.] 0xa78b7880
+     0.02%  [JIT] tid 8991       [.] 0xa6bce964
+     0.02%  [JIT] tid 8991       [.] 0xa73b7f18
+     0.02%  [JIT] tid 8991       [.] 0xa7a23074
+     0.02%  [JIT] tid 8991       [.] 0xa6ba8dec
+     0.02%  [JIT] tid 8991       [.] 0xa7a96100
+     0.02%  [JIT] tid 8991       [.] 0xa6613200
+     0.02%  [JIT] tid 8991       [.] 0xa6fead50
+     0.02%  [JIT] tid 8991       [.] 0xa7905a0c
+     0.02%  [JIT] tid 8991       [.] 0xa79e06c0
+     0.02%  [JIT] tid 8991       [.] 0xa69625cc
+     0.02%  [JIT] tid 8991       [.] 0xa797625c
+     0.02%  [JIT] tid 8991       [.] 0xa700e840
+     0.02%  [JIT] tid 8991       [.] 0xa703be40
+     0.02%  [JIT] tid 8991       [.] 0xa6c71bb0
+     0.02%  [JIT] tid 8991       [.] 0xa7048704
+     0.02%  [JIT] tid 8991       [.] 0xa794f018
+     0.02%  [JIT] tid 8991       [.] 0xa79a5f64
+     0.02%  [JIT] tid 8991       [.] 0xa7a54984
+     0.02%  [kernel.kallsyms]    [k] 0xc01155f0
+     0.02%  [JIT] tid 8991       [.] 0xa665c100
+     0.02%  [JIT] tid 8991       [.] 0xa6fe024c
+     0.02%  [kernel.kallsyms]    [k] 0xc01adec4
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8f70
+     0.02%  [JIT] tid 8991       [.] 0xa6c706f8
+     0.02%  [JIT] tid 8991       [.] 0xa79e3c94
+     0.02%  [JIT] tid 8991       [.] 0xa665a2c0
+     0.02%  [kernel.kallsyms]    [k] 0xc02f33b2
+     0.02%  [JIT] tid 8991       [.] 0xa70c42c0
+     0.02%  [JIT] tid 8991       [.] 0xa79674e8
+     0.02%  [JIT] tid 8991       [.] 0xa6c10448
+     0.02%  [JIT] tid 8991       [.] 0xa6c72474
+     0.02%  [JIT] tid 8991       [.] 0xa665a1c0
+     0.02%  qemu-aarch64         [.] tcg_gen_qemu_st_i64_int
+     0.02%  [JIT] tid 8991       [.] 0xa7a4f800
+     0.02%  [JIT] tid 8991       [.] 0xa798ad14
+     0.02%  [JIT] tid 8991       [.] 0xa665f1e8
+     0.02%  [kernel.kallsyms]    [k] 0xc02c7c0c
+     0.02%  [JIT] tid 8991       [.] 0xa79a7e40
+     0.02%  qemu-aarch64         [.] qht_map_destroy
+     0.02%  [JIT] tid 8991       [.] 0xa7a81bc0
+     0.02%  [JIT] tid 8991       [.] 0xa6c75200
+     0.02%  [JIT] tid 8991       [.] 0xa74fab00
+     0.02%  [JIT] tid 8991       [.] 0xa7048bfc
+     0.02%  [JIT] tid 8991       [.] 0xa6c6eb20
+     0.02%  [JIT] tid 8991       [.] 0xa7acdac8
+     0.02%  [kernel.kallsyms]    [k] 0xc0151ec4
+     0.02%  [JIT] tid 8991       [.] 0xa6930f88
+     0.02%  [JIT] tid 8991       [.] 0xa7502980
+     0.02%  [JIT] tid 8991       [.] 0xa6fe4f40
+     0.02%  [JIT] tid 8991       [.] 0xa6fe0a00
+     0.02%  [kernel.kallsyms]    [k] 0xc04c25e4
+     0.02%  [JIT] tid 8991       [.] 0xa6c72600
+     0.02%  [JIT] tid 8991       [.] 0xa78d55c4
+     0.02%  [JIT] tid 8991       [.] 0xa7a20880
+     0.02%  [JIT] tid 8991       [.] 0xa702064c
+     0.02%  [JIT] tid 8991       [.] 0xa704779c
+     0.02%  [JIT] tid 8991       [.] 0xa7042a48
+     0.02%  [JIT] tid 8991       [.] 0xa794e3a8
+     0.02%  [JIT] tid 8991       [.] 0xa79dfdd4
+     0.02%  [JIT] tid 8991       [.] 0xa7030204
+     0.02%  [JIT] tid 8991       [.] 0xa7908c48
+     0.02%  [kernel.kallsyms]    [k] 0xc010024c
+     0.02%  [JIT] tid 8991       [.] 0xa79e312c
+     0.02%  [JIT] tid 8991       [.] 0xa7a4d000
+     0.02%  [JIT] tid 8991       [.] 0xa6c68ff8
+     0.02%  [JIT] tid 8991       [.] 0xa7479040
+     0.02%  [JIT] tid 8991       [.] 0xa69df888
+     0.02%  [kernel.kallsyms]    [k] 0xc02c7c4c
+     0.02%  [JIT] tid 8991       [.] 0xa78d8ff0
+     0.02%  [JIT] tid 8991       [.] 0xa6c109c0
+     0.02%  [JIT] tid 8991       [.] 0xa78d7e40
+     0.02%  [JIT] tid 8991       [.] 0xa731ebc0
+     0.02%  [JIT] tid 8991       [.] 0xa6c7945c
+     0.02%  qemu-aarch64         [.] __sigjmp_save
+     0.02%  [kernel.kallsyms]    [k] 0xc0315064
+     0.02%  [JIT] tid 8991       [.] 0xa70207a0
+     0.02%  [JIT] tid 8991       [.] 0xa6ba8f80
+     0.02%  [JIT] tid 8991       [.] 0xa78b9504
+     0.02%  [kernel.kallsyms]    [k] 0xc02e834e
+     0.02%  [JIT] tid 8991       [.] 0xa705fc00
+     0.02%  [JIT] tid 8991       [.] 0xa6c68fb4
+     0.02%  [JIT] tid 8991       [.] 0xa6c65e64
+     0.02%  [JIT] tid 8991       [.] 0xa6c6edc0
+     0.02%  [JIT] tid 8991       [.] 0xa6c70524
+     0.02%  [JIT] tid 8991       [.] 0xa6c6b9c0
+     0.02%  [kernel.kallsyms]    [k] 0xc02d47ee
+     0.02%  [JIT] tid 8991       [.] 0xa79e3024
+     0.02%  [kernel.kallsyms]    [k] 0xc02b461e
+     0.02%  [JIT] tid 8991       [.] 0xa798ca40
+     0.02%  qemu-aarch64         [.] cpu_loop
+     0.02%  [JIT] tid 8991       [.] 0xa79519c0
+     0.02%  [kernel.kallsyms]    [k] 0xc0a695c4
+     0.02%  [JIT] tid 8991       [.] 0xa79e3c2c
+     0.02%  [kernel.kallsyms]    [k] 0xc030b340
+     0.02%  [JIT] tid 8991       [.] 0xa797ae38
+     0.02%  [JIT] tid 8991       [.] 0xa700af80
+     0.02%  [JIT] tid 8991       [.] 0xa794eff4
+     0.02%  [JIT] tid 8991       [.] 0xa6e228b8
+     0.02%  [JIT] tid 8991       [.] 0xa69df62c
+     0.02%  [JIT] tid 8991       [.] 0xa78d6d40
+     0.02%  [JIT] tid 8991       [.] 0xa6612980
+     0.02%  [JIT] tid 8991       [.] 0xa72b1f00
+     0.02%  qemu-aarch64         [.] tcg_gen_op6
+     0.02%  [kernel.kallsyms]    [k] 0xc032f54a
+     0.02%  [JIT] tid 8991       [.] 0xa6634028
+     0.02%  [JIT] tid 8991       [.] 0xa69b8398
+     0.02%  [JIT] tid 8991       [.] 0xa78b920c
+     0.02%  [JIT] tid 8991       [.] 0xa79e1b98
+     0.02%  [JIT] tid 8991       [.] 0xa7048568
+     0.02%  [JIT] tid 8991       [.] 0xa78d6220
+     0.02%  [JIT] tid 8991       [.] 0xa79e1058
+     0.02%  [JIT] tid 8991       [.] 0xa664b840
+     0.02%  [kernel.kallsyms]    [k] 0xc04e7cc2
+     0.02%  [JIT] tid 8991       [.] 0xa7a1d9b0
+     0.02%  qemu-aarch64         [.] mmap_lock
+     0.02%  [JIT] tid 8991       [.] 0xa6616a40
+     0.02%  [JIT] tid 8991       [.] 0xa79f0aec
+     0.02%  [JIT] tid 8991       [.] 0xa7048d20
+     0.02%  [JIT] tid 8991       [.] 0xa69707ec
+     0.02%  [JIT] tid 8991       [.] 0xa6639100
+     0.02%  [JIT] tid 8991       [.] 0xa6c6b5d4
+     0.02%  [JIT] tid 8991       [.] 0xa7953178
+     0.02%  [JIT] tid 8991       [.] 0xa79f1dc8
+     0.02%  [JIT] tid 8991       [.] 0xa692c970
+     0.02%  [JIT] tid 8991       [.] 0xa7951cc0
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9aa4
+     0.02%  [JIT] tid 8991       [.] 0xa70692d8
+     0.02%  [JIT] tid 8991       [.] 0xa73b84c0
+     0.02%  [JIT] tid 8991       [.] 0xa7a1400c
+     0.02%  [JIT] tid 8991       [.] 0xa7a235b0
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8fd0
+     0.02%  [JIT] tid 8991       [.] 0xa78d6ac4
+     0.02%  [JIT] tid 8991       [.] 0xa7a4e0c0
+     0.02%  [JIT] tid 8991       [.] 0xa6c72630
+     0.02%  [JIT] tid 8991       [.] 0xa704352c
+     0.02%  [kernel.kallsyms]    [k] 0xc02afc9e
+     0.02%  [JIT] tid 8991       [.] 0xa78b82c4
+     0.02%  [JIT] tid 8991       [.] 0xa73b8a08
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9f34
+     0.02%  [JIT] tid 8991       [.] 0xa798acc0
+     0.02%  [JIT] tid 8991       [.] 0xa7955c68
+     0.02%  [JIT] tid 8991       [.] 0xa705ccbc
+     0.02%  [JIT] tid 8991       [.] 0xa6c76e80
+     0.02%  [JIT] tid 8991       [.] 0xa6d8fb60
+     0.02%  [JIT] tid 8991       [.] 0xa6c75040
+     0.02%  [JIT] tid 8991       [.] 0xa70e5920
+     0.02%  [JIT] tid 8991       [.] 0xa794e664
+     0.02%  [JIT] tid 8991       [.] 0xa78dca40
+     0.02%  [kernel.kallsyms]    [k] 0xc0308b02
+     0.02%  [JIT] tid 8991       [.] 0xa6633fc4
+     0.02%  [JIT] tid 8991       [.] 0xa7a25200
+     0.02%  [kernel.kallsyms]    [k] 0xc030a3dc
+     0.02%  [JIT] tid 8991       [.] 0xa78b4c3c
+     0.02%  [JIT] tid 8991       [.] 0xa694e618
+     0.02%  [JIT] tid 8991       [.] 0xa703beb0
+     0.02%  [JIT] tid 8991       [.] 0xa7479084
+     0.02%  [JIT] tid 8991       [.] 0xa78f7f98
+     0.02%  qemu-aarch64         [.] tcg_canonicalize_memop
+     0.02%  [JIT] tid 8991       [.] 0xa78f9010
+     0.02%  [JIT] tid 8991       [.] 0xa6c71020
+     0.02%  [JIT] tid 8991       [.] 0xa7044b00
+     0.02%  [JIT] tid 8991       [.] 0xa7949440
+     0.02%  [JIT] tid 8991       [.] 0xa79efd9c
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9598
+     0.02%  [JIT] tid 8991       [.] 0xa6634154
+     0.02%  [JIT] tid 8991       [.] 0xa79ed300
+     0.02%  [JIT] tid 8991       [.] 0xa79e17d0
+     0.02%  [JIT] tid 8991       [.] 0xa7951ac0
+     0.02%  [JIT] tid 8991       [.] 0xa6c65c80
+     0.02%  [JIT] tid 8991       [.] 0xa6c6e910
+     0.02%  [JIT] tid 8991       [.] 0xa79aa4e8
+     0.02%  [JIT] tid 8991       [.] 0xa79546c0
+     0.02%  [kernel.kallsyms]    [k] 0xc02e8164
+     0.02%  [kernel.kallsyms]    [k] 0xc02b4612
+     0.02%  qemu-aarch64         [.] tcg_out_helper_load_common_args.constprop.0
+     0.02%  [JIT] tid 8991       [.] 0xa79dfd60
+     0.02%  [JIT] tid 8991       [.] 0xa78b493c
+     0.02%  [kernel.kallsyms]    [k] 0xc0297316
+     0.02%  [JIT] tid 8991       [.] 0xa79530e0
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9c6c
+     0.02%  [JIT] tid 8991       [.] 0xa6634134
+     0.02%  [kernel.kallsyms]    [k] 0xc0a4cce4
+     0.02%  [JIT] tid 8991       [.] 0xa7a87040
+     0.02%  [JIT] tid 8991       [.] 0xa6fdfc34
+     0.02%  [JIT] tid 8991       [.] 0xa72b0470
+     0.02%  [JIT] tid 8991       [.] 0xa79e0b40
+     0.02%  [JIT] tid 8991       [.] 0xa79e49f8
+     0.02%  [JIT] tid 8991       [.] 0xa7bee740
+     0.02%  [JIT] tid 8991       [.] 0xa796d408
+     0.02%  [kernel.kallsyms]    [k] 0xc02ce47e
+     0.02%  [JIT] tid 8991       [.] 0xa78dbda0
+     0.02%  [JIT] tid 8991       [.] 0xa79cb640
+     0.02%  qemu-aarch64         [.] gen_pc_plus_diff
+     0.02%  [JIT] tid 8991       [.] 0xa6bce88c
+     0.02%  [JIT] tid 8991       [.] 0xa6c31c80
+     0.02%  [JIT] tid 8991       [.] 0xa7a298bc
+     0.02%  [JIT] tid 8991       [.] 0xa6633ca0
+     0.02%  [JIT] tid 8991       [.] 0xa7a23370
+     0.02%  [kernel.kallsyms]    [k] 0xc02e9464
+     0.02%  [JIT] tid 8991       [.] 0xa7a23030
+     0.02%  [JIT] tid 8991       [.] 0xa798d708
+     0.02%  [kernel.kallsyms]    [k] 0xc02ce700
+     0.02%  [JIT] tid 8991       [.] 0xa7949904
+     0.02%  [JIT] tid 8991       [.] 0xa78bfa48
+     0.02%  [kernel.kallsyms]    [k] 0xc0317060
+     0.02%  qemu-aarch64         [.] __memset_from_thumb
+     0.02%  [JIT] tid 8991       [.] 0xa78f8ec4
+     0.02%  [JIT] tid 8991       [.] 0xa79deffc
+     0.02%  qemu-aarch64         [.] tc_ptr_to_region_tree
+     0.02%  [JIT] tid 8991       [.] 0xa692c8c0
+     0.02%  [JIT] tid 8991       [.] 0xa79733b8
+     0.02%  [kernel.kallsyms]    [k] 0xc0a4cf80
+     0.02%  [kernel.kallsyms]    [k] 0xc033e0c4
+     0.02%  [JIT] tid 8991       [.] 0xa664ed80
+     0.02%  [JIT] tid 8991       [.] 0xa6caa5fc
+     0.02%  [JIT] tid 8991       [.] 0xa664cf20
+     0.02%  [kernel.kallsyms]    [k] 0xc01a863c
+     0.02%  [JIT] tid 8991       [.] 0xa78b4c50
+     0.02%  [JIT] tid 8991       [.] 0xa78b7300
+     0.02%  [JIT] tid 8991       [.] 0xa6ff0900
+     0.02%  [JIT] tid 8991       [.] 0xa7a23378
+     0.02%  [JIT] tid 8991       [.] 0xa79a8760
+     0.02%  [JIT] tid 8991       [.] 0xa78d8830
+     0.02%  [JIT] tid 8991       [.] 0xa794e1c0
+     0.02%  [JIT] tid 8991       [.] 0xa794e980
+     0.02%  [JIT] tid 8991       [.] 0xa6a65a00
+     0.02%  [JIT] tid 8991       [.] 0xa7046bf4
+     0.02%  [JIT] tid 8991       [.] 0xa79ec6c0
+     0.02%  [JIT] tid 8991       [.] 0xa705c6c0
+     0.02%  [JIT] tid 8991       [.] 0xa6658210
+     0.02%  [JIT] tid 8991       [.] 0xa6cc4440
+     0.02%  [JIT] tid 8991       [.] 0xa7967b18
+     0.02%  [JIT] tid 8991       [.] 0xa6caa280
+     0.02%  [JIT] tid 8991       [.] 0xa7048554
+     0.02%  [JIT] tid 8991       [.] 0xa78f83e4
+     0.02%  qemu-aarch64         [.] have_mmap_lock
+     0.02%  [JIT] tid 8991       [.] 0xa79a78c0
+     0.02%  [JIT] tid 8991       [.] 0xa7062a00
+     0.02%  [JIT] tid 8991       [.] 0xa6bce938
+     0.02%  [JIT] tid 8991       [.] 0xa798d788
+     0.02%  [JIT] tid 8991       [.] 0xa6fe58e0
+     0.02%  [JIT] tid 8991       [.] 0xa78b4c8c
+     0.02%  [JIT] tid 8991       [.] 0xa7a53960
+     0.02%  [JIT] tid 8991       [.] 0xa7a925c0
+     0.02%  [JIT] tid 8991       [.] 0xa78d50c0
+     0.02%  [kernel.kallsyms]    [k] 0xc02e81c0
+     0.02%  [JIT] tid 8991       [.] 0xa665ecbc
+     0.02%  [JIT] tid 8991       [.] 0xa6c70528
+     0.02%  [JIT] tid 8991       [.] 0xa6c68264
+     0.02%  [JIT] tid 8991       [.] 0xa79f2784
+     0.02%  [JIT] tid 8991       [.] 0xa7950d50
+     0.02%  [kernel.kallsyms]    [k] 0xc011daf8
+     0.02%  [JIT] tid 8991       [.] 0xa7a4aa48
+     0.02%  [JIT] tid 8991       [.] 0xa6c6c004
+     0.02%  [JIT] tid 8991       [.] 0xa6c71b4c
+     0.02%  [JIT] tid 8991       [.] 0xa79a8150
+     0.02%  [JIT] tid 8991       [.] 0xa6ba8dc0
+     0.02%  [JIT] tid 8991       [.] 0xa703bd80
+     0.02%  [JIT] tid 8991       [.] 0xa78bf844
+     0.02%  [JIT] tid 8991       [.] 0xa7a1eff8
+     0.02%  [JIT] tid 8991       [.] 0xa794e874
+     0.02%  qemu-aarch64         [.] qht_map_create
+     0.02%  [JIT] tid 8991       [.] 0xa794e388
+     0.02%  [JIT] tid 8991       [.] 0xa7aad380
+     0.02%  [JIT] tid 8991       [.] 0xa79803a0
+     0.02%  [JIT] tid 8991       [.] 0xa79f0540
+     0.02%  [JIT] tid 8991       [.] 0xa6af0d8c
+     0.02%  [kernel.kallsyms]    [k] 0xc02972fa
+     0.02%  [JIT] tid 8991       [.] 0xa7a8bc20
+     0.02%  [JIT] tid 8991       [.] 0xa7a94124
+     0.02%  [JIT] tid 8991       [.] 0xa79f0024
+     0.02%  [kernel.kallsyms]    [k] 0xc01ce3ba
+     0.02%  [JIT] tid 8991       [.] 0xa78d7518
+     0.02%  [JIT] tid 8991       [.] 0xa79e3b5c
+     0.02%  [JIT] tid 8991       [.] 0xa78bc73c
+     0.02%  [JIT] tid 8991       [.] 0xa7967d00
+     0.02%  [JIT] tid 8991       [.] 0xa78d3120
+     0.02%  [JIT] tid 8991       [.] 0xa798db78
+     0.02%  [JIT] tid 8991       [.] 0xa6ff2420
+     0.02%  [JIT] tid 8991       [.] 0xa6c2e5c0
+     0.02%  [JIT] tid 8991       [.] 0xa79524c0
+     0.02%  qemu-aarch64         [.] gen_compute_nzcv
+     0.02%  [JIT] tid 8991       [.] 0xa6c10f34
+     0.02%  [JIT] tid 8991       [.] 0xa78d71f0
+     0.02%  [JIT] tid 8991       [.] 0xa79e30b4
+     0.02%  [kernel.kallsyms]    [k] 0xc02d5f40
+     0.02%  [JIT] tid 8991       [.] 0xa696c0c0
+     0.02%  [JIT] tid 8991       [.] 0xa797336c
+     0.02%  [JIT] tid 8991       [.] 0xa79f2888
+     0.02%  [JIT] tid 8991       [.] 0xa6656b7c
+     0.02%  [JIT] tid 8991       [.] 0xa78b8320
+     0.02%  [JIT] tid 8991       [.] 0xa7905518
+     0.02%  [JIT] tid 8991       [.] 0xa7953404
+     0.02%  [JIT] tid 8991       [.] 0xa72b0580
+     0.02%  [JIT] tid 8991       [.] 0xa7a94138
+     0.02%  [JIT] tid 8991       [.] 0xa6d8f1c0
+     0.02%  [JIT] tid 8991       [.] 0xa66568e8
+     0.02%  [JIT] tid 8991       [.] 0xa6c6f380
+     0.02%  [JIT] tid 8991       [.] 0xa78d88a0
+     0.02%  [JIT] tid 8991       [.] 0xa6c704c4
+     0.02%  [JIT] tid 8991       [.] 0xa796eb98
+     0.02%  [JIT] tid 8991       [.] 0xa78d8848
+     0.02%  [JIT] tid 8991       [.] 0xa69622a0
+     0.02%  [kernel.kallsyms]    [k] 0xc011f514
+     0.02%  [JIT] tid 8991       [.] 0xa79522e0
+     0.02%  qemu-aarch64         [.] _IO_new_file_overflow
+     0.02%  [JIT] tid 8991       [.] 0xa7478e50
+     0.02%  [JIT] tid 8991       [.] 0xa7044018
+     0.02%  [JIT] tid 8991       [.] 0xa6c6b840
+     0.02%  [JIT] tid 8991       [.] 0xa78d2d2c
+     0.02%  [JIT] tid 8991       [.] 0xa7479548
+     0.02%  [JIT] tid 8991       [.] 0xa79801e8
+     0.02%  [JIT] tid 8991       [.] 0xa6c6aa2c
+     0.02%  [JIT] tid 8991       [.] 0xa78f85ac
+     0.02%  [JIT] tid 8991       [.] 0xa6caa8d8
+     0.02%  [JIT] tid 8991       [.] 0xa701bb60
+     0.02%  [JIT] tid 8991       [.] 0xa7926380
+     0.02%  qemu-aarch64         [.] translator_use_goto_tb
+     0.02%  [JIT] tid 8991       [.] 0xa6c702a0
+     0.02%  [JIT] tid 8991       [.] 0xa6c68a10
+     0.02%  [kernel.kallsyms]    [k] 0xc0383ecc
+     0.02%  [JIT] tid 8991       [.] 0xa72eaf40
+     0.02%  [JIT] tid 8991       [.] 0xa6633cc0
+     0.02%  [JIT] tid 8991       [.] 0xa6c66640
+     0.02%  qemu-aarch64         [.] __pthread_disable_asynccancel
+     0.02%  [JIT] tid 8991       [.] 0xa6c79e44
+     0.02%  [JIT] tid 8991       [.] 0xa664e608
+     0.02%  [JIT] tid 8991       [.] 0xa7aa471c
+     0.02%  [JIT] tid 8991       [.] 0xa6c76e40
+     0.02%  [JIT] tid 8991       [.] 0xa7478da0
+     0.02%  [JIT] tid 8991       [.] 0xa699db28
+     0.02%  [JIT] tid 8991       [.] 0xa794f61c
+     0.02%  [JIT] tid 8991       [.] 0xa79ed3d0
+     0.02%  [JIT] tid 8991       [.] 0xa7a95964
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9a5c
+     0.02%  [JIT] tid 8991       [.] 0xa78d8a98
+     0.02%  [kernel.kallsyms]    [k] 0xc011db0c
+     0.02%  [kernel.kallsyms]    [k] 0xc0a4ccbe
+     0.02%  [JIT] tid 8991       [.] 0xa79f55b0
+     0.02%  [JIT] tid 8991       [.] 0xa73b922c
+     0.02%  [JIT] tid 8991       [.] 0xa796edc8
+     0.02%  [JIT] tid 8991       [.] 0xa795207c
+     0.02%  qemu-aarch64         [.] tcg_gen_extrl_i64_i32
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9804
+     0.02%  [JIT] tid 8991       [.] 0xa75b1b40
+     0.02%  [JIT] tid 8991       [.] 0xa6c6a880
+     0.02%  [JIT] tid 8991       [.] 0xa6c6b4dc
+     0.02%  [JIT] tid 8991       [.] 0xa6c7e980
+     0.02%  [kernel.kallsyms]    [k] 0xc01154f0
+     0.02%  [JIT] tid 8991       [.] 0xa79e10c4
+     0.02%  [kernel.kallsyms]    [k] 0xc02cd940
+     0.02%  [JIT] tid 8991       [.] 0xa7082140
+     0.02%  [JIT] tid 8991       [.] 0xa78d4dac
+     0.02%  [kernel.kallsyms]    [k] 0xc02d5e60
+     0.02%  [JIT] tid 8991       [.] 0xa6fe0480
+     0.02%  [JIT] tid 8991       [.] 0xa78d6ac0
+     0.02%  [JIT] tid 8991       [.] 0xa6c6b690
+     0.02%  [JIT] tid 8991       [.] 0xa78d7080
+     0.02%  [JIT] tid 8991       [.] 0xa78d8dc0
+     0.02%  [JIT] tid 8991       [.] 0xa7a86dcc
+     0.02%  [JIT] tid 8991       [.] 0xa79cbf8c
+     0.02%  [kernel.kallsyms]    [k] 0xc02d5e52
+     0.02%  [JIT] tid 8991       [.] 0xa79a5fb4
+     0.02%  [JIT] tid 8991       [.] 0xa7aa3c94
+     0.02%  [kernel.kallsyms]    [k] 0xc0115680
+     0.02%  [JIT] tid 8991       [.] 0xa6970828
+     0.02%  [JIT] tid 8991       [.] 0xa7a22fc0
+     0.02%  [kernel.kallsyms]    [k] 0xc0199036
+     0.02%  [JIT] tid 8991       [.] 0xa6c2f680
+     0.02%  [JIT] tid 8991       [.] 0xa6c6903c
+     0.02%  [JIT] tid 8991       [.] 0xa775fec0
+     0.02%  [JIT] tid 8991       [.] 0xa79732b0
+     0.02%  [JIT] tid 8991       [.] 0xa6c74b40
+     0.02%  [JIT] tid 8991       [.] 0xa6caa8c4
+     0.02%  [JIT] tid 8991       [.] 0xa7aadf6c
+     0.02%  [kernel.kallsyms]    [k] 0xc01ce3b2
+     0.02%  [JIT] tid 8991       [.] 0xa70439c4
+     0.02%  [JIT] tid 8991       [.] 0xa664c180
+     0.02%  [JIT] tid 8991       [.] 0xa7908cbc
+     0.02%  [kernel.kallsyms]    [k] 0xc0a73aa0
+     0.02%  [JIT] tid 8991       [.] 0xa78b7c80
+     0.02%  [JIT] tid 8991       [.] 0xa796dad4
+     0.02%  [JIT] tid 8991       [.] 0xa7905080
+     0.02%  [JIT] tid 8991       [.] 0xa7a92160
+     0.02%  [JIT] tid 8991       [.] 0xa6c665bc
+     0.02%  [JIT] tid 8991       [.] 0xa7aa9740
+     0.02%  qemu-aarch64         [.] dup_const
+     0.02%  [kernel.kallsyms]    [k] 0xc0a5529a
+     0.02%  [JIT] tid 8991       [.] 0xa6ba8f4c
+     0.02%  [JIT] tid 8991       [.] 0xa79ec3b0
+     0.02%  [JIT] tid 8991       [.] 0xa7064dc0
+     0.02%  [JIT] tid 8991       [.] 0xa7479540
+     0.02%  [JIT] tid 8991       [.] 0xa797ffe0
+     0.02%  [JIT] tid 8991       [.] 0xa6c6e7a0
+     0.02%  [JIT] tid 8991       [.] 0xa6fe0038
+     0.02%  [JIT] tid 8991       [.] 0xa79f16b4
+     0.02%  [JIT] tid 8991       [.] 0xa700ac20
+     0.02%  qemu-aarch64         [.] tcg_gen_lookup_and_goto_ptr
+     0.02%  [JIT] tid 8991       [.] 0xa6ca977c
+     0.02%  [JIT] tid 8991       [.] 0xa78d5b3c
+     0.02%  [JIT] tid 8991       [.] 0xa6c65acc
+     0.02%  [JIT] tid 8991       [.] 0xa6c688a0
+     0.02%  [JIT] tid 8991       [.] 0xa79e0bcc
+     0.02%  [kernel.kallsyms]    [k] 0xc02cdf1e
+     0.02%  [JIT] tid 8991       [.] 0xa6910600
+     0.02%  [JIT] tid 8991       [.] 0xa78d7230
+     0.02%  [kernel.kallsyms]    [k] 0xc01c1df8
+     0.02%  [JIT] tid 8991       [.] 0xa6caaa38
+     0.02%  qemu-aarch64         [.] cpu_exec
+     0.02%  [JIT] tid 8991       [.] 0xa78b7b9c
+     0.02%  [JIT] tid 8991       [.] 0xa6fe5d80
+     0.02%  [JIT] tid 8991       [.] 0xa78b4c84
+     0.02%  [JIT] tid 8991       [.] 0xa794e690
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9c04
+     0.02%  [JIT] tid 8991       [.] 0xa7a4d798
+     0.02%  [JIT] tid 8991       [.] 0xa705ff40
+     0.02%  qemu-aarch64         [.] tcg_constant_vec
+     0.02%  [JIT] tid 8991       [.] 0xa705bde4
+     0.02%  [JIT] tid 8991       [.] 0xa6fe5220
+     0.02%  [JIT] tid 8991       [.] 0xa78c7448
+     0.02%  [JIT] tid 8991       [.] 0xa7a89880
+     0.02%  [JIT] tid 8991       [.] 0xa78b9500
+     0.02%  [JIT] tid 8991       [.] 0xa6dca108
+     0.02%  [JIT] tid 8991       [.] 0xa6caa154
+     0.02%  [JIT] tid 8991       [.] 0xa6c2df00
+     0.02%  [JIT] tid 8991       [.] 0xa7065f80
+     0.02%  [JIT] tid 8991       [.] 0xa703bdd0
+     0.02%  [JIT] tid 8991       [.] 0xa7973540
+     0.02%  [JIT] tid 8991       [.] 0xa78b9510
+     0.02%  [JIT] tid 8991       [.] 0xa7938e20
+     0.02%  [JIT] tid 8991       [.] 0xa78b4a58
+     0.02%  [JIT] tid 8991       [.] 0xa79aa498
+     0.02%  [JIT] tid 8991       [.] 0xa6af0900
+     0.02%  qemu-aarch64         [.] tcg_malloc_internal
+     0.02%  [JIT] tid 8991       [.] 0xa6fe3b60
+     0.02%  [JIT] tid 8991       [.] 0xa7a3d428
+     0.02%  [JIT] tid 8991       [.] 0xa77eb3e0
+     0.02%  [JIT] tid 8991       [.] 0xa6c32440
+     0.02%  [JIT] tid 8991       [.] 0xa7065900
+     0.02%  [JIT] tid 8991       [.] 0xa78d5420
+     0.02%  [JIT] tid 8991       [.] 0xa6c90980
+     0.02%  [JIT] tid 8991       [.] 0xa795309c
+     0.02%  [JIT] tid 8991       [.] 0xa6c71b30
+     0.02%  [JIT] tid 8991       [.] 0xa7a574a4
+     0.02%  [JIT] tid 8991       [.] 0xa6d93cfc
+     0.02%  [JIT] tid 8991       [.] 0xa7072d00
+     0.02%  [JIT] tid 8991       [.] 0xa6c32390
+     0.02%  [kernel.kallsyms]    [k] 0xc02fd83c
+     0.02%  [JIT] tid 8991       [.] 0xa7471b60
+     0.02%  [JIT] tid 8991       [.] 0xa7949974
+     0.02%  [JIT] tid 8991       [.] 0xa6cb2eb0
+     0.02%  [JIT] tid 8991       [.] 0xa6c6de84
+     0.02%  [JIT] tid 8991       [.] 0xa78bbe80
+     0.02%  [JIT] tid 8991       [.] 0xa78d6cc8
+     0.02%  [JIT] tid 8991       [.] 0xa7aa5b00
+     0.02%  [JIT] tid 8991       [.] 0xa78d8c40
+     0.02%  [JIT] tid 8991       [.] 0xa6c70344
+     0.02%  [JIT] tid 8991       [.] 0xa78d4d80
+     0.02%  [JIT] tid 8991       [.] 0xa6fe54f0
+     0.02%  [JIT] tid 8991       [.] 0xa7506a10
+     0.02%  [JIT] tid 8991       [.] 0xa6c72100
+     0.02%  [JIT] tid 8991       [.] 0xa79e3b34
+     0.02%  [JIT] tid 8991       [.] 0xa6caa88c
+     0.02%  [JIT] tid 8991       [.] 0xa700bfc0
+     0.02%  [JIT] tid 8991       [.] 0xa78ba628
+     0.02%  [JIT] tid 8991       [.] 0xa6c70fe4
+     0.02%  [JIT] tid 8991       [.] 0xa6fe3a80
+     0.02%  [JIT] tid 8991       [.] 0xa798b004
+     0.02%  [kernel.kallsyms]    [k] 0xc032f630
+     0.02%  [kernel.kallsyms]    [k] 0xc011ce1e
+     0.02%  [JIT] tid 8991       [.] 0xa665a284
+     0.02%  [JIT] tid 8991       [.] 0xa69df86c
+     0.02%  [JIT] tid 8991       [.] 0xa7066d00
+     0.02%  [kernel.kallsyms]    [k] 0xc011eea0
+     0.02%  [JIT] tid 8991       [.] 0xa6656d2c
+     0.02%  [JIT] tid 8991       [.] 0xa6c6885c
+     0.02%  [JIT] tid 8991       [.] 0xa7978700
+     0.02%  [kernel.kallsyms]    [k] 0xc011567e
+     0.02%  [JIT] tid 8991       [.] 0xa6c68c6c
+     0.02%  [JIT] tid 8991       [.] 0xa78d4e00
+     0.02%  [JIT] tid 8991       [.] 0xa7950a44
+     0.02%  [JIT] tid 8991       [.] 0xa6c10b20
+     0.02%  [JIT] tid 8991       [.] 0xa705f800
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9f5c
+     0.02%  [JIT] tid 8991       [.] 0xa72cd3a0
+     0.02%  [JIT] tid 8991       [.] 0xa798d680
+     0.02%  [JIT] tid 8991       [.] 0xa79ed0c0
+     0.02%  [JIT] tid 8991       [.] 0xa72b01a4
+     0.02%  [kernel.kallsyms]    [k] 0xc01ce382
+     0.02%  [JIT] tid 8991       [.] 0xa78b7afc
+     0.02%  [JIT] tid 8991       [.] 0xa794f3c0
+     0.02%  [kernel.kallsyms]    [k] 0xc0a6ddd6
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9af8
+     0.02%  [JIT] tid 8991       [.] 0xa79760c0
+     0.02%  [JIT] tid 8991       [.] 0xa7aa7d00
+     0.02%  [JIT] tid 8991       [.] 0xa7ae0080
+     0.02%  [JIT] tid 8991       [.] 0xa79a7a70
+     0.02%  [JIT] tid 8991       [.] 0xa6fe3984
+     0.02%  [JIT] tid 8991       [.] 0xa78dad80
+     0.02%  [JIT] tid 8991       [.] 0xa6c6e040
+     0.02%  [JIT] tid 8991       [.] 0xa703be00
+     0.02%  [JIT] tid 8991       [.] 0xa7a451c0
+     0.02%  [JIT] tid 8991       [.] 0xa79cb214
+     0.02%  [JIT] tid 8991       [.] 0xa78b6f94
+     0.02%  [JIT] tid 8991       [.] 0xa6fe51c0
+     0.02%  [JIT] tid 8991       [.] 0xa6c71944
+     0.02%  [JIT] tid 8991       [.] 0xa7a93020
+     0.02%  [JIT] tid 8991       [.] 0xa664dfc0
+     0.02%  [kernel.kallsyms]    [k] 0xc0314ed6
+     0.02%  [JIT] tid 8991       [.] 0xa746fdf0
+     0.02%  [JIT] tid 8991       [.] 0xa6c6eb3c
+     0.02%  [JIT] tid 8991       [.] 0xa77ebd78
+     0.02%  [JIT] tid 8991       [.] 0xa6c6c280
+     0.02%  [JIT] tid 8991       [.] 0xa794e148
+     0.02%  [JIT] tid 8991       [.] 0xa798acf0
+     0.02%  [JIT] tid 8991       [.] 0xa78dbd60
+     0.02%  [JIT] tid 8991       [.] 0xa7a1f0c8
+     0.02%  [kernel.kallsyms]    [k] 0xc0a55290
+     0.02%  [JIT] tid 8991       [.] 0xa79e3d24
+     0.02%  [JIT] tid 8991       [.] 0xa7adbe20
+     0.02%  [JIT] tid 8991       [.] 0xa6ff06c0
+     0.02%  [JIT] tid 8991       [.] 0xa70659e0
+     0.02%  [JIT] tid 8991       [.] 0xa78bc838
+     0.02%  [kernel.kallsyms]    [k] 0xc011cf8e
+     0.02%  [JIT] tid 8991       [.] 0xa6ca95f8
+     0.02%  [kernel.kallsyms]    [k] 0xc02973de
+     0.02%  [JIT] tid 8991       [.] 0xa78db234
+     0.02%  [JIT] tid 8991       [.] 0xa78b82c0
+     0.02%  [JIT] tid 8991       [.] 0xa78b7b04
+     0.02%  [JIT] tid 8991       [.] 0xa78b9214
+     0.02%  [JIT] tid 8991       [.] 0xa66114f4
+     0.02%  [JIT] tid 8991       [.] 0xa700ea00
+     0.02%  [JIT] tid 8991       [.] 0xa701a240
+     0.02%  [JIT] tid 8991       [.] 0xa6c6a320
+     0.02%  [kernel.kallsyms]    [k] 0xc0a552ae
+     0.02%  [JIT] tid 8991       [.] 0xa7ab6d40
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8f44
+     0.02%  [JIT] tid 8991       [.] 0xa704e864
+     0.02%  [JIT] tid 8991       [.] 0xa6c691e0
+     0.02%  [JIT] tid 8991       [.] 0xa78c7d24
+     0.02%  [JIT] tid 8991       [.] 0xa6ff2940
+     0.02%  [JIT] tid 8991       [.] 0xa79525a8
+     0.02%  [JIT] tid 8991       [.] 0xa78d5b68
+     0.02%  [JIT] tid 8991       [.] 0xa7a39f68
+     0.02%  [JIT] tid 8991       [.] 0xa7aac100
+     0.02%  [kernel.kallsyms]    [k] 0xc02ce468
+     0.02%  [JIT] tid 8991       [.] 0xa7aa8f40
+     0.02%  [JIT] tid 8991       [.] 0xa797ffc0
+     0.02%  [kernel.kallsyms]    [k] 0xc02a3e56
+     0.02%  [JIT] tid 8991       [.] 0xa798d7b4
+     0.02%  [JIT] tid 8991       [.] 0xa6ca92c8
+     0.02%  [JIT] tid 8991       [.] 0xa798dc80
+     0.02%  [JIT] tid 8991       [.] 0xa6c90848
+     0.02%  [JIT] tid 8991       [.] 0xa7067c38
+     0.02%  [JIT] tid 8991       [.] 0xa73b7810
+     0.02%  [JIT] tid 8991       [.] 0xa7950d28
+     0.02%  [JIT] tid 8991       [.] 0xa6b0cc70
+     0.02%  [JIT] tid 8991       [.] 0xa7067740
+     0.02%  [JIT] tid 8991       [.] 0xa78d8df4
+     0.02%  [JIT] tid 8991       [.] 0xa73d1460
+     0.02%  [JIT] tid 8991       [.] 0xa7a547f8
+     0.02%  [JIT] tid 8991       [.] 0xa7925360
+     0.02%  [JIT] tid 8991       [.] 0xa6c7084c
+     0.02%  [JIT] tid 8991       [.] 0xa664c000
+     0.02%  [JIT] tid 8991       [.] 0xa78bc820
+     0.02%  [JIT] tid 8991       [.] 0xa79f5504
+     0.02%  [JIT] tid 8991       [.] 0xa79064d0
+     0.02%  [JIT] tid 8991       [.] 0xa72b0548
+     0.02%  [JIT] tid 8991       [.] 0xa6bce76c
+     0.02%  [JIT] tid 8991       [.] 0xa79059f4
+     0.02%  [kernel.kallsyms]    [k] 0xc02ce16c
+     0.02%  [kernel.kallsyms]    [k] 0xc030a3f2
+     0.02%  [JIT] tid 8991       [.] 0xa7a86e9c
+     0.02%  [kernel.kallsyms]    [k] 0xc02e9420
+     0.02%  [JIT] tid 8991       [.] 0xa77eb78c
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8e04
+     0.02%  qemu-aarch64         [.] __libc_do_syscall
+     0.02%  [JIT] tid 8991       [.] 0xa774ccc0
+     0.02%  [JIT] tid 8991       [.] 0xa6feeb00
+     0.02%  qemu-aarch64         [.] disas_sme
+     0.02%  [JIT] tid 8991       [.] 0xa6c6d0f4
+     0.02%  [JIT] tid 8991       [.] 0xa7aa7a00
+     0.02%  [JIT] tid 8991       [.] 0xa78bf85c
+     0.02%  [JIT] tid 8991       [.] 0xa6c31840
+     0.02%  [JIT] tid 8991       [.] 0xa6fe6130
+     0.02%  [JIT] tid 8991       [.] 0xa7a885fc
+     0.02%  [JIT] tid 8991       [.] 0xa7aad8b0
+     0.02%  [JIT] tid 8991       [.] 0xa796f1a8
+     0.02%  [JIT] tid 8991       [.] 0xa6fe0a88
+     0.02%  [JIT] tid 8991       [.] 0xa78bf8a0
+     0.02%  [JIT] tid 8991       [.] 0xa6bce8e8
+     0.02%  [JIT] tid 8991       [.] 0xa7a54440
+     0.02%  [JIT] tid 8991       [.] 0xa6feab40
+     0.02%  [JIT] tid 8991       [.] 0xa78b9598
+     0.02%  [JIT] tid 8991       [.] 0xa6600000
+     0.02%  [JIT] tid 8991       [.] 0xa704de00
+     0.02%  [JIT] tid 8991       [.] 0xa6907180
+     0.02%  [JIT] tid 8991       [.] 0xa78dbb00
+     0.02%  [JIT] tid 8991       [.] 0xa7950630
+     0.02%  [JIT] tid 8991       [.] 0xa78b95c0
+     0.02%  [JIT] tid 8991       [.] 0xa79732fc
+     0.02%  [JIT] tid 8991       [.] 0xa7a1e080
+     0.02%  [JIT] tid 8991       [.] 0xa796dd9c
+     0.02%  [JIT] tid 8991       [.] 0xa79cb620
+     0.02%  [JIT] tid 8991       [.] 0xa798aa28
+     0.02%  [JIT] tid 8991       [.] 0xa73b7930
+     0.02%  [JIT] tid 8991       [.] 0xa798a2e0
+     0.02%  [JIT] tid 8991       [.] 0xa78d2f80
+     0.02%  [JIT] tid 8991       [.] 0xa7a925e0
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8ae8
+     0.02%  [JIT] tid 8991       [.] 0xa796dd88
+     0.02%  [JIT] tid 8991       [.] 0xa7949878
+     0.02%  qemu-aarch64         [.] float64_add
+     0.02%  [JIT] tid 8991       [.] 0xa6ff13dc
+     0.02%  [JIT] tid 8991       [.] 0xa7a25b80
+     0.02%  [JIT] tid 8991       [.] 0xa6fe11f4
+     0.02%  [JIT] tid 8991       [.] 0xa78f8c58
+     0.02%  [JIT] tid 8991       [.] 0xa665e5a8
+     0.02%  [JIT] tid 8991       [.] 0xa6c700fc
+     0.02%  [JIT] tid 8991       [.] 0xa7066418
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8f4c
+     0.02%  [JIT] tid 8991       [.] 0xa6c84dec
+     0.02%  [JIT] tid 8991       [.] 0xa6c72368
+     0.02%  [JIT] tid 8991       [.] 0xa6c79900
+     0.02%  [JIT] tid 8991       [.] 0xa665a1d0
+     0.02%  [JIT] tid 8991       [.] 0xa79a27e0
+     0.02%  [JIT] tid 8991       [.] 0xa78d5fe4
+     0.02%  [JIT] tid 8991       [.] 0xa6c2e50c
+     0.02%  [JIT] tid 8991       [.] 0xa6c40114
+     0.02%  [JIT] tid 8991       [.] 0xa796d4b0
+     0.02%  [JIT] tid 8991       [.] 0xa7aac5c0
+     0.02%  [JIT] tid 8991       [.] 0xa7ab7d20
+     0.02%  [JIT] tid 8991       [.] 0xa703bdd4
+     0.02%  qemu-aarch64         [.] tcg_tb_insert
+     0.02%  [JIT] tid 8991       [.] 0xa696c04c
+     0.02%  [JIT] tid 8991       [.] 0xa7aa2840
+     0.02%  [JIT] tid 8991       [.] 0xa66b29f4
+     0.02%  [JIT] tid 8991       [.] 0xa7a4d5e4
+     0.02%  [kernel.kallsyms]    [k] 0xc030b47e
+     0.02%  [JIT] tid 8991       [.] 0xa6caaa30
+     0.02%  [JIT] tid 8991       [.] 0xa796e714
+     0.02%  [kernel.kallsyms]    [k] 0xc0a4cdfa
+     0.02%  [JIT] tid 8991       [.] 0xa69e0c04
+     0.02%  [JIT] tid 8991       [.] 0xa69703c0
+     0.02%  [JIT] tid 8991       [.] 0xa6624408
+     0.02%  [JIT] tid 8991       [.] 0xa6c70338
+     0.02%  [JIT] tid 8991       [.] 0xa7aaa960
+     0.02%  [JIT] tid 8991       [.] 0xa7955c00
+     0.02%  [kernel.kallsyms]    [k] 0xc011db2a
+     0.02%  [JIT] tid 8991       [.] 0xa696c080
+     0.02%  [JIT] tid 8991       [.] 0xa6caa9a4
+     0.02%  [JIT] tid 8991       [.] 0xa7044158
+     0.02%  [JIT] tid 8991       [.] 0xa79a7e60
+     0.02%  [JIT] tid 8991       [.] 0xa78d4a74
+     0.02%  [JIT] tid 8991       [.] 0xa78dae4c
+     0.02%  [JIT] tid 8991       [.] 0xa79abfc0
+     0.02%  [JIT] tid 8991       [.] 0xa6c71300
+     0.02%  [JIT] tid 8991       [.] 0xa78d5b64
+     0.02%  [JIT] tid 8991       [.] 0xa7925190
+     0.02%  [JIT] tid 8991       [.] 0xa79cae00
+     0.02%  [JIT] tid 8991       [.] 0xa6caa13c
+     0.02%  [JIT] tid 8991       [.] 0xa7950a70
+     0.02%  [JIT] tid 8991       [.] 0xa6fe3ed4
+     0.02%  [JIT] tid 8991       [.] 0xa700e360
+     0.02%  [JIT] tid 8991       [.] 0xa79cae34
+     0.02%  [JIT] tid 8991       [.] 0xa7909ec0
+     0.02%  [JIT] tid 8991       [.] 0xa7979dd8
+     0.02%  [JIT] tid 8991       [.] 0xa7909314
+     0.02%  [JIT] tid 8991       [.] 0xa73b7d30
+     0.02%  [JIT] tid 8991       [.] 0xa7a87ee0
+     0.02%  [JIT] tid 8991       [.] 0xa6c65044
+     0.02%  [JIT] tid 8991       [.] 0xa72afeb0
+     0.02%  [JIT] tid 8991       [.] 0xa7949880
+     0.02%  [JIT] tid 8991       [.] 0xa78bf8c8
+     0.02%  [kernel.kallsyms]    [k] 0xc0a4aba2
+     0.02%  [kernel.kallsyms]    [k] 0xc0a73590
+     0.02%  [JIT] tid 8991       [.] 0xa6c70a18
+     0.02%  [JIT] tid 8991       [.] 0xa6caa41c
+     0.02%  [JIT] tid 8991       [.] 0xa6c71d88
+     0.02%  [JIT] tid 8991       [.] 0xa78d7c80
+     0.02%  [JIT] tid 8991       [.] 0xa7aa54c0
+     0.02%  [JIT] tid 8991       [.] 0xa7068f00
+     0.02%  [JIT] tid 8991       [.] 0xa6caa8a8
+     0.02%  [JIT] tid 8991       [.] 0xa78bc2c4
+     0.02%  [JIT] tid 8991       [.] 0xa7a96a70
+     0.02%  [JIT] tid 8991       [.] 0xa6970880
+     0.02%  [JIT] tid 8991       [.] 0xa73db800
+     0.02%  [JIT] tid 8991       [.] 0xa6c85480
+     0.02%  [JIT] tid 8991       [.] 0xa703be9c
+     0.02%  [JIT] tid 8991       [.] 0xa796e778
+     0.02%  [JIT] tid 8991       [.] 0xa7a237f0
+     0.02%  [JIT] tid 8991       [.] 0xa6c31080
+     0.02%  [JIT] tid 8991       [.] 0xa794e380
+     0.02%  [JIT] tid 8991       [.] 0xa78d30c0
+     0.02%  [kernel.kallsyms]    [k] 0xc02983bc
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9778
+     0.02%  [JIT] tid 8991       [.] 0xa6ca97b8
+     0.02%  [JIT] tid 8991       [.] 0xa6c5ca40
+     0.02%  [JIT] tid 8991       [.] 0xa70455dc
+     0.02%  [JIT] tid 8991       [.] 0xa7a3c4f8
+     0.02%  [JIT] tid 8991       [.] 0xa6caaa60
+     0.02%  [kernel.kallsyms]    [k] 0xc0a4cdf6
+     0.02%  [JIT] tid 8991       [.] 0xa7a962c0
+     0.02%  [JIT] tid 8991       [.] 0xa6bce768
+     0.02%  [JIT] tid 8991       [.] 0xa74ffb40
+     0.02%  [JIT] tid 8991       [.] 0xa78bf8f4
+     0.02%  [JIT] tid 8991       [.] 0xa78d7524
+     0.02%  [JIT] tid 8991       [.] 0xa6c5e1c0
+     0.02%  [JIT] tid 8991       [.] 0xa7907f8c
+     0.02%  [JIT] tid 8991       [.] 0xa79cb630
+     0.02%  [JIT] tid 8991       [.] 0xa6c650a4
+     0.02%  [JIT] tid 8991       [.] 0xa7ab7240
+     0.02%  [JIT] tid 8991       [.] 0xa6950520
+     0.02%  [JIT] tid 8991       [.] 0xa7a4f900
+     0.02%  [JIT] tid 8991       [.] 0xa79e0b80
+     0.02%  [JIT] tid 8991       [.] 0xa6fe0c1c
+     0.02%  [JIT] tid 8991       [.] 0xa700f280
+     0.02%  [JIT] tid 8991       [.] 0xa7a23b64
+     0.02%  [JIT] tid 8991       [.] 0xa6fe0c64
+     0.02%  [JIT] tid 8991       [.] 0xa6c2dbe0
+     0.02%  [kernel.kallsyms]    [k] 0xc02e6694
+     0.02%  [JIT] tid 8991       [.] 0xa699c3c0
+     0.02%  [JIT] tid 8991       [.] 0xa78b957c
+     0.02%  [JIT] tid 8991       [.] 0xa6feb0f8
+     0.02%  [JIT] tid 8991       [.] 0xa78ba750
+     0.02%  [JIT] tid 8991       [.] 0xa6c7f600
+     0.02%  [JIT] tid 8991       [.] 0xa6caa940
+     0.02%  [JIT] tid 8991       [.] 0xa66112a0
+     0.02%  [JIT] tid 8991       [.] 0xa7a95140
+     0.02%  [JIT] tid 8991       [.] 0xa6feda40
+     0.02%  [JIT] tid 8991       [.] 0xa7a552c4
+     0.02%  [JIT] tid 8991       [.] 0xa7938598
+     0.02%  [JIT] tid 8991       [.] 0xa6c728e4
+     0.02%  [kernel.kallsyms]    [k] 0xc02d7062
+     0.02%  [JIT] tid 8991       [.] 0xa6970a70
+     0.02%  [JIT] tid 8991       [.] 0xa705d400
+     0.02%  [JIT] tid 8991       [.] 0xa7086dc0
+     0.02%  [JIT] tid 8991       [.] 0xa6c70a5c
+     0.02%  [JIT] tid 8991       [.] 0xa7bd2080
+     0.02%  [JIT] tid 8991       [.] 0xa6c6a0e0
+     0.02%  [JIT] tid 8991       [.] 0xa79cab94
+     0.02%  [JIT] tid 8991       [.] 0xa78d8d6c
+     0.02%  [JIT] tid 8991       [.] 0xa70e1a80
+     0.02%  [JIT] tid 8991       [.] 0xa7a1e5e4
+     0.02%  [JIT] tid 8991       [.] 0xa7979d40
+     0.02%  [JIT] tid 8991       [.] 0xa7a3d89c
+     0.02%  [JIT] tid 8991       [.] 0xa6970288
+     0.02%  [JIT] tid 8991       [.] 0xa6c105d8
+     0.02%  [JIT] tid 8991       [.] 0xa6caaa28
+     0.02%  [JIT] tid 8991       [.] 0xa70c3200
+     0.02%  [JIT] tid 8991       [.] 0xa73d2530
+     0.02%  [JIT] tid 8991       [.] 0xa798aa20
+     0.02%  [JIT] tid 8991       [.] 0xa6caa590
+     0.02%  [JIT] tid 8991       [.] 0xa6c32380
+     0.02%  [JIT] tid 8991       [.] 0xa77ebd00
+     0.02%  [JIT] tid 8991       [.] 0xa7a1f430
+     0.02%  [JIT] tid 8991       [.] 0xa6caa9d4
+     0.02%  [JIT] tid 8991       [.] 0xa7aaa360
+     0.02%  [JIT] tid 8991       [.] 0xa7905b00
+     0.02%  [JIT] tid 8991       [.] 0xa7950b00
+     0.02%  [JIT] tid 8991       [.] 0xa72d8700
+     0.02%  [kernel.kallsyms]    [k] 0xc02e7fcc
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9148
+     0.02%  [JIT] tid 8991       [.] 0xa6c684a0
+     0.02%  [JIT] tid 8991       [.] 0xa7a947c0
+     0.02%  [JIT] tid 8991       [.] 0xa7a39320
+     0.02%  [JIT] tid 8991       [.] 0xa7aa1c80
+     0.02%  [JIT] tid 8991       [.] 0xa7a2474c
+     0.02%  [JIT] tid 8991       [.] 0xa6c6b248
+     0.02%  [JIT] tid 8991       [.] 0xa79ccb70
+     0.02%  [JIT] tid 8991       [.] 0xa6caaa6c
+     0.02%  [JIT] tid 8991       [.] 0xa79a8c04
+     0.02%  [JIT] tid 8991       [.] 0xa79cab44
+     0.02%  [JIT] tid 8991       [.] 0xa79f3004
+     0.02%  [JIT] tid 8991       [.] 0xa7aad880
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9910
+     0.02%  [JIT] tid 8991       [.] 0xa705d760
+     0.02%  [JIT] tid 8991       [.] 0xa7925e2c
+     0.02%  [JIT] tid 8991       [.] 0xa6caa94c
+     0.02%  [JIT] tid 8991       [.] 0xa78d751c
+     0.02%  [JIT] tid 8991       [.] 0xa78b78a0
+     0.02%  [JIT] tid 8991       [.] 0xa79f2bc0
+     0.02%  [JIT] tid 8991       [.] 0xa7a70a44
+     0.02%  [JIT] tid 8991       [.] 0xa6fed920
+     0.02%  [JIT] tid 8991       [.] 0xa7046cbc
+     0.02%  [JIT] tid 8991       [.] 0xa78da780
+     0.02%  [JIT] tid 8991       [.] 0xa7908c80
+     0.02%  [JIT] tid 8991       [.] 0xa6caa8ec
+     0.02%  [JIT] tid 8991       [.] 0xa66336fc
+     0.02%  [JIT] tid 8991       [.] 0xa7a87ed0
+     0.02%  [kernel.kallsyms]    [k] 0xc02c6a46
+     0.02%  [JIT] tid 8991       [.] 0xa6ca95ec
+     0.02%  [JIT] tid 8991       [.] 0xa796e27c
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8e0c
+     0.02%  [JIT] tid 8991       [.] 0xa7ad6780
+     0.02%  qemu-aarch64         [.] tcg_gen_extr_i64_i32
+     0.02%  [JIT] tid 8991       [.] 0xa7500f80
+     0.02%  [JIT] tid 8991       [.] 0xa6c721a8
+     0.02%  [JIT] tid 8991       [.] 0xa6caa598
+     0.02%  [JIT] tid 8991       [.] 0xa796ebb0
+     0.02%  [JIT] tid 8991       [.] 0xa78f8fd4
+     0.02%  [JIT] tid 8991       [.] 0xa78b7100
+     0.02%  [JIT] tid 8991       [.] 0xa7a6d120
+     0.02%  [JIT] tid 8991       [.] 0xa7a4ff0c
+     0.02%  [JIT] tid 8991       [.] 0xa7a930c0
+     0.02%  [JIT] tid 8991       [.] 0xa6c71b04
+     0.02%  [JIT] tid 8991       [.] 0xa664cc18
+     0.02%  [JIT] tid 8991       [.] 0xa6c71920
+     0.02%  [JIT] tid 8991       [.] 0xa78b82b0
+     0.02%  [JIT] tid 8991       [.] 0xa704561c
+     0.02%  [JIT] tid 8991       [.] 0xa7aaa6e0
+     0.02%  [JIT] tid 8991       [.] 0xa7a91cc0
+     0.02%  [JIT] tid 8991       [.] 0xa79531d0
+     0.02%  [kernel.kallsyms]    [k] 0xc02d5f80
+     0.02%  [JIT] tid 8991       [.] 0xa78db7c4
+     0.02%  [JIT] tid 8991       [.] 0xa70455e4
+     0.02%  [JIT] tid 8991       [.] 0xa7060480
+     0.02%  [JIT] tid 8991       [.] 0xa796f0a8
+     0.02%  [JIT] tid 8991       [.] 0xa797ad40
+     0.02%  qemu-aarch64         [.] interval_tree_propagate
+     0.02%  [JIT] tid 8991       [.] 0xa6c2ea40
+     0.02%  [JIT] tid 8991       [.] 0xa6caa8f8
+     0.02%  [JIT] tid 8991       [.] 0xa6c65360
+     0.02%  [JIT] tid 8991       [.] 0xa79a7ce0
+     0.02%  [JIT] tid 8991       [.] 0xa7968ae4
+     0.02%  [JIT] tid 8991       [.] 0xa7973300
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9cb8
+     0.02%  [JIT] tid 8991       [.] 0xa78ba6e8
+     0.02%  [JIT] tid 8991       [.] 0xa6c30b40
+     0.02%  [kernel.kallsyms]    [k] 0xc02e7f7c
+     0.02%  [kernel.kallsyms]    [k] 0xc029733e
+     0.02%  [JIT] tid 8991       [.] 0xa7a1edc0
+     0.02%  [JIT] tid 8991       [.] 0xa6fe5bb8
+     0.02%  [JIT] tid 8991       [.] 0xa7a98780
+     0.02%  [JIT] tid 8991       [.] 0xa6c665a4
+     0.02%  [JIT] tid 8991       [.] 0xa6d92e80
+     0.02%  [JIT] tid 8991       [.] 0xa77d92e0
+     0.02%  [JIT] tid 8991       [.] 0xa7a86fc0
+     0.02%  [JIT] tid 8991       [.] 0xa78ba5c8
+     0.02%  [kernel.kallsyms]    [k] 0xc030a462
+     0.02%  [kernel.kallsyms]    [k] 0xc02e8fa6
+     0.02%  [JIT] tid 8991       [.] 0xa6c6be90
+     0.02%  [JIT] tid 8991       [.] 0xa6c6d3e0
+     0.02%  [JIT] tid 8991       [.] 0xa7a39ca0
+     0.02%  [JIT] tid 8991       [.] 0xa78bbc44
+     0.02%  [JIT] tid 8991       [.] 0xa73d1da0
+     0.02%  [JIT] tid 8991       [.] 0xa79a8bf8
+     0.02%  [JIT] tid 8991       [.] 0xa79a9f1c
+     0.02%  [kernel.kallsyms]    [k] 0xc0383e84
+     0.02%  [JIT] tid 8991       [.] 0xa7a49128
+     0.02%  [JIT] tid 8991       [.] 0xa69e0bcc
+     0.02%  [JIT] tid 8991       [.] 0xa7ae8d00
+     0.02%  [JIT] tid 8991       [.] 0xa6fe7d80
+     0.02%  [JIT] tid 8991       [.] 0xa7965690
+     0.02%  [JIT] tid 8991       [.] 0xa6caa5a0
+     0.02%  [JIT] tid 8991       [.] 0xa7044b04
+     0.02%  [JIT] tid 8991       [.] 0xa7a4ce60
+     0.02%  [JIT] tid 8991       [.] 0xa6612040
+     0.02%  [JIT] tid 8991       [.] 0xa6633940
+     0.02%  [JIT] tid 8991       [.] 0xa6fec000
+     0.02%  [JIT] tid 8991       [.] 0xa690e480
+     0.02%  [JIT] tid 8991       [.] 0xa78d5c20
+     0.02%  [JIT] tid 8991       [.] 0xa7507080
+     0.02%  [JIT] tid 8991       [.] 0xa78b7c38
+     0.02%  [JIT] tid 8991       [.] 0xa7065940
+     0.02%  [JIT] tid 8991       [.] 0xa7949410
+     0.02%  [JIT] tid 8991       [.] 0xa7043bb4
+     0.02%  [JIT] tid 8991       [.] 0xa7048a9c
+     0.02%  [JIT] tid 8991       [.] 0xa78d7400
+     0.02%  [JIT] tid 8991       [.] 0xa6c6d860
+     0.02%  [JIT] tid 8991       [.] 0xa7aa9d80
+     0.02%  [JIT] tid 8991       [.] 0xa7ae0580
+     0.02%  [JIT] tid 8991       [.] 0xa78dcdc0
+     0.02%  [JIT] tid 8991       [.] 0xa6c66648
+     0.02%  [JIT] tid 8991       [.] 0xa78db2d8
+     0.02%  [JIT] tid 8991       [.] 0xa7061280
+     0.02%  [JIT] tid 8991       [.] 0xa6633d60
+     0.02%  [JIT] tid 8991       [.] 0xa6c7a680
+     0.02%  [JIT] tid 8991       [.] 0xa73b7d80
+     0.02%  [JIT] tid 8991       [.] 0xa7aee7c0
+     0.02%  [JIT] tid 8991       [.] 0xa73b8640
+     0.02%  [JIT] tid 8991       [.] 0xa78bf800
+     0.02%  [JIT] tid 8991       [.] 0xa7967238
+     0.02%  [JIT] tid 8991       [.] 0xa6c2f380
+     0.02%  [kernel.kallsyms]    [k] 0xc030a39a
+     0.02%  [JIT] tid 8991       [.] 0xa7a8b7c0
+     0.02%  [JIT] tid 8991       [.] 0xa700dbb4
+     0.02%  [JIT] tid 8991       [.] 0xa661151c
+     0.02%  [JIT] tid 8991       [.] 0xa7a97120
+     0.02%  [JIT] tid 8991       [.] 0xa7a3a258
+     0.02%  qemu-aarch64         [.] tcg_gen_qemu_ld_i64_int
+     0.02%  [JIT] tid 8991       [.] 0xa7a549c0
+     0.02%  [JIT] tid 8991       [.] 0xa6bce924
+     0.02%  [JIT] tid 8991       [.] 0xa66b2280
+     0.02%  [JIT] tid 8991       [.] 0xa69df5c4
+     0.02%  [JIT] tid 8991       [.] 0xa6c682a0
+     0.02%  [JIT] tid 8991       [.] 0xa700dbb8
+     0.02%  [JIT] tid 8991       [.] 0xa7968c48
+     0.02%  [JIT] tid 8991       [.] 0xa798aa68
+     0.02%  [JIT] tid 8991       [.] 0xa7aa6244
+     0.02%  [kernel.kallsyms]    [k] 0xc0308a2c
+     0.02%  [JIT] tid 8991       [.] 0xa79527b8
+     0.02%  [JIT] tid 8991       [.] 0xa6c84d20
+     0.02%  [JIT] tid 8991       [.] 0xa7ad6a00
+     0.02%  [JIT] tid 8991       [.] 0xa6c7a9c0
+     0.02%  [JIT] tid 8991       [.] 0xa78c7d90
+     0.02%  [JIT] tid 8991       [.] 0xa6fe3a88
+     0.02%  [JIT] tid 8991       [.] 0xa7a490f4
+     0.02%  [JIT] tid 8991       [.] 0xa72cd550
+     0.02%  [JIT] tid 8991       [.] 0xa7a87880
+     0.02%  [JIT] tid 8991       [.] 0xa7ad5a38
+     0.02%  [JIT] tid 8991       [.] 0xa7acc580
+     0.02%  [JIT] tid 8991       [.] 0xa710f900
+     0.02%  [JIT] tid 8991       [.] 0xa6c6f3d4
+     0.02%  [JIT] tid 8991       [.] 0xa72df940
+     0.02%  [JIT] tid 8991       [.] 0xa6fe5960
+     0.02%  qemu-aarch64         [.] tcg_gen_atomic_fetch_add_i64_chk
+     0.02%  [JIT] tid 8991       [.] 0xa6c2e780
+     0.02%  [JIT] tid 8991       [.] 0xa78bfaa4
+     0.02%  [JIT] tid 8991       [.] 0xa7a3bc40
+     0.02%  [JIT] tid 8991       [.] 0xa7a84840
+     0.02%  [JIT] tid 8991       [.] 0xa6fe0050
+     0.02%  [JIT] tid 8991       [.] 0xa6c5b140
+     0.02%  [JIT] tid 8991       [.] 0xa703c900
+     0.02%  [JIT] tid 8991       [.] 0xa7988c18
+     0.02%  [JIT] tid 8991       [.] 0xa78c742c
+     0.02%  [JIT] tid 8991       [.] 0xa7a4c688
+     0.02%  [JIT] tid 8991       [.] 0xa6c65e4c
+     0.02%  [JIT] tid 8991       [.] 0xa705fb94
+     0.02%  [JIT] tid 8991       [.] 0xa78db354
+     0.02%  [JIT] tid 8991       [.] 0xa6bce914
+     0.02%  [JIT] tid 8991       [.] 0xa702fe00
+     0.02%  [JIT] tid 8991       [.] 0xa6c69340
+     0.02%  [JIT] tid 8991       [.] 0xa706b9c0
+     0.02%  [kernel.kallsyms]    [k] 0xc02e7fde
+     0.02%  [JIT] tid 8991       [.] 0xa7a25e9c
+     0.02%  [JIT] tid 8991       [.] 0xa705f660
+     0.02%  [JIT] tid 8991       [.] 0xa7a4fd40
+     0.02%  [JIT] tid 8991       [.] 0xa796d7b4
+     0.02%  [JIT] tid 8991       [.] 0xa7a3d5e4
+     0.02%  [JIT] tid 8991       [.] 0xa6d4aae0
+     0.02%  [JIT] tid 8991       [.] 0xa6fc3a80
+     0.02%  [JIT] tid 8991       [.] 0xa7043b20
+     0.02%  [JIT] tid 8991       [.] 0xa6c75044
+     0.02%  [JIT] tid 8991       [.] 0xa7968c3c
+     0.02%  [JIT] tid 8991       [.] 0xa6c6e004
+     0.02%  [JIT] tid 8991       [.] 0xa6c541c4
+     0.02%  [JIT] tid 8991       [.] 0xa6c72644
+     0.02%  [JIT] tid 8991       [.] 0xa791c8d8
+     0.02%  [JIT] tid 8991       [.] 0xa7a19d40
+     0.02%  [JIT] tid 8991       [.] 0xa7a4f3c0
+     0.02%  qemu-aarch64         [.] do_syscall
+     0.02%  [JIT] tid 8991       [.] 0xa6c687e8
+     0.02%  [JIT] tid 8991       [.] 0xa7065690
+     0.02%  [JIT] tid 8991       [.] 0xa707cc40
+     0.02%  [JIT] tid 8991       [.] 0xa7aec0e8
+     0.02%  [JIT] tid 8991       [.] 0xa6fee5e8
+     0.02%  [JIT] tid 8991       [.] 0xa7a908c0
+     0.02%  [JIT] tid 8991       [.] 0xa6fea640
+     0.02%  [JIT] tid 8991       [.] 0xa6ba8e00
+     0.02%  [JIT] tid 8991       [.] 0xa665a1e4
+     0.02%  [JIT] tid 8991       [.] 0xa663403c
+     0.02%  [JIT] tid 8991       [.] 0xa7905c80
+     0.02%  [JIT] tid 8991       [.] 0xa797310c
+     0.02%  [JIT] tid 8991       [.] 0xa797315c
+     0.02%  [JIT] tid 8991       [.] 0xa73b90c0
+     0.02%  [JIT] tid 8991       [.] 0xa7951e14
+     0.02%  [JIT] tid 8991       [.] 0xa705bd08
+     0.02%  [JIT] tid 8991       [.] 0xa78d2d00
+     0.02%  [JIT] tid 8991       [.] 0xa7a90600
+     0.02%  [JIT] tid 8991       [.] 0xa6feb1b0
+     0.02%  [JIT] tid 8991       [.] 0xa79686d4
+     0.02%  [JIT] tid 8991       [.] 0xa79cb624
+     0.02%  [JIT] tid 8991       [.] 0xa7d33f40
+     0.02%  qemu-aarch64         [.] tcg_out_dat_rI
+     0.02%  qemu-aarch64         [.] tcg_gen_call3
+     0.02%  [JIT] tid 8991       [.] 0xa7a91eec
+     0.02%  [JIT] tid 8991       [.] 0xa70481f4
+     0.02%  [JIT] tid 8991       [.] 0xa70678c4
+     0.02%  [JIT] tid 8991       [.] 0xa7108e60
+     0.02%  [kernel.kallsyms]    [k] 0xc02ad684
+     0.02%  [JIT] tid 8991       [.] 0xa7969ac0
+     0.02%  [JIT] tid 8991       [.] 0xa6c64bcc
+     0.02%  [JIT] tid 8991       [.] 0xa78b8040
+     0.02%  [JIT] tid 8991       [.] 0xa796daac
+     0.02%  [JIT] tid 8991       [.] 0xa78d8fa0
+     0.02%  [JIT] tid 8991       [.] 0xa791b510
+     0.02%  [JIT] tid 8991       [.] 0xa7043b5c
+     0.02%  [JIT] tid 8991       [.] 0xa7047828
+     0.02%  [JIT] tid 8991       [.] 0xa6c69344
+     0.02%  [JIT] tid 8991       [.] 0xa79377c0
+     0.02%  [JIT] tid 8991       [.] 0xa7905c94
+     0.02%  [JIT] tid 8991       [.] 0xa6fed544
+     0.02%  [JIT] tid 8991       [.] 0xa6ba8dc4
+     0.02%  [JIT] tid 8991       [.] 0xa705d0a0
+     0.02%  [JIT] tid 8991       [.] 0xa7a19dc0
+     0.02%  [JIT] tid 8991       [.] 0xa7a93580
+     0.02%  [JIT] tid 8991       [.] 0xa7a4974c
+     0.02%  [kernel.kallsyms]    [k] 0xc0a4ccb6
+     0.02%  [JIT] tid 8991       [.] 0xa6c6e980
+     0.02%  [JIT] tid 8991       [.] 0xa7a45c40
+     0.02%  [JIT] tid 8991       [.] 0xa6650b80
+     0.02%  [JIT] tid 8991       [.] 0xa6970a00
+     0.02%  qemu-aarch64         [.] disas_data_proc_1src
+     0.02%  [JIT] tid 8991       [.] 0xa6c32400
+     0.02%  [JIT] tid 8991       [.] 0xa7a72200
+     0.02%  qemu-aarch64         [.] helper_stq_mmu
+     0.02%  [JIT] tid 8991       [.] 0xa7aee3a0
+     0.02%  [JIT] tid 8991       [.] 0xa7a4f280
+     0.02%  qemu-aarch64         [.] tb_target_set_jmp_target
+     0.02%  [JIT] tid 8991       [.] 0xa7a98880
+     0.02%  [JIT] tid 8991       [.] 0xa7048ef4
+     0.02%  [JIT] tid 8991       [.] 0xa794992c
+     0.02%  [JIT] tid 8991       [.] 0xa7a56e98
+     0.02%  [JIT] tid 8991       [.] 0xa700e040
+     0.02%  [JIT] tid 8991       [.] 0xa7a39138
+     0.02%  [JIT] tid 8991       [.] 0xa6fe3ce8
+     0.02%  [JIT] tid 8991       [.] 0xa6caa974
+     0.02%  [JIT] tid 8991       [.] 0xa6c68480
+     0.02%  [JIT] tid 8991       [.] 0xa79075c0
+     0.02%  [JIT] tid 8991       [.] 0xa794ead4
+     0.02%  [JIT] tid 8991       [.] 0xa7ab6574
+     0.02%  [JIT] tid 8991       [.] 0xa7aaa884
+     0.02%  [JIT] tid 8991       [.] 0xa7a4b280
+     0.02%  [JIT] tid 8991       [.] 0xa6c2cb3c
+     0.02%  [JIT] tid 8991       [.] 0xa7a23c00
+     0.02%  [JIT] tid 8991       [.] 0xa796e880
+     0.02%  [JIT] tid 8991       [.] 0xa75009f4
+     0.02%  [JIT] tid 8991       [.] 0xa6c54180
+     0.02%  [JIT] tid 8991       [.] 0xa796932c
+     0.02%  [JIT] tid 8991       [.] 0xa78c7d28
+     0.02%  [kernel.kallsyms]    [k] 0xc030b394
+     0.02%  [JIT] tid 8991       [.] 0xa705bfe4
+     0.02%  qemu-aarch64         [.] aarch64_tr_tb_start
+     0.02%  [JIT] tid 8991       [.] 0xa705ce80
+     0.02%  [JIT] tid 8991       [.] 0xa78f8b24
+     0.02%  [JIT] tid 8991       [.] 0xa70430d0
+     0.02%  [JIT] tid 8991       [.] 0xa6ca95a0
+     0.02%  [JIT] tid 8991       [.] 0xa70bad70
+     0.02%  [JIT] tid 8991       [.] 0xa7a962e0
+     0.02%  [JIT] tid 8991       [.] 0xa7a3cd00
+     0.02%  [JIT] tid 8991       [.] 0xa7950b0c
+     0.02%  [JIT] tid 8991       [.] 0xa6fed900
+     0.02%  [JIT] tid 8991       [.] 0xa73b7d20
+     0.02%  [JIT] tid 8991       [.] 0xa7a19c00
+     0.02%  [JIT] tid 8991       [.] 0xa66125f8
+     0.02%  [JIT] tid 8991       [.] 0xa7a44980
+     0.02%  [JIT] tid 8991       [.] 0xa7044cc4
+     0.02%  [JIT] tid 8991       [.] 0xa7020780
+     0.02%  [JIT] tid 8991       [.] 0xa79cb200
+     0.02%  [JIT] tid 8991       [.] 0xa79accf0
+     0.02%  [JIT] tid 8991       [.] 0xa6c60440
+     0.02%  [JIT] tid 8991       [.] 0xa79a9940
+     0.02%  [JIT] tid 8991       [.] 0xa79aa1a8
+     0.02%  [JIT] tid 8991       [.] 0xa79732c0
+     0.02%  [JIT] tid 8991       [.] 0xa6ca95b0
+     0.02%  [JIT] tid 8991       [.] 0xa7066120
+     0.02%  [JIT] tid 8991       [.] 0xa7a51500
+     0.02%  [JIT] tid 8991       [.] 0xa6fe1170
+     0.02%  [JIT] tid 8991       [.] 0xa791aba0
+     0.02%  [JIT] tid 8991       [.] 0xa7048a58
+     0.02%  [JIT] tid 8991       [.] 0xa7a5e240
+     0.02%  [JIT] tid 8991       [.] 0xa79670a4
+     0.02%  [JIT] tid 8991       [.] 0xa6c6a300
+     0.02%  [JIT] tid 8991       [.] 0xa70690b0
+     0.02%  [JIT] tid 8991       [.] 0xa70656c0
+     0.02%  [JIT] tid 8991       [.] 0xa7068240
+     0.02%  [JIT] tid 8991       [.] 0xa7a55900
+     0.02%  [JIT] tid 8991       [.] 0xa7adc3bc
+     0.02%  [JIT] tid 8991       [.] 0xa79f5420
+     0.02%  [JIT] tid 8991       [.] 0xa7042198
+     0.02%  [JIT] tid 8991       [.] 0xa7906e40
+     0.02%  [JIT] tid 8991       [.] 0xa7a4d180
+     0.02%  [JIT] tid 8991       [.] 0xa7a2fc70
+     0.02%  [JIT] tid 8991       [.] 0xa6c54e88
+     0.02%  [JIT] tid 8991       [.] 0xa702ed00
+     0.02%  [JIT] tid 8991       [.] 0xa7061d3c
+     0.02%  [JIT] tid 8991       [.] 0xa705fc80
+     0.02%  [JIT] tid 8991       [.] 0xa7967ae8
+     0.02%  [JIT] tid 8991       [.] 0xa7029664
+     0.02%  [JIT] tid 8991       [.] 0xa7a3c3c0
+     0.02%  [JIT] tid 8991       [.] 0xa7aaa220
+     0.02%  [JIT] tid 8991       [.] 0xa79cb354
+     0.02%  [JIT] tid 8991       [.] 0xa7909de0
+     0.02%  [JIT] tid 8991       [.] 0xa691dcf4
+     0.02%  [JIT] tid 8991       [.] 0xa7aa46fc
+     0.02%  [JIT] tid 8991       [.] 0xa6641040
+     0.02%  [JIT] tid 8991       [.] 0xa7a8b420
+     0.02%  [JIT] tid 8991       [.] 0xa7aa4e40
+     0.02%  [JIT] tid 8991       [.] 0xa7a23570
+     0.02%  [JIT] tid 8991       [.] 0xa699cca0
+     0.02%  [JIT] tid 8991       [.] 0xa7aab6dc
+     0.02%  [JIT] tid 8991       [.] 0xa7011020
+     0.02%  [JIT] tid 8991       [.] 0xa7a523c0
+     0.02%  [JIT] tid 8991       [.] 0xa79a7520
+     0.02%  [kernel.kallsyms]    [k] 0xc02ce742
+     0.02%  [JIT] tid 8991       [.] 0xa6caa8a0
+     0.02%  [JIT] tid 8991       [.] 0xa7955cb0
+     0.02%  [JIT] tid 8991       [.] 0xa66112ac
+     0.02%  [JIT] tid 8991       [.] 0xa70103b0
+     0.02%  [JIT] tid 8991       [.] 0xa7aaaa74
+     0.02%  [JIT] tid 8991       [.] 0xa7b0f094
+     0.02%  [JIT] tid 8991       [.] 0xa66b3580
+     0.02%  [JIT] tid 8991       [.] 0xa796f14c
+     0.02%  [JIT] tid 8991       [.] 0xa6fee27c
+     0.02%  [JIT] tid 8991       [.] 0xa7904ce4
+     0.02%  [JIT] tid 8991       [.] 0xa6fe4560
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9c14
+     0.02%  [JIT] tid 8991       [.] 0xa7967c80
+     0.02%  [JIT] tid 8991       [.] 0xa6caa8b4
+     0.02%  [JIT] tid 8991       [.] 0xa78d50ac
+     0.02%  [JIT] tid 8991       [.] 0xa7048edc
+     0.02%  [JIT] tid 8991       [.] 0xa7a19040
+     0.02%  [JIT] tid 8991       [.] 0xa78b7420
+     0.02%  [JIT] tid 8991       [.] 0xa6ca97c0
+     0.02%  [JIT] tid 8991       [.] 0xa6fe3c40
+     0.02%  [JIT] tid 8991       [.] 0xa78b7de0
+     0.02%  [JIT] tid 8991       [.] 0xa7905500
+     0.02%  [JIT] tid 8991       [.] 0xa7a48d94
+     0.02%  [JIT] tid 8991       [.] 0xa6c6e9b0
+     0.02%  [JIT] tid 8991       [.] 0xa6c2fba8
+     0.02%  [JIT] tid 8991       [.] 0xa7a7ac78
+     0.02%  [JIT] tid 8991       [.] 0xa702fd00
+     0.02%  [JIT] tid 8991       [.] 0xa7950ca8
+     0.02%  [JIT] tid 8991       [.] 0xa7aa1860
+     0.02%  [JIT] tid 8991       [.] 0xa7a1efe0
+     0.02%  [JIT] tid 8991       [.] 0xa7a4d980
+     0.02%  [JIT] tid 8991       [.] 0xa6fe5bc0
+     0.02%  [JIT] tid 8991       [.] 0xa7a25784
+     0.02%  [JIT] tid 8991       [.] 0xa701f9c4
+     0.02%  [JIT] tid 8991       [.] 0xa6fe3c0c
+     0.02%  [JIT] tid 8991       [.] 0xa73b8208
+     0.02%  [JIT] tid 8991       [.] 0xa7061d00
+     0.02%  [JIT] tid 8991       [.] 0xa7a1a100
+     0.02%  [JIT] tid 8991       [.] 0xa72e7400
+     0.02%  [kernel.kallsyms]    [k] 0xc02f92ba
+     0.02%  [JIT] tid 8991       [.] 0xa6c64988
+     0.02%  [JIT] tid 8991       [.] 0xa705be44
+     0.02%  [JIT] tid 8991       [.] 0xa6fe34e0
+     0.02%  [JIT] tid 8991       [.] 0xa7a45b00
+     0.02%  [JIT] tid 8991       [.] 0xa7a22f5c
+     0.02%  [JIT] tid 8991       [.] 0xa7aad900
+     0.02%  [JIT] tid 8991       [.] 0xa7aef400
+     0.02%  [JIT] tid 8991       [.] 0xa6da94c0
+     0.02%  [JIT] tid 8991       [.] 0xa705e110
+     0.02%  [JIT] tid 8991       [.] 0xa66b1d48
+     0.02%  [JIT] tid 8991       [.] 0xa6fe56e0
+     0.02%  [JIT] tid 8991       [.] 0xa7a51b60
+     0.02%  [JIT] tid 8991       [.] 0xa7ab6a18
+     0.02%  [JIT] tid 8991       [.] 0xa7aeaeb0
+     0.02%  [JIT] tid 8991       [.] 0xa7938cbc
+     0.02%  [JIT] tid 8991       [.] 0xa6c64900
+     0.02%  [JIT] tid 8991       [.] 0xa7a4dee0
+     0.02%  [JIT] tid 8991       [.] 0xa7909364
+     0.02%  [JIT] tid 8991       [.] 0xa72e69a0
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8c5c
+     0.02%  [JIT] tid 8991       [.] 0xa6c2dbc0
+     0.02%  [JIT] tid 8991       [.] 0xa7a96c40
+     0.02%  [JIT] tid 8991       [.] 0xa69709e4
+     0.02%  [JIT] tid 8991       [.] 0xa7909d40
+     0.02%  [JIT] tid 8991       [.] 0xa78db360
+     0.02%  [JIT] tid 8991       [.] 0xa6ba8f2c
+     0.02%  [JIT] tid 8991       [.] 0xa664cf30
+     0.02%  [JIT] tid 8991       [.] 0xa7043104
+     0.02%  [JIT] tid 8991       [.] 0xa701fd6c
+     0.02%  [JIT] tid 8991       [.] 0xa794e300
+     0.02%  [JIT] tid 8991       [.] 0xa7a8bbc0
+     0.02%  [JIT] tid 8991       [.] 0xa6ff0990
+     0.02%  [JIT] tid 8991       [.] 0xa6c108c0
+     0.02%  [JIT] tid 8991       [.] 0xa78d88c0
+     0.02%  [kernel.kallsyms]    [k] 0xc0308906
+     0.02%  [JIT] tid 8991       [.] 0xa7aa6500
+     0.02%  [JIT] tid 8991       [.] 0xa6c3b9a0
+     0.02%  [JIT] tid 8991       [.] 0xa7908300
+     0.02%  [JIT] tid 8991       [.] 0xa73b7d84
+     0.02%  [JIT] tid 8991       [.] 0xa7aa2ca4
+     0.02%  [JIT] tid 8991       [.] 0xa7065f40
+     0.02%  [JIT] tid 8991       [.] 0xa6d99970
+     0.02%  [JIT] tid 8991       [.] 0xa797ff80
+     0.02%  [JIT] tid 8991       [.] 0xa66114d8
+     0.02%  [JIT] tid 8991       [.] 0xa6fed1d8
+     0.02%  [JIT] tid 8991       [.] 0xa710dfc0
+     0.02%  [JIT] tid 8991       [.] 0xa6fe3b2c
+     0.02%  [JIT] tid 8991       [.] 0xa78ba638
+     0.02%  [JIT] tid 8991       [.] 0xa663d3e4
+     0.02%  [JIT] tid 8991       [.] 0xa79cad48
+     0.02%  [JIT] tid 8991       [.] 0xa6c65860
+     0.02%  [JIT] tid 8991       [.] 0xa7064840
+     0.02%  [JIT] tid 8991       [.] 0xa79cb658
+     0.02%  [JIT] tid 8991       [.] 0xa78b83dc
+     0.02%  [JIT] tid 8991       [.] 0xa6fe4a00
+     0.02%  [JIT] tid 8991       [.] 0xa7a92600
+     0.02%  [JIT] tid 8991       [.] 0xa6c65074
+     0.02%  [JIT] tid 8991       [.] 0xa72e7818
+     0.02%  [JIT] tid 8991       [.] 0xa7a1f028
+     0.02%  [JIT] tid 8991       [.] 0xa7a1e900
+     0.02%  [JIT] tid 8991       [.] 0xa6c3bf98
+     0.02%  [JIT] tid 8991       [.] 0xa701f500
+     0.02%  [JIT] tid 8991       [.] 0xa707d2c0
+     0.02%  [JIT] tid 8991       [.] 0xa73b8654
+     0.02%  [JIT] tid 8991       [.] 0xa7047f84
+     0.02%  [JIT] tid 8991       [.] 0xa6c695bc
+     0.02%  [JIT] tid 8991       [.] 0xa7a39c80
+     0.02%  qemu-aarch64         [.] tcg_temp_free_internal
+     0.02%  [JIT] tid 8991       [.] 0xa78bc72c
+     0.02%  [JIT] tid 8991       [.] 0xa7aa7fc0
+     0.02%  [JIT] tid 8991       [.] 0xa6ff08a4
+     0.02%  [JIT] tid 8991       [.] 0xa6c2ea80
+     0.02%  [JIT] tid 8991       [.] 0xa6c30b10
+     0.02%  [kernel.kallsyms]    [k] 0xc011eed8
+     0.02%  [JIT] tid 8991       [.] 0xa7a8db3c
+     0.02%  [JIT] tid 8991       [.] 0xa794ee80
+     0.02%  [JIT] tid 8991       [.] 0xa6c63440
+     0.02%  [JIT] tid 8991       [.] 0xa700ea08
+     0.02%  [JIT] tid 8991       [.] 0xa7a6a500
+     0.02%  [JIT] tid 8991       [.] 0xa7909200
+     0.02%  [JIT] tid 8991       [.] 0xa6ca97b4
+     0.02%  [JIT] tid 8991       [.] 0xa665a314
+     0.02%  [JIT] tid 8991       [.] 0xa700eca0
+     0.02%  [JIT] tid 8991       [.] 0xa73db840
+     0.02%  [JIT] tid 8991       [.] 0xa7a1f088
+     0.02%  [JIT] tid 8991       [.] 0xa664ca40
+     0.02%  [JIT] tid 8991       [.] 0xa7a495c0
+     0.02%  [JIT] tid 8991       [.] 0xa7925d00
+     0.02%  [JIT] tid 8991       [.] 0xa7a483c0
+     0.02%  [JIT] tid 8991       [.] 0xa7aa3900
+     0.02%  [JIT] tid 8991       [.] 0xa791c400
+     0.02%  [JIT] tid 8991       [.] 0xa7062b88
+     0.02%  [JIT] tid 8991       [.] 0xa7063a80
+     0.02%  [JIT] tid 8991       [.] 0xa664a000
+     0.02%  [JIT] tid 8991       [.] 0xa79a4f20
+     0.02%  [JIT] tid 8991       [.] 0xa7aaa600
+     0.02%  [JIT] tid 8991       [.] 0xa72cd500
+     0.02%  [JIT] tid 8991       [.] 0xa6fe53bc
+     0.02%  [JIT] tid 8991       [.] 0xa7904d20
+     0.02%  [JIT] tid 8991       [.] 0xa7aa8480
+     0.02%  [JIT] tid 8991       [.] 0xa6c85388
+     0.02%  [JIT] tid 8991       [.] 0xa6c6a18c
+     0.02%  [JIT] tid 8991       [.] 0xa7a1dff0
+     0.02%  [JIT] tid 8991       [.] 0xa7ad5240
+     0.02%  [kernel.kallsyms]    [k] 0xc0345380
+     0.02%  [JIT] tid 8991       [.] 0xa79522b4
+     0.02%  [JIT] tid 8991       [.] 0xa7a19318
+     0.02%  [kernel.kallsyms]    [k] 0xc02e6660
+     0.02%  [JIT] tid 8991       [.] 0xa6985ec0
+     0.02%  [JIT] tid 8991       [.] 0xa79f1640
+     0.02%  [JIT] tid 8991       [.] 0xa6fee25c
+     0.02%  [JIT] tid 8991       [.] 0xa7030a20
+     0.02%  [JIT] tid 8991       [.] 0xa78b7b18
+     0.02%  [JIT] tid 8991       [.] 0xa6c65698
+     0.02%  [JIT] tid 8991       [.] 0xa794e1c8
+     0.02%  [JIT] tid 8991       [.] 0xa798cc64
+     0.02%  [JIT] tid 8991       [.] 0xa707bbc0
+     0.02%  [JIT] tid 8991       [.] 0xa78dc9e0
+     0.02%  [JIT] tid 8991       [.] 0xa79683b4
+     0.02%  [JIT] tid 8991       [.] 0xa6c654a8
+     0.02%  [JIT] tid 8991       [.] 0xa7ab8000
+     0.02%  [JIT] tid 8991       [.] 0xa705c560
+     0.02%  [JIT] tid 8991       [.] 0xa7925340
+     0.02%  [JIT] tid 8991       [.] 0xa6feb064
+     0.02%  [JIT] tid 8991       [.] 0xa7055dc0
+     0.02%  [JIT] tid 8991       [.] 0xa70873c0
+     0.02%  [JIT] tid 8991       [.] 0xa796df00
+     0.02%  [JIT] tid 8991       [.] 0xa7a6e4c0
+     0.02%  [JIT] tid 8991       [.] 0xa6fe3d28
+     0.02%  [JIT] tid 8991       [.] 0xa7020440
+     0.02%  [JIT] tid 8991       [.] 0xa78c7404
+     0.02%  [JIT] tid 8991       [.] 0xa6c70a24
+     0.02%  [JIT] tid 8991       [.] 0xa7a82638
+     0.02%  [JIT] tid 8991       [.] 0xa7aabb80
+     0.02%  [JIT] tid 8991       [.] 0xa78ba648
+     0.02%  [JIT] tid 8991       [.] 0xa7042574
+     0.02%  [JIT] tid 8991       [.] 0xa6c6e340
+     0.02%  [JIT] tid 8991       [.] 0xa7a84880
+     0.02%  [JIT] tid 8991       [.] 0xa7064980
+     0.02%  [JIT] tid 8991       [.] 0xa6af134c
+     0.02%  [JIT] tid 8991       [.] 0xa6c31540
+     0.02%  [JIT] tid 8991       [.] 0xa79a8340
+     0.02%  [JIT] tid 8991       [.] 0xa770f704
+     0.02%  [JIT] tid 8991       [.] 0xa7a8234c
+     0.02%  [JIT] tid 8991       [.] 0xa7aa4aa0
+     0.02%  [kernel.kallsyms]    [k] 0xc02e66dc
+     0.02%  [JIT] tid 8991       [.] 0xa7a48eb8
+     0.02%  [JIT] tid 8991       [.] 0xa6c684b0
+     0.02%  [JIT] tid 8991       [.] 0xa798ad38
+     0.02%  [JIT] tid 8991       [.] 0xa79670a0
+     0.02%  [JIT] tid 8991       [.] 0xa7908080
+     0.02%  [JIT] tid 8991       [.] 0xa7a53340
+     0.02%  [JIT] tid 8991       [.] 0xa78bc724
+     0.02%  [JIT] tid 8991       [.] 0xa6612984
+     0.02%  [JIT] tid 8991       [.] 0xa73d1ba0
+     0.02%  [JIT] tid 8991       [.] 0xa6c2e534
+     0.02%  [JIT] tid 8991       [.] 0xa798a59c
+     0.02%  [JIT] tid 8991       [.] 0xa6c65394
+     0.02%  [JIT] tid 8991       [.] 0xa7a53140
+     0.02%  [JIT] tid 8991       [.] 0xa7a8dae4
+     0.02%  [JIT] tid 8991       [.] 0xa6c3ceb8
+     0.02%  [JIT] tid 8991       [.] 0xa700ab88
+     0.02%  [JIT] tid 8991       [.] 0xa7adaaf8
+     0.02%  [JIT] tid 8991       [.] 0xa79ca554
+     0.02%  [JIT] tid 8991       [.] 0xa791c954
+     0.02%  [JIT] tid 8991       [.] 0xa78ed3c0
+     0.02%  [JIT] tid 8991       [.] 0xa7a4e3c8
+     0.02%  [JIT] tid 8991       [.] 0xa794e1d4
+     0.02%  [JIT] tid 8991       [.] 0xa6c6b5a4
+     0.02%  [JIT] tid 8991       [.] 0xa746f940
+     0.02%  [JIT] tid 8991       [.] 0xa78b78b8
+     0.02%  [JIT] tid 8991       [.] 0xa702e500
+     0.02%  [JIT] tid 8991       [.] 0xa7909880
+     0.02%  [JIT] tid 8991       [.] 0xa7ab6a4c
+     0.02%  [JIT] tid 8991       [.] 0xa6979e8c
+     0.02%  [JIT] tid 8991       [.] 0xa6611500
+     0.02%  [JIT] tid 8991       [.] 0xa7a50000
+     0.02%  [JIT] tid 8991       [.] 0xa6caa8b8
+     0.02%  [kernel.kallsyms]    [k] 0xc031144a
+     0.02%  [JIT] tid 8991       [.] 0xa7a8e540
+     0.02%  [JIT] tid 8991       [.] 0xa665a340
+     0.02%  [JIT] tid 8991       [.] 0xa6fe7540
+     0.02%  qemu-aarch64         [.] trans_LDP
+     0.02%  [kernel.kallsyms]    [k] 0xc019902e
+     0.02%  [JIT] tid 8991       [.] 0xa7a85cc0
+     0.02%  [JIT] tid 8991       [.] 0xa7a24620
+     0.02%  [JIT] tid 8991       [.] 0xa6c5fe00
+     0.02%  [JIT] tid 8991       [.] 0xa78f8b04
+     0.02%  [JIT] tid 8991       [.] 0xa79dc484
+     0.02%  [JIT] tid 8991       [.] 0xa6ff0104
+     0.02%  [JIT] tid 8991       [.] 0xa701fd70
+     0.02%  [JIT] tid 8991       [.] 0xa7926c5c
+     0.02%  [kernel.kallsyms]    [k] 0xc02c6cc0
+     0.02%  [JIT] tid 8991       [.] 0xa78d81e0
+     0.02%  [JIT] tid 8991       [.] 0xa69df87c
+     0.02%  [JIT] tid 8991       [.] 0xa6c6a680
+     0.02%  [JIT] tid 8991       [.] 0xa7968604
+     0.02%  [JIT] tid 8991       [.] 0xa78cd81c
+     0.02%  [JIT] tid 8991       [.] 0xa798a2b0
+     0.02%  [JIT] tid 8991       [.] 0xa79f1104
+     0.02%  [JIT] tid 8991       [.] 0xa7a19f90
+     0.02%  [JIT] tid 8991       [.] 0xa6ff16a0
+     0.02%  [JIT] tid 8991       [.] 0xa70c32c0
+     0.02%  [JIT] tid 8991       [.] 0xa7acc400
+     0.02%  [JIT] tid 8991       [.] 0xa73b8040
+     0.02%  [JIT] tid 8991       [.] 0xa7950a4c
+     0.02%  [JIT] tid 8991       [.] 0xa74794e0
+     0.02%  [JIT] tid 8991       [.] 0xa707c800
+     0.02%  [JIT] tid 8991       [.] 0xa7a6a9c0
+     0.02%  [kernel.kallsyms]    [k] 0xc02c7c50
+     0.02%  [JIT] tid 8991       [.] 0xa6614700
+     0.02%  [JIT] tid 8991       [.] 0xa7a5ecc0
+     0.02%  [JIT] tid 8991       [.] 0xa7061240
+     0.02%  [JIT] tid 8991       [.] 0xa7acae40
+     0.02%  [JIT] tid 8991       [.] 0xa78d8aa0
+     0.02%  [JIT] tid 8991       [.] 0xa798d4d4
+     0.02%  [JIT] tid 8991       [.] 0xa7acae60
+     0.02%  [JIT] tid 8991       [.] 0xa6fe1154
+     0.02%  [JIT] tid 8991       [.] 0xa699ab20
+     0.02%  [JIT] tid 8991       [.] 0xa79f54c0
+     0.02%  [kernel.kallsyms]    [k] 0xc0a552c8
+     0.02%  [kernel.kallsyms]    [k] 0xc02cafbe
+     0.02%  [JIT] tid 8991       [.] 0xa6c70bd0
+     0.02%  [JIT] tid 8991       [.] 0xa7044c40
+     0.02%  [JIT] tid 8991       [.] 0xa79dc4dc
+     0.02%  [JIT] tid 8991       [.] 0xa7a75f40
+     0.02%  [JIT] tid 8991       [.] 0xa78b4a78
+     0.02%  [JIT] tid 8991       [.] 0xa79054c4
+     0.02%  [JIT] tid 8991       [.] 0xa73b8644
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8f88
+     0.02%  [JIT] tid 8991       [.] 0xa7a95e00
+     0.02%  [JIT] tid 8991       [.] 0xa70545c0
+     0.02%  [JIT] tid 8991       [.] 0xa7a54434
+     0.02%  [JIT] tid 8991       [.] 0xa6c6a88c
+     0.02%  [kernel.kallsyms]    [k] 0xc05b1744
+     0.02%  [JIT] tid 8991       [.] 0xa7043b88
+     0.02%  [JIT] tid 8991       [.] 0xa78b95b8
+     0.02%  [JIT] tid 8991       [.] 0xa6c7ae00
+     0.02%  [JIT] tid 8991       [.] 0xa7048ec0
+     0.02%  [JIT] tid 8991       [.] 0xa7905824
+     0.02%  [JIT] tid 8991       [.] 0xa79670bc
+     0.02%  [JIT] tid 8991       [.] 0xa6fea900
+     0.02%  [JIT] tid 8991       [.] 0xa6c0fd28
+     0.02%  [JIT] tid 8991       [.] 0xa7042c08
+     0.02%  [JIT] tid 8991       [.] 0xa6caa9c8
+     0.02%  [JIT] tid 8991       [.] 0xa7a88600
+     0.02%  [JIT] tid 8991       [.] 0xa78f9058
+     0.02%  [JIT] tid 8991       [.] 0xa6b3387c
+     0.02%  [JIT] tid 8991       [.] 0xa7ae2cc0
+     0.02%  [JIT] tid 8991       [.] 0xa7a85600
+     0.02%  [JIT] tid 8991       [.] 0xa746fedc
+     0.02%  [JIT] tid 8991       [.] 0xa72b032c
+     0.02%  [JIT] tid 8991       [.] 0xa6c7a98c
+     0.02%  [JIT] tid 8991       [.] 0xa6c6ed68
+     0.02%  [JIT] tid 8991       [.] 0xa6c6e744
+     0.02%  [JIT] tid 8991       [.] 0xa6c728a0
+     0.02%  [JIT] tid 8991       [.] 0xa6c6b620
+     0.02%  [JIT] tid 8991       [.] 0xa6c6bd18
+     0.02%  [JIT] tid 8991       [.] 0xa6c65888
+     0.02%  [JIT] tid 8991       [.] 0xa700e3e0
+     0.02%  [JIT] tid 8991       [.] 0xa703c980
+     0.02%  [JIT] tid 8991       [.] 0xa7a49740
+     0.02%  [JIT] tid 8991       [.] 0xa78b4904
+     0.02%  [JIT] tid 8991       [.] 0xa665a354
+     0.02%  [JIT] tid 8991       [.] 0xa790834c
+     0.02%  [JIT] tid 8991       [.] 0xa75014c0
+     0.02%  [kernel.kallsyms]    [k] 0xc0311458
+     0.02%  [JIT] tid 8991       [.] 0xa6c31bc0
+     0.02%  [JIT] tid 8991       [.] 0xa79e0f1c
+     0.02%  [JIT] tid 8991       [.] 0xa6c6e000
+     0.02%  [JIT] tid 8991       [.] 0xa6fe3440
+     0.02%  [kernel.kallsyms]    [k] 0xc030c5fa
+     0.02%  [JIT] tid 8991       [.] 0xa6612258
+     0.02%  [JIT] tid 8991       [.] 0xa73b8500
+     0.02%  [JIT] tid 8991       [.] 0xa78daac0
+     0.02%  [JIT] tid 8991       [.] 0xa664cf80
+     0.02%  [JIT] tid 8991       [.] 0xa7a8bc60
+     0.02%  [JIT] tid 8991       [.] 0xa7a19240
+     0.02%  [JIT] tid 8991       [.] 0xa7a4e060
+     0.02%  qemu-aarch64         [.] tcg_out_helper_load_imm.constprop.0
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9760
+     0.02%  [JIT] tid 8991       [.] 0xa7a95dc0
+     0.02%  [JIT] tid 8991       [.] 0xa79e1210
+     0.02%  [JIT] tid 8991       [.] 0xa7a2997c
+     0.02%  [JIT] tid 8991       [.] 0xa6c6eac0
+     0.02%  [JIT] tid 8991       [.] 0xa78b95c8
+     0.02%  [kernel.kallsyms]    [k] 0xc02a3e34
+     0.02%  [JIT] tid 8991       [.] 0xa6634138
+     0.02%  [JIT] tid 8991       [.] 0xa78d8c00
+     0.02%  [JIT] tid 8991       [.] 0xa7aa443c
+     0.02%  qemu-aarch64         [.] tcg_constant_i64
+     0.02%  [JIT] tid 8991       [.] 0xa7a8bc00
+     0.02%  qemu-aarch64         [.] q_tree_insert
+     0.02%  [JIT] tid 8991       [.] 0xa794e6a8
+     0.02%  [JIT] tid 8991       [.] 0xa7ab1bc0
+     0.02%  [JIT] tid 8991       [.] 0xa73b9030
+     0.02%  [JIT] tid 8991       [.] 0xa78d2ac0
+     0.02%  [kernel.kallsyms]    [k] 0xc02c7c48
+     0.02%  [JIT] tid 8991       [.] 0xa79dbd0c
+     0.02%  [JIT] tid 8991       [.] 0xa665a280
+     0.02%  [JIT] tid 8991       [.] 0xa73b8684
+     0.02%  [JIT] tid 8991       [.] 0xa6c6a040
+     0.02%  [JIT] tid 8991       [.] 0xa7909280
+     0.02%  [JIT] tid 8991       [.] 0xa6611240
+     0.02%  [kernel.kallsyms]    [k] 0xc02d71c6
+     0.02%  [JIT] tid 8991       [.] 0xa78b83f4
+     0.02%  [JIT] tid 8991       [.] 0xa702fc40
+     0.02%  [JIT] tid 8991       [.] 0xa73b7d58
+     0.02%  [JIT] tid 8991       [.] 0xa69a3f80
+     0.02%  [JIT] tid 8991       [.] 0xa6c70170
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9a4c
+     0.02%  [JIT] tid 8991       [.] 0xa6c6e5a0
+     0.02%  [JIT] tid 8991       [.] 0xa7a1a180
+     0.02%  [JIT] tid 8991       [.] 0xa6c6d800
+     0.02%  [JIT] tid 8991       [.] 0xa79089d0
+     0.02%  [JIT] tid 8991       [.] 0xa7951d50
+     0.02%  [JIT] tid 8991       [.] 0xa73b8c4c
+     0.02%  [JIT] tid 8991       [.] 0xa73b7d34
+     0.02%  [kernel.kallsyms]    [k] 0xc02e818a
+     0.02%  [JIT] tid 8991       [.] 0xa7062440
+     0.02%  [JIT] tid 8991       [.] 0xa73b77f8
+     0.02%  [JIT] tid 8991       [.] 0xa7a88608
+     0.02%  [JIT] tid 8991       [.] 0xa6634040
+     0.02%  [JIT] tid 8991       [.] 0xa7a82340
+     0.02%  [JIT] tid 8991       [.] 0xa78d6c14
+     0.02%  [JIT] tid 8991       [.] 0xa6ff08fc
+     0.02%  [JIT] tid 8991       [.] 0xa7013724
+     0.02%  [JIT] tid 8991       [.] 0xa78b8360
+     0.02%  [JIT] tid 8991       [.] 0xa79f0b28
+     0.02%  [JIT] tid 8991       [.] 0xa705e228
+     0.02%  [JIT] tid 8991       [.] 0xa7a94440
+     0.02%  [JIT] tid 8991       [.] 0xa72b2960
+     0.02%  [JIT] tid 8991       [.] 0xa6c2cca0
+     0.02%  [JIT] tid 8991       [.] 0xa703bec0
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8cf8
+     0.02%  [JIT] tid 8991       [.] 0xa7a86df0
+     0.02%  [JIT] tid 8991       [.] 0xa7aa8660
+     0.02%  [JIT] tid 8991       [.] 0xa6feeb40
+     0.02%  [JIT] tid 8991       [.] 0xa7ab7d50
+     0.02%  [JIT] tid 8991       [.] 0xa78b956c
+     0.02%  [JIT] tid 8991       [.] 0xa7064a34
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8c78
+     0.02%  [JIT] tid 8991       [.] 0xa7061c40
+     0.02%  [JIT] tid 8991       [.] 0xa6c6a030
+     0.02%  [JIT] tid 8991       [.] 0xa70136c0
+     0.02%  qemu-aarch64         [.] tcg_gen_andc_i64
+     0.02%  [JIT] tid 8991       [.] 0xa798d420
+     0.02%  [JIT] tid 8991       [.] 0xa78b4ca0
+     0.02%  [JIT] tid 8991       [.] 0xa70421bc
+     0.02%  [JIT] tid 8991       [.] 0xa7a245dc
+     0.02%  [JIT] tid 8991       [.] 0xa7a24780
+     0.02%  [JIT] tid 8991       [.] 0xa6c3bee0
+     0.02%  [kernel.kallsyms]    [k] 0xc0a68db6
+     0.02%  [JIT] tid 8991       [.] 0xa6c2ca80
+     0.02%  [kernel.kallsyms]    [k] 0xc02c7c08
+     0.02%  [JIT] tid 8991       [.] 0xa7ad13d0
+     0.02%  [JIT] tid 8991       [.] 0xa794e4d4
+     0.02%  [JIT] tid 8991       [.] 0xa7a94ea0
+     0.02%  [JIT] tid 8991       [.] 0xa6867ac0
+     0.02%  [kernel.kallsyms]    [k] 0xc0a73d16
+     0.02%  [JIT] tid 8991       [.] 0xa79f5840
+     0.02%  qemu-aarch64         [.] gen_materialize_sub64_flags
+     0.02%  [kernel.kallsyms]    [k] 0xc02a3e4e
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8c74
+     0.02%  [JIT] tid 8991       [.] 0xa6c6a600
+     0.02%  [JIT] tid 8991       [.] 0xa794e3b4
+     0.02%  [JIT] tid 8991       [.] 0xa7a74000
+     0.02%  [JIT] tid 8991       [.] 0xa7acb7ac
+     0.02%  [JIT] tid 8991       [.] 0xa78f84ec
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8f9c
+     0.02%  [JIT] tid 8991       [.] 0xa6ba8fc8
+     0.02%  [JIT] tid 8991       [.] 0xa79423c0
+     0.02%  [JIT] tid 8991       [.] 0xa73b8c78
+     0.02%  [JIT] tid 8991       [.] 0xa78b748c
+     0.02%  [kernel.kallsyms]    [k] 0xc02e93b6
+     0.02%  [JIT] tid 8991       [.] 0xa7937ae0
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9284
+     0.02%  [JIT] tid 8991       [.] 0xa78b4c60
+     0.02%  [JIT] tid 8991       [.] 0xa6c31320
+     0.02%  [JIT] tid 8991       [.] 0xa6c6b440
+     0.02%  [kernel.kallsyms]    [k] 0xc02e80e4
+     0.02%  [JIT] tid 8991       [.] 0xa7a10c40
+     0.02%  [JIT] tid 8991       [.] 0xa7aa6b40
+     0.02%  [JIT] tid 8991       [.] 0xa696bec0
+     0.02%  [JIT] tid 8991       [.] 0xa78ba5e0
+     0.02%  [JIT] tid 8991       [.] 0xa7a19780
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8c44
+     0.02%  [JIT] tid 8991       [.] 0xa6612994
+     0.02%  [JIT] tid 8991       [.] 0xa7acc480
+     0.02%  [JIT] tid 8991       [.] 0xa6fdfca0
+     0.02%  [JIT] tid 8991       [.] 0xa6fee1c0
+     0.02%  [JIT] tid 8991       [.] 0xa7a24ea0
+     0.02%  [JIT] tid 8991       [.] 0xa797a64c
+     0.02%  [JIT] tid 8991       [.] 0xa7020ad8
+     0.02%  [JIT] tid 8991       [.] 0xa79a5f40
+     0.02%  [JIT] tid 8991       [.] 0xa6970220
+     0.02%  [JIT] tid 8991       [.] 0xa72b0564
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8cfc
+     0.02%  [JIT] tid 8991       [.] 0xa7061da8
+     0.02%  [JIT] tid 8991       [.] 0xa794f100
+     0.02%  [kernel.kallsyms]    [k] 0xc030898e
+     0.02%  [JIT] tid 8991       [.] 0xa78bc794
+     0.02%  [JIT] tid 8991       [.] 0xa704847c
+     0.02%  [JIT] tid 8991       [.] 0xa6bce8d8
+     0.02%  [kernel.kallsyms]    [k] 0xc02e66b8
+     0.02%  [JIT] tid 8991       [.] 0xa7064c10
+     0.02%  [JIT] tid 8991       [.] 0xa704781c
+     0.02%  [JIT] tid 8991       [.] 0xa7a531c0
+     0.02%  [JIT] tid 8991       [.] 0xa78c7410
+     0.02%  [JIT] tid 8991       [.] 0xa69df644
+     0.02%  [JIT] tid 8991       [.] 0xa7a4fac0
+     0.02%  [kernel.kallsyms]    [k] 0xc01000e4
+     0.02%  [JIT] tid 8991       [.] 0xa795198c
+     0.02%  [JIT] tid 8991       [.] 0xa6c10540
+     0.02%  [JIT] tid 8991       [.] 0xa6ba8f9c
+     0.02%  [JIT] tid 8991       [.] 0xa6bce8a8
+     0.02%  [JIT] tid 8991       [.] 0xa79e0378
+     0.02%  [JIT] tid 8991       [.] 0xa79e0418
+     0.02%  [JIT] tid 8991       [.] 0xa78dcdc4
+     0.02%  [JIT] tid 8991       [.] 0xa705dec0
+     0.02%  [JIT] tid 8991       [.] 0xa78b95a0
+     0.02%  [JIT] tid 8991       [.] 0xa7aa5aa4
+     0.02%  [JIT] tid 8991       [.] 0xa665a360
+     0.02%  [JIT] tid 8991       [.] 0xa78bc720
+     0.02%  [JIT] tid 8991       [.] 0xa78c7490
+     0.02%  [JIT] tid 8991       [.] 0xa78ba6bc
+     0.02%  [JIT] tid 8991       [.] 0xa79a1b20
+     0.02%  [JIT] tid 8991       [.] 0xa7926120
+     0.02%  [JIT] tid 8991       [.] 0xa6a65ac0
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8fd8
+     0.02%  [JIT] tid 8991       [.] 0xa663ef40
+     0.02%  [JIT] tid 8991       [.] 0xa7087264
+     0.02%  [JIT] tid 8991       [.] 0xa799b490
+     0.02%  [JIT] tid 8991       [.] 0xa70c32a8
+     0.02%  [JIT] tid 8991       [.] 0xa707b880
+     0.02%  [kernel.kallsyms]    [k] 0xc02c7ba8
+     0.02%  [JIT] tid 8991       [.] 0xa78f7d88
+     0.02%  [JIT] tid 8991       [.] 0xa7950dc4
+     0.02%  [JIT] tid 8991       [.] 0xa705cd30
+     0.02%  [JIT] tid 8991       [.] 0xa7a569e0
+     0.02%  [JIT] tid 8991       [.] 0xa72b0198
+     0.02%  [JIT] tid 8991       [.] 0xa6caa0ec
+     0.02%  [JIT] tid 8991       [.] 0xa7a71740
+     0.02%  [JIT] tid 8991       [.] 0xa70d1e00
+     0.02%  [JIT] tid 8991       [.] 0xa78bfa58
+     0.02%  [kernel.kallsyms]    [k] 0xc01a8142
+     0.02%  [JIT] tid 8991       [.] 0xa7a92680
+     0.02%  [kernel.kallsyms]    [k] 0xc02d5e5e
+     0.02%  [JIT] tid 8991       [.] 0xa6fea6c0
+     0.02%  [JIT] tid 8991       [.] 0xa78d8800
+     0.02%  [JIT] tid 8991       [.] 0xa6c107c0
+     0.02%  [JIT] tid 8991       [.] 0xa7a4aa40
+     0.02%  [JIT] tid 8991       [.] 0xa7aa28c0
+     0.02%  [JIT] tid 8991       [.] 0xa7909a0c
+     0.02%  [kernel.kallsyms]    [k] 0xc010020e
+     0.02%  qemu-aarch64         [.] q_tree_node_balance
+     0.02%  [JIT] tid 8991       [.] 0xa7950dd8
+     0.02%  [JIT] tid 8991       [.] 0xa69e0b78
+     0.02%  [JIT] tid 8991       [.] 0xa78dcde0
+     0.02%  [JIT] tid 8991       [.] 0xa797330c
+     0.02%  [JIT] tid 8991       [.] 0xa7a54788
+     0.02%  [JIT] tid 8991       [.] 0xa791aac0
+     0.02%  [JIT] tid 8991       [.] 0xa6c54c80
+     0.02%  [JIT] tid 8991       [.] 0xa798d498
+     0.02%  [JIT] tid 8991       [.] 0xa6ca95a4
+     0.02%  qemu-aarch64         [.] gen_rri_log
+     0.02%  [JIT] tid 8991       [.] 0xa794e160
+     0.02%  [JIT] tid 8991       [.] 0xa78c74a4
+     0.02%  [JIT] tid 8991       [.] 0xa79f5d00
+     0.02%  [JIT] tid 8991       [.] 0xa7066280
+     0.02%  [kernel.kallsyms]    [k] 0xc01010d4
+     0.02%  [kernel.kallsyms]    [k] 0xc02fd830
+     0.02%  qemu-aarch64         [.] tcg_out_goto_label
+     0.02%  [JIT] tid 8991       [.] 0xa6c6ed50
+     0.02%  [JIT] tid 8991       [.] 0xa797ab1c
+     0.02%  [JIT] tid 8991       [.] 0xa6c65048
+     0.02%  [JIT] tid 8991       [.] 0xa6c63840
+     0.02%  [JIT] tid 8991       [.] 0xa73b7a6c
+     0.02%  [JIT] tid 8991       [.] 0xa6c115c0
+     0.02%  [kernel.kallsyms]    [k] 0xc02d71d2
+     0.02%  [JIT] tid 8991       [.] 0xa794f040
+     0.02%  [kernel.kallsyms]    [k] 0xc02ea198
+     0.02%  [JIT] tid 8991       [.] 0xa6fe4760
+     0.02%  [JIT] tid 8991       [.] 0xa705ca20
+     0.02%  [JIT] tid 8991       [.] 0xa6c6e600
+     0.02%  [JIT] tid 8991       [.] 0xa70455c0
+     0.02%  [JIT] tid 8991       [.] 0xa791b6f8
+     0.02%  [JIT] tid 8991       [.] 0xa78bc6f8
+     0.02%  [JIT] tid 8991       [.] 0xa78d5c90
+     0.02%  [kernel.kallsyms]    [k] 0xc02e664c
+     0.02%  [JIT] tid 8991       [.] 0xa78b7934
+     0.02%  [JIT] tid 8991       [.] 0xa70632e0
+     0.02%  [JIT] tid 8991       [.] 0xa7ab7020
+     0.02%  [JIT] tid 8991       [.] 0xa7a233bc
+     0.02%  [JIT] tid 8991       [.] 0xa7067500
+     0.02%  [kernel.kallsyms]    [k] 0xc0474194
+     0.02%  [JIT] tid 8991       [.] 0xa791adf4
+     0.02%  [JIT] tid 8991       [.] 0xa7046ca0
+     0.02%  [JIT] tid 8991       [.] 0xa6feda04
+     0.02%  [kernel.kallsyms]    [k] 0xc0100f06
+     0.02%  [kernel.kallsyms]    [k] 0xc030c608
+     0.02%  [JIT] tid 8991       [.] 0xa6c65b9c
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9f38
+     0.02%  [kernel.kallsyms]    [k] 0xc011f4dc
+     0.02%  [JIT] tid 8991       [.] 0xa6ca92a8
+     0.02%  [JIT] tid 8991       [.] 0xa7950d84
+     0.02%  [JIT] tid 8991       [.] 0xa7a97080
+     0.02%  [JIT] tid 8991       [.] 0xa6fe3980
+     0.02%  [JIT] tid 8991       [.] 0xa798b01c
+     0.02%  [JIT] tid 8991       [.] 0xa7991794
+     0.02%  [JIT] tid 8991       [.] 0xa78b8074
+     0.02%  [JIT] tid 8991       [.] 0xa798ca44
+     0.02%  [JIT] tid 8991       [.] 0xa69861c0
+     0.02%  [JIT] tid 8991       [.] 0xa6c6650c
+     0.02%  [JIT] tid 8991       [.] 0xa79e0bc0
+     0.02%  [JIT] tid 8991       [.] 0xa6feab00
+     0.02%  [JIT] tid 8991       [.] 0xa72d0080
+     0.02%  [JIT] tid 8991       [.] 0xa7aaa810
+     0.02%  [JIT] tid 8991       [.] 0xa7a3c68c
+     0.02%  [JIT] tid 8991       [.] 0xa7aeea80
+     0.02%  [kernel.kallsyms]    [k] 0xc0308a36
+     0.02%  [JIT] tid 8991       [.] 0xa73b78f0
+     0.02%  [JIT] tid 8991       [.] 0xa7043f5c
+     0.02%  [JIT] tid 8991       [.] 0xa6c2e000
+     0.02%  [JIT] tid 8991       [.] 0xa7a71200
+     0.02%  [JIT] tid 8991       [.] 0xa70106c0
+     0.02%  [JIT] tid 8991       [.] 0xa70629c4
+     0.02%  [JIT] tid 8991       [.] 0xa78f8e78
+     0.02%  [JIT] tid 8991       [.] 0xa7063740
+     0.02%  [kernel.kallsyms]    [k] 0xc0a68db4
+     0.02%  [JIT] tid 8991       [.] 0xa798a7b8
+     0.02%  [JIT] tid 8991       [.] 0xa79e0c10
+     0.02%  [JIT] tid 8991       [.] 0xa7478ee4
+     0.02%  [JIT] tid 8991       [.] 0xa705c580
+     0.02%  [JIT] tid 8991       [.] 0xa79e3b44
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9f58
+     0.02%  [JIT] tid 8991       [.] 0xa6c7f3ec
+     0.02%  [JIT] tid 8991       [.] 0xa6c2e6b4
+     0.02%  [JIT] tid 8991       [.] 0xa7122954
+     0.02%  [JIT] tid 8991       [.] 0xa6c650b0
+     0.02%  [JIT] tid 8991       [.] 0xa6c68284
+     0.02%  [JIT] tid 8991       [.] 0xa7042eac
+     0.02%  [kernel.kallsyms]    [k] 0xc0296c8e
+     0.02%  qemu-aarch64         [.] cpu_exec_start
+     0.02%  [JIT] tid 8991       [.] 0xa7aa8880
+     0.02%  [JIT] tid 8991       [.] 0xa7d58a44
+     0.02%  [JIT] tid 8991       [.] 0xa78dcda0
+     0.02%  [JIT] tid 8991       [.] 0xa6c322c0
+     0.02%  [JIT] tid 8991       [.] 0xa78c7458
+     0.02%  [JIT] tid 8991       [.] 0xa70c4320
+     0.02%  [JIT] tid 8991       [.] 0xa799fc80
+     0.02%  [JIT] tid 8991       [.] 0xa78c74b8
+     0.02%  [JIT] tid 8991       [.] 0xa70455f0
+     0.02%  [JIT] tid 8991       [.] 0xa680a830
+     0.02%  [JIT] tid 8991       [.] 0xa7a53520
+     0.02%  [JIT] tid 8991       [.] 0xa705c260
+     0.02%  [JIT] tid 8991       [.] 0xa7a23208
+     0.02%  [JIT] tid 8991       [.] 0xa6c6e764
+     0.02%  [JIT] tid 8991       [.] 0xa6c0fb88
+     0.02%  [JIT] tid 8991       [.] 0xa7478eac
+     0.02%  [JIT] tid 8991       [.] 0xa7dbc200
+     0.02%  [kernel.kallsyms]    [k] 0xc0308952
+     0.02%  [JIT] tid 8991       [.] 0xa7042a98
+     0.02%  [JIT] tid 8991       [.] 0xa78bc8a0
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8aec
+     0.02%  [JIT] tid 8991       [.] 0xa6c662c0
+     0.02%  [JIT] tid 8991       [.] 0xa6fe39d0
+     0.02%  [JIT] tid 8991       [.] 0xa7a507e0
+     0.02%  [JIT] tid 8991       [.] 0xa79e1b5c
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8ff4
+     0.02%  [JIT] tid 8991       [.] 0xa699074c
+     0.02%  [kernel.kallsyms]    [k] 0xc011cfca
+     0.02%  [JIT] tid 8991       [.] 0xa7aac6a0
+     0.02%  [JIT] tid 8991       [.] 0xa700d9d0
+     0.02%  [JIT] tid 8991       [.] 0xa7a563d8
+     0.02%  [JIT] tid 8991       [.] 0xa78c74a0
+     0.02%  [kernel.kallsyms]    [k] 0xc02cddd0
+     0.02%  [JIT] tid 8991       [.] 0xa7905ac0
+     0.02%  [JIT] tid 8991       [.] 0xa705ceb8
+     0.02%  [JIT] tid 8991       [.] 0xa7080ac0
+     0.02%  [JIT] tid 8991       [.] 0xa7508d6c
+     0.02%  [JIT] tid 8991       [.] 0xa7a47128
+     0.02%  [JIT] tid 8991       [.] 0xa78db440
+     0.02%  [JIT] tid 8991       [.] 0xa76f9b7c
+     0.02%  [JIT] tid 8991       [.] 0xa6fe5600
+     0.02%  [kernel.kallsyms]    [k] 0xc02f928a
+     0.02%  [JIT] tid 8991       [.] 0xa7044e10
+     0.02%  [kernel.kallsyms]    [k] 0xc04bea16
+     0.02%  [JIT] tid 8991       [.] 0xa6c6497c
+     0.02%  [JIT] tid 8991       [.] 0xa7ab7fc0
+     0.02%  [JIT] tid 8991       [.] 0xa7aaa900
+     0.02%  [JIT] tid 8991       [.] 0xa79e3070
+     0.02%  [JIT] tid 8991       [.] 0xa7048a60
+     0.02%  [JIT] tid 8991       [.] 0xa663a300
+     0.02%  [JIT] tid 8991       [.] 0xa78b7018
+     0.02%  [JIT] tid 8991       [.] 0xa66112c0
+     0.02%  [kernel.kallsyms]    [k] 0xc0100060
+     0.02%  [JIT] tid 8991       [.] 0xa794dfc0
+     0.02%  [JIT] tid 8991       [.] 0xa7a95a60
+     0.02%  [JIT] tid 8991       [.] 0xa7a83880
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9f54
+     0.02%  [JIT] tid 8991       [.] 0xa70870b0
+     0.02%  [JIT] tid 8991       [.] 0xa798a434
+     0.02%  [JIT] tid 8991       [.] 0xa74136c0
+     0.02%  [JIT] tid 8991       [.] 0xa794f200
+     0.02%  [JIT] tid 8991       [.] 0xa7a3906c
+     0.02%  [JIT] tid 8991       [.] 0xa7a88640
+     0.02%  [JIT] tid 8991       [.] 0xa6c6a120
+     0.02%  [JIT] tid 8991       [.] 0xa6bce908
+     0.02%  [JIT] tid 8991       [.] 0xa7adf940
+     0.02%  [JIT] tid 8991       [.] 0xa6caa970
+     0.02%  [JIT] tid 8991       [.] 0xa795062c
+     0.02%  [JIT] tid 8991       [.] 0xa70c430c
+     0.02%  [kernel.kallsyms]    [k] 0xc029741a
+     0.02%  [JIT] tid 8991       [.] 0xa78b9228
+     0.02%  [JIT] tid 8991       [.] 0xa78d6c04
+     0.02%  [JIT] tid 8991       [.] 0xa7a1e954
+     0.02%  [JIT] tid 8991       [.] 0xa798b020
+     0.02%  [JIT] tid 8991       [.] 0xa79233a0
+     0.02%  [JIT] tid 8991       [.] 0xa7042c04
+     0.02%  [JIT] tid 8991       [.] 0xa78d6cd8
+     0.02%  [JIT] tid 8991       [.] 0xa7976268
+     0.02%  [JIT] tid 8991       [.] 0xa7065500
+     0.02%  [JIT] tid 8991       [.] 0xa7ad56c0
+     0.02%  [JIT] tid 8991       [.] 0xa7aae300
+     0.02%  [JIT] tid 8991       [.] 0xa791b324
+     0.02%  [JIT] tid 8991       [.] 0xa7ab1200
+     0.02%  [JIT] tid 8991       [.] 0xa73d1e80
+     0.02%  [JIT] tid 8991       [.] 0xa78d5c70
+     0.02%  qemu-aarch64         [.] tcg_tb_prof_new_rec
+     0.02%  [JIT] tid 8991       [.] 0xa746fe80
+     0.02%  [kernel.kallsyms]    [k] 0xc02c7998
+     0.02%  [JIT] tid 8991       [.] 0xa78b7be0
+     0.02%  [JIT] tid 8991       [.] 0xa7b2f800
+     0.02%  [JIT] tid 8991       [.] 0xa7906e80
+     0.02%  [JIT] tid 8991       [.] 0xa7aa1c40
+     0.02%  [JIT] tid 8991       [.] 0xa7a577c0
+     0.02%  [JIT] tid 8991       [.] 0xa7acb6c0
+     0.02%  [JIT] tid 8991       [.] 0xa79e3000
+     0.02%  [JIT] tid 8991       [.] 0xa6c6e468
+     0.02%  [JIT] tid 8991       [.] 0xa7a38fc0
+     0.02%  [JIT] tid 8991       [.] 0xa6fe39a8
+     0.02%  [kernel.kallsyms]    [k] 0xc0a5533c
+     0.02%  [kernel.kallsyms]    [k] 0xc030898a
+     0.02%  [kernel.kallsyms]    [k] 0xc02c7bbc
+     0.02%  [JIT] tid 8991       [.] 0xa6c6e008
+     0.02%  [JIT] tid 8991       [.] 0xa7a8508c
+     0.02%  [JIT] tid 8991       [.] 0xa7a94700
+     0.02%  [JIT] tid 8991       [.] 0xa78c7454
+     0.02%  [JIT] tid 8991       [.] 0xa6caa744
+     0.02%  [JIT] tid 8991       [.] 0xa7952574
+     0.02%  [JIT] tid 8991       [.] 0xa7043a90
+     0.02%  [JIT] tid 8991       [.] 0xa665a2a0
+     0.02%  [JIT] tid 8991       [.] 0xa7500600
+     0.02%  [JIT] tid 8991       [.] 0xa78c7e40
+     0.02%  [kernel.kallsyms]    [k] 0xc02e93b0
+     0.02%  [JIT] tid 8991       [.] 0xa79df140
+     0.02%  [JIT] tid 8991       [.] 0xa6c693e0
+     0.02%  [JIT] tid 8991       [.] 0xa78b8084
+     0.02%  [JIT] tid 8991       [.] 0xa70671c0
+     0.02%  [JIT] tid 8991       [.] 0xa79507f0
+     0.02%  [JIT] tid 8991       [.] 0xa78b73c8
+     0.02%  [JIT] tid 8991       [.] 0xa7955c48
+     0.02%  [JIT] tid 8991       [.] 0xa78b7074
+     0.02%  [JIT] tid 8991       [.] 0xa7a1e9e0
+     0.02%  [JIT] tid 8991       [.] 0xa6ff0880
+     0.02%  [JIT] tid 8991       [.] 0xa79dfda0
+     0.02%  [JIT] tid 8991       [.] 0xa79dfe80
+     0.02%  [JIT] tid 8991       [.] 0xa700bb40
+     0.02%  [JIT] tid 8991       [.] 0xa704ecc0
+     0.02%  [JIT] tid 8991       [.] 0xa7a4ad20
+     0.02%  [JIT] tid 8991       [.] 0xa79e1964
+     0.02%  [JIT] tid 8991       [.] 0xa78b74c0
+     0.02%  [JIT] tid 8991       [.] 0xa70439f0
+     0.02%  [JIT] tid 8991       [.] 0xa7aa7a78
+     0.02%  [JIT] tid 8991       [.] 0xa700ec80
+     0.02%  [JIT] tid 8991       [.] 0xa7a53e00
+     0.02%  [JIT] tid 8991       [.] 0xa7aedd7c
+     0.02%  [JIT] tid 8991       [.] 0xa70142b8
+     0.02%  [JIT] tid 8991       [.] 0xa7a3ce30
+     0.02%  [JIT] tid 8991       [.] 0xa6c30ac0
+     0.02%  [JIT] tid 8991       [.] 0xa7048540
+     0.02%  [JIT] tid 8991       [.] 0xa7a4dd80
+     0.02%  [JIT] tid 8991       [.] 0xa7479048
+     0.02%  [kernel.kallsyms]    [k] 0xc02cdd64
+     0.02%  [JIT] tid 8991       [.] 0xa6962860
+     0.02%  [JIT] tid 8991       [.] 0xa79a76c0
+     0.02%  [JIT] tid 8991       [.] 0xa6fed5a0
+     0.02%  [JIT] tid 8991       [.] 0xa79493e0
+     0.02%  [JIT] tid 8991       [.] 0xa66564b8
+     0.02%  [JIT] tid 8991       [.] 0xa66584dc
+     0.02%  [JIT] tid 8991       [.] 0xa7a1e280
+     0.02%  [JIT] tid 8991       [.] 0xa78c7494
+     0.02%  [kernel.kallsyms]    [k] 0xc02b23cc
+     0.02%  [kernel.kallsyms]    [k] 0xc02cdcec
+     0.02%  [JIT] tid 8991       [.] 0xa78c7470
+     0.02%  [kernel.kallsyms]    [k] 0xc02c7980
+     0.02%  [JIT] tid 8991       [.] 0xa7a4f430
+     0.02%  [JIT] tid 8991       [.] 0xa6bba940
+     0.02%  [kernel.kallsyms]    [k] 0xc02d3d62
+     0.02%  [JIT] tid 8991       [.] 0xa78ce2e4
+     0.02%  [JIT] tid 8991       [.] 0xa69e0bb8
+     0.02%  [JIT] tid 8991       [.] 0xa7a55b80
+     0.02%  [JIT] tid 8991       [.] 0xa79a4a6c
+     0.02%  [JIT] tid 8991       [.] 0xa6c31694
+     0.02%  [JIT] tid 8991       [.] 0xa78b7334
+     0.02%  [JIT] tid 8991       [.] 0xa7043ac4
+     0.02%  [JIT] tid 8991       [.] 0xa6c7fe00
+     0.02%  [JIT] tid 8991       [.] 0xa664a260
+     0.02%  [JIT] tid 8991       [.] 0xa6fe5f00
+     0.02%  qemu-aarch64         [.] tcg_temp_new_ptr
+     0.02%  [JIT] tid 8991       [.] 0xa7908a34
+     0.02%  [JIT] tid 8991       [.] 0xa79760e0
+     0.02%  [JIT] tid 8991       [.] 0xa6c665e0
+     0.02%  [JIT] tid 8991       [.] 0xa6c3be80
+     0.02%  [JIT] tid 8991       [.] 0xa7a3ce40
+     0.02%  [JIT] tid 8991       [.] 0xa7478e08
+     0.02%  [JIT] tid 8991       [.] 0xa78d5528
+     0.02%  [JIT] tid 8991       [.] 0xa7951c80
+     0.02%  [JIT] tid 8991       [.] 0xa7a7ed80
+     0.02%  [JIT] tid 8991       [.] 0xa696c0d4
+     0.02%  [JIT] tid 8991       [.] 0xa6c5e180
+     0.02%  [JIT] tid 8991       [.] 0xa79e0e88
+     0.02%  [JIT] tid 8991       [.] 0xa6c6be80
+     0.02%  [JIT] tid 8991       [.] 0xa7a1ffb0
+     0.02%  [JIT] tid 8991       [.] 0xa7905790
+     0.02%  [JIT] tid 8991       [.] 0xa7048fe0
+     0.02%  [JIT] tid 8991       [.] 0xa6fe3dc0
+     0.02%  [JIT] tid 8991       [.] 0xa6fe9840
+     0.02%  [JIT] tid 8991       [.] 0xa6c5a808
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9788
+     0.02%  [JIT] tid 8991       [.] 0xa79e1588
+     0.02%  [JIT] tid 8991       [.] 0xa665f37c
+     0.02%  [JIT] tid 8991       [.] 0xa79e5ee0
+     0.02%  [JIT] tid 8991       [.] 0xa710cc48
+     0.02%  [JIT] tid 8991       [.] 0xa6caa0f4
+     0.02%  [JIT] tid 8991       [.] 0xa7905ab0
+     0.02%  [JIT] tid 8991       [.] 0xa6c66150
+     0.02%  [JIT] tid 8991       [.] 0xa747940c
+     0.02%  [JIT] tid 8991       [.] 0xa6c6a328
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8cb0
+     0.02%  [JIT] tid 8991       [.] 0xa78b94d4
+     0.02%  [JIT] tid 8991       [.] 0xa7a6f4c0
+     0.02%  [JIT] tid 8991       [.] 0xa7950d18
+     0.02%  [JIT] tid 8991       [.] 0xa6ba8f20
+     0.02%  [JIT] tid 8991       [.] 0xa6fe3500
+     0.02%  [JIT] tid 8991       [.] 0xa799d94c
+     0.02%  [JIT] tid 8991       [.] 0xa6fe4340
+     0.02%  [JIT] tid 8991       [.] 0xa7068220
+     0.02%  [JIT] tid 8991       [.] 0xa7aa346c
+     0.02%  [JIT] tid 8991       [.] 0xa7a4a034
+     0.02%  [JIT] tid 8991       [.] 0xa78b7314
+     0.02%  [JIT] tid 8991       [.] 0xa7a18c80
+     0.02%  [JIT] tid 8991       [.] 0xa78b83a8
+     0.02%  [JIT] tid 8991       [.] 0xa7a29630
+     0.02%  [JIT] tid 8991       [.] 0xa6ca95f4
+     0.02%  [JIT] tid 8991       [.] 0xa78bc160
+     0.02%  [JIT] tid 8991       [.] 0xa7cefe04
+     0.02%  [JIT] tid 8991       [.] 0xa78c7414
+     0.02%  [JIT] tid 8991       [.] 0xa7af8480
+     0.02%  [JIT] tid 8991       [.] 0xa6caa414
+     0.02%  [JIT] tid 8991       [.] 0xa6bce8f0
+     0.02%  [JIT] tid 8991       [.] 0xa7a20200
+     0.02%  [JIT] tid 8991       [.] 0xa7a3d060
+     0.02%  [JIT] tid 8991       [.] 0xa78b705c
+     0.02%  [JIT] tid 8991       [.] 0xa78b7920
+     0.02%  [JIT] tid 8991       [.] 0xa78b78d4
+     0.02%  [JIT] tid 8991       [.] 0xa794f840
+     0.02%  [JIT] tid 8991       [.] 0xa6ca9460
+     0.02%  [JIT] tid 8991       [.] 0xa70872b0
+     0.02%  [JIT] tid 8991       [.] 0xa7ae2a0c
+     0.02%  qemu-aarch64         [.] tcg_out_pool_finalize
+     0.02%  [JIT] tid 8991       [.] 0xa78c74bc
+     0.02%  [JIT] tid 8991       [.] 0xa66414c0
+     0.02%  [JIT] tid 8991       [.] 0xa78c7400
+     0.02%  [JIT] tid 8991       [.] 0xa78d756c
+     0.02%  [JIT] tid 8991       [.] 0xa7a6d1e0
+     0.02%  [JIT] tid 8991       [.] 0xa701bb00
+     0.02%  [JIT] tid 8991       [.] 0xa7979a40
+     0.02%  [JIT] tid 8991       [.] 0xa7a39ac0
+     0.02%  [JIT] tid 8991       [.] 0xa664c640
+     0.02%  [JIT] tid 8991       [.] 0xa794e340
+     0.02%  [JIT] tid 8991       [.] 0xa6fdfc20
+     0.02%  [JIT] tid 8991       [.] 0xa6c2e0c0
+     0.02%  [JIT] tid 8991       [.] 0xa6ca8c90
+     0.02%  [JIT] tid 8991       [.] 0xa7048fac
+     0.02%  [JIT] tid 8991       [.] 0xa78d4f4c
+     0.02%  [JIT] tid 8991       [.] 0xa7950628
+     0.02%  [JIT] tid 8991       [.] 0xa66112fc
+     0.02%  [JIT] tid 8991       [.] 0xa7af7a80
+     0.02%  [JIT] tid 8991       [.] 0xa7a3a6bc
+     0.02%  [JIT] tid 8991       [.] 0xa78bf890
+     0.02%  [JIT] tid 8991       [.] 0xa749c980
+     0.02%  [JIT] tid 8991       [.] 0xa6c7ae40
+     0.01%  [JIT] tid 8991       [.] 0xa6657660
+     0.01%  [JIT] tid 8991       [.] 0xa70c4374
+     0.01%  [JIT] tid 8991       [.] 0xa6bb4e40
+     0.01%  [JIT] tid 8991       [.] 0xa78d4a0c
+     0.01%  [JIT] tid 8991       [.] 0xa6656d98
+     0.01%  [JIT] tid 8991       [.] 0xa6c1138c
+     0.01%  [JIT] tid 8991       [.] 0xa6650940
+     0.01%  [JIT] tid 8991       [.] 0xa6c6b7c0
+     0.01%  [JIT] tid 8991       [.] 0xa7a50d60
+     0.01%  [JIT] tid 8991       [.] 0xa6bce8c8
+     0.01%  [kernel.kallsyms]    [k] 0xc030a3e8
+     0.01%  [JIT] tid 8991       [.] 0xa7048720
+     0.01%  [JIT] tid 8991       [.] 0xa798cf8c
+     0.01%  [JIT] tid 8991       [.] 0xa7043b60
+     0.01%  [JIT] tid 8991       [.] 0xa664e140
+     0.01%  [JIT] tid 8991       [.] 0xa7a389c0
+     0.01%  [JIT] tid 8991       [.] 0xa7aa97a0
+     0.01%  [JIT] tid 8991       [.] 0xa78d6f20
+     0.01%  [JIT] tid 8991       [.] 0xa797365c
+     0.01%  [kernel.kallsyms]    [k] 0xc0a55248
+     0.01%  [JIT] tid 8991       [.] 0xa66568c4
+     0.01%  [JIT] tid 8991       [.] 0xa705e840
+     0.01%  [JIT] tid 8991       [.] 0xa6656d18
+     0.01%  [JIT] tid 8991       [.] 0xa7aa2f00
+     0.01%  [JIT] tid 8991       [.] 0xa78ba6f8
+     0.01%  [JIT] tid 8991       [.] 0xa6c30a40
+     0.01%  [JIT] tid 8991       [.] 0xa79dc0c4
+     0.01%  [JIT] tid 8991       [.] 0xa6bce95c
+     0.01%  [JIT] tid 8991       [.] 0xa7479240
+     0.01%  [JIT] tid 8991       [.] 0xa66564c4
+     0.01%  [JIT] tid 8991       [.] 0xa7908320
+     0.01%  [JIT] tid 8991       [.] 0xa797ec40
+     0.01%  [JIT] tid 8991       [.] 0xa6c6611c
+     0.01%  [JIT] tid 8991       [.] 0xa79507e4
+     0.01%  [JIT] tid 8991       [.] 0xa6657d24
+     0.01%  [JIT] tid 8991       [.] 0xa7046d54
+     0.01%  [JIT] tid 8991       [.] 0xa78d52c0
+     0.01%  [JIT] tid 8991       [.] 0xa7a90720
+     0.01%  [JIT] tid 8991       [.] 0xa7950dec
+     0.01%  [JIT] tid 8991       [.] 0xa6656340
+     0.01%  [JIT] tid 8991       [.] 0xa798ca64
+     0.01%  [JIT] tid 8991       [.] 0xa6c2fbcc
+     0.01%  [JIT] tid 8991       [.] 0xa78b7308
+     0.01%  [JIT] tid 8991       [.] 0xa702fe20
+     0.01%  [kernel.kallsyms]    [k] 0xc01155fe
+     0.01%  qemu-aarch64         [.] __funlockfile
+     0.01%  [JIT] tid 8991       [.] 0xa6bce8fc
+     0.01%  [JIT] tid 8991       [.] 0xa7043224
+     0.01%  [JIT] tid 8991       [.] 0xa7a296c0
+     0.01%  [JIT] tid 8991       [.] 0xa78d63ec
+     0.01%  [JIT] tid 8991       [.] 0xa7976060
+     0.01%  [JIT] tid 8991       [.] 0xa798a5c0
+     0.01%  [JIT] tid 8991       [.] 0xa78b925c
+     0.01%  [JIT] tid 8991       [.] 0xa78b4884
+     0.01%  [JIT] tid 8991       [.] 0xa7a567b4
+     0.01%  [JIT] tid 8991       [.] 0xa7aa5d9c
+     0.01%  [kernel.kallsyms]    [k] 0xc02c7c24
+     0.01%  [JIT] tid 8991       [.] 0xa70666e0
+     0.01%  [JIT] tid 8991       [.] 0xa794ecd0
+     0.01%  [JIT] tid 8991       [.] 0xa66571a4
+     0.01%  [JIT] tid 8991       [.] 0xa6653f7c
+     0.01%  [JIT] tid 8991       [.] 0xa6c665c0
+     0.01%  [kernel.kallsyms]    [k] 0xc0100228
+     0.01%  [kernel.kallsyms]    [k] 0xc05014c0
+     0.01%  [JIT] tid 8991       [.] 0xa700db8c
+     0.01%  [JIT] tid 8991       [.] 0xa79dc804
+     0.01%  [JIT] tid 8991       [.] 0xa7950ae8
+     0.01%  [JIT] tid 8991       [.] 0xa701acc0
+     0.01%  [JIT] tid 8991       [.] 0xa7045f30
+     0.01%  [JIT] tid 8991       [.] 0xa70e1c40
+     0.01%  [JIT] tid 8991       [.] 0xa6656b90
+     0.01%  [JIT] tid 8991       [.] 0xa798cf10
+     0.01%  [kernel.kallsyms]    [k] 0xc0298f62
+     0.01%  [JIT] tid 8991       [.] 0xa7950ac4
+     0.01%  [JIT] tid 8991       [.] 0xa6c5e040
+     0.01%  [JIT] tid 8991       [.] 0xa79059c0
+     0.01%  [JIT] tid 8991       [.] 0xa78b78f0
+     0.01%  [JIT] tid 8991       [.] 0xa6657300
+     0.01%  [JIT] tid 8991       [.] 0xa7950d80
+     0.01%  [JIT] tid 8991       [.] 0xa663eda0
+     0.01%  [JIT] tid 8991       [.] 0xa78bbfec
+     0.01%  [kernel.kallsyms]    [k] 0xc02a4550
+     0.01%  [JIT] tid 8991       [.] 0xa6656bcc
+     0.01%  [JIT] tid 8991       [.] 0xa78db348
+     0.01%  [JIT] tid 8991       [.] 0xa6656dc4
+     0.01%  [JIT] tid 8991       [.] 0xa6656a14
+     0.01%  [JIT] tid 8991       [.] 0xa6656b88
+     0.01%  [JIT] tid 8991       [.] 0xa7950cbc
+     0.01%  [JIT] tid 8991       [.] 0xa78b958c
+     0.01%  [JIT] tid 8991       [.] 0xa66b1920
+     0.01%  qemu-aarch64         [.] gen_set_cc_op_flags
+     0.01%  [JIT] tid 8991       [.] 0xa66577d0
+     0.01%  [kernel.kallsyms]    [k] 0xc02f2780
+     0.01%  [kernel.kallsyms]    [k] 0xc02972e8
+     0.01%  [kernel.kallsyms]    [k] 0xc02d5f52
+     0.01%  [JIT] tid 8991       [.] 0xa78d5b18
+     0.01%  [kernel.kallsyms]    [k] 0xc02c34ba
+     0.01%  [JIT] tid 8991       [.] 0xa78bf7a8
+     0.01%  ld-linux-armhf.so.3  [.] 0x000065e6
+     0.01%  [JIT] tid 8991       [.] 0xa79a7a04
+     0.01%  [JIT] tid 8991       [.] 0xa7973324
+     0.01%  [JIT] tid 8991       [.] 0xa7980360
+     0.01%  [JIT] tid 8991       [.] 0xa78dcd4c
+     0.01%  [JIT] tid 8991       [.] 0xa78d6a04
+     0.01%  [JIT] tid 8991       [.] 0xa78b9260
+     0.01%  [JIT] tid 8991       [.] 0xa7478d80
+     0.01%  [JIT] tid 8991       [.] 0xa78d6080
+     0.01%  [kernel.kallsyms]    [k] 0xc04f33c6
+     0.01%  [JIT] tid 8991       [.] 0xa797312c
+     0.01%  [JIT] tid 8991       [.] 0xa78d5d08
+     0.01%  [JIT] tid 8991       [.] 0xa7980404
+     0.01%  [kernel.kallsyms]    [k] 0xc029746a
+     0.01%  [kernel.kallsyms]    [k] 0xc02e6700
+     0.01%  [kernel.kallsyms]    [k] 0xc0a6cda6
+     0.00%  [kernel.kallsyms]    [k] 0xc02e7efe
+     0.00%  qemu-aarch64         [.] arm_current_el
+     0.00%  libc.so.6            [.] 0x0008c51e
+     0.00%  [kernel.kallsyms]    [k] 0xc02852b6
+     0.00%  [kernel.kallsyms]    [k] 0xc02d0904
+     0.00%  [kernel.kallsyms]    [k] 0xc028e668
+
+
+#
+# (Tip: System-wide collection from all CPUs: perf record -a)
+#

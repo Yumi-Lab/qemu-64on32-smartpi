@@ -1,0 +1,3 @@
+[run-claude-pad] Verification du deploiement sur le pad...
+[run-claude-pad] lecture pad echouee apres 5 tentatives
+ERROR: le qemu du pad () != le fork local (6d9ada3184c84826ceb1a5c279e376a96137cbba8b721f60de899a5d49d017e1). Deployer build-out/qemu-aarch64 d'abord.

@@ -1,0 +1,34 @@
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (47bf4218474c75d9cd32968c79dafd6a657b7429ae58939e94745861e6efb38b)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 39C
+[run-claude-pad] Lancement: claude -p (mode=prompt, timeout=900s, MemoryMax=600M, abort=90C) sous le fork
+[claudepad] t=0s temp=47C rss=39MB out=0
+[claudepad] t=15s temp=45C rss=250MB out=0
+[claudepad] t=30s temp=45C rss=278MB out=0
+[claudepad] t=45s temp=44C rss=289MB out=0
+[claudepad] t=60s temp=45C rss=299MB out=0
+[claudepad] t=75s temp=45C rss=310MB out=0
+[claudepad] t=91s temp=46C rss=325MB out=0
+[claudepad] t=106s temp=46C rss=325MB out=0
+[claudepad] t=121s temp=46C rss=325MB out=0
+[claudepad] t=136s temp=46C rss=325MB out=0
+[claudepad] t=151s temp=46C rss=325MB out=0
+[claudepad] t=166s temp=47C rss=325MB out=0
+[claudepad] t=181s temp=44C rss=326MB out=0
+[claudepad] t=196s temp=44C rss=328MB out=0
+[claudepad] t=211s temp=47C rss=335MB out=0
+[claudepad] t=226s temp=46C rss=340MB out=0
+[claudepad] t=241s temp=46C rss=347MB out=0
+[claudepad] t=256s temp=45C rss=353MB out=0
+[claudepad] t=271s temp=46C rss=359MB out=0
+RESULT=BOOTED exit_rc=1 elapsed=287 out_bytes=35 peak_temp_c=47 min_temp_c=44 temp_before_c=39
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+Not logged in · Please run /login
+[run-claude-pad] --- claude stderr (tail) ---
+[tcg] serial stats (QEMU_SERIAL_STATS):
+[tcg]   cpu_exec_step_atomic entries: 0
+[tcg]   tb_flush count: 14
+[tcg]   mmap lock: 976450 acquisitions, 3281 contended (0.34%)
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-prompt-20260806-090408.out / /root/qemu-fork-test/claude-prompt-20260806-090408.err

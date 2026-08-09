@@ -1,0 +1,42 @@
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (3364d5558b952162a3f43593ff643f2400b0cbf3b0cf38ef6f1fb2c3704872bb)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 42C
+[run-claude-pad] Lancement: claude --version (mode=version, timeout=600s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=42C rss=28MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=15 out_bytes=22 peak_temp_c=42 min_temp_c=42 temp_before_c=42
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+2.1.214 (Claude Code)
+[run-claude-pad] --- claude stderr (tail) ---
+[tcg]   ld8u_i32                           6239    0.0%
+[tcg]   br                                  433    0.0%
+[tcg]   add_vec                             367    0.0%
+[tcg]   dup2_vec                            305    0.0%
+[tcg]   shli_vec                            184    0.0%
+[tcg]   orc_vec                              88    0.0%
+[tcg]   rotl_i32                             80    0.0%
+[tcg]   sub_vec                              13    0.0%
+[tcg]   negsetcond_i32                        1    0.0%
+[tcg] hottest TBs by execution count:
+[tcg]   pc=0x00000425b3f8 execs=     1224342  insns= 4 ops=44    2.1%
+[tcg]   pc=0x00000194c66c execs=      866246  insns= 3 ops=22    1.5%
+[tcg]   pc=0x00000194c678 execs=      866246  insns= 2 ops=43    1.5%
+[tcg]   pc=0x000002eadb94 execs=      421671  insns= 3 ops=30    0.7%
+[tcg]   pc=0x000002eadba8 execs=      421671  insns= 5 ops=44    0.7%
+[tcg]   pc=0x000002eadbbc execs=      421671  insns= 1 ops=16    0.7%
+[tcg]   pc=0x000002eadbc0 execs=      421671  insns= 5 ops=40    0.7%
+[tcg]   pc=0x000002eadbd4 execs=      421671  insns= 1 ops=17    0.7%
+[tcg]   pc=0x000002eadbd8 execs=      421671  insns= 5 ops=44    0.7%
+[tcg]   pc=0x000002eadbec execs=      421671  insns= 1 ops=16    0.7%
+[tcg]   pc=0x000002eadbf0 execs=      421671  insns= 3 ops=32    0.7%
+[tcg]   pc=0x000002eadc04 execs=      421671  insns= 5 ops=44    0.7%
+[tcg]   pc=0x000002eadc18 execs=      421671  insns= 1 ops=16    0.7%
+[tcg]   pc=0x000002eadc1c execs=      421671  insns= 3 ops=32    0.7%
+[tcg]   pc=0x000002eadc30 execs=      421671  insns= 5 ops=44    0.7%
+[tcg]   pc=0x000002eadc44 execs=      421671  insns= 1 ops=16    0.7%
+[tcg]   pc=0x000002eadc48 execs=      421671  insns= 3 ops=32    0.7%
+[tcg]   pc=0x000002eadc5c execs=      421671  insns= 5 ops=44    0.7%
+[tcg]   pc=0x000002eadc70 execs=      421671  insns= 1 ops=16    0.7%
+[tcg]   pc=0x000002eadc74 execs=      421671  insns= 3 ops=32    0.7%
+[run-claude-pad] logs pad: /home/pi/qemu-fork-test/claude-version-20260721-094530.out / /home/pi/qemu-fork-test/claude-version-20260721-094530.err

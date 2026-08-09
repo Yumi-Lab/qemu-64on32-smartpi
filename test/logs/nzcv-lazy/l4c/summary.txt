@@ -1,0 +1,5 @@
+torn64 mediane it/180s: ON=1275268195 OFF=1305214765
+version mediane elapsed s: ON=15 OFF=15
+help mediane elapsed s: ON=60 OFF=60
+profil ON : 
+profil OFF: 

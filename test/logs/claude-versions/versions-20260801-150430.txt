@@ -1,0 +1,14 @@
+=== MATRICE claude --version PAR VERSION D'INVITE, 20260801-150430 ===
+pad=root@192.168.1.108 dir=/root/qemu-fork-test qemu=qemu-aarch64 timeout=300s settle=45s
+  qemu-aarch64 sha=c624260cf626765a (identique des deux cotes)
+
+--- claude-native (sha=e219a631e194e71b) ---
+2.1.217 (Claude Code)
+RC=0
+    rc=0  elapsed=27s  temp 49C->50C
+    sortie: 2.1.217 (Claude Code)
+
+=== RECAP ===
+claude-native        sha=e219a631e194e71b rc=0      27s  2.1.217 (Claude Code)
+
+Log complet : /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/claude-versions/versions-20260801-150430.txt

@@ -1,0 +1,80 @@
+[tcg] tb exec profile: 179607 records (179593 executed, 0 dropped)
+[tcg] tb executions: 257398262, guest insns: 1297606180, avg insns/exec'd TB: 5.04
+[tcg] dispatch paths (approximate under MT):
+[tcg]   goto_ptr helper calls            26701548
+[tcg]     ... no TB (epilogue)              64742
+[tcg]     jmp cache hits                 25336788
+[tcg]     jmp cache miss, htable hit      1383159
+[tcg]   main loop lookups                  260916
+[tcg]     ... new translation              179596
+[tcg]   TB inval: guest store (SMC)           199
+[tcg]   TB inval: IC IVAU (cache-maint)         8500
+[tcg] entries:  89.6% chained (goto_tb),  10.3% goto_ptr lookup,   0.1% main loop
+[tcg] tb ending classes (execution weighted):
+[tcg]   other (cond/sys/exit)       208994600   81.2%
+[tcg]   B same-page forward          12670855    4.9%
+[tcg]   B same-page backward          3123010    1.2%
+[tcg]   B cross-page                  1904476    0.7%
+[tcg]   indirect (goto_ptr)          30705321   11.9%
+[tcg] warning: 26.0% of executions hit op-list truncation (>46 ops/TB)
+[tcg] op histogram (execution weighted), 8646368706 weighted ops:
+[tcg]   mov_i32                      2143460991   24.8%
+[tcg]   insn_start                   1126048850   13.0%
+[tcg]   and_i32                       568465174    6.6%
+[tcg]   add2_i32                      535307708    6.2%
+[tcg]   exit_tb                       507389217    5.9%
+[tcg]   brcond_i32                    479868734    5.5%
+[tcg]   st8_i32                       459117250    5.3%
+[tcg]   ld_i32                        390224844    4.5%
+[tcg]   sextract_i32                  382746172    4.4%
+[tcg]   set_label                     357557309    4.1%
+[tcg]   goto_tb                       325889395    3.8%
+[tcg]   xor_i32                       230263062    2.7%
+[tcg]   qemu_ld_a64_i64               194118242    2.2%
+[tcg]   qemu_st_a64_i64               145948799    1.7%
+[tcg]   qemu_ld_a64_i32                94797824    1.1%
+[tcg]   setcond2_i32                   86205188    1.0%
+[tcg]   or_i32                         81768527    0.9%
+[tcg]   add_i32                        74902444    0.9%
+[tcg]   call                           61491122    0.7%
+[tcg]   sub2_i32                       52113377    0.6%
+[tcg]   setcond_i32                    46449615    0.5%
+[tcg]   goto_ptr                       43701156    0.5%
+[tcg]   qemu_st_a64_i32                32117726    0.4%
+[tcg]   sar_i32                        30146048    0.3%
+[tcg]   shl_i32                        29428648    0.3%
+[tcg]   brcond2_i32                    25503338    0.3%
+[tcg]   shr_i32                        24296979    0.3%
+[tcg]   neg_i32                        21994365    0.3%
+[tcg]   sub_i32                        16467488    0.2%
+[tcg]   andc_i32                       15693472    0.2%
+[tcg]   extract2_i32                   14687075    0.2%
+[tcg]   movcond_i32                    14491940    0.2%
+[tcg]   st_i32                          8640552    0.1%
+[tcg]   mul_i32                         5985178    0.1%
+[tcg]   st_vec                          4677387    0.1%
+[tcg]   mulu2_i32                       3189924    0.0%
+[tcg]   extract_i32                     2401587    0.0%
+[tcg]   st16_i32                        1474028    0.0%
+[tcg]   ext16u_i32                       994567    0.0%
+[tcg]   ld_vec                           950601    0.0%
+[tcg]   mb                               834177    0.0%
+[tcg]   mov_vec                          769216    0.0%
+[tcg]   clz_i32                          636615    0.0%
+[tcg]   deposit_i32                      615848    0.0%
+[tcg]   not_i32                          396863    0.0%
+[tcg]   ld8u_i32                         392323    0.0%
+[tcg]   cmp_vec                          313745    0.0%
+[tcg]   ext8s_i32                        231130    0.0%
+[tcg]   ld16u_i32                        211207    0.0%
+[tcg]   add_vec                          169605    0.0%
+[tcg]   dup_vec                          161302    0.0%
+[tcg]   and_vec                          128331    0.0%
+[tcg]   or_vec                           118391    0.0%
+[tcg]   ext16s_i32                       105081    0.0%
+[tcg]   orc_vec                           74434    0.0%
+[tcg]   shli_vec                          65762    0.0%
+[tcg]   br                                48295    0.0%
+[tcg]   smax_vec                          46737    0.0%
+[tcg]   ld16s_i32                         41856    0.0%
+[tcg]   bswap32_i32                       18995    0.0%

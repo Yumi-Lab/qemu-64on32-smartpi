@@ -1,0 +1,38 @@
+=== MATRICE claude --version PAR VERSION D'INVITE, 20260801-023002 ===
+pad=root@192.168.1.108 dir=/root/qemu-fork-test qemu=qemu-aarch64 timeout=300s settle=45s
+  qemu-aarch64 sha=c624260cf626765a (identique des deux cotes)
+
+--- claude-2.1.217 (sha=e219a631e194e71b) ---
+2.1.217 (Claude Code)
+RC=0
+    rc=0  elapsed=30s  temp 47C->49C
+    sortie: 2.1.217 (Claude Code)
+
+  palier de 45s avant le run suivant...
+--- claude-2.1.214 (sha=bbcdec27500f1c7f) ---
+2.1.214 (Claude Code)
+RC=0
+    rc=0  elapsed=68s  temp 47C->49C
+    sortie: 2.1.214 (Claude Code)
+
+  palier de 45s avant le run suivant...
+--- claude-2.1.205 (sha=a8cd2a626d7d0b5f) ---
+qemu: uncaught target signal 5 (Trace/breakpoint trap) - core dumped
+RC=133
+    rc=133  elapsed=4s  temp 46C->47C
+    sortie: qemu: uncaught target signal 5 (Trace/breakpoint trap) - core dumped
+
+  palier de 45s avant le run suivant...
+--- claude-native (sha=f17ebe686ff00b8a) ---
+qemu: uncaught target signal 5 (Trace/breakpoint trap) - core dumped
+RC=133
+    rc=133  elapsed=3s  temp 46C->46C
+    sortie: qemu: uncaught target signal 5 (Trace/breakpoint trap) - core dumped
+
+=== RECAP ===
+claude-2.1.217       sha=e219a631e194e71b rc=0      30s  2.1.217 (Claude Code)
+claude-2.1.214       sha=bbcdec27500f1c7f rc=0      68s  2.1.214 (Claude Code)
+claude-2.1.205       sha=a8cd2a626d7d0b5f rc=133     4s  qemu: uncaught target signal 5 (Trace/breakpoint trap) - core dumped
+claude-native        sha=f17ebe686ff00b8a rc=133     3s  qemu: uncaught target signal 5 (Trace/breakpoint trap) - core dumped
+
+Log complet : /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/claude-versions/versions-20260801-023002.txt

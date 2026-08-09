@@ -1,0 +1,249 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 11K of event 'cycles:P'
+# Event count (approx.): 163736336206
+#
+# Overhead  Shared Object        Symbol                               
+# ........  ...................  .....................................
+#
+    24.26%  qemu-aarch64         [.] helper_atomic_fetch_addq_le
+    10.65%  qemu-aarch64         [.] atomic_mmu_lookup
+     3.06%  [JIT] tid 4379       [.] 0x00806868
+     2.37%  [JIT] tid 4379       [.] 0x00806270
+     2.35%  [JIT] tid 4379       [.] 0x00806540
+     1.81%  [JIT] tid 4379       [.] 0x008065a8
+     0.89%  [JIT] tid 4379       [.] 0x00806858
+     0.83%  [JIT] tid 4379       [.] 0x00806398
+     0.81%  [JIT] tid 4379       [.] 0x00806408
+     0.81%  [JIT] tid 4379       [.] 0x00806840
+     0.74%  [JIT] tid 4379       [.] 0x0080626c
+     0.73%  [JIT] tid 4379       [.] 0x00806864
+     0.67%  [JIT] tid 4379       [.] 0x008063e0
+     0.66%  [JIT] tid 4379       [.] 0x00806424
+     0.66%  [JIT] tid 4379       [.] 0x00806544
+     0.64%  [JIT] tid 4379       [.] 0x00806384
+     0.64%  [JIT] tid 4379       [.] 0x0080645c
+     0.62%  [JIT] tid 4379       [.] 0x00806144
+     0.60%  [JIT] tid 4379       [.] 0x00806844
+     0.60%  [JIT] tid 4379       [.] 0x008063c4
+     0.58%  [JIT] tid 4379       [.] 0x00805ea4
+     0.57%  [JIT] tid 4379       [.] 0x00806404
+     0.56%  [JIT] tid 4379       [.] 0x0080640c
+     0.55%  [JIT] tid 4379       [.] 0x00805e84
+     0.55%  [JIT] tid 4379       [.] 0x00806418
+     0.54%  [JIT] tid 4379       [.] 0x00806754
+     0.53%  [JIT] tid 4379       [.] 0x00805f08
+     0.51%  [JIT] tid 4379       [.] 0x00806450
+     0.51%  [JIT] tid 4379       [.] 0x00806430
+     0.49%  [JIT] tid 4379       [.] 0x008063fc
+     0.46%  [JIT] tid 4379       [.] 0x00806244
+     0.41%  [JIT] tid 4379       [.] 0x00806558
+     0.38%  [JIT] tid 4379       [.] 0x00805f28
+     0.37%  [JIT] tid 4379       [.] 0x008063a8
+     0.37%  [JIT] tid 4379       [.] 0x00806554
+     0.36%  [JIT] tid 4379       [.] 0x00805ebc
+     0.36%  [JIT] tid 4379       [.] 0x00806878
+     0.36%  [JIT] tid 4379       [.] 0x00806560
+     0.35%  [JIT] tid 4379       [.] 0x00805ea0
+     0.34%  [JIT] tid 4379       [.] 0x00806568
+     0.34%  [JIT] tid 4379       [.] 0x008063f0
+     0.34%  [JIT] tid 4379       [.] 0x00805f98
+     0.34%  [JIT] tid 4379       [.] 0x00805ef8
+     0.34%  [JIT] tid 4379       [.] 0x00805e98
+     0.33%  [JIT] tid 4379       [.] 0x00805fa8
+     0.33%  [JIT] tid 4379       [.] 0x00806268
+     0.33%  [JIT] tid 4379       [.] 0x00805f50
+     0.32%  [JIT] tid 4379       [.] 0x00805eec
+     0.32%  [JIT] tid 4379       [.] 0x00806874
+     0.32%  [JIT] tid 4379       [.] 0x00805fcc
+     0.32%  [JIT] tid 4379       [.] 0x00805e8c
+     0.32%  [JIT] tid 4379       [.] 0x00806578
+     0.32%  [JIT] tid 4379       [.] 0x008063b4
+     0.32%  [JIT] tid 4379       [.] 0x00805ec4
+     0.32%  [JIT] tid 4379       [.] 0x00806458
+     0.32%  [JIT] tid 4379       [.] 0x00806854
+     0.31%  [JIT] tid 4379       [.] 0x00805ef0
+     0.31%  [JIT] tid 4379       [.] 0x00806548
+     0.31%  [JIT] tid 4379       [.] 0x00806468
+     0.30%  [JIT] tid 4379       [.] 0x00805f1c
+     0.30%  [JIT] tid 4379       [.] 0x008063f8
+     0.30%  [JIT] tid 4379       [.] 0x008063a4
+     0.30%  [JIT] tid 4379       [.] 0x008063e8
+     0.30%  [JIT] tid 4379       [.] 0x0080639c
+     0.30%  [JIT] tid 4379       [.] 0x00805f4c
+     0.30%  [JIT] tid 4379       [.] 0x00805ec8
+     0.30%  [JIT] tid 4379       [.] 0x0080615c
+     0.30%  [JIT] tid 4379       [.] 0x008063ac
+     0.30%  [JIT] tid 4379       [.] 0x00806564
+     0.30%  [JIT] tid 4379       [.] 0x00805e80
+     0.30%  [JIT] tid 4379       [.] 0x0080654c
+     0.30%  [JIT] tid 4379       [.] 0x00806440
+     0.29%  [JIT] tid 4379       [.] 0x00805e90
+     0.29%  [JIT] tid 4379       [.] 0x00805fac
+     0.29%  [JIT] tid 4379       [.] 0x00805f78
+     0.29%  [JIT] tid 4379       [.] 0x00805ed0
+     0.29%  [JIT] tid 4379       [.] 0x00806284
+     0.29%  [JIT] tid 4379       [.] 0x008063c0
+     0.29%  [JIT] tid 4379       [.] 0x00805fc4
+     0.29%  [JIT] tid 4379       [.] 0x00806848
+     0.29%  [JIT] tid 4379       [.] 0x0080644c
+     0.28%  [JIT] tid 4379       [.] 0x00806880
+     0.28%  [JIT] tid 4379       [.] 0x00806258
+     0.28%  [JIT] tid 4379       [.] 0x00806278
+     0.28%  [JIT] tid 4379       [.] 0x00806420
+     0.28%  [JIT] tid 4379       [.] 0x00805ee8
+     0.28%  [JIT] tid 4379       [.] 0x00805edc
+     0.28%  [JIT] tid 4379       [.] 0x00806250
+     0.28%  [JIT] tid 4379       [.] 0x00805f3c
+     0.28%  [JIT] tid 4379       [.] 0x00805f80
+     0.28%  [JIT] tid 4379       [.] 0x00806550
+     0.27%  [JIT] tid 4379       [.] 0x0080655c
+     0.27%  [JIT] tid 4379       [.] 0x00806400
+     0.27%  [JIT] tid 4379       [.] 0x00805ee0
+     0.27%  [JIT] tid 4379       [.] 0x008063b0
+     0.27%  [JIT] tid 4379       [.] 0x00805ef4
+     0.27%  [JIT] tid 4379       [.] 0x0080686c
+     0.27%  [JIT] tid 4379       [.] 0x0080627c
+     0.27%  [JIT] tid 4379       [.] 0x00806140
+     0.27%  [JIT] tid 4379       [.] 0x0080624c
+     0.27%  [JIT] tid 4379       [.] 0x00806240
+     0.27%  [JIT] tid 4379       [.] 0x00806150
+     0.27%  [JIT] tid 4379       [.] 0x0080638c
+     0.26%  [JIT] tid 4379       [.] 0x008063ec
+     0.26%  [JIT] tid 4379       [.] 0x00805f8c
+     0.26%  [JIT] tid 4379       [.] 0x00805eb8
+     0.26%  [JIT] tid 4379       [.] 0x0080685c
+     0.26%  [JIT] tid 4379       [.] 0x00806164
+     0.26%  [JIT] tid 4379       [.] 0x00806850
+     0.26%  [JIT] tid 4379       [.] 0x00805f64
+     0.25%  [JIT] tid 4379       [.] 0x00805f34
+     0.25%  [JIT] tid 4379       [.] 0x00805f18
+     0.25%  [JIT] tid 4379       [.] 0x00805fb8
+     0.25%  [JIT] tid 4379       [.] 0x00805f58
+     0.25%  [JIT] tid 4379       [.] 0x00805e94
+     0.25%  [JIT] tid 4379       [.] 0x0080625c
+     0.24%  [JIT] tid 4379       [.] 0x00805fb4
+     0.24%  [JIT] tid 4379       [.] 0x00805eb0
+     0.24%  [JIT] tid 4379       [.] 0x00805f6c
+     0.24%  [JIT] tid 4379       [.] 0x00805ea8
+     0.24%  [JIT] tid 4379       [.] 0x00806570
+     0.24%  [JIT] tid 4379       [.] 0x0080614c
+     0.24%  [JIT] tid 4379       [.] 0x00805fc0
+     0.24%  [JIT] tid 4379       [.] 0x008063b8
+     0.24%  [JIT] tid 4379       [.] 0x00805ec0
+     0.24%  [JIT] tid 4379       [.] 0x00805efc
+     0.24%  [JIT] tid 4379       [.] 0x00805fb0
+     0.24%  [JIT] tid 4379       [.] 0x00805f04
+     0.24%  [JIT] tid 4379       [.] 0x00805f48
+     0.24%  [JIT] tid 4379       [.] 0x00805f14
+     0.23%  [JIT] tid 4379       [.] 0x008063d0
+     0.23%  [JIT] tid 4379       [.] 0x00805f20
+     0.23%  [JIT] tid 4379       [.] 0x008063d8
+     0.23%  [JIT] tid 4379       [.] 0x00806860
+     0.23%  [JIT] tid 4379       [.] 0x00806464
+     0.23%  [JIT] tid 4379       [.] 0x00805f84
+     0.23%  [JIT] tid 4379       [.] 0x00805f90
+     0.23%  [JIT] tid 4379       [.] 0x00805f40
+     0.23%  [JIT] tid 4379       [.] 0x008063dc
+     0.23%  [JIT] tid 4379       [.] 0x00805ed4
+     0.23%  [JIT] tid 4379       [.] 0x0080642c
+     0.23%  [JIT] tid 4379       [.] 0x00805fa0
+     0.23%  [JIT] tid 4379       [.] 0x00806394
+     0.23%  [JIT] tid 4379       [.] 0x00806438
+     0.23%  [JIT] tid 4379       [.] 0x00805e9c
+     0.22%  [JIT] tid 4379       [.] 0x00805f9c
+     0.22%  [JIT] tid 4379       [.] 0x00806158
+     0.22%  [JIT] tid 4379       [.] 0x00805f68
+     0.22%  [JIT] tid 4379       [.] 0x00805f7c
+     0.22%  [JIT] tid 4379       [.] 0x00805fa4
+     0.22%  [JIT] tid 4379       [.] 0x00806444
+     0.22%  [JIT] tid 4379       [.] 0x00805f0c
+     0.22%  [JIT] tid 4379       [.] 0x00805f44
+     0.21%  [JIT] tid 4379       [.] 0x008063c8
+     0.21%  [JIT] tid 4379       [.] 0x00805f70
+     0.21%  [JIT] tid 4379       [.] 0x00806380
+     0.21%  [JIT] tid 4379       [.] 0x0080684c
+     0.21%  [JIT] tid 4379       [.] 0x00805eac
+     0.21%  [JIT] tid 4379       [.] 0x00806260
+     0.21%  [JIT] tid 4379       [.] 0x00805f5c
+     0.20%  [JIT] tid 4379       [.] 0x00806390
+     0.20%  [JIT] tid 4379       [.] 0x00806574
+     0.19%  [JIT] tid 4379       [.] 0x00805f94
+     0.19%  [JIT] tid 4379       [.] 0x008066b0
+     0.19%  [JIT] tid 4379       [.] 0x008063e4
+     0.19%  [JIT] tid 4379       [.] 0x00806414
+     0.19%  [JIT] tid 4379       [.] 0x008063d4
+     0.18%  [JIT] tid 4379       [.] 0x00805f2c
+     0.15%  [kernel.kallsyms]    [k] 0xc0151ec4
+     0.13%  [JIT] tid 4379       [.] 0x00806684
+     0.12%  [JIT] tid 4379       [.] 0x008066a4
+     0.12%  [JIT] tid 4379       [.] 0x00806690
+     0.11%  [JIT] tid 4379       [.] 0x008066a8
+     0.10%  [JIT] tid 4379       [.] 0x008066b4
+     0.10%  [JIT] tid 4379       [.] 0x008066cc
+     0.10%  [JIT] tid 4379       [.] 0x0080669c
+     0.10%  [JIT] tid 4379       [.] 0x008066ec
+     0.10%  [JIT] tid 4379       [.] 0x008066d0
+     0.09%  [JIT] tid 4379       [.] 0x00806694
+     0.09%  [JIT] tid 4379       [.] 0x008066e4
+     0.08%  [JIT] tid 4379       [.] 0x00806718
+     0.08%  [JIT] tid 4379       [.] 0x008066dc
+     0.07%  [JIT] tid 4379       [.] 0x008066e0
+     0.07%  [JIT] tid 4379       [.] 0x008066bc
+     0.07%  [JIT] tid 4379       [.] 0x00806698
+     0.06%  [JIT] tid 4379       [.] 0x008066d4
+     0.06%  [JIT] tid 4379       [.] 0x008066c0
+     0.06%  [JIT] tid 4379       [.] 0x008066c4
+     0.06%  [JIT] tid 4379       [.] 0x008066b8
+     0.05%  [JIT] tid 4379       [.] 0x00806680
+     0.05%  [JIT] tid 4379       [.] 0x008066d8
+     0.05%  [JIT] tid 4379       [.] 0x008066c8
+     0.05%  [JIT] tid 4379       [.] 0x0080671c
+     0.05%  [JIT] tid 4379       [.] 0x008066f0
+     0.05%  [JIT] tid 4379       [.] 0x0080668c
+     0.05%  [JIT] tid 4379       [.] 0x00806710
+     0.05%  [JIT] tid 4379       [.] 0x008066f8
+     0.04%  [JIT] tid 4379       [.] 0x00806700
+     0.04%  [JIT] tid 4379       [.] 0x00806708
+     0.04%  [JIT] tid 4379       [.] 0x00806720
+     0.04%  [JIT] tid 4379       [.] 0x008066f4
+     0.04%  [JIT] tid 4379       [.] 0x008066e8
+     0.04%  qemu-aarch64         [.] tcg_reg_alloc
+     0.03%  [JIT] tid 4379       [.] 0x008066ac
+     0.03%  [JIT] tid 4379       [.] 0x0080670c
+     0.03%  [JIT] tid 4379       [.] 0x00806580
+     0.03%  [JIT] tid 4379       [.] 0x008066a0
+     0.03%  [JIT] tid 4379       [.] 0x00806704
+     0.02%  qemu-aarch64         [.] tcg_gen_code
+     0.02%  qemu-aarch64         [.] __vfprintf_internal
+     0.01%  qemu-aarch64         [.] __vasprintf_internal
+     0.01%  qemu-aarch64         [.] tcg_temp_new_internal
+     0.01%  [kernel.kallsyms]    [k] 0xc030a3a8
+     0.01%  qemu-aarch64         [.] define_one_arm_cp_reg_with_opaque
+     0.01%  qemu-aarch64         [.] liveness_pass_1
+     0.01%  [kernel.kallsyms]    [k] 0xc01148bc
+     0.01%  qemu-aarch64         [.] memset
+     0.01%  qemu-aarch64         [.] qht_insert
+     0.01%  [kernel.kallsyms]    [k] 0xc02950d2
+     0.01%  [kernel.kallsyms]    [k] 0xc01148f4
+     0.01%  [JIT] tid 4379       [.] 0x008223e0
+     0.01%  [kernel.kallsyms]    [k] 0xc0295192
+     0.01%  [kernel.kallsyms]    [k] 0xc0a4cce0
+     0.01%  [kernel.kallsyms]    [k] 0xc0295036
+     0.01%  ld-linux-armhf.so.3  [.] __tunable_get_val
+     0.00%  [kernel.kallsyms]    [k] 0xc02d7130
+     0.00%  [kernel.kallsyms]    [k] 0xc011dafe
+     0.00%  [kernel.kallsyms]    [k] 0xc0151ed0
+     0.00%  qemu-aarch64         [.] object_class_property_find
+     0.00%  qemu-aarch64         [.] _setjmp
+     0.00%  [kernel.kallsyms]    [k] 0xc01bdfd2
+     0.00%  [kernel.kallsyms]    [k] 0xc028e6cc
+     0.00%  [kernel.kallsyms]    [k] 0xc028e668
+
+
+#
+# (Tip: To set sample time separation other than 100ms with --sort time use --time-quantum)
+#

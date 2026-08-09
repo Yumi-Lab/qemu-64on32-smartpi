@@ -1,0 +1,28 @@
+Z0 GATE, regime JIT-ACTIF (claude --help, BUN_JSC_useJIT=1, combo produit)
+session: tb executions 256625710, guest insns 1294665640
+
+Critere: GO si plafond chiffre >= 3 % du temps de session, sinon FERMEE.
+
+voie 1  SMC / IC IVAU (invalidation de TB)      FERMEE
+  preuve: perf hote, aucun symbole d'invalidation >= 0.01 % (sous-lot 3).
+  8566 IVAU + 198 SMC sur la session, chaque invalidation bon marche.
+  plafond temps hote < 0.01 %.
+
+voie 4  memoisation par contenu (templates)     GO
+  preuve: 21.6 % de templates redondants (38802/179797) x 18.95 % du temps
+  passe dans le pipeline de traduction (perf, sous-lot 3) = ~4.1 % du temps.
+  candidat #1 du chantier suivant.
+
+voie 6  narrow-64 (mot haut nul aux ldst 64b)   GO (avec reserve)
+  preuve: 86.9 % des acces 64-bit portent un mot haut nul (combine),
+  ld64 84.1 % (193851206/230386338), st64 90.6 % (149460875/164897026).
+  395 M acces 64-bit sur 1.29 G insns invites = ~30 % des insns invites.
+  RESERVE: le cout hote inline n'est pas separable par symbole (fondu dans
+  le bucket [JIT] 51.71 %) ; l'exploitation est en TENSION avec Fix A
+  (l'atomicite LDRD/STRD des MO_64) et value-dependante (le mot haut nul
+  n'est pas connu a la traduction), donc pas de narrowing statique naif.
+  Faisabilite a trancher par l'orchestrateur.
+
+voie 8b para-vDSO horloge                        FERMEE
+  preuve: __clock_gettime = 0.01 % du temps hote (perf, sous-lot 3) ;
+  85.5 clock_gettime/s (sous-lot 4). Temps hote negligeable.

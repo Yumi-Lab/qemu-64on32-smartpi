@@ -1,0 +1,118 @@
+[tcg] tb exec profile: 179808 records (179797 executed, 0 dropped)
+[tcg] tb executions: 256625710, guest insns: 1294665640, avg insns/exec'd TB: 5.04
+[tcg] dispatch paths (approximate under MT):
+[tcg]   goto_ptr helper calls            26448172
+[tcg]     ... no TB (epilogue)              64761
+[tcg]     jmp cache hits                 25113947
+[tcg]     jmp cache miss, htable hit      1311022
+[tcg]   main loop lookups                  220502
+[tcg]     ... new translation              179796
+[tcg]   TB inval: guest store (SMC)           198
+[tcg]   TB inval: IC IVAU (cache-maint)         8566
+[tcg]   ld64 from memory                230386338
+[tcg]     ... high word zero            193851206
+[tcg]   st64 to memory                  164897026
+[tcg]     ... high word zero            149460875
+[tcg] narrow-64 (voie 6): ld64  84.1% high-zero (193851206/230386338), st64  90.6% high-zero (149460875/164897026), combined  86.9%
+[tcg] entries:  89.6% chained (goto_tb),  10.3% goto_ptr lookup,   0.1% main loop
+[tcg] tb ending classes (execution weighted):
+[tcg]   other (cond/sys/exit)       208436088   81.2%
+[tcg]   B same-page forward          12653208    4.9%
+[tcg]   B same-page backward          3121718    1.2%
+[tcg]   B cross-page                  1907873    0.7%
+[tcg]   indirect (goto_ptr)          30506823   11.9%
+[tcg] warning: 27.9% of executions hit op-list truncation (>46 ops/TB)
+[tcg] op histogram (execution weighted), 8705550590 weighted ops:
+[tcg]   mov_i32                      2084061120   23.9%
+[tcg]   insn_start                   1094685984   12.6%
+[tcg]   and_i32                       550878187    6.3%
+[tcg]   add2_i32                      510872407    5.9%
+[tcg]   exit_tb                       496506328    5.7%
+[tcg]   brcond_i32                    467280866    5.4%
+[tcg]   st8_i32                       453922649    5.2%
+[tcg]   ld_i32                        376151405    4.3%
+[tcg]   sextract_i32                  370148800    4.3%
+[tcg]   call                          364857545    4.2%
+[tcg]   set_label                     347464528    4.0%
+[tcg]   goto_tb                       319142720    3.7%
+[tcg]   xor_i32                       226579361    2.6%
+[tcg]   qemu_ld_a64_i64               186160743    2.1%
+[tcg]   qemu_st_a64_i64               136022258    1.6%
+[tcg]   qemu_ld_a64_i32                93966709    1.1%
+[tcg]   setcond2_i32                   85303616    1.0%
+[tcg]   or_i32                         80722326    0.9%
+[tcg]   add_i32                        71033406    0.8%
+[tcg]   sub2_i32                       51849177    0.6%
+[tcg]   setcond_i32                    45656818    0.5%
+[tcg]   goto_ptr                       40210458    0.5%
+[tcg]   qemu_st_a64_i32                31665483    0.4%
+[tcg]   sar_i32                        29900102    0.3%
+[tcg]   shl_i32                        26442050    0.3%
+[tcg]   brcond2_i32                    25212949    0.3%
+[tcg]   shr_i32                        23062239    0.3%
+[tcg]   neg_i32                        21918684    0.3%
+[tcg]   sub_i32                        16396666    0.2%
+[tcg]   andc_i32                       15503699    0.2%
+[tcg]   extract2_i32                   14498322    0.2%
+[tcg]   movcond_i32                    14401611    0.2%
+[tcg]   st_i32                          8471994    0.1%
+[tcg]   mul_i32                         5970282    0.1%
+[tcg]   st_vec                          4618282    0.1%
+[tcg]   mulu2_i32                       3142744    0.0%
+[tcg]   extract_i32                     2386479    0.0%
+[tcg]   st16_i32                        1472613    0.0%
+[tcg]   ld_vec                           993602    0.0%
+[tcg]   ext16u_i32                       992131    0.0%
+[tcg]   mov_vec                          720891    0.0%
+[tcg]   clz_i32                          640595    0.0%
+[tcg]   deposit_i32                      603302    0.0%
+[tcg]   mb                               521427    0.0%
+[tcg]   not_i32                          399101    0.0%
+[tcg]   ld8u_i32                         391479    0.0%
+[tcg]   cmp_vec                          313493    0.0%
+[tcg]   ext8s_i32                        230432    0.0%
+[tcg]   ld16u_i32                        211207    0.0%
+[tcg]   add_vec                          170199    0.0%
+[tcg]   dup_vec                          161170    0.0%
+[tcg]   and_vec                          128263    0.0%
+[tcg]   or_vec                           117729    0.0%
+[tcg]   ext16s_i32                       104935    0.0%
+[tcg]   orc_vec                           74434    0.0%
+[tcg]   shli_vec                          65762    0.0%
+[tcg]   br                                48348    0.0%
+[tcg]   smax_vec                          46744    0.0%
+[tcg]   ld16s_i32                         41856    0.0%
+[tcg]   bswap32_i32                       18995    0.0%
+[tcg]   dup2_vec                          10779    0.0%
+[tcg]   bitsel_vec                          603    0.0%
+[tcg]   dupm_vec                            454    0.0%
+[tcg]   shri_vec                            409    0.0%
+[tcg]   rotl_i32                            210    0.0%
+[tcg]   andc_vec                            179    0.0%
+[tcg]   xor_vec                             173    0.0%
+[tcg]   neg_vec                              26    0.0%
+[tcg]   negsetcond_i32                       23    0.0%
+[tcg]   arm_ushl_vec                         16    0.0%
+[tcg]   sub_vec                              13    0.0%
+[tcg] template dedup: 179797 live TBs, 179797 with src-hash, 140995 distinct templates, 38802 redundant (21.6% of hashed)
+[tcg] hottest TBs by execution count:
+[tcg]   pc=0x00000425b3f8 execs=     2396838  insns= 4 ops=44    0.9%
+[tcg]   pc=0x00000194c66c execs=     2130231  insns= 3 ops=22    0.8%
+[tcg]   pc=0x00000194c678 execs=     2130231  insns= 2 ops=43    0.8%
+[tcg]   pc=0x000004784e08 execs=     2123729  insns= 4 ops=35    0.8%
+[tcg]   pc=0x000004784e18 execs=     2115515  insns= 4 ops=35    0.8%
+[tcg]   pc=0x000004784e28 execs=     2113118  insns= 4 ops=32    0.8%
+[tcg]   pc=0x000004784e00 execs=     2104210  insns= 2 ops=28    0.8%
+[tcg]   pc=0x000003a51688 execs=     1294371  insns=12 ops=46    0.5%
+[tcg]   pc=0x000003a5171c execs=     1289629  insns= 3 ops=27    0.5%
+[tcg]   pc=0x000003a516b8 execs=     1289419  insns= 2 ops=14    0.5%
+[tcg]   pc=0x000002c7b780 execs=     1071858  insns= 6 ops=46    0.4%
+[tcg]   pc=0x000002c7b740 execs=     1071758  insns= 7 ops=46    0.4%
+[tcg]   pc=0x000002c7b75c execs=     1071758  insns= 4 ops=46    0.4%
+[tcg]   pc=0x00000194c320 execs=      550528  insns= 3 ops=22    0.2%
+[tcg]   pc=0x00000194c32c execs=      550528  insns= 2 ops=42    0.2%
+[tcg]   pc=0x00000194c380 execs=      550521  insns= 3 ops=22    0.2%
+[tcg]   pc=0x00000194c38c execs=      550521  insns= 2 ops=42    0.2%
+[tcg]   pc=0x000003b76aec execs=      524447  insns= 5 ops=44    0.2%
+[tcg]   pc=0x000003a6b05c execs=      491101  insns= 7 ops=36    0.2%
+[tcg]   pc=0x000003a6b078 execs=      491101  insns= 2 ops=22    0.2%
