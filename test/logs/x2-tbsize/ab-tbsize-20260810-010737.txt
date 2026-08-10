@@ -1,0 +1,54 @@
+=== X2, A/B wall-clock QEMU_TB_SIZE, mode=version, 1 paires (ABAB), 20260810-010737 ===
+env commun : BUN_JSC_useJIT=1 BUN_JSC_useConcurrentGC=0 BUN_JSC_numberOfGCMarkers=1
+bras A = QEMU_TB_SIZE=32  (tout le code invite dans la portee +-32 Mo)
+bras B = QEMU_TB_SIZE=256 (valeur en usage partout ailleurs dans le projet)
+
+--- run de chauffe (JETE, amorce le cache) ---
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (679b73b752f2c4ab1eed741e4805c3baf73c3af3aeebbc6854912c65bbf151c5)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 42C
+[run-claude-pad] Lancement: claude --version (mode=version, timeout=600s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=50C rss=38MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=15 out_bytes=22 peak_temp_c=50 min_temp_c=50 temp_before_c=42
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+2.1.217 (Claude Code)
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-version-20260810-010815.out / /root/qemu-fork-test/claude-version-20260810-010815.err
+    [B tb=256] RESULT=BOOTED exit_rc=0 elapsed=15 out_bytes=22
+
+--- paire 1/1 ---
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (679b73b752f2c4ab1eed741e4805c3baf73c3af3aeebbc6854912c65bbf151c5)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 42C
+[run-claude-pad] Lancement: claude --version (mode=version, timeout=600s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=50C rss=39MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=15 out_bytes=22 peak_temp_c=50 min_temp_c=50 temp_before_c=42
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+2.1.217 (Claude Code)
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-version-20260810-011022.out / /root/qemu-fork-test/claude-version-20260810-011022.err
+    [A tb=32] RESULT=BOOTED exit_rc=0 elapsed=15 out_bytes=22
+[run-claude-pad] Verification du deploiement sur le pad...
+  qemu fork OK (679b73b752f2c4ab1eed741e4805c3baf73c3af3aeebbc6854912c65bbf151c5)
+  claude-native + loader musl OK
+[run-claude-pad] Temperature before: 42C
+[run-claude-pad] Lancement: claude --version (mode=version, timeout=600s, MemoryMax=750M, abort=90C) sous le fork
+[claudepad] t=0s temp=50C rss=39MB out=0
+RESULT=BOOTED exit_rc=0 elapsed=15 out_bytes=22 peak_temp_c=50 min_temp_c=50 temp_before_c=42
+[run-claude-pad] ssh_rc=0
+[run-claude-pad] --- claude stdout (tail) ---
+2.1.217 (Claude Code)
+[run-claude-pad] --- claude stderr (tail) ---
+[run-claude-pad] logs pad: /root/qemu-fork-test/claude-version-20260810-011228.out / /root/qemu-fork-test/claude-version-20260810-011228.err
+    [B tb=256] RESULT=BOOTED exit_rc=0 elapsed=15 out_bytes=22
+
+=== RESULTATS ===
+A (tb=32,  n=1) : 15
+B (tb=256, n=1) : 15
+octets rendus : A=22 B=22
+VERDICT : INCONCLUSIF, moins de 3 runs valides par bras.
+Log : /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/x2-tbsize/ab-tbsize-20260810-010737.txt

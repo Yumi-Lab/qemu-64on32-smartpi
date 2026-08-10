@@ -92,11 +92,24 @@ exécuté sur la carte réelle.
   antérieures à 2.1.214 **échouent** (SIGTRAP) — c'est une propriété de l'invité, pas du fork.
 - **TUI grok** : survit plus de 30 minutes sous charge JIT.
 
-**Vitesse — explicitement hors critère.** Le surcoût TCG (8 à 20×) est structurel sur cette
-classe de machine. Une seule optimisation a été retenue, parce qu'elle est mesurée : les options
-de compilation `-O3 -mcpu=cortex-a7 -flto` donnent **+4,41 %** sur `claude --help` (médiane 65 s
-contre 68 s, 4 paires alternées, sortie identique). La décomposition montre que `-mcpu` seul
-n'apporte rien.
+**Vitesse.** Le surcoût TCG (8 à 20×) est structurel sur cette classe de machine et le projet ne
+prétend pas le supprimer. Une seule optimisation a été retenue, parce qu'elle est mesurée : les
+options de compilation `-O3 -mcpu=cortex-a7 -flto`.
+
+Son intérêt dépend entièrement de la charge, et c'est le point le plus utile de ce dépôt :
+
+| charge | gain |
+|---|---|
+| `claude --help` (mono-thread) | **+4,41 %** — médiane 65 s contre 68 s |
+| code auto-modifiant, 2 threads, 4 cœurs | **+74,6 %** — médiane 6 356 contre 3 641 ops/s |
+
+Le second chiffre est celui qui compte pour la cible réelle : un runtime JavaScript compile du
+code depuis plusieurs threads en permanence. Mesuré avec `test/mtbench.c`, n=3, cellules de 60 s,
+plages disjointes (pire cas optimisé 6 131 > meilleur cas non optimisé 3 897). La décomposition
+montre par ailleurs que `-mcpu` **seul** n'apporte rien : le gain vient de `-O3` et de LTO.
+
+Nous avons jugé ces options sur la charge mono-thread pendant trois semaines, où elles
+paraissaient marginales. Elles valent dix-sept fois plus sur la charge représentative.
 
 **Pistes explorées et fermées, avec leurs chiffres** — elles sont documentées pour éviter qu'on
 les refasse :

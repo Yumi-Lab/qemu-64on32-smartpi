@@ -115,9 +115,16 @@ if [ "$QEMU_RUNNING" != "0" ]; then
     exit 1
 fi
 
-echo "[run-pad.sh] Running test: $BINARY $ARGS (sous $QEMU_BIN $QEMU_OPTS)"
+# Coeurs alloues au run. Le defaut `0,1` vient d'une garde THERMIQUE posee sur un pad SANS
+# refroidissement actif : la carte gelait sous charge soutenue sur 4 coeurs. Sur un pad
+# REFROIDI la contrainte n'a plus lieu d'etre, et brider 2 coeurs sur 4 fausse toute mesure
+# de scaling au-dela de N=2 (elle mesure alors de la SUR-SOUSCRIPTION, pas du parallelisme).
+# Surcharger avec PAD_CPUS=0-3. La coupure thermique reste active dans tous les cas : ce qui
+# est leve ici, c'est l'epinglage des coeurs, pas la surveillance de temperature.
+PAD_CPUS="${PAD_CPUS:-0,1}"
+echo "[run-pad.sh] Running test: $BINARY $ARGS (sous $QEMU_BIN $QEMU_OPTS, coeurs $PAD_CPUS)"
 set +e
-$PAD_SSH "echo $PAD_PASS | sudo -S taskset -c 0,1 systemd-run --scope -p MemoryMax=600M timeout 1800 env $QEMU_ENV $PAD_DIR/$QEMU_BIN $QEMU_OPTS $PAD_DIR/$BINARY $ARGS"
+$PAD_SSH "echo $PAD_PASS | sudo -S taskset -c $PAD_CPUS systemd-run --scope -p MemoryMax=600M timeout 1800 env $QEMU_ENV $PAD_DIR/$QEMU_BIN $QEMU_OPTS $PAD_DIR/$BINARY $ARGS"
 TEST_EXIT=$?
 set -e
 

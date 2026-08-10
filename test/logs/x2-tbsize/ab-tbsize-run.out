@@ -1,0 +1,31 @@
+=== X2, A/B wall-clock QEMU_TB_SIZE, mode=help, 4 paires (ABAB), 20260810-011416 ===
+env commun : BUN_JSC_useJIT=1 BUN_JSC_useConcurrentGC=0 BUN_JSC_numberOfGCMarkers=1
+bras A = QEMU_TB_SIZE=32  (tout le code invite dans la portee +-32 Mo)
+bras B = QEMU_TB_SIZE=256 (valeur en usage partout ailleurs dans le projet)
+
+--- run de chauffe (JETE, amorce le cache) ---
+    [B tb=256] RESULT=BOOTED exit_rc=0 elapsed=61 out_bytes=16036
+
+--- paire 1/4 ---
+    [A tb=32] RESULT=BOOTED exit_rc=0 elapsed=90 out_bytes=16036
+    [B tb=256] RESULT=BOOTED exit_rc=0 elapsed=60 out_bytes=16036
+--- paire 2/4 ---
+    [A tb=32] RESULT=BOOTED exit_rc=0 elapsed=90 out_bytes=16036
+    [B tb=256] RESULT=BOOTED exit_rc=0 elapsed=60 out_bytes=16036
+--- paire 3/4 ---
+    [A tb=32] RESULT=BOOTED exit_rc=0 elapsed=90 out_bytes=16036
+    [B tb=256] RESULT=BOOTED exit_rc=0 elapsed=61 out_bytes=16036
+--- paire 4/4 ---
+    [A tb=32] RESULT=BOOTED exit_rc=0 elapsed=90 out_bytes=16036
+    [B tb=256] RESULT=BOOTED exit_rc=0 elapsed=61 out_bytes=16036
+
+=== RESULTATS ===
+A (tb=32,  n=4) : 90 90 90 90
+B (tb=256, n=4) : 60 60 61 61
+octets rendus : A=16036 B=16036
+mediane A (tb=32) = 90s   mediane B (tb=256) = 60s
+A vs B : -50.00 %  (positif = A, cache 32 Mio, est PLUS RAPIDE que B, cache 256 Mio)
+
+VERDICT : B (cache 256 Mio) reste plus rapide -> le cout d'un cache reduit domine, X2 FERME sans gain demontre a ce protocole.
+RAPPEL DE PORTEE : ce chiffre vaut pour la charge 'help', l'invite deploye, le pad dans son etat du jour. Il ne dit RIEN d'une autre charge.
+Log : /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/x2-tbsize/ab-tbsize-20260810-011416.txt
