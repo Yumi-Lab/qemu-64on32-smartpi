@@ -1,0 +1,58 @@
+=== GATE Z2-3, mtbench smc, N in {2 4}, 3 repetitions ABAB, cellules 60s, PAD_CPUS=0-3, 20260811-132108 ===
+BINAIRE UNIQUE (compare a lui-meme) : qemu-aarch64
+bras A = QEMU_TB_SIZE=32  (tout le code invite dans la portee +-32 Mo du chainage direct)
+bras B = QEMU_TB_SIZE=256 (valeur en usage partout ailleurs dans le projet)
+  deploiement qemu-aarch64 -> qemu-z23 (local=1b4384f1ea5ac94d pad=absent)...
+  qemu-aarch64 sha=1b4384f1ea5ac94d
+  invite mtbench sha=40b46273de0a2b71
+
+--- N=2 : run de chauffe (JETE, bras B) ---
+    [tb=256 N=2] rc=0 ops_per_sec=5012 temp_before=40C
+
+--- N=2, paire 1/3 ---
+    [tb=32 N=2] rc=0 ops_per_sec=6438 temp_before=40C
+    [tb=256 N=2] rc=0 ops_per_sec=5204 temp_before=40C
+--- N=2, paire 2/3 ---
+    [tb=32 N=2] rc=0 ops_per_sec=5720 temp_before=40C
+    [tb=256 N=2] rc=0 ops_per_sec=5278 temp_before=40C
+--- N=2, paire 3/3 ---
+    [tb=32 N=2] rc=0 ops_per_sec=6705 temp_before=40C
+    [tb=256 N=2] rc=0 ops_per_sec=5475 temp_before=39C
+
+N=2 A, tb=32  (n=3) : 6438 5720 6705 ops/s
+N=2 B, tb=256 (n=3) : 5204 5278 5475 ops/s
+N=2 mediane A (tb=32) = 6438 ops/s   mediane B (tb=256) = 5278 ops/s
+
+--- N=4 : run de chauffe (JETE, bras B) ---
+    [tb=256 N=4] rc=0 ops_per_sec=4720 temp_before=40C
+
+--- N=4, paire 1/3 ---
+    [tb=32 N=4] rc=0 ops_per_sec=5582 temp_before=39C
+    [tb=256 N=4] rc=0 ops_per_sec=4890 temp_before=39C
+--- N=4, paire 2/3 ---
+    [tb=32 N=4] rc=0 ops_per_sec=5753 temp_before=40C
+    [tb=256 N=4] rc=0 ops_per_sec=5017 temp_before=40C
+--- N=4, paire 3/3 ---
+    [tb=32 N=4] rc=0 ops_per_sec=5988 temp_before=40C
+    [tb=256 N=4] rc=0 ops_per_sec=4547 temp_before=39C
+
+N=4 A, tb=32  (n=3) : 5582 5753 5988 ops/s
+N=4 B, tb=256 (n=3) : 4890 5017 4547 ops/s
+N=4 mediane A (tb=32) = 5753 ops/s   mediane B (tb=256) = 4890 ops/s
+
+=== VERDICT ===
+A vs B, N=2 = +21.98%  (5278 -> 6438 ops/s, positif = A/tb32 plus rapide que B/tb256)
+A vs B, N=4 = +17.65%  (4890 -> 5753 ops/s, positif = A/tb32 plus rapide que B/tb256)
+
+GATE Z2-3 N=2 : A (tb=32) egale ou depasse B (tb=256) malgre un cache 8x plus petit -> la perte de chainage direct au-dela de +-32 Mo est REELLE en multi-thread.
+GATE Z2-3 N=4 : A (tb=32) egale ou depasse B (tb=256) malgre un cache 8x plus petit -> la perte de chainage direct au-dela de +-32 Mo est REELLE en multi-thread.
+
+CE QUE CA TRANCHE : le verdict mono-thread de X2 (B toujours plus rapide, chainage
+direct ferme sans gain demontre) ne tient QUE si B reste plus rapide aux DEUX N ci-dessus.
+Si A egale ou depasse B a N=2 ET/OU N=4, le mecanisme interagit bien avec les threads
+(cf. le CRITERE DE TRI de la phase Z2) et la piste doit etre rouverte pour ce N.
+
+RAPPEL DE PORTEE : ce chiffre vaut pour l'invite mtbench sha=40b46273de0a2b71, le binaire qemu-aarch64
+sha=1b4384f1ea5ac94d, le pad dans son etat du jour. Aucun patch n'est introduit ici (seul l'ENV varie,
+comme X2) : torn64/smc-alias restent ceux deja verifies sur ce binaire, pas re-testes.
+Log : /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/mtbench/z2-3-gate-20260811-132108.txt

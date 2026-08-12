@@ -1,0 +1,266 @@
+=== GATE O3LTO-CORRECTNESS, 20260811-042028 ===
+pad=root@192.168.1.108 dir=/root/qemu-fork-test torn64: N=4 duree=180s
+
+=== Deploiement (le piege du sha : on verifie les DEUX cotes) ===
+  qemu-aarch64-z2-1-ishst OK 861b325cdad31b4a
+  torn64 OK 7df7e6f6b364cbc6
+  smc-alias OK 002a6e8f4295bd49
+
+=== 1/2 torn64 N=4 180s ===
+--- torn64 temp_before=43C ---
+torn64 test: 4 threads, duration 180 sec, target 0 iterations
+Iterations: 7000000
+Iterations: 13000000
+Iterations: 21000000
+Iterations: 28000000
+Iterations: 29000000
+Iterations: 31000000
+Iterations: 35000000
+Iterations: 36000000
+Iterations: 39000000
+Iterations: 42000000
+Iterations: 48000000
+Iterations: 52000000
+Iterations: 71000000
+Iterations: 73000000
+Iterations: 79000000
+Iterations: 81000000
+Iterations: 84000000
+Iterations: 86000000
+Iterations: 91000000
+Iterations: 106000000
+Iterations: 108000000
+Iterations: 111000000
+Iterations: 113000000
+Iterations: 128000000
+Iterations: 131000000
+Iterations: 133000000
+Iterations: 143000000
+Iterations: 150000000
+Iterations: 155000000
+Iterations: 161000000
+Iterations: 169000000
+Iterations: 176000000
+Iterations: 181000000
+Iterations: 185000000
+Iterations: 191000000
+Iterations: 197000000
+Iterations: 208000000
+Iterations: 218000000
+Iterations: 220000000
+Iterations: 227000000
+Iterations: 229000000
+Iterations: 234000000
+Iterations: 251000000
+Iterations: 252000000
+Iterations: 253000000
+Iterations: 255000000
+Iterations: 256000000
+Iterations: 265000000
+Iterations: 271000000
+Iterations: 275000000
+Iterations: 283000000
+Iterations: 286000000
+Iterations: 288000000
+Iterations: 291000000
+Iterations: 294000000
+Iterations: 296000000
+Iterations: 309000000
+Iterations: 310000000
+Iterations: 314000000
+Iterations: 318000000
+Iterations: 321000000
+Iterations: 323000000
+Iterations: 324000000
+Iterations: 330000000
+Iterations: 337000000
+Iterations: 343000000
+Iterations: 344000000
+Iterations: 345000000
+Iterations: 359000000
+Iterations: 362000000
+Iterations: 387000000
+Iterations: 392000000
+Iterations: 406000000
+Iterations: 410000000
+Iterations: 416000000
+Iterations: 419000000
+Iterations: 433000000
+Iterations: 447000000
+Iterations: 448000000
+Iterations: 450000000
+Iterations: 451000000
+Iterations: 461000000
+Iterations: 463000000
+Iterations: 465000000
+Iterations: 478000000
+Iterations: 484000000
+Iterations: 490000000
+Iterations: 497000000
+Iterations: 498000000
+Iterations: 499000000
+Iterations: 509000000
+Iterations: 521000000
+Iterations: 522000000
+Iterations: 524000000
+Iterations: 526000000
+Iterations: 527000000
+Iterations: 528000000
+Iterations: 542000000
+Iterations: 543000000
+Iterations: 551000000
+Iterations: 558000000
+Iterations: 562000000
+Iterations: 566000000
+Iterations: 569000000
+Iterations: 570000000
+Iterations: 575000000
+Iterations: 579000000
+Iterations: 583000000
+Iterations: 585000000
+Iterations: 602000000
+Iterations: 609000000
+Iterations: 611000000
+Iterations: 613000000
+Iterations: 616000000
+Iterations: 623000000
+Iterations: 637000000
+Iterations: 639000000
+Iterations: 644000000
+Iterations: 648000000
+Iterations: 654000000
+Iterations: 659000000
+Iterations: 663000000
+Iterations: 671000000
+Iterations: 674000000
+Iterations: 675000000
+Iterations: 681000000
+Iterations: 694000000
+Iterations: 718000000
+Iterations: 719000000
+Iterations: 721000000
+Iterations: 729000000
+Iterations: 740000000
+Iterations: 741000000
+Iterations: 742000000
+Iterations: 743000000
+Iterations: 749000000
+Iterations: 752000000
+Iterations: 759000000
+Iterations: 761000000
+Iterations: 767000000
+Iterations: 774000000
+Iterations: 778000000
+Iterations: 780000000
+Iterations: 781000000
+Iterations: 782000000
+Iterations: 788000000
+Iterations: 789000000
+Iterations: 791000000
+Iterations: 793000000
+Iterations: 794000000
+Iterations: 796000000
+Iterations: 797000000
+Iterations: 799000000
+Iterations: 800000000
+Iterations: 807000000
+Iterations: 810000000
+Iterations: 812000000
+Iterations: 816000000
+Iterations: 820000000
+Iterations: 824000000
+Iterations: 831000000
+Iterations: 841000000
+Iterations: 844000000
+Iterations: 845000000
+Iterations: 846000000
+Iterations: 849000000
+Iterations: 851000000
+Iterations: 859000000
+Iterations: 864000000
+Iterations: 865000000
+Iterations: 866000000
+Iterations: 882000000
+Iterations: 884000000
+Iterations: 887000000
+Iterations: 888000000
+Iterations: 895000000
+Iterations: 901000000
+Iterations: 903000000
+Iterations: 905000000
+Iterations: 906000000
+Iterations: 909000000
+Iterations: 910000000
+Iterations: 911000000
+Iterations: 913000000
+Iterations: 918000000
+Iterations: 920000000
+Iterations: 923000000
+Iterations: 928000000
+Iterations: 929000000
+Iterations: 945000000
+Iterations: 947000000
+Iterations: 949000000
+Iterations: 955000000
+Iterations: 959000000
+Iterations: 965000000
+Iterations: 970000000
+Iterations: 976000000
+Iterations: 988000000
+Iterations: 994000000
+Iterations: 997000000
+Iterations: 999000000
+Iterations: 1001000000
+Iterations: 1012000000
+Iterations: 1018000000
+Iterations: 1020000000
+Iterations: 1037000000
+Iterations: 1051000000
+Iterations: 1052000000
+Iterations: 1055000000
+Iterations: 1061000000
+Iterations: 1062000000
+Iterations: 1063000000
+Iterations: 1069000000
+Iterations: 1072000000
+Iterations: 1075000000
+Iterations: 1077000000
+Iterations: 1079000000
+Iterations: 1090000000
+Iterations: 1102000000
+Iterations: 1103000000
+Iterations: 1111000000
+Iterations: 1113000000
+Iterations: 1114000000
+Iterations: 1119000000
+Iterations: 1122000000
+Iterations: 1124000000
+Iterations: 1126000000
+Iterations: 1145000000
+Iterations: 1148000000
+Iterations: 1150000000
+Iterations: 1156000000
+Iterations: 1162000000
+Final iterations: 1172972402
+SUCCESS: No torn reads detected after 1172972402 iterations
+RC=0
+    temp_after=45C
+  torn64 VERT : 1172972402 iterations, 0 dechirure
+
+=== 2/2 smc-alias sync (l'invalidation SMC couvre-t-elle un TB servi ?) ===
+--- smc-alias temp_before=44C ---
+mode=sync (IC IVAU emis) | memfd dual-map W^X : w_alias=0xb3ed8000 (RW) x_alias=0xb3ed7000 (RX), page=4096
+round 0 : want=0x1111 got=0x1111 OK
+round 1 : want=0x2222 got=0x2222 OK
+round 2 : want=0x1111 got=0x1111 OK
+round 3 : want=0x2222 got=0x2222 OK
+round 4 : want=0x1111 got=0x1111 OK
+round 5 : want=0x2222 got=0x2222 OK
+round 6 : want=0x1111 got=0x1111 OK
+round 7 : want=0x2222 got=0x2222 OK
+SUCCESS: code frais execute a chaque tour (8 tours) [mode=sync]
+RC=0
+    temp_after=44C
+  smc-alias sync VERT
+
+=== GATE O3LTO-CORRECTNESS VERT : les 2 items passent. Log complet : /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/o3lto-correctness/o3lto-gate-20260811-042028.txt ===

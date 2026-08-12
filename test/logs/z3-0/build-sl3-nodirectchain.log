@@ -1,0 +1,467 @@
+[build.sh] binfmt qemu-arm absent, enregistrement (docker run --privileged tonistiigi/binfmt)...
+installing: arm qemu-arm already registered
+{
+  "supported": [
+    "linux/arm64",
+    "linux/amd64",
+    "linux/amd64/v2",
+    "linux/386",
+    "linux/arm/v7",
+    "linux/arm/v6"
+  ],
+  "emulators": [
+    "python3.12",
+    "qemu-arm",
+    "qemu-i386",
+    "qemu-x86_64"
+  ]
+}
+python determined to be '/usr/bin/python3'
+python version: Python 3.11.2
+mkvenv: Creating non-isolated virtual environment at 'pyvenv'
+mkvenv: checking for meson>=1.5.0
+mkvenv: checking for pycotap>=1.1.0
+mkvenv: installing meson==1.5.0, pycotap==1.3.1
+Disabling PIE due to missing toolchain support
+The Meson build system
+Version: 1.5.0
+Source dir: /workspace/qemu
+Build dir: /workspace/qemu/build
+Build type: cross build
+Project name: qemu
+Project version: 9.2.4
+C compiler for the host machine: arm-linux-gnueabihf-gcc (gcc 12.2.0 "arm-linux-gnueabihf-gcc (Debian 12.2.0-14) 12.2.0")
+C linker for the host machine: arm-linux-gnueabihf-gcc ld.bfd 2.40
+C compiler for the build machine: cc (gcc 12.2.0 "cc (Debian 12.2.0-14+deb12u1) 12.2.0")
+C linker for the build machine: cc ld.bfd 2.40
+Build machine cpu family: aarch64
+Build machine cpu: aarch64
+Host machine cpu family: arm
+Host machine cpu: arm
+Target machine cpu family: arm
+Target machine cpu: arm
+Program scripts/symlink-install-tree.py found: YES (/workspace/qemu/build/pyvenv/bin/python3 /workspace/qemu/scripts/symlink-install-tree.py)
+Program sh found: YES (/usr/bin/sh)
+Program python3 found: YES (/workspace/qemu/build/pyvenv/bin/python3)
+Compiler for language rust skipped: feature rust disabled
+Program iasl found: NO
+Compiler for C supports arguments -fno-pie: YES 
+Compiler for C supports arguments -no-pie: YES 
+Compiler for C supports link arguments -Wl,-z,relro: YES 
+Compiler for C supports link arguments -Wl,-z,now: YES 
+Checking if "-fzero-call-used-regs=used-gpr" compiles: YES 
+Compiler for C supports arguments -ftrivial-auto-var-init=zero: YES 
+Compiler for C supports arguments -fzero-call-used-regs=used-gpr: YES 
+Compiler for C supports arguments -Wempty-body: YES 
+Compiler for C supports arguments -Wendif-labels: YES 
+Compiler for C supports arguments -Wexpansion-to-defined: YES 
+Compiler for C supports arguments -Wformat-security: YES 
+Compiler for C supports arguments -Wformat-y2k: YES 
+Compiler for C supports arguments -Wignored-qualifiers: YES 
+Compiler for C supports arguments -Wimplicit-fallthrough=2: YES 
+Compiler for C supports arguments -Winit-self: YES 
+Compiler for C supports arguments -Wmissing-format-attribute: YES 
+Compiler for C supports arguments -Wmissing-prototypes: YES 
+Compiler for C supports arguments -Wnested-externs: YES 
+Compiler for C supports arguments -Wold-style-declaration: YES 
+Compiler for C supports arguments -Wold-style-definition: YES 
+Compiler for C supports arguments -Wredundant-decls: YES 
+Compiler for C supports arguments -Wshadow=local: YES 
+Compiler for C supports arguments -Wstrict-prototypes: YES 
+Compiler for C supports arguments -Wtype-limits: YES 
+Compiler for C supports arguments -Wundef: YES 
+Compiler for C supports arguments -Wvla: YES 
+Compiler for C supports arguments -Wwrite-strings: YES 
+Compiler for C supports arguments -Wno-gnu-variable-sized-type-not-at-end: NO 
+Compiler for C supports arguments -Wno-initializer-overrides: NO 
+Compiler for C supports arguments -Wno-missing-include-dirs: YES 
+Compiler for C supports arguments -Wno-psabi: YES 
+Compiler for C supports arguments -Wno-shift-negative-value: YES 
+Compiler for C supports arguments -Wno-string-plus-int: NO 
+Compiler for C supports arguments -Wno-tautological-type-limit-compare: NO 
+Compiler for C supports arguments -Wno-typedef-redefinition: NO 
+Program cgcc found: NO
+Library m found: YES
+Run-time dependency threads found: YES
+Library util found: YES
+Run-time dependency appleframeworks found: NO (tried framework)
+Found pkg-config: YES (/usr/bin/arm-linux-gnueabihf-pkg-config) 1.8.1
+Run-time dependency glib-2.0 found: YES 2.74.6
+Program scripts/xml-preprocess.py found: YES (/workspace/qemu/build/pyvenv/bin/python3 /workspace/qemu/scripts/xml-preprocess.py)
+Run-time dependency zlib found: YES 1.2.13
+Run-time dependency appleframeworks found: NO (tried framework)
+Run-time dependency appleframeworks found: NO (tried framework)
+Library rt found: YES
+Run-time dependency capstone found: YES 4.0.2
+Run-time dependency gmp found: NO (tried pkgconfig)
+Checking for function "gettid" : YES 
+Run-time dependency libselinux found: YES 3.4
+Checking for function "malloc_trim" : YES 
+Run-time dependency fuse3 found: NO (tried pkgconfig)
+Run-time dependency libbpf found: NO (tried pkgconfig)
+Header "linux/fs.h" has symbol "FIFREEZE" : YES 
+Header "linux/fs.h" has symbol "FITRIM" : YES 
+Has header "sys/epoll.h" : YES 
+Has header "linux/magic.h" : YES 
+Has header "valgrind/valgrind.h" : NO 
+Has header "linux/btrfs.h" : YES 
+Has header "libdrm/drm.h" : NO 
+Has header "linux/openat2.h" : YES 
+Has header "pty.h" : YES 
+Has header "sys/disk.h" : NO 
+Has header "sys/ioccom.h" : NO 
+Has header "sys/kcov.h" : NO 
+Checking for function "close_range" : YES 
+Checking for function "accept4" : YES 
+Checking for function "clock_adjtime" : YES 
+Checking for function "dup3" : YES 
+Checking for function "fallocate" : YES 
+Checking for function "posix_fallocate" : YES 
+Checking for function "sched_getcpu" : NO 
+Checking for function "posix_memalign" : YES 
+Checking for function "_aligned_malloc" : NO 
+Checking for function "valloc" : YES 
+Checking for function "memalign" : YES 
+Checking for function "ppoll" : YES 
+Checking for function "preadv" : YES 
+Checking for function "pthread_fchdir_np" : NO 
+Checking for function "sendfile" : YES 
+Checking for function "setns" : YES 
+Checking for function "unshare" : YES 
+Checking for function "syncfs" : YES 
+Checking for function "sync_file_range" : YES 
+Checking for function "timerfd_create" : YES 
+Checking for function "copy_file_range" : YES 
+Checking for function "getifaddrs" : YES 
+Checking for function "openpty" with dependency -lutil: YES 
+Checking for function "strchrnul" : YES 
+Checking for function "system" : YES 
+Header "sys/inotify.h" has symbol "inotify_init" : YES 
+Header "sys/inotify.h" has symbol "inotify_init1" : YES 
+Header "linux/blkzoned.h" has symbol "BLKOPENZONE" : YES 
+Header "sys/epoll.h" has symbol "epoll_create1" : YES 
+Header "linux/falloc.h" has symbol "FALLOC_FL_PUNCH_HOLE" : YES 
+Header "linux/falloc.h" has symbol "FALLOC_FL_KEEP_SIZE" : YES 
+Header "linux/falloc.h" has symbol "FALLOC_FL_ZERO_RANGE" : YES 
+Has header "linux/fiemap.h" : YES 
+Header "linux/fs.h" has symbol "FS_IOC_FIEMAP" : YES 
+Header "sched.h" has symbol "getcpu" : YES 
+Checking for function "getrandom" : YES 
+Header "sys/random.h" has symbol "GRND_NONBLOCK" : YES 
+Header "sys/prctl.h" has symbol "PR_SET_TIMERSLACK" : YES 
+Header "linux/rtnetlink.h" has symbol "IFLA_PROTO_DOWN" : YES 
+Header "sys/sysmacros.h" has symbol "makedev" : YES 
+Header "getopt.h" has symbol "optreset" : NO 
+Header "netinet/in.h" has symbol "IPPROTO_MPTCP" : YES 
+Checking whether type "struct sigevent" has member "sigev_notify_thread_id" : NO 
+Checking whether type "struct stat" has member "st_atim" : YES 
+Checking whether type "struct blk_zone" has member "capacity" : YES 
+Checking for type "struct iovec" : YES 
+Checking for type "struct utmpx" : YES 
+Header "asm/hwprobe.h" has symbol "RISCV_HWPROBE_EXT_ZBA" : NO 
+Header "linux/vm_sockets.h" has symbol "AF_VSOCK" : YES 
+Program scripts/minikconf.py found: YES (/workspace/qemu/build/pyvenv/bin/python3 /workspace/qemu/scripts/minikconf.py)
+Configuring aarch64-linux-user-config-target.h using configuration
+Program scripts/make-config-poison.sh found: YES (/workspace/qemu/scripts/make-config-poison.sh)
+
+Executing subproject libvhost-user 
+
+libvhost-user| Project name: libvhost-user
+libvhost-user| Project version: undefined
+libvhost-user| C compiler for the host machine: arm-linux-gnueabihf-gcc (gcc 12.2.0 "arm-linux-gnueabihf-gcc (Debian 12.2.0-14) 12.2.0")
+libvhost-user| C linker for the host machine: arm-linux-gnueabihf-gcc ld.bfd 2.40
+libvhost-user| C compiler for the build machine: cc (gcc 12.2.0 "cc (Debian 12.2.0-14+deb12u1) 12.2.0")
+libvhost-user| C linker for the build machine: cc ld.bfd 2.40
+libvhost-user| Compiler for C supports arguments -Wsign-compare: YES
+libvhost-user| Compiler for C supports arguments -Wdeclaration-after-statement: YES
+libvhost-user| Compiler for C supports arguments -Wstrict-aliasing: YES
+libvhost-user| Dependency threads found: YES unknown (cached)
+libvhost-user| Dependency glib-2.0 found: YES 2.74.6 (overridden)
+libvhost-user| Build targets in project: 4
+libvhost-user| Subproject libvhost-user finished.
+
+
+Executing subproject libvduse 
+
+libvduse| Project name: libvduse
+libvduse| Project version: undefined
+libvduse| C compiler for the host machine: arm-linux-gnueabihf-gcc (gcc 12.2.0 "arm-linux-gnueabihf-gcc (Debian 12.2.0-14) 12.2.0")
+libvduse| C linker for the host machine: arm-linux-gnueabihf-gcc ld.bfd 2.40
+libvduse| C compiler for the build machine: cc (gcc 12.2.0 "cc (Debian 12.2.0-14+deb12u1) 12.2.0")
+libvduse| C linker for the build machine: cc ld.bfd 2.40
+libvduse| Compiler for C supports arguments -Wsign-compare: YES (cached)
+libvduse| Compiler for C supports arguments -Wdeclaration-after-statement: YES (cached)
+libvduse| Compiler for C supports arguments -Wstrict-aliasing: YES (cached)
+libvduse| Build targets in project: 5
+libvduse| Subproject libvduse finished.
+
+Configuring config-host.h using configuration
+Program scripts/hxtool found: YES (/workspace/qemu/scripts/hxtool)
+Program scripts/shaderinclude.py found: YES (/workspace/qemu/build/pyvenv/bin/python3 /workspace/qemu/scripts/shaderinclude.py)
+Program scripts/qapi-gen.py found: YES (/workspace/qemu/build/pyvenv/bin/python3 /workspace/qemu/scripts/qapi-gen.py)
+Program scripts/qemu-version.sh found: YES (/workspace/qemu/scripts/qemu-version.sh)
+Program scripts/decodetree.py found: YES (/workspace/qemu/build/pyvenv/bin/python3 /workspace/qemu/scripts/decodetree.py)
+Program true found: YES (/usr/bin/true)
+Program scripts/modinfo-collect.py found: YES (/workspace/qemu/build/pyvenv/bin/python3 /workspace/qemu/scripts/modinfo-collect.py)
+Program scripts/modinfo-generate.py found: YES (/workspace/qemu/build/pyvenv/bin/python3 /workspace/qemu/scripts/modinfo-generate.py)
+Program arm-linux-gnueabihf-nm found: YES
+Program scripts/undefsym.py found: YES (/workspace/qemu/build/pyvenv/bin/python3 /workspace/qemu/scripts/undefsym.py)
+Program scripts/feature_to_c.py found: YES (/workspace/qemu/build/pyvenv/bin/python3 /workspace/qemu/scripts/feature_to_c.py)
+Program scripts/rust/rust_root_crate.sh found: YES (/workspace/qemu/scripts/rust/rust_root_crate.sh)
+Program dtc found: NO
+Program qemu-keymap found: NO
+Program /workspace/qemu/build/pyvenv/bin/sphinx-build skipped: feature docs disabled
+Program /workspace/qemu/scripts/decodetree.py found: YES (/workspace/qemu/build/pyvenv/bin/python3 /workspace/qemu/scripts/decodetree.py)
+
+Executing subproject berkeley-softfloat-3 
+
+berkeley-softfloat-3| Project name: berkeley-softfloat-3
+berkeley-softfloat-3| Project version: undefined
+berkeley-softfloat-3| C compiler for the host machine: arm-linux-gnueabihf-gcc (gcc 12.2.0 "arm-linux-gnueabihf-gcc (Debian 12.2.0-14) 12.2.0")
+berkeley-softfloat-3| C linker for the host machine: arm-linux-gnueabihf-gcc ld.bfd 2.40
+berkeley-softfloat-3| C compiler for the build machine: cc (gcc 12.2.0 "cc (Debian 12.2.0-14+deb12u1) 12.2.0")
+berkeley-softfloat-3| C linker for the build machine: cc ld.bfd 2.40
+berkeley-softfloat-3| Configuring platform.h using configuration
+berkeley-softfloat-3| Build targets in project: 119
+berkeley-softfloat-3| Subproject berkeley-softfloat-3 finished.
+
+
+Executing subproject berkeley-testfloat-3 
+
+berkeley-testfloat-3| Project name: berkeley-testfloat-3
+berkeley-testfloat-3| Project version: undefined
+berkeley-testfloat-3| C compiler for the host machine: arm-linux-gnueabihf-gcc (gcc 12.2.0 "arm-linux-gnueabihf-gcc (Debian 12.2.0-14) 12.2.0")
+berkeley-testfloat-3| C linker for the host machine: arm-linux-gnueabihf-gcc ld.bfd 2.40
+berkeley-testfloat-3| C compiler for the build machine: cc (gcc 12.2.0 "cc (Debian 12.2.0-14+deb12u1) 12.2.0")
+berkeley-testfloat-3| C linker for the build machine: cc ld.bfd 2.40
+berkeley-testfloat-3| Configuring platform.h using configuration
+berkeley-testfloat-3| Compiler for C supports arguments -Wno-ignored-pragmas: NO
+berkeley-testfloat-3| Build targets in project: 121
+berkeley-testfloat-3| Subproject berkeley-testfloat-3 finished.
+
+Program true found: YES (/usr/bin/true)
+Program diff found: YES (/usr/bin/diff)
+Program dbus-daemon found: NO
+Run-time dependency sysprof-capture-4 found: NO (tried pkgconfig)
+Run-time dependency glib-2.0 found: YES 2.74.6
+Program initrd-stress.sh found: YES (/workspace/qemu/tests/migration/initrd-stress.sh)
+Build targets in project: 173
+
+qemu 9.2.4
+
+  Build environment
+    Build directory                 : /workspace/qemu/build
+    Source path                     : /workspace/qemu
+    Download dependencies           : YES
+
+  Directories
+    Build directory                 : /workspace/qemu/build
+    Source path                     : /workspace/qemu
+    Download dependencies           : YES
+    Install prefix                  : /usr/local
+    BIOS directory                  : share/qemu
+    firmware path                   : share/qemu-firmware
+    binary directory                : /usr/local/bin
+    library directory               : /usr/local/lib
+    module directory                : lib/qemu
+    libexec directory               : /usr/local/libexec
+    include directory               : /usr/local/include
+    config directory                : /usr/local/etc
+    local state directory           : /var/local
+    Manual directory                : /usr/local/share/man
+    Doc directory                   : /usr/local/share/doc
+
+  Host binaries
+    python                          : /workspace/qemu/build/pyvenv/bin/python3 (version: 3.11)
+    sphinx-build                    : NO
+    gdb                             : 
+    iasl                            : NO
+    genisoimage                     : 
+
+  Configurable features
+    Documentation                   : NO
+    system-mode emulation           : NO
+    user-mode emulation             : YES
+    block layer                     : NO
+    Install blobs                   : YES
+    module support                  : NO
+    fuzzing support                 : NO
+    Trace backends                  : log
+    D-Bus display                   : NO
+    QOM debugging                   : YES
+    Relocatable install             : YES
+    vhost-kernel support            : YES
+    vhost-net support               : YES
+    vhost-user support              : YES
+    vhost-user-crypto support       : YES
+    vhost-user-blk server support   : NO
+    vhost-vdpa support              : YES
+    build guest agent               : NO
+
+  Compilation
+    host CPU                        : arm
+    host endianness                 : little
+    C compiler                      : arm-linux-gnueabihf-gcc
+    Host C compiler                 : cc
+    C++ compiler                    : NO
+    Objective-C compiler            : NO
+    Rust support                    : NO
+    CFLAGS                          : -O3 -mcpu=cortex-a7 -flto -g -O2
+    LDFLAGS                         : -O3 -mcpu=cortex-a7 -flto -flto
+    QEMU_CFLAGS                     : -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -fno-strict-aliasing -fno-common -fwrapv -fno-pie -no-pie -ftrivial-auto-var-init=zero -fzero-call-used-regs=used-gpr -fstack-protector-strong
+    QEMU_LDFLAGS                    : -static -fstack-protector-strong -Wl,-z,relro -Wl,-z,now
+    link-time optimization (LTO)    : NO
+    PIE                             : NO
+    static build                    : YES
+    malloc trim support             : YES
+    membarrier                      : NO
+    debug graph lock                : NO
+    debug stack usage               : NO
+    mutex debugging                 : NO
+    memory allocator                : system
+    avx2 optimization               : NO
+    avx512bw optimization           : NO
+    gcov                            : NO
+    thread sanitizer                : NO
+    CFI support                     : NO
+    strip binaries                  : NO
+    sparse                          : NO
+    mingw32 support                 : NO
+
+  Cross compilers
+    aarch64                         : aarch64-linux-gnu-gcc
+
+  Targets and accelerators
+    TCG support                     : YES
+    TCG backend                     : native (arm)
+    TCG plugins                     : NO
+    TCG debug enabled               : NO
+    syscall buffer debugging support: NO
+    target list                     : aarch64-linux-user
+
+  Block layer support
+    coroutine backend               : ucontext
+    coroutine pool                  : YES
+
+  Crypto
+Cleaning... 0 files.
+    TLS priority                    : NORMAL
+    GNUTLS support                  : NO
+    libgcrypt                       : NO
+    nettle                          : NO
+    SM4 ALG support                 : NO
+    SM3 ALG support                 : NO
+    AF_ALG support                  : NO
+    rng-none                        : NO
+    Linux keyring                   : YES
+    Linux keyutils                  : NO
+
+  User interface
+    SDL support                     : NO
+    SDL image support               : NO
+    GTK support                     : NO
+    pixman                          : NO
+    VTE support                     : NO
+    PNG support                     : NO
+    VNC support                     : NO
+    spice protocol support          : NO
+    curses support                  : NO
+    brlapi support                  : NO
+
+  Graphics backends
+    VirGL support                   : NO
+    Rutabaga support                : NO
+
+  Audio backends
+    OSS support                     : NO
+    sndio support                   : NO
+    ALSA support                    : NO
+    PulseAudio support              : NO
+    PipeWire support                : NO
+    JACK support                    : NO
+
+  Network backends
+    AF_XDP support                  : NO
+    slirp support                   : NO
+    vde support                     : NO
+    netmap support                  : NO
+    l2tpv3 support                  : NO
+
+  Dependencies
+    libtasn1                        : NO
+    PAM                             : NO
+    iconv support                   : NO
+    blkio support                   : NO
+    curl support                    : NO
+    Multipath support               : NO
+    Linux AIO support               : NO
+    Linux io_uring support          : NO
+    ATTR/XATTR support              : YES
+    RDMA support                    : NO
+    fdt support                     : NO
+    libcap-ng support               : NO
+    bpf support                     : NO
+    rbd support                     : NO
+    smartcard support               : NO
+    U2F support                     : NO
+    libusb                          : NO
+    usb net redir                   : NO
+    OpenGL support (epoxy)          : NO
+    GBM                             : NO
+    libiscsi support                : NO
+    libnfs support                  : NO
+    seccomp support                 : NO
+    GlusterFS support               : NO
+    hv-balloon support              : NO
+    TPM support                     : YES
+    libssh support                  : NO
+    lzo support                     : NO
+    snappy support                  : NO
+    bzip2 support                   : NO
+    lzfse support                   : NO
+    zstd support                    : NO
+    Query Processing Library support: NO
+    UADK Library support            : NO
+    qatzip support                  : NO
+    NUMA host support               : NO
+    capstone                        : YES 4.0.2
+    libpmem support                 : NO
+    libdaxctl support               : NO
+    libcbor support                 : NO
+    libudev                         : NO
+    FUSE lseek                      : NO
+    selinux                         : YES 3.4
+    libdw                           : NO
+
+  Subprojects
+    berkeley-softfloat-3            : YES
+    berkeley-testfloat-3            : YES
+    libvduse                        : YES
+    libvhost-user                   : YES
+
+  User defined options
+    Cross files                     : config-meson.cross
+    Native files                    : config-meson.native
+    prefer_static                   : true
+    werror                          : false
+    b_pie                           : false
+    capstone                        : enabled
+    docs                            : disabled
+    tools                           : disabled
+
+Found ninja-1.11.1 at /usr/bin/ninja
+Running postconf script '/workspace/qemu/build/pyvenv/bin/python3 /workspace/qemu/scripts/symlink-install-tree.py'
+ninja: no work to do.
+/workspace/qemu/build/pyvenv/bin/meson introspect --targets --tests --benchmarks | /workspace/qemu/build/pyvenv/bin/python3 -B scripts/mtest2make.py > Makefile.mtest
+[1/33] Generating tests/include/QAPI test (include) with a custom command
+[2/7] Generating qemu-version.h with a custom command (wrapped by meson to capture output)
+[3/7] Generating qemu.syms with a custom command (wrapped by meson to capture output)
+[4/7] Generating block.syms with a custom command (wrapped by meson to capture output)
+[5/7] Compiling C object libqemu-aarch64-linux-user.a.p/linux-user_main.c.o
+[6/7] Compiling C object tcg/libtcg_user.a.p/tcg.c.o
+[7/7] Linking target qemu-aarch64
+/usr/lib/gcc-cross/arm-linux-gnueabihf/12/../../../../arm-linux-gnueabihf/bin/ld: /usr/lib/arm-linux-gnueabihf/libglib-2.0.a(gutils.c.o): in function `g_get_user_database_entry':
+(.text+0x19a): warning: Using 'getpwuid' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+/usr/lib/gcc-cross/arm-linux-gnueabihf/12/../../../../arm-linux-gnueabihf/bin/ld: (.text+0x9a): warning: Using 'getpwnam_r' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+/usr/lib/gcc-cross/arm-linux-gnueabihf/12/../../../../arm-linux-gnueabihf/bin/ld: (.text+0xbe): warning: Using 'getpwuid_r' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+[build.sh] Build completed. Artifact: /workspace/build-out/qemu-aarch64

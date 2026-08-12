@@ -1,0 +1,70 @@
+=== GATE DE RELEASE v9.2.4-yumi.2, 2026-08-12 ===
+OBJET : valider le binaire REELLEMENT PUBLIE (build -O3 -mcpu=cortex-a7 -flto depuis la
+branche yumi-64on32 = la serie des 16 patches publiee), et non un binaire de branche
+experimentale. Le gate O3LTO du 2026-08-10 portait sur serial-stats (2eb4532), qui n'est
+PAS la branche publiee.
+
+commit source qemu : 141e72e7fdec9f7348e2d399ee8c04f705a48ae0  (branche yumi-64on32)
+serie de patches   : 16 patches, v9.2.4..yumi-64on32
+build              : bash build.sh (image docker qemu64on32-build, cross armhf statique)
+hote de build      : Darwin 24.2.0 arm64
+sha256 artefact    : 9a874d51f025a97ee6be356ad4a64d236b746c6384a7538746229bf97055f2ec
+pad                : 192.168.1.108 (DietPi, armv7l, Allwinner H3), taskset -c 0,1
+
+VARIED : rien (mesure de validation, pas d'A/B). HELD FIXED : pad, taskset 0,1, invites
+inchanges depuis le 2026-08-10 (sha verifies des deux cotes, ci-dessous).
+CE QUE CA NE DIT PAS : aucune mesure de DEBIT ici (pas de mtbench) ; la performance
+publiee (+74,6 %) vient de la campagne du 2026-08-10, pas de ce run.
+
+--- batterie 1/2 (torn64, smc-alias, simd-dup2) ---
+=== IDENTITES ===
+9a874d51f025a97ee6be356ad4a64d236b746c6384a7538746229bf97055f2ec  qemu-aarch64
+7df7e6f6b364cbc6771a464a65898ddf397a534d61ef38dd6eabcaaee3df589b  torn64
+002a6e8f4295bd49c482b27dc4b82ad27b530b157909d96984b6075f8df25a88  smc-alias
+6a07eac75afb137bbeb7b59659494061f099414d1560c2f83f4594ccd11032ba  simd-dup2
+=== uname ===
+Linux DietPi 6.18.41-current-sunxi #1 SMP Thu Jul 30 11:05:57 UTC 2026 armv7l GNU/Linux
+=== temp_before=46371 ===
+=== 1/4 torn64 N=4 180s ===
+torn64 test: 4 threads, duration 180 sec, target 0 iterations
+Final iterations: 1175564796
+SUCCESS: No torn reads detected after 1175564796 iterations
+RC=0
+=== temp=52668 ; palier 30 s ===
+=== 2/4 smc-alias sync ===
+mode=sync (IC IVAU emis) | memfd dual-map W^X : w_alias=0xb3e8c000 (RW) x_alias=0xb3e8b000 (RX), page=4096
+round 0 : want=0x1111 got=0x1111 OK
+round 1 : want=0x2222 got=0x2222 OK
+round 2 : want=0x1111 got=0x1111 OK
+round 3 : want=0x2222 got=0x2222 OK
+round 4 : want=0x1111 got=0x1111 OK
+round 5 : want=0x2222 got=0x2222 OK
+round 6 : want=0x1111 got=0x1111 OK
+round 7 : want=0x2222 got=0x2222 OK
+SUCCESS: code frais execute a chaque tour (8 tours) [mode=sync]
+RC=0
+=== 3/4 simd-dup2 ===
+dup2 out[0]=0x22222223000000ff out[1]=0x22222223000000ff (seed=0x22222223)
+OK: dup2_vec correct (les deux lanes = 0x22222223000000ff)
+RC=0
+=== 4/4 claude 2.1.217 --version ===
+qemu-aarch64: Could not open '/lib/ld-musl-aarch64.so.1': No such file or directory
+RC=0
+=== temp_after=42011 ===
+
+--- batterie 2/2 (claude 2.1.217 --version, sysroot musl) ---
+ld-musl-aarch64.so.1
+libc.musl-aarch64.so.1
+===
+2.1.217 (Claude Code)
+RC=0
+
+real	0m43.276s
+user	0m37.253s
+sys	0m1.827s
+
+=== VERDICT : 4/4 VERT ===
+torn64 N=4 180 s : 1 175 564 796 iterations, 0 dechirure
+smc-alias sync   : code frais execute a chaque tour (8/8)
+simd-dup2        : les deux lanes = 0x22222223000000ff
+claude --version : 2.1.217 (Claude Code), rc=0, 43,3 s sur 2 coeurs

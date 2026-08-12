@@ -1,0 +1,99 @@
+=== GATE Z2-2, mtbench smc, N in {1 2 4}, 3 repetitions COLD/WARM, cellules 60s, PAD_CPUS=0-3, 20260811-115254 ===
+BINAIRE UNIQUE (compare a lui-meme) : qemu-aarch64-z2-1-ishst
+COLD = sans QEMU_TB_CACHE.  WARM = QEMU_TB_CACHE=<cache pre-amorce> + setarch -R (guest_base fige).
+  qemu-aarch64-z2-1-ishst sha=861b325cdad31b4a
+  invite mtbench sha=40b46273de0a2b71
+
+--- N=1 : run de chauffe (JETE, COLD) ---
+    [cold N=1] rc=0 ops_per_sec=10421 temp_before=41C
+
+--- N=1, COLD 1/3 ---
+    [cold N=1] rc=0 ops_per_sec=10414 temp_before=40C
+--- N=1, COLD 2/3 ---
+    [cold N=1] rc=0 ops_per_sec=10442 temp_before=41C
+--- N=1, COLD 3/3 ---
+    [cold N=1] rc=0 ops_per_sec=10400 temp_before=41C
+
+--- N=1 : amorce du cache (COLD-SAVE) -> /root/qemu-fork-test/tbcache-smc-N1.bin ---
+    [primer N=1] rc=0 ops_per_sec=10452 temp_before=40C
+    [primer N=1] saved 19667 TBs, 7420 KiB of translated code
+
+--- N=1, WARM 1/3 ---
+    [warm N=1] rc=0 ops_per_sec=10443 temp_before=40C
+--- N=1, WARM 2/3 ---
+    [warm N=1] rc=0 ops_per_sec=10451 temp_before=40C
+--- N=1, WARM 3/3 ---
+    [warm N=1] rc=0 ops_per_sec=10471 temp_before=40C
+
+N=1 COLD (n=3) : 10414 10442 10400 ops/s
+N=1 WARM (n=3) : 10443 10451 10471 ops/s
+N=1 mediane COLD = 10414 ops/s   mediane WARM = 10451 ops/s
+
+--- N=2 : run de chauffe (JETE, COLD) ---
+    [cold N=2] rc=0 ops_per_sec=6200 temp_before=40C
+
+--- N=2, COLD 1/3 ---
+    [cold N=2] rc=0 ops_per_sec=6314 temp_before=40C
+--- N=2, COLD 2/3 ---
+    [cold N=2] rc=0 ops_per_sec=6318 temp_before=40C
+--- N=2, COLD 3/3 ---
+    [cold N=2] rc=0 ops_per_sec=5955 temp_before=40C
+
+--- N=2 : amorce du cache (COLD-SAVE) -> /root/qemu-fork-test/tbcache-smc-N2.bin ---
+    [primer N=2] rc=0 ops_per_sec=5377 temp_before=39C
+    [primer N=2] saved 63069 TBs, 23696 KiB of translated code
+
+--- N=2, WARM 1/3 ---
+    [warm N=2] rc=0 ops_per_sec=6242 temp_before=40C
+--- N=2, WARM 2/3 ---
+    [warm N=2] rc=0 ops_per_sec=6264 temp_before=40C
+--- N=2, WARM 3/3 ---
+    [warm N=2] rc=0 ops_per_sec=6219 temp_before=40C
+
+N=2 COLD (n=3) : 6314 6318 5955 ops/s
+N=2 WARM (n=3) : 6242 6264 6219 ops/s
+N=2 mediane COLD = 6314 ops/s   mediane WARM = 6242 ops/s
+
+--- N=4 : run de chauffe (JETE, COLD) ---
+    [cold N=4] rc=0 ops_per_sec=5454 temp_before=40C
+
+--- N=4, COLD 1/3 ---
+    [cold N=4] rc=0 ops_per_sec=5132 temp_before=40C
+--- N=4, COLD 2/3 ---
+    [cold N=4] rc=0 ops_per_sec=5567 temp_before=40C
+--- N=4, COLD 3/3 ---
+    [cold N=4] rc=0 ops_per_sec=5135 temp_before=40C
+
+--- N=4 : amorce du cache (COLD-SAVE) -> /root/qemu-fork-test/tbcache-smc-N4.bin ---
+    [primer N=4] rc=0 ops_per_sec=5434 temp_before=40C
+    [primer N=4] saved 67247 TBs, 25263 KiB of translated code
+
+--- N=4, WARM 1/3 ---
+    [warm N=4] rc=0 ops_per_sec=5770 temp_before=41C
+--- N=4, WARM 2/3 ---
+    [warm N=4] rc=0 ops_per_sec=5270 temp_before=40C
+--- N=4, WARM 3/3 ---
+    [warm N=4] rc=0 ops_per_sec=5933 temp_before=40C
+
+N=4 COLD (n=3) : 5132 5567 5135 ops/s
+N=4 WARM (n=3) : 5770 5270 5933 ops/s
+N=4 mediane COLD = 5135 ops/s   mediane WARM = 5770 ops/s
+
+=== VERDICT ===
+gain N=1 (WARM vs COLD) = 0.36%  (10414 -> 10451 ops/s)
+gain N=2 (WARM vs COLD) = -1.14%  (6314 -> 6242 ops/s)
+gain N=4 (WARM vs COLD) = 12.37%  (5135 -> 5770 ops/s)
+
+GATE Z2-2 (gain smc N=2 >= 2.0%, meme convention que Z2-1) : NON
+
+CE QUE CA TRANCHE : si le gain WARM est significatif (>= 2.0%) a un N quelconque,
+l'argument de fermeture mono-thread ("la traduction n'est pas le goulot") ne tient plus en
+multi-thread et la famille de pistes qu'il a fermee (Z2-2 le dit explicitement) doit etre rouverte.
+Un gain nul ou negatif CONFIRME l'argument sous une charge qui reecrit son code a chaque tour :
+voir le commentaire d'en-tete (le cache ne peut couvrir que le code de demarrage, pas les tours smc).
+
+RAPPEL DE PORTEE : ce chiffre vaut pour l'invite mtbench sha=40b46273de0a2b71, le binaire qemu-aarch64-z2-1-ishst
+sha=861b325cdad31b4a, le pad dans son etat du jour. torn64/smc-alias restent verifies separement (deja
+passes sur ce binaire) ; la correctness SMC-sous-cache est elle auto-verifiee par mtbench
+lui-meme a chaque run (voir CORRECTNESS en tete de script).
+Log : /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/mtbench/z2-2-gate-20260811-115254.txt

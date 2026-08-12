@@ -1,0 +1,48 @@
+=== GATE Z2-1, mtbench smc, N in {2,4}, 3 repetitions ABAB, cellules 60s, PAD_CPUS=0-3, 20260810-231819 ===
+AVANT (dmb ish, non patche) = qemu-aarch64-z2-1-baseline   APRES (dmb ishst sur ST_ST) = qemu-aarch64-z2-1-ishst
+  AVANT=qemu-aarch64-z2-1-baseline sha=1b4384f1ea5ac94d   APRES=qemu-aarch64-z2-1-ishst sha=861b325cdad31b4a
+  invite mtbench sha=40b46273de0a2b71
+
+--- N=2 : run de chauffe (JETE) ---
+    [qemu-z21-a N=2] rc=0 ops_per_sec=6436 temp_before=44C
+
+--- N=2, paire 1/3 ---
+    [qemu-z21-a N=2] rc=0 ops_per_sec=6575 temp_before=44C
+    [qemu-z21-b N=2] rc=0 ops_per_sec=5843 temp_before=45C
+--- N=2, paire 2/3 ---
+    [qemu-z21-a N=2] rc=0 ops_per_sec=6041 temp_before=45C
+    [qemu-z21-b N=2] rc=0 ops_per_sec=6293 temp_before=45C
+--- N=2, paire 3/3 ---
+    [qemu-z21-a N=2] rc=0 ops_per_sec=6242 temp_before=44C
+    [qemu-z21-b N=2] rc=0 ops_per_sec=6581 temp_before=45C
+
+N=2 AVANT (n=3) : 6575 6041 6242 ops/s
+N=2 APRES (n=3) : 5843 6293 6581 ops/s
+N=2 mediane AVANT = 6242 ops/s   mediane APRES = 6293 ops/s
+
+--- N=4 : run de chauffe (JETE) ---
+    [qemu-z21-a N=4] rc=0 ops_per_sec=5720 temp_before=45C
+
+--- N=4, paire 1/3 ---
+    [qemu-z21-a N=4] rc=0 ops_per_sec=5110 temp_before=45C
+    [qemu-z21-b N=4] rc=0 ops_per_sec=5830 temp_before=45C
+--- N=4, paire 2/3 ---
+    [qemu-z21-a N=4] rc=0 ops_per_sec=5502 temp_before=44C
+    [qemu-z21-b N=4] rc=0 ops_per_sec=5554 temp_before=44C
+--- N=4, paire 3/3 ---
+    [qemu-z21-a N=4] rc=0 ops_per_sec=5394 temp_before=44C
+    [qemu-z21-b N=4] rc=0 ops_per_sec=5504 temp_before=45C
+
+N=4 AVANT (n=3) : 5110 5502 5394 ops/s
+N=4 APRES (n=3) : 5830 5554 5504 ops/s
+N=4 mediane AVANT = 5394 ops/s   mediane APRES = 5554 ops/s
+
+=== VERDICT ===
+gain N=2 (APRES vs AVANT) = 0.82%  (6242 -> 6293 ops/s)
+gain N=4 (APRES vs AVANT) = 2.97%  (5394 -> 5554 ops/s)
+
+GATE Z2-1 (gain smc N=2 >= 2.0%) : NON
+
+RAPPEL DE PORTEE : ce chiffre vaut pour l'invite mtbench sha=40b46273de0a2b71, le pad dans son
+etat du jour. torn64/smc-alias restent a verifier separement (gate complet, pas ce script).
+Log : /Users/nicolasmichaut/Documents/GitHub/qemu-64on32-smartpi/test/logs/mtbench/z2-1-gate-20260810-231819.txt

@@ -43,8 +43,8 @@ docker run --rm \
     # use_neon_instructions=1 fige a la compile, et lauto-vectorisation du C chaud).
     # NOTE : pas dapostrophes dans ce bloc, tout le corps du build est une chaine simple-quotee.
     # LE CHIFFRE QUI COMPTE VRAIMENT (2026-08-10). Les +4,41 % ci-dessus viennent dune charge
-    # MONO-THREAD (--help). Sur la charge REPRESENTATIVE de la cible — code auto-modifiant
-    # MULTI-THREAD, ce que fait un JIT JavaScript — la meme configuration rend BEAUCOUP plus :
+    # MONO-THREAD (--help). Sur la charge REPRESENTATIVE de la cible : code auto-modifiant
+    # MULTI-THREAD, ce que fait un JIT JavaScript, la meme configuration rend BEAUCOUP plus :
     #     mtbench smc, N=2, 4 coeurs (pad refroidi, PAD_CPUS=0-3), n=3, cellules 60 s
     #     -O2      : 3471 3641 3897 ops/s  -> mediane 3641
     #     -O3+LTO  : 6738 6131 6356 ops/s  -> mediane 6356      = +74,6 %
@@ -55,11 +55,20 @@ docker run --rm \
     # ces options paraissaient marginales. Mesurer sur la charge REELLE change lordre de
     # grandeur du verdict.
     #
-    # Correctness validee sur cette configuration : gate V4-1G 6/6 (torn64 0 dechirure sur
-    # 1 175 356 114 iterations, simd-dup2, smc-alias, claude --version rc=0, claude -p).
+    # Correctness validee sur cette configuration, sur la BRANCHE PUBLIEE (2026-08-12,
+    # gate de release v9.2.4-yumi.2, log
+    # test/logs/o3lto-correctness/release-gate-v9.2.4-yumi.2-20260812.txt) : commit source
+    # qemu 141e72e7fdec9f7348e2d399ee8c04f705a48ae0 (branche yumi-64on32, la serie des 16
+    # patches publiee), taskset -c 0,1 sur le pad. 4/4 VERT : torn64 N=4 180 s,
+    # 1 175 564 796 iterations, 0 dechirure ; smc-alias sync, code frais execute a chaque
+    # tour (8/8) ; simd-dup2 correct ; claude 2.1.217 --version rc=0 en 43,3 s.
+    # Le gate O3LTO du 2026-08-10 (o3lto-gate-20260810-214510.txt) reste valide mais portait
+    # sur un AUTRE commit source (2eb4532, branche serial-stats, avec pageflags_lock cable),
+    # et le gate V4-1G cite avant lui portait sur v9.2.4-18-gf7ecdb6 : ni l'un ni l'autre
+    # n'atteste la branche publiee, d'ou le gate ci-dessus.
     # ATTENTION : LTO rend les traces de compilation moins lisibles et allonge le build.
     # Si un diagnostic devient difficile, rebuild sans `-flto` (cout : -2,94 % mono-thread,
-    # et beaucoup plus en multi-thread — cf. les chiffres ci-dessus).
+    # et beaucoup plus en multi-thread, cf. les chiffres ci-dessus).
     ../configure \
       --cross-prefix=arm-linux-gnueabihf- \
       --static \
