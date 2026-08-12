@@ -36,6 +36,23 @@ bash build/mkimage.sh   # image de build qemu64on32-build (cross armhf + glib st
 bash build.sh           # -> build-out/qemu-aarch64 (ELF 32-bit ARM, statique)
 ```
 
+## Exécuter
+
+```bash
+./qemu-aarch64 ./mon-binaire-aarch64                  # invité statique
+QEMU_TB_SIZE=64 ./qemu-aarch64 ./mon-binaire-aarch64  # cache de traduction, en MiB
+```
+
+Les réglages ajoutés par le fork, avec ce que la mesure dit de chacun :
+
+| Réglage | Effet | Ce que la mesure dit |
+|---|---|---|
+| `-tb-size N` / `QEMU_TB_SIZE=N` | taille du cache de traduction en MiB (défaut 32) | **ne pas l'augmenter à l'aveugle** : au-delà de ±32 Mo le chaînage direct entre blocs est perdu, et ce coût dépasse le gain de cache. Sur charge multithread auto-modifiante, 32 bat 256 de **+21,98 %** (2 threads) et **+17,65 %** (4 threads). L'augmenter reste utile contre une tempête de `tb_flush` sur un gros runtime mono-thread |
+| `-tb-cache <fichier>` / `QEMU_TB_CACHE=<fichier>` | cache de traduction **persistant** entre exécutions | 0,0 % en mono-thread, −1,14 % à 2 threads, **+12,37 % à 4 threads** : il ne paie qu'au-delà de 2 threads. Exige de figer l'ASLR (`setarch $(uname -m) -R`), sinon `guest_base` change et le cache est ignoré |
+| `QEMU_TB_FLUSH_LOG=1` | une ligne `stderr` par `tb_flush` | diagnostic de dimensionnement du cache |
+| `QEMU_TB_EXEC_PROFILE=1` | profil des blocs pondéré par l'exécution | instrumentation ; coût nul quand la variable est absente |
+| `QEMU_OP_HISTOGRAM=1` | histogramme des opcodes traduits | idem |
+
 ## Le point technique central
 
 Un invité aarch64 multithread écrit et lit des mots de 64 bits qui doivent être vus **entiers**
@@ -76,8 +93,9 @@ exécuté sur la carte réelle.
 
 **Correctness — c'est l'objet du projet.**
 
-- `torn64`, 4 threads, 180 s : **0 déchirure sur 1 175 356 114 itérations**. Le même test est
-  **rouge en baseline** (QEMU 9.2.4 non patché) : la reproduction de la panne est dans
+- `torn64`, 4 threads, 180 s : **0 déchirure sur 1 175 564 796 itérations**, sur le binaire même
+  de la release (`test/logs/o3lto-correctness/release-gate-v9.2.4-yumi.2-20260812.txt`). Le même
+  test est **rouge en baseline** (QEMU 9.2.4 non patché) : la reproduction de la panne est dans
   `docs/REPRO.md`.
 - `simd-dup2` : le crash de lowering SIMD (`dup2_vec` à une moitié constante) est corrigé et la
   valeur calculée vérifiée.
@@ -111,20 +129,50 @@ montre par ailleurs que `-mcpu` **seul** n'apporte rien : le gain vient de `-O3`
 Nous avons jugé ces options sur la charge mono-thread pendant trois semaines, où elles
 paraissaient marginales. Elles valent dix-sept fois plus sur la charge représentative.
 
-**Pistes explorées et fermées, avec leurs chiffres** — elles sont documentées pour éviter qu'on
-les refasse :
+**Le fait qui commande tout le reste.** Le banc de débit multithread (`test/mtbench.c`) montre
+que le code auto-modifiant **anti-scale** : **0,61× à 2 threads** dans la configuration retenue
+(0,38× sans `-O3`/LTO), là où les charges atomiques et d'allocation du même banc scalent
+normalement (1,77× et 2,15×). Émuler un JIT à plusieurs threads coûte plus cher que de l'émuler
+seul. La cause est une contention, pas un volume de travail.
+
+**Pistes explorées et fermées, avec leurs chiffres** — documentées pour éviter qu'on les
+refasse :
 
 - mémoïsation de traduction par contenu : **−353 %** de débit, et un défaut de correctness
   démontré (la longueur du code hôte émis dépend du contexte) ;
-- cache de traduction persistant : supprime 100 % de la retraduction pour **0,0 %** de gain —
-  ce qui établit que la traduction n'est pas le goulot ;
 - calcul paresseux des drapeaux NZCV : la prémisse était un artefact de compteur (ratio réel
-  0,39 et non 2,74).
+  0,39 et non 2,74) ;
+- retrait du verrou `pageflags_lock` du chemin chaud : **0,690× après contre 0,711× avant** — le
+  scaling ne bouge pas ;
+- chaînage direct des blocs par *veneers* : le coût de la portée perdue est réel (**plafond
+  mesuré 6 à 9 % par chaîne**), mais aucun banc disponible n'exhibe les chaînes lointaines qu'un
+  veneer récupérerait ; non démontrable ici, donc non codé.
 
-**En cours.** Un banc de débit multithread (`test/mtbench.c`) montre que le code auto-modifiant
-**anti-scale** : 0,76× à 2 threads, là où les charges atomiques et d'allocation scalent
-normalement (1,77× et 2,15×). La cause est localisée — contention, pas volume. Le correctif
-n'est pas validé à ce jour.
+**Le même piège a frappé deux fois, et c'est la leçon du dépôt.** Le cache de traduction
+persistant avait été fermé à **0,0 %** de gain — mesuré en mono-thread. On en avait tiré que « la
+traduction n'est pas le goulot », ce qui fermait par ricochet toute une famille de pistes.
+Rejoué en multithread, il rend **+12,37 % à 4 threads** (et −1,14 % à 2) : l'argument ne valait
+que pour la charge sur laquelle il avait été mesuré. Même chose pour la taille du cache, où
+`tb=32` bat `tb=256` — l'inverse de l'intuition. Les deux réglages sont dans « Exécuter ».
+
+La campagne d'optimisation est close depuis le **11 août 2026**, chaque mesure avec son jeu
+d'attribution dans `PROGRESS.md`. Le seul levier de fond encore identifié est une codegen
+64 bits, bornée à « quelques % » par les mesures du projet ; il n'est pas engagé.
+
+## Quand utiliser ce fork — et quand ne pas
+
+C'est un **dernier recours**, pas une plateforme d'exécution. Le surcoût d'émulation est
+structurel et ne se rattrape pas : `claude --version` met **43 s** sous le fork sur un H3
+(2 cœurs, binaire de cette release).
+
+- **À utiliser** pour un binaire aarch64 qu'on ne peut pas porter : distribué en binaire seul,
+  compilé depuis un langage sans chaîne 32 bits sous la main, ou dont la logique n'existe sous
+  aucune autre forme. C'est le cas de `grok` (Rust compilé) — là, il n'y a pas d'alternative, et
+  c'est la valeur irremplaçable de ce dépôt.
+- **À ne pas utiliser** quand la charge existe en version portable. Pour Claude Code, la voie
+  native — paquet npm pur-JS, ou bundle JS extrait du binaire et exécuté par un Node armv7l
+  (recette validée dans `Yumi-Lab/claude-code-smartpi`) — démarre en quelques secondes contre
+  des dizaines sous émulation. Le fork n'y apporte rien.
 
 ## Développement
 

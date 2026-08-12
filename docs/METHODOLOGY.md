@@ -202,3 +202,61 @@ QEMU_TB_SIZE=256 BUN_JSC_useJIT=0 BUN_JSC_useConcurrentGC=0 BUN_JSC_numberOfGCMa
 The harness exposes this as `CLAUDE_EXTRA_ENV` (space-separated NAME=VAL pairs appended to
 the qemu environment). A `-p` agent turn runs a much longer code path than boot and is
 measured separately; see the PROGRESS journal for the current numbers.
+
+## 9. Performance reference benchmark (phase Z2, 2026-08-10)
+
+Every optimization batch through phase X judged host build flags and TCG-side levers against
+`claude --help` (a single-threaded boot/init workload) as a proxy. That proxy misrepresents
+the actual target: the runtimes this fork exists for (JSC/Bun) write JIT code from several
+threads at once, and the anti-scaling introduced by that self-modifying code interacts with
+thread count, not raw instruction count. A lever graded on a single-threaded number can be
+judged marginal and dropped when its real effect only shows up under concurrency.
+
+The counter-example that forced the change: the `-O3 -mcpu=cortex-a7 -flto` host build flags
+(`build.sh`) measured at +4.41% on `claude --help` (phase X1, single core) and were nearly
+dropped as marginal. Measured instead on the representative load (`mtbench smc`, N=2, 4 real
+cores, `PAD_CPUS=0-3`, n=3, 60 s cells, cooled pad):
+
+| Build | ops/s (3 runs) | median |
+|---|---|---|
+| `-O2` (baseline) | 3471, 3641, 3897 | 3641 |
+| `-O3 -mcpu=cortex-a7 -flto` | 6738, 6131, 6356 | 6356 |
+
++74.6% (6356 vs 3641 median), ranges disjoint (the worst `-O3+LTO` run, 6131, beats the best
+`-O2` run, 3897). Seventeen times the single-threaded figure. Two unexamined assumptions had
+produced the near-miss: "speed is not a criterion" (true for the mission's success criterion,
+section 1, wrongly extended to grading levers within an optimization phase) and "two cores are
+enough" (a thermal guard inherited from an uncooled pad, never re-examined once the pad in use
+gained active cooling; `test/run-pad.sh` now takes a `PAD_CPUS` override, default unchanged at
+`0,1` for long/heavy correctness runs). Raw logs: `test/logs/mtbench/mtbench-smc-N2-20260810-{172123,173008,173852}.log`
+(`-O2`, the three runs above in order) and `...-{172558,173456,174216}.log` (`-O3+LTO`).
+
+**Rule going forward.** `mtbench` (`test/run-mtbench.sh`, workload `smc`, N in {1,2,4},
+`PAD_CPUS=0-3`, n>=3, cells >=60s) is the reference benchmark for any performance or
+efficiency lever. `claude --help` is demoted to a smoke test (does the build render, does it
+hang) and no longer grades a lever by itself. A lever previously closed on a single-threaded
+number whose mechanism interacts with threads (memory barriers, lock contention, translation
+cache reuse, branch reach under I-cache pressure) is suspect and should be re-measured on
+`mtbench` before the closure is trusted; see phase Z2 in PROGRESS.md for the ones this rule
+reopened. Correctness gates (`torn64` zero tearing, `smc-alias` sync) stay non-negotiable
+regardless of which bench measured the gain.
+
+**Phase Z2 outcomes (concrete, not just the rule).** Re-measuring closed levers on `mtbench`
+instead of `claude --help` changed the verdict on two of the three re-played:
+- Z2-1 (`dmb ish` to `dmb ishst` on a pure guest store-store barrier): correct, gain positive at
+  both N=2 (+0.82%) and N=4 (+2.97%), but under the 2% threshold at N=2. Kept as a pending brick,
+  not closed, not merged (see PROGRESS.md).
+- Z2-2 (persistent translation cache): the mono-thread closure argument, "translation is not the
+  bottleneck, so no avoidance variant can pay off", falls at N=4 (+12.37% warm vs cold, disjoint
+  from most cold runs) while staying flat within noise at N=2 (-1.14%, ranges overlap). The
+  universal form of the argument no longer holds.
+- Z2-3 (direct-chain reach lost beyond +-32 MB, `QEMU_TB_SIZE`): fully reopened at both N=2
+  (+21.98%) and N=4 (+17.65%), disjoint ranges at both. The mono-thread verdict (larger cache
+  wins) is reversed under concurrency.
+
+A bench that does not exercise the mechanism a lever claims to improve does not produce
+imprecise numbers, it produces inverted decisions: phase Y developed and closed lever Y5 across
+ten sub-batches against an anti-scaling problem later found to be underestimated by half, because
+the judging bench did not yet exercise the concurrency the lever was meant to help. Before
+grading any lever, verify the bench actually exercises the mechanism the lever claims to
+improve.
