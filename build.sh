@@ -64,8 +64,8 @@ docker run --rm \
     # tour (8/8) ; simd-dup2 correct ; claude 2.1.217 --version rc=0 en 43,3 s.
     # Le gate O3LTO du 2026-08-10 (o3lto-gate-20260810-214510.txt) reste valide mais portait
     # sur un AUTRE commit source (2eb4532, branche serial-stats, avec pageflags_lock cable),
-    # et le gate V4-1G cite avant lui portait sur v9.2.4-18-gf7ecdb6 : ni l'un ni l'autre
-    # n'atteste la branche publiee, d'ou le gate ci-dessus.
+    # et le gate V4-1G cite avant lui portait sur v9.2.4-18-gf7ecdb6 : aucun des deux ne
+    # couvre la branche publiee, donc le gate ci-dessus la mesure directement.
     # ATTENTION : LTO rend les traces de compilation moins lisibles et allonge le build.
     # Si un diagnostic devient difficile, rebuild sans `-flto` (cout : -2,94 % mono-thread,
     # et beaucoup plus en multi-thread, cf. les chiffres ci-dessus).
