@@ -42,13 +42,19 @@ docker run --rm \
     # retirer donnerait une configuration NON MESUREE (il active probablement NEON, donc
     # use_neon_instructions=1 fige a la compile, et lauto-vectorisation du C chaud).
     # NOTE : pas dapostrophes dans ce bloc, tout le corps du build est une chaine simple-quotee.
-    # LE CHIFFRE QUI COMPTE VRAIMENT (2026-08-10). Les +4,41 % ci-dessus viennent dune charge
-    # MONO-THREAD (--help). Sur la charge REPRESENTATIVE de la cible : code auto-modifiant
-    # MULTI-THREAD, ce que fait un JIT JavaScript, la meme configuration rend BEAUCOUP plus :
-    #     mtbench smc, N=2, 4 coeurs (pad refroidi, PAD_CPUS=0-3), n=3, cellules 60 s
-    #     -O2      : 3471 3641 3897 ops/s  -> mediane 3641
-    #     -O3+LTO  : 6738 6131 6356 ops/s  -> mediane 6356      = +74,6 %
-    # Les plages ne se chevauchent PAS (pire O3LTO 6131 > meilleur O2 3897).
+    # LE CHIFFRE QUI COMPTE VRAIMENT (rejoue le 2026-08-13 SUR LA BRANCHE PUBLIEE). Les +4,41 %
+    # ci-dessus viennent dune charge MONO-THREAD (--help). Sur la charge REPRESENTATIVE de la
+    # cible : code auto-modifiant MULTI-THREAD, ce que fait un JIT JavaScript, la meme
+    # configuration rend BEAUCOUP plus :
+    #     mtbench smc, N=2, 4 coeurs (pad refroidi, taskset 0-3), n=3, cellules 60 s, ABAB
+    #     -O2      : 3663 4136 4372 ops/s  -> mediane 4136
+    #     -O3+LTO  : 6458 6612 6815 ops/s  -> mediane 6612      = +59,9 %
+    # Les plages ne se chevauchent PAS (pire O3LTO 6458 > meilleur O2 4372).
+    # Log : test/logs/mtbench/o3lto-vs-o2-yumi64on32-20260813.txt
+    # La campagne du 2026-08-10 annonçait +74,6 % (6356 contre 3641), mais sur serial-stats :
+    # son bras TEMOIN etait ralenti par linstrumentation de cette branche, ce qui gonflait le
+    # ratio. Bras optimise quasi identique dans les deux (6612 contre 6356) : cest le temoin
+    # qui bougeait. Cest le chiffre ci-dessus qui vaut pour ce que ce script produit.
     # Le scaling smc reste NEGATIF dans les deux cas (0,38x en -O2, 0,61x en -O3+LTO a N=2) :
     # LTO ne corrige pas lanti-scaling, il rend tout plus rapide, y compris en multi-thread.
     # LECON : pendant trois semaines loptimisation a ete jugee sur une charge mono-thread, ou

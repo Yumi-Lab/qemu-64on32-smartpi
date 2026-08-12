@@ -119,15 +119,23 @@ Son intérêt dépend entièrement de la charge, et c'est le point le plus utile
 | charge | gain |
 |---|---|
 | `claude --help` (mono-thread) | **+4,41 %** — médiane 65 s contre 68 s |
-| code auto-modifiant, 2 threads, 4 cœurs | **+74,6 %** — médiane 6 356 contre 3 641 ops/s |
+| code auto-modifiant, 2 threads, 4 cœurs | **+59,9 %** — médiane 6 612 contre 4 136 ops/s |
 
 Le second chiffre est celui qui compte pour la cible réelle : un runtime JavaScript compile du
-code depuis plusieurs threads en permanence. Mesuré avec `test/mtbench.c`, n=3, cellules de 60 s,
-plages disjointes (pire cas optimisé 6 131 > meilleur cas non optimisé 3 897). La décomposition
-montre par ailleurs que `-mcpu` **seul** n'apporte rien : le gain vient de `-O3` et de LTO.
+code depuis plusieurs threads en permanence. Mesuré avec `test/mtbench.c` **sur la branche
+publiée**, les deux bras issus du même `build.sh`, n=3, cellules de 60 s, alternance ABAB,
+plages disjointes (pire cas optimisé 6 458 > meilleur cas non optimisé 4 372) —
+`test/logs/mtbench/o3lto-vs-o2-yumi64on32-20260813.txt`. La décomposition montre par ailleurs
+que `-mcpu` **seul** n'apporte rien : le gain vient de `-O3` et de LTO.
 
 Nous avons jugé ces options sur la charge mono-thread pendant trois semaines, où elles
-paraissaient marginales. Elles valent dix-sept fois plus sur la charge représentative.
+paraissaient marginales. Elles valent treize fois plus sur la charge représentative.
+
+> Une version antérieure de cette page annonçait **+74,6 %**. Ce chiffre venait d'un A/B mené sur
+> une branche de travail instrumentée, dont le bras `-O2` était ralenti par l'instrumentation :
+> le ratio en sortait gonflé. Rejoué sur la branche publiée, le bras optimisé est quasi identique
+> (6 612 contre 6 356) — c'est le témoin qui bougeait (4 136 contre 3 641). Le gain reste large et
+> ses plages disjointes ; seul son ordre de grandeur exact change.
 
 **Le fait qui commande tout le reste.** Le banc de débit multithread (`test/mtbench.c`) montre
 que le code auto-modifiant **anti-scale** : **0,61× à 2 threads** dans la configuration retenue

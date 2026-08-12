@@ -223,7 +223,18 @@ cores, `PAD_CPUS=0-3`, n=3, 60 s cells, cooled pad):
 | `-O3 -mcpu=cortex-a7 -flto` | 6738, 6131, 6356 | 6356 |
 
 +74.6% (6356 vs 3641 median), ranges disjoint (the worst `-O3+LTO` run, 6131, beats the best
-`-O2` run, 3897). Seventeen times the single-threaded figure. Two unexamined assumptions had
+`-O2` run, 3897). Seventeen times the single-threaded figure.
+
+**Correction, 2026-08-13.** Both arms above came from `serial-stats`, a working branch carrying
+cabled instrumentation — not from the published 16-patch series. Replayed on `yumi-64on32`, both
+arms out of the same `build.sh`, same protocol (ABAB, warm-up discarded, n=3, 60 s cells,
+`taskset -c 0-3`): `-O2` medians 4136 (3663, 4136, 4372) against `-O3+LTO` 6612 (6458, 6612,
+6815), i.e. **+59.9%**, still with disjoint ranges. The optimized arm barely moved (6612 vs
+6356); the *control* did (4136 vs 3641), because the instrumentation on `serial-stats` was
+slowing it down and inflating the ratio. The lesson of this section is unchanged and the gain is
+still large — but the number a reader should quote is +59.9%, and it took measuring on the
+branch that is actually shipped to get it. Log:
+`test/logs/mtbench/o3lto-vs-o2-yumi64on32-20260813.txt`. Two unexamined assumptions had
 produced the near-miss: "speed is not a criterion" (true for the mission's success criterion,
 section 1, wrongly extended to grading levers within an optimization phase) and "two cores are
 enough" (a thermal guard inherited from an uncooled pad, never re-examined once the pad in use

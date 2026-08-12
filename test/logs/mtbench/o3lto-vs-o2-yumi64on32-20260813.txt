@@ -1,0 +1,46 @@
+=== A/B -O3+LTO CONTRE -O2, SUR LA BRANCHE PUBLIEE (2026-08-13) ===
+OBJET : le +74,6 % annonce au README et aux notes de release a ete mesure sur la branche
+de travail serial-stats (2eb4532, pageflags_lock cable + compteurs). Ce banc le rejoue sur
+yumi-64on32 (141e72e), la serie des 16 patches publiee.
+
+VARIED : le BINAIRE de l'emulateur seul (-O3 -mcpu=cortex-a7 -flto contre -O2 -mcpu=cortex-a7),
+les DEUX bras sortis du MEME build.sh (seules les deux constantes de flags changees entre les
+deux builds, meme commit source, meme image docker).
+HELD FIXED : invite mtbench sha256(16)=40b46273de0a2b71 (inchange depuis Z2-0) ; workload smc ;
+N=2 ; cellules 60 s ; n=3 par bras ; alternance ABAB ; chauffe JETEE ; palier 30 s entre
+cellules ; pad 192.168.1.108 taskset -c 0-3 ; temp_before 46,1-46,2 C sur les 6 cellules
+utiles (aucun throttle : max temp_after 51,8 C).
+
+commit source qemu : 141e72e7fdec9f7348e2d399ee8c04f705a48ae0 (yumi-64on32)
+bras A sha256 : 9a874d51f025a97ee6be356ad4a64d236b746c6384a7538746229bf97055f2ec
+bras B sha256 : af79197c46b97355a101571ac089951a5fb91ad5bbb4cfe00739c5b6e8bd4449
+(sha verifies des DEUX cotes ; le premier transfert du bras B etait TRONQUE - 30 373 083 o
+ contre 34 821 388 - et a ete rejete par ce controle, puis refait en gzip.)
+
+--- SORTIE BRUTE, AUCUNE CELLULE OMISE ---
+--- chauffe (JETEE) ---
+CELL WARMUP-JETE bin=qemu-aarch64 temp_before=49882 temp_after=50246 :: RESULT workload=smc N=2 seconds=60 wall_ms=60653 total_ops=400673 ops_per_sec=6605 per_thread=183538,217135
+--- paire 1 ---
+CELL A1 bin=qemu-aarch64 temp_before=46128 temp_after=50972 :: RESULT workload=smc N=2 seconds=60 wall_ms=60549 total_ops=391026 ops_per_sec=6458 per_thread=202848,188178
+CELL B1 bin=qemu-aarch64-o2 temp_before=46128 temp_after=49156 :: RESULT workload=smc N=2 seconds=60 wall_ms=60274 total_ops=249351 ops_per_sec=4136 per_thread=97287,152064
+--- paire 2 ---
+CELL A2 bin=qemu-aarch64 temp_before=46128 temp_after=50972 :: RESULT workload=smc N=2 seconds=60 wall_ms=60669 total_ops=401186 ops_per_sec=6612 per_thread=199085,202101
+CELL B2 bin=qemu-aarch64-o2 temp_before=46128 temp_after=48793 :: RESULT workload=smc N=2 seconds=60 wall_ms=60400 total_ops=264121 ops_per_sec=4372 per_thread=92425,171696
+--- paire 3 ---
+CELL A3 bin=qemu-aarch64 temp_before=46249 temp_after=51820 :: RESULT workload=smc N=2 seconds=60 wall_ms=60524 total_ops=412509 ops_per_sec=6815 per_thread=195606,216903
+CELL B3 bin=qemu-aarch64-o2 temp_before=46128 temp_after=49035 :: RESULT workload=smc N=2 seconds=60 wall_ms=60303 total_ops=220904 ops_per_sec=3663 per_thread=102020,118884
+
+=== VERDICT ===
+A (-O3+LTO) : 6458 6612 6815 ops/s -> mediane 6612
+B (-O2)     : 3663 4136 4372 ops/s -> mediane 4136
+gain = +59,86 %  ; plages DISJOINTES (pire A 6458 > meilleur B 4372)
+
+CE QUE CA CHANGE : le gain est CONFIRME (large, plages disjointes) mais vaut +59,9 % sur la
+branche publiee, PAS +74,6 %. L'ecart vient du bras TEMOIN, pas du bras optimise :
+A = 6612 ici contre 6356 sur serial-stats (proche), mais B = 4136 ici contre 3641 la-bas.
+Autrement dit le -O2 de serial-stats etait ralenti par l'instrumentation de cette branche
+(pageflags_lock cable, compteurs), ce qui GONFLAIT le ratio. Le chiffre a publier est celui-ci.
+
+CE QUE CA NE DIT PAS : rien a N=1 ni N=4 (non mesures ce jour, donc aucun ratio de scaling
+recalcule ici) ; rien sur claude --help (charge mono-thread) ; rien sur la correctness
+(couverte par le gate de release du 2026-08-12, 4/4 vert).
