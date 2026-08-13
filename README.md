@@ -138,9 +138,11 @@ paraissaient marginales. Elles valent treize fois plus sur la charge représenta
 > ses plages disjointes ; seul son ordre de grandeur exact change.
 
 **Le fait qui commande tout le reste.** Le banc de débit multithread (`test/mtbench.c`) montre
-que le code auto-modifiant **anti-scale** : **0,61× à 2 threads** dans la configuration retenue
-(0,38× sans `-O3`/LTO), là où les charges atomiques et d'allocation du même banc scalent
-normalement (1,77× et 2,15×). Émuler un JIT à plusieurs threads coûte plus cher que de l'émuler
+que le code auto-modifiant **anti-scale** : **0,633× à 2 threads** dans la configuration retenue
+(0,419× sans `-O3`/LTO), mesuré sur la branche publiée
+(`test/logs/mtbench/scaling-n1-yumi64on32-20260813.txt`) — passer d'un thread à deux fait
+*perdre* du débit — là où les charges atomiques et d'allocation du même banc scalent
+normalement (1,77× et 2,15×, chiffres de la campagne précédente, non rejoués ici). Émuler un JIT à plusieurs threads coûte plus cher que de l'émuler
 seul. La cause est une contention, pas un volume de travail.
 
 **Pistes explorées et fermées, avec leurs chiffres** — documentées pour éviter qu'on les

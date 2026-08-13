@@ -1,0 +1,43 @@
+=== ANTI-SCALING SUR LA BRANCHE PUBLIEE : cellules N=1 (2026-08-13) ===
+OBJET : les ratios 0,61x / 0,38x annonces venaient de serial-stats. Ce banc fournit les
+cellules N=1 qui manquaient pour les recalculer sur yumi-64on32 ; les cellules N=2 sont
+celles du banc o3lto-vs-o2-yumi64on32-20260813.txt, MEMES conditions (memes binaires, meme
+invite, meme pad, taskset 0-3, cellules 60 s, n=3, ABAB, chauffe jetee, palier 30 s).
+
+commit source qemu : 141e72e7fdec9f7348e2d399ee8c04f705a48ae0 (yumi-64on32)
+bras A sha256(16) : 9a874d51f025a97e (-O3 -mcpu=cortex-a7 -flto, binaire de la release)
+bras B sha256(16) : af79197c46b97355 (-O2 -mcpu=cortex-a7, meme build.sh)
+invite mtbench sha256(16) : 40b46273de0a2b71
+
+--- SORTIE BRUTE N=1, AUCUNE CELLULE OMISE ---
+--- chauffe (JETEE) ---
+CELL WARMUP-JETE bin=qemu-aarch64 temp_before=46613 temp_after=48429 :: RESULT workload=smc N=1 seconds=60 wall_ms=60511 total_ops=632784 ops_per_sec=10457 per_thread=632784
+--- paire 1 ---
+CELL A1 bin=qemu-aarch64 temp_before=42495 temp_after=48066 :: RESULT workload=smc N=1 seconds=60 wall_ms=60444 total_ops=631009 ops_per_sec=10439 per_thread=631009
+CELL B1 bin=qemu-aarch64-o2 temp_before=42738 temp_after=48308 :: RESULT workload=smc N=1 seconds=60 wall_ms=60098 total_ops=594421 ops_per_sec=9890 per_thread=594421
+--- paire 2 ---
+CELL A2 bin=qemu-aarch64 temp_before=43222 temp_after=49519 :: RESULT workload=smc N=1 seconds=60 wall_ms=60330 total_ops=629909 ops_per_sec=10441 per_thread=629909
+CELL B2 bin=qemu-aarch64-o2 temp_before=43585 temp_after=49761 :: RESULT workload=smc N=1 seconds=60 wall_ms=60114 total_ops=592843 ops_per_sec=9861 per_thread=592843
+--- paire 3 ---
+CELL A3 bin=qemu-aarch64 temp_before=43101 temp_after=48793 :: RESULT workload=smc N=1 seconds=60 wall_ms=60778 total_ops=635068 ops_per_sec=10448 per_thread=635068
+CELL B3 bin=qemu-aarch64-o2 temp_before=42616 temp_after=48187 :: RESULT workload=smc N=1 seconds=60 wall_ms=60108 total_ops=592373 ops_per_sec=9855 per_thread=592373
+
+=== VERDICT ===
+N=1  A : 10439 10441 10448 -> mediane 10441   B : 9855 9861 9890 -> mediane 9861
+N=2  A :  6458  6612  6815 -> mediane  6612   B : 3663 4136 4372 -> mediane 4136  (banc du meme jour)
+
+scaling A (N=2/N=1) = 0,633x     annonce jusqu'ici (serial-stats) : 0,61x
+scaling B (N=2/N=1) = 0,419x     annonce jusqu'ici (serial-stats) : 0,38x
+
+L'ANTI-SCALING EST CONFIRME sur la branche publiee : passer de 1 a 2 threads FAIT PERDRE
+du debit (0,63x et 0,42x, tres loin de 1,0x). Les chiffres sont un peu MEILLEURS que ceux
+de serial-stats, coherent avec le fait que cette branche ne porte pas son instrumentation.
+La conclusion qualitative ne bouge pas ; les deux ratios du README sont remplaces par ceux-ci.
+
+AU PASSAGE : a N=1 le gain -O3+LTO vaut +5,88 % (10441 contre 9861, plages disjointes),
+du meme ordre que les +4,41 % mesures sur claude --help. C'est bien en MULTI-THREAD que
+l'ecart explose (+59,9 % a N=2).
+
+CE QUE CA NE DIT PAS : rien a N=4 ; rien sur les autres workloads de mtbench (atomic,
+alloc, mixed) dont les ratios 1,77x / 2,15x restent ceux de la campagne serial-stats ;
+aucune mesure de correctness (couverte par le gate de release du 2026-08-12).

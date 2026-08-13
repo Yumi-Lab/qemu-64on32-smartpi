@@ -55,7 +55,8 @@ docker run --rm \
     # son bras TEMOIN etait ralenti par linstrumentation de cette branche, ce qui gonflait le
     # ratio. Bras optimise quasi identique dans les deux (6612 contre 6356) : cest le temoin
     # qui bougeait. Cest le chiffre ci-dessus qui vaut pour ce que ce script produit.
-    # Le scaling smc reste NEGATIF dans les deux cas (0,38x en -O2, 0,61x en -O3+LTO a N=2) :
+    # Le scaling smc reste NEGATIF dans les deux cas (0,419x en -O2, 0,633x en -O3+LTO a N=2,
+    # cellules N=1 du 2026-08-13 sur cette meme branche, log scaling-n1-yumi64on32-20260813.txt) :
     # LTO ne corrige pas lanti-scaling, il rend tout plus rapide, y compris en multi-thread.
     # LECON : pendant trois semaines loptimisation a ete jugee sur une charge mono-thread, ou
     # ces options paraissaient marginales. Mesurer sur la charge REELLE change lordre de

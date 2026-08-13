@@ -234,7 +234,16 @@ arms out of the same `build.sh`, same protocol (ABAB, warm-up discarded, n=3, 60
 slowing it down and inflating the ratio. The lesson of this section is unchanged and the gain is
 still large — but the number a reader should quote is +59.9%, and it took measuring on the
 branch that is actually shipped to get it. Log:
-`test/logs/mtbench/o3lto-vs-o2-yumi64on32-20260813.txt`. Two unexamined assumptions had
+`test/logs/mtbench/o3lto-vs-o2-yumi64on32-20260813.txt`.
+
+The N=1 cells were replayed the same day, same conditions, to recompute the anti-scaling ratios
+on the shipped branch as well: `-O3+LTO` medians 10441 at N=1 against 6612 at N=2, i.e. **0.633x**;
+`-O2` 9861 against 4136, i.e. **0.419x** (previously quoted as 0.61x and 0.38x from
+`serial-stats`). Self-modifying code still loses throughput when it gains a thread — the finding
+is unchanged, and the ratios are marginally better on the uninstrumented branch, as expected.
+Worth noting from the same cells: at N=1 the build flags are worth only +5.88%, in line with the
++4.41% seen on `claude --help`. The gap only explodes under concurrency. Log:
+`test/logs/mtbench/scaling-n1-yumi64on32-20260813.txt`. Two unexamined assumptions had
 produced the near-miss: "speed is not a criterion" (true for the mission's success criterion,
 section 1, wrongly extended to grading levers within an optimization phase) and "two cores are
 enough" (a thermal guard inherited from an uncooled pad, never re-examined once the pad in use
